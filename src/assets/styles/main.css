@@ -1,0 +1,150 @@
+.container-fluid {
+  padding-left: 0 !important;
+  min-height: 100vh;
+}
+
+.date-picker > .ant-picker-input {
+  padding: 6px 0px !important;
+}
+
+.range-picker {
+  height: 38px !important;
+}
+
+.dark {
+  color: black;
+}
+
+/* ====== START - Overriding ====== */
+
+.ant-layout-header {
+  background-color: transparent;
+  padding: 0;
+}
+
+.ant-drawer-body {
+  padding: 0 !important;
+}
+
+.ant-menu-dark .ant-menu-inline.ant-menu-sub {
+  background-color: transparent;
+}
+
+.ant-menu-title-content > a {
+  padding: 0 !important;
+}
+
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: transparent !important;
+}
+
+.ant-menu-item .active {
+  background-color: transparent !important;
+}
+
+.ant-layout {
+  /* background-color: transparent; */
+}
+
+.ant-layout-footer {
+  padding: 24px;
+  background-color: transparent;
+}
+
+.ant-menu-title-content a {
+  color: inherit !important;
+}
+
+.ant-btn {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 7%);
+}
+
+.ant-picker {
+  width: 100%;
+}
+
+.ant-input-number {
+  width: 100%;
+}
+
+.ant-select {
+  width: 100%;
+}
+
+.ant-input,
+.ant-select-selector {
+  border-radius: 5px !important;
+}
+
+.ant-input {
+  padding: 6.5px 11px !important;
+}
+
+.ant-select-selector {
+  height: auto !important;
+  padding: 2px 11px !important;
+}
+
+.ant-picker,
+.ant-input-number {
+  /* border: 1px solid #d9d9d9 !important; */
+  border-radius: 5px !important;
+  padding: 2px 11px !important;
+}
+
+.ant-form-item-control-input-content .ant-picker {
+}
+
+.ant-select-selection-search {
+  height: 38px !important;
+}
+
+.ant-select-single.ant-select-lg:not(.ant-select-customize-input):not(.ant-select-customize-input)
+  .ant-select-selection-search-input {
+  height: 38px !important;
+}
+
+.ant-table {
+  background-color: transparent !important;
+}
+
+.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper,
+.ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:hover {
+  background: transparent;
+  padding: 0 !important;
+}
+
+.ant-input-affix-wrapper {
+  background: transparent;
+  border-radius: 5px !important;
+  padding: 0 !important;
+}
+
+.ant-picker-cell-inner:hover {
+  color: black;
+  background-color: #e6f7ff;
+}
+
+.column-visibility:hover {
+  background-color: transparent;
+}
+
+/* ====== END - Overriding ====== */
+
+/* ====== Responsive ====== */
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+}

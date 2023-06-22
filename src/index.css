@@ -1,0 +1,63 @@
+@import "~antd/dist/antd.css";
+
+html,
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.ant-table .ant-table-container .ant-table-content table thead.ant-table-thead {
+  background-color: rgb(44, 44, 44) !important;
+  color: antiquewhite !important;
+}
+
+.ant-table-thead > tr > th {
+  color: #efefef !important;
+  font-weight: 700;
+  background-color: transparent;
+  font-size: 13px;
+}
+
+.ant-layout-sider {
+  color: #ffffff;
+}
+
+.ant-menu-item a {
+  color: #d8d8d8 !important;
+  /* padding: 15px !important; */
+  padding: 0 10px !important;
+}
+
+.ant-menu-item .active {
+  background-color: #3a3a3a !important;
+}
+
+.ant-picker-panels > *:first-child button.ant-picker-header-next-btn {
+  visibility: visible !important;
+}
+
+.ant-picker-panels > *:first-child button.ant-picker-header-super-next-btn {
+  visibility: visible !important;
+}
+
+.ant-picker-panels > *:last-child {
+  display: none;
+}
+
+.ant-picker-panel-container,
+.ant-picker-footer {
+  width: 280px !important;
+}
+
+.ant-picker-footer-extra > div {
+  flex-wrap: wrap !important;
+}

@@ -1,0 +1,29 @@
+{
+  "short_name": "ERP OS",
+  "name": "ERP OS",
+  "icons": [
+    {
+     "src": "maskable196.png",
+     "sizes":"196x196",
+     "type":"image/png",
+     "purpose": "any maskable"
+
+    },
+
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/"  ,
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

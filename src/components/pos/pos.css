@@ -1,0 +1,11 @@
+.pos-product-card > .ant-card-body {
+	padding: 1rem !important;
+}
+
+.ant-btn-new {
+	height: 33px;
+	line-height: 27px;
+	padding: 3px 15px;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px rgb(0 0 0 / 7%);
+}

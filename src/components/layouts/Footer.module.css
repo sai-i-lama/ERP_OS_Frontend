@@ -1,0 +1,56 @@
+.footer {
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.copyrightCol {
+  display: flex;
+  align-items: center;
+}
+
+.copyrightText {
+  margin: 0;
+}
+
+.footerMenu {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footerList {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
+}
+
+.footerList li {
+  list-style-type: none;
+}
+.footerList li a {
+  padding: 0;
+}
+
+/* ====== Responsive ====== */
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+  .copyrightCol {
+    display: flex;
+    justify-content: center;
+  }
+
+  .footerMenu {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+}

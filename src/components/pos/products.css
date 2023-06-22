@@ -1,0 +1,9 @@
+.products-container-wrapper {
+  padding-right: 15px;
+  max-height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.products-container {
+}

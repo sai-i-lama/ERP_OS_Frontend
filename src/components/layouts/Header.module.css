@@ -1,0 +1,63 @@
+.headerControl {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.logoutLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sidebarTogglerPC {
+  display: block;
+}
+
+.sidebarTogglerMobile {
+  display: none;
+}
+
+.trigger {
+  padding: 0;
+  font-size: 18px;
+  line-height: 64px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.hamburgerMenuIcon {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 575.98px) {
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  .sidebarTogglerPC {
+    display: none;
+  }
+
+  .sidebarTogglerMobile {
+    display: block;
+    margin-left: 10px;
+    padding: 0 10px !important;
+    height: auto !important;
+    line-height: 0;
+  }
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+}

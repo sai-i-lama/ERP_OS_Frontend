@@ -1,0 +1,29 @@
+.mr-top {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.mr-left {
+	margin-left: 20px;
+}
+
+.example {
+	margin: 20px 0;
+	margin-bottom: 20px;
+	padding: 30px 50px;
+	text-align: center;
+	background: rgba(0, 0, 0, 0.05);
+	border-radius: 4px;
+}
+
+.code-box-demo {
+	overflow-x: auto;
+}
+
+.code-box-demo .ant-segmented {
+	margin-bottom: 10px;
+}
+
+label {
+	margin-bottom: 0px !important;
+}

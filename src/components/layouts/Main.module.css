@@ -1,0 +1,66 @@
+.mainLayout {
+  min-height: 100vh;
+}
+
+.siderMain {
+  padding-top: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  z-index: 10;
+  max-height: 100vh;
+  overflow-y: scroll;
+}
+
+.mainLayoutCollapse {
+  margin-left: 240px;
+}
+
+.mainLayoutUncollapse {
+  margin-left: 100px;
+}
+
+.mainLayoutMarginLeftZero {
+  margin-left: 0;
+}
+
+.sideNavDrawer {
+  min-height: 100vh !important;
+  padding: 0 !important;
+}
+
+.siderDrawer {
+  padding-top: 1rem;
+  min-height: 100vh !important;
+}
+
+/* Overriding */
+.ant-drawer-body {
+  padding: 0 !important;
+}
+
+/* ====== Responsive ====== */
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  .siderMain {
+    display: none;
+  }
+
+  .mainLayoutCollapse {
+    margin-left: 15px;
+  }
+
+  .mainLayoutUncollapse {
+    margin-left: 15px;
+  }
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+}

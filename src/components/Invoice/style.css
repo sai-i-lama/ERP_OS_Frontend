@@ -1,0 +1,219 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr;
+  font-size: 12px;
+  padding: 10px 0;
+  width: 1000px;
+  max-width: 90%;
+  margin: 0 auto;
+  grid-auto-rows: minmax(70px, auto);
+}
+
+.wrapper > div {
+  padding: 0.6em;
+}
+
+.box1 {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box2 {
+  grid-column: 2;
+  grid-row: 1;
+  text-align: center;
+}
+
+.box3 {
+  grid-column: 3;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box4 {
+  grid-column: 1/4;
+  grid-row: 2;
+  text-align: center;
+}
+
+.box5 {
+  grid-column: 1/2;
+  grid-row: 3;
+}
+
+.box6 {
+  grid-column: 3/4;
+  grid-row: 3;
+}
+
+.box7 {
+  justify-content: stretch;
+  grid-column: 1/4;
+  grid-row: 4;
+}
+
+.box8 {
+  grid-column: 1/2;
+  grid-row: 6;
+}
+
+.box9 {
+  grid-column: 3/4;
+  grid-row: 5;
+}
+
+.box10 {
+  grid-column: 3/4;
+  grid-row: 10;
+}
+
+.box11 {
+  grid-column: 1/2;
+  grid-row: 10;
+}
+
+.box12 {
+  grid-column: 1/4;
+  grid-row: 11;
+  text-align: center;
+}
+
+.box13 {
+  grid-column: 1/3;
+  grid-row: 5;
+}
+
+.box14 {
+  grid-column: 1/4;
+  grid-row: 7;
+}
+
+.footer {
+  position: fixed;
+  left: 180;
+  bottom: 0;
+  text-align: center;
+  width: 1000px;
+  max-width: 90%;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table.table1,
+table.table1 th,
+table.table1 td {
+  border: 1px solid silver;
+}
+table.table1 th,
+table.table1 td {
+  text-align: left;
+  padding: 5px;
+}
+table.table1 tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table.table2 {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.table2 th,
+table.table2 td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+hr.hr1 {
+  border-top: 1px dotted rgb(63, 63, 63);
+}
+
+/* Pos Print */
+
+@import url("http://fonts.cdnfonts.com/css/vcr-osd-mono");
+.pos-print-body {
+  font-family: "VCR OSD Mono";
+  color: #000;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 10px;
+}
+.bill {
+  width: 200px;
+  box-shadow: 0 0 3px #aaa;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+.brand {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.flex {
+  display: flex;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.table .header {
+  border-top: 2px dashed #000;
+  border-bottom: 2px dashed #000;
+}
+.table {
+  text-align: left;
+}
+.table td {
+  padding: 0.3rem 0;
+}
+.table .subtotal td:first-of-type {
+  border-top: none;
+}
+.table .data td {
+  border: none;
+}
+.table .discount td {
+  border: none;
+}
+.table .subtotal td {
+  border-top: 2px dashed #000;
+  border-bottom: none;
+}
+.table .total td {
+  border-top: 2px dashed #000;
+  border-bottom: none;
+}
+.table .after-discount td {
+  border-bottom: 2px dashed #000;
+}
+.table .net-amount td:first-of-type {
+  border-top: none;
+}
+.table .net-amount td {
+  border-top: 2px dashed #000;
+}
+.table .net-amount {
+  border-bottom: 2px dashed #000;
+}
+@media print {
+  .hidden-print,
+  .hidden-print * {
+    display: none !important;
+  }
+}
