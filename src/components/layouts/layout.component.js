@@ -19,7 +19,7 @@ const HomeLayout = ({ children }) => (
     >
       <div className='logo '>
         <Link to='/'>
-          <h3 className='style-layout'>Smart ERP V1</h3>
+          <h3 className='style-layout'>Sai i luma ERP V1</h3>
         </Link>
       </div>
 
@@ -79,7 +79,7 @@ const HomeLayout = ({ children }) => (
           textAlign: "center",
         }}
       >
-        Omega Solution ©2022 Smart ERP
+        SAI I LUMA ©2023 # SLOGAN
       </Footer>
     </Layout>
   </Layout>

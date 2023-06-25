@@ -361,7 +361,7 @@ const AddSale = () => {
 								border: "1px solid #ccc",
 							}}>
 							<strong>Total: </strong>
-							<strong>{totalDiscountPaidDue.total} tk</strong>
+							<strong>{totalDiscountPaidDue.total} cfa</strong>
 						</div>
 
 						<div
@@ -391,7 +391,7 @@ const AddSale = () => {
 								justifyContent: "space-between",
 							}}>
 							<strong>After Discount: </strong>
-							<strong>{totalDiscountPaidDue.afterDiscount} tk</strong>
+							<strong>{totalDiscountPaidDue.afterDiscount} cfa</strong>
 						</div>
 
 						<div
@@ -421,7 +421,7 @@ const AddSale = () => {
 								border: "1px solid #ccc",
 							}}>
 							<strong>Due Amount: </strong>
-							<strong>{totalDiscountPaidDue.due} tk</strong>
+							<strong>{totalDiscountPaidDue.due} cfa</strong>
 						</div>
 
 						<Form.Item style={{ marginTop: "15px" }}>

@@ -12,26 +12,19 @@ function Footer() {
 					<p className={styles.copyrightText}>
 						{year}{" "}
 						<a
-							href='https://solution.omega.ac'
+							href='/'
 							className='font-weight-bold'
 							target='_blank'
 							rel='noreferrer'>
-							Omega Solution
+							DTA internship Team
 						</a>{" "}
-						One stop solution.
+						ERM Solution
 					</p>
 				</Col>
 				<Col xs={24} md={24} lg={12}>
 					<div className={styles.footerMenu}>
 						<ul className={styles.footerList}>
-							<li className='nav-item'>
-								<a
-									href='https://omega.ac'
-									className='nav-link text-muted'
-									target='/'>
-									Omega
-								</a>
-							</li>
+
 							<li className='nav-item'>
 								<a href='/' className='nav-link text-muted' target='/'>
 									About Us
@@ -39,7 +32,7 @@ function Footer() {
 							</li>
 							<li className='nav-item'>
 								<a href='/' className='nav-link text-muted' target='_blank'>
-									Blog
+									Documentation
 								</a>
 							</li>
 							<li className='nav-item'>

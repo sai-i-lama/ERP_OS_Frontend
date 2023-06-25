@@ -101,7 +101,7 @@ const PrintToPdf = forwardRef(({ data, invoiceData }, ref) => {
 
 				<div className='box12'>
 					<hr />
-					<p>Powered by ERP-OS | Contact: 01885 996601</p>
+					<p>DTA INNO | Contact: +(XXX) XXX-XXX-XXX</p>
 				</div>
 			</div>
 		</Fragment>

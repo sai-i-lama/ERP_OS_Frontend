@@ -76,7 +76,7 @@ const PrintToPdf = forwardRef(({ data, invoiceData }, ref) => {
 							<td>{data.total_amount - data.discount}</td>
 						</tr>
 					</table>
-					{invoiceData?.footer} <br />© ERPOS | Omega Solution
+					{invoiceData?.footer} <br />© SAI I LUMA | #Slogan
 				</div>
 			</div>
 		</Fragment>

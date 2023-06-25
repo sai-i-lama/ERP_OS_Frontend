@@ -140,7 +140,7 @@ const PrintToPdf = forwardRef(
 					</div>
 					<div class='box12'>
 						<hr />
-						<p>Powered by OMEGA SOLUTION | Contact: 01885 996601</p>
+						<p>Powered by DTA INNO | Contact: +(XXX) XXX-XXX-XXX</p>
 					</div>
 				</div>
 			</Fragment>

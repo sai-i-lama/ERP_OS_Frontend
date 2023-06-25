@@ -332,7 +332,7 @@ const AddPurch = () => {
 								border: "1px solid #ccc",
 							}}>
 							<strong>Total: </strong>
-							<strong>{totalDiscountPaidDue.total} tk</strong>
+							<strong>{totalDiscountPaidDue.total} cfa</strong>
 						</div>
 						<div
 							style={{
@@ -366,7 +366,7 @@ const AddPurch = () => {
 							<div>
 								<strong>After Discount: </strong>
 							</div>
-							<strong>{totalDiscountPaidDue.afterDiscount} tk</strong>
+							<strong>{totalDiscountPaidDue.afterDiscount} cfa</strong>
 						</div>
 						<div
 							style={{
@@ -400,7 +400,7 @@ const AddPurch = () => {
 								marginBottom: "10px",
 							}}>
 							<strong>Due Amount: </strong>
-							<strong>{totalDiscountPaidDue.due} tk</strong>
+							<strong>{totalDiscountPaidDue.due} cfa</strong>
 						</div>
 
 						<Form.Item style={{ marginTop: "15px" }}>
