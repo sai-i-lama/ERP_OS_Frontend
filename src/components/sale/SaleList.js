@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const SaleList = ({ data }) => {
   return (
     <div>
-      <h5 className='text-center m-4'>Invoice Product List :</h5>
+      <h5 className='text-center m-4'>Liste des produits facturés :</h5>
       <List
         bordered
         style={{ marginTop: "20px" }}
@@ -21,11 +21,11 @@ const SaleList = ({ data }) => {
             <div>
               <p>
                 {" "}
-                Sale Price : <strong>{item.product_sale_price} </strong>
+                Prix de vente: <strong>{item.product_sale_price} </strong>
               </p>
               <p>
                 {" "}
-                Sale Quantity : <strong>{item.product_quantity} </strong>
+                Quantité de vente : <strong>{item.product_quantity} </strong>
               </p>
             </div>
           </List.Item>

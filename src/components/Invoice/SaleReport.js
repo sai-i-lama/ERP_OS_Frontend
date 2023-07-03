@@ -24,11 +24,11 @@ const PrintToPdf = forwardRef(
 						<p>{settingData?.address}</p>
 						<p>{settingData?.phone}</p>
 						<p>Email: {settingData?.email}</p>
-						<p>Website: {settingData?.website}</p>
+						<p>Site Web: {settingData?.website}</p>
 					</div>
 					<div class='box4'>
 						<hr class='hr1' />
-						<h3 class='center'>SALES REPORT</h3>
+						<h3 class='center'>RAPPORT SUR LES VENTES</h3>
 						<hr class='hr1' />
 					</div>
 
@@ -36,10 +36,10 @@ const PrintToPdf = forwardRef(
 						<table class='table2'>
 							<tr>
 								<th>Type</th>
-								<td>All</td>
+								<td>Toute</td>
 							</tr>
 							<tr>
-								<th>Sales Person</th>
+								<th>Vendeur</th>
 								<td>{user ? data[0]?.user?.username : "All"} </td>
 							</tr>
 						</table>
@@ -48,11 +48,11 @@ const PrintToPdf = forwardRef(
 					<div class='box6'>
 						<table class='table2'>
 							<tr>
-								<th>From Date</th>
+								<th>À partir de la date</th>
 								<td>{date?.startdate}</td>
 							</tr>
 							<tr>
-								<th>To Date</th>
+								<th>À ce jour</th>
 								<td>{date?.enddate}</td>
 							</tr>
 						</table>
@@ -62,19 +62,19 @@ const PrintToPdf = forwardRef(
 						<table class='table1'>
 							<thead>
 								<th>Date</th>
-								<th>Invoice</th>
-								<th>Staff</th>
-								<th>Customer</th>
-								<th>Product</th>
-								<th>Qty</th>
+								<th>Facture</th>
+								<th>Personnel</th>
+								<th>Client</th>
+								<th>Produit</th>
+								<th>Quantité</th>
 								<th>U.M</th>
-								<th>U.T</th>
+								<th>Type d'unité</th>
 								<th>Total</th>
 								<th>S Total</th>
-								<th>Discount</th>
+								<th>Rabais</th>
 								<th>G Total</th>
-								<th>Paid</th>
-								<th>Due</th>
+								<th>Payé</th>
+								<th>Montant Du</th>
 							</thead>
 							<tbody>
 								{data &&
@@ -177,7 +177,7 @@ const SaleReportPrint = ({ data, date, user, total }) => {
 				<button
 					className='btn btn-primary btn-sm mb-1 button-size'
 					onClick={handlePrint}>
-					Print PDF
+					Imprimer PDF
 				</button>
 			)}
 		</div>

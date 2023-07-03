@@ -96,7 +96,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       key: "payment",
       render: (id) => (
         <Link to={`/payment/customer/${id}`}>
-          <button className="btn btn-dark btn-sm">Payment</button>
+          <button className="btn btn-dark btn-sm">Paiement</button>
         </Link>
       ),
     },
@@ -269,7 +269,7 @@ const GetAllSale = (props) => {
 			<PageTitle title={"Back"} />
 			<div className='card card-custom mt-1'>
 				<div className='card-body'>
-					<h5 className='d-inline-flex'>Sale Invoice List</h5>
+					<h5 className='d-inline-flex'>Liste des factures de vente</h5>
 					<div className='card-title d-flex flex-column flex-md-row align-items-center justify-content-md-center mt-1 py-2'>
 						<div>
 							<Form
@@ -280,10 +280,10 @@ const GetAllSale = (props) => {
 								<Form.Item name='user'>
 									<Select
 										loading={!userList}
-										placeholder='Sale Person'
+										placeholder='Vendeur'
 										style={{ width: 200 }}
 										allowClear>
-										<Select.Option value=''>All</Select.Option>
+										<Select.Option value=''>Toute</Select.Option>
 										{userList &&
 											userList.map((i) => (
 												<Select.Option value={i.id}>{i.username}</Select.Option>
@@ -324,7 +324,7 @@ const GetAllSale = (props) => {
           <br />
           <div>
             <div>
-              <h5>Sales History</h5>
+              <h5>Historique des ventes</h5>
               {list && (
                 <div className="card-title d-flex justify-content-end ">
                   <div className="me-2">
@@ -333,7 +333,7 @@ const GetAllSale = (props) => {
                       className="btn btn-dark btn-sm mb-1"
                       filename="sales"
                     >
-                      Download CSV
+                      Télécharger le fichier CSV
                     </CSVLink>
                   </div>
                   <div className="me-2" style={{ marginTop: "-4px" }}>
@@ -344,7 +344,7 @@ const GetAllSale = (props) => {
                         {
                           label: (
                             <span>
-                              <i className="bi bi-person-lines-fill"></i> All
+                              <i className="bi bi-person-lines-fill"></i> toute
                             </span>
                           ),
                           value: totalCount,
@@ -353,7 +353,7 @@ const GetAllSale = (props) => {
                           label: (
                             <span>
                               <i className="bi bi-person-dash-fill"></i>{" "}
-                              Paginated
+                              Paginé
                             </span>
                           ),
                           value: 10,

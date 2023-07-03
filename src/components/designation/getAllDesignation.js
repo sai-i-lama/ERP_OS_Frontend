@@ -60,7 +60,7 @@ function CustomTable({ list, total }) {
   return (
     <div>
       <div className="text-center my-2 d-flex justify-content-between">
-        <h5>Designation List</h5>
+        <h5>Liste des désignations</h5>
         {list && (
           <div>
             <CSVLink

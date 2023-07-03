@@ -97,12 +97,12 @@ const DetailTransaction = () => {
                 </p>
 
                 <p>
-                  <Typography.Text strong>Amount :</Typography.Text>{" "}
+                  <Typography.Text strong>Quantité :</Typography.Text>{" "}
                   {payment.amount}
                 </p>
 
                 <p>
-                  <Typography.Text strong>Particulars :</Typography.Text>{" "}
+                  <Typography.Text strong>Particulier :</Typography.Text>{" "}
                   {payment.particulars}
                 </p>
                 <p>

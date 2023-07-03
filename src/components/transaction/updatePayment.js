@@ -88,7 +88,7 @@ function UpdateSup() {
                 )}
                 <Card bordered={false} className='criclebox h-full'>
                   <Title level={3} className='m-3 text-center'>
-                    Edit Supplier Form
+                  Modifier le formulaire fournisseur
                   </Title>
                   <Form
                     initialValues={{
@@ -111,11 +111,11 @@ function UpdateSup() {
                       style={{ marginBottom: "10px" }}
                       fields={[{ name: "Name" }]}
                       label='Name'
-                      name='name'
+                      name='Nom'
                       rules={[
                         {
                           required: true,
-                          message: "Please input supplier name!",
+                          message: "Veuillez saisir le nom du fournisseur!",
                         },
                       ]}
                     >
@@ -124,12 +124,12 @@ function UpdateSup() {
 
                     <Form.Item
                       style={{ marginBottom: "10px" }}
-                      label='Phone'
+                      label='Téléphone'
                       name='phone'
                       rules={[
                         {
                           required: true,
-                          message: "Please input supplier Phone!",
+                          message: "Veuillez saisir le numéro de téléphone !",
                         },
                       ]}
                     >
@@ -138,12 +138,12 @@ function UpdateSup() {
 
                     <Form.Item
                       style={{ marginBottom: "10px" }}
-                      label='Address'
+                      label='Adresse'
                       name='address'
                       rules={[
                         {
                           required: true,
-                          message: "Please input supplier Address!",
+                          message: "Veuillez saisir l'adresse!",
                         },
                       ]}
                     >
@@ -152,13 +152,13 @@ function UpdateSup() {
 
                     <Form.Item
                       style={{ marginBottom: "10px" }}
-                      label='Due Amount'
+                      label='Montant dû'
                       name='due_amount'
                       rules={[
                         {
                           type: Number,
                           required: true,
-                          message: "Please input supplier amount!",
+                          message: "Veuillez saisir le montant du!",
                         },
                       ]}
                     >
@@ -178,7 +178,7 @@ function UpdateSup() {
                         htmlType='submit'
                         shape='round'
                       >
-                        Update Now
+                        Mettre à jour
                       </Button>
                     </Form.Item>
                   </Form>

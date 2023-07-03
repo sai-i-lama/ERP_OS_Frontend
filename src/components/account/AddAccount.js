@@ -61,7 +61,7 @@ const AddAccoun = () => {
         <Col xs={24} sm={24} md={24} lg={16} xl={12} className="border rounded column-design">
           <Card bordered={false}>
             <Title level={4} className="m-2 text-center">
-              Add Account
+              Ajouter un compte
             </Title>
             <Form
               form={form}
@@ -83,25 +83,25 @@ const AddAccoun = () => {
               <Form.Item
                 style={{ marginBottom: "10px" }}
                 name="name"
-                label="Name"
+                label="Nom"
                 rules={[
                   {
                     required: true,
-                    message: "Please input debit account!",
+                    message: "Veuillez saisir le compte débiteur!",
                   },
                 ]}
               >
-                <Input placeholder="Name" />
+                <Input placeholder="Nom" />
               </Form.Item>
 
               <Form.Item
                 style={{ marginBottom: "10px" }}
                 name="account_id"
-                label="Account Type"
+                label="Type de compte"
                 rules={[
                   {
                     required: true,
-                    message: "Please input debit account!",
+                    message: "Veuillez saisir le compte débiteur!",
                   },
                 ]}
               >
@@ -111,7 +111,7 @@ const AddAccoun = () => {
                   style={{
                     width: 200,
                   }}
-                  placeholder="Select Account Type"
+                  placeholder="Sélectionnez le type de compte"
                   optionFilterProp="children"
                   filterOption={(input, option) =>
                     option.children.includes(input)
@@ -142,7 +142,7 @@ const AddAccoun = () => {
                   loading={loader}
                   onClick={() => setLoader(true)}
                 >
-                  Add New Account
+                  Ajouter un nouveau compte
                 </Button>
               </Form.Item>
             </Form>

@@ -13,7 +13,7 @@ const Product = (props) => {
 
   return (
     <>
-      <PageTitle title="Back" />
+      <PageTitle title="Retour" />
 
       <AddProd />
 

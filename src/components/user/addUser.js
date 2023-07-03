@@ -77,7 +77,7 @@ const AddUser = () => {
         >
           <Card bordered={false}>
             <Title level={4} className="m-2 text-center">
-              Add New Staff
+            Ajouter personnel
             </Title>
             <Form
               form={form}
@@ -97,12 +97,12 @@ const AddUser = () => {
             >
               <Form.Item
                 style={{ marginBottom: "10px" }}
-                label="User Name"
+                label="Nom d’utilisateur"
                 name="username"
                 rules={[
                   {
                     required: true,
-                    message: "Please input username!",
+                    message: "Veuillez saisir le nom d’utilisateur!",
                   },
                 ]}
               >
@@ -111,12 +111,12 @@ const AddUser = () => {
 
               <Form.Item
                 style={{ marginBottom: "10px" }}
-                label="Password"
+                label="Mot de passe"
                 name="password"
                 rules={[
                   {
                     required: true,
-                    message: "Please input your password !",
+                    message: "Veuillez saisir votre mot de passe !",
                   },
                 ]}
               >
@@ -130,7 +130,7 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input email!",
+                    message: "Veuillez saisir l'email!",
                   },
                 ]}
               >
@@ -139,12 +139,12 @@ const AddUser = () => {
 
               <Form.Item
                 style={{ marginBottom: "10px" }}
-                label="Joining Date"
+                label="Date d’adhésion"
                 name="join_date"
                 rules={[
                   {
                     required: true,
-                    message: "Please input joining date!",
+                    message: "Veuillez saisir la Date d’adhésion!",
                   },
                 ]}
               >
@@ -169,7 +169,7 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Pleases Select Type!",
+                    message: "Veuillez sélectionner le type!",
                   },
                 ]}
                 label="Role"
@@ -188,7 +188,7 @@ const AddUser = () => {
                   style={{
                     width: "100%",
                   }}
-                  placeholder="Please select"
+                  placeholder="Veuillez sélectionner"
                 >
                   {list &&
                     list.map((role) => (
@@ -204,7 +204,7 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input id no",
+                    message: "Veuillez saisir id no",
                   },
                 ]}
               >
@@ -213,12 +213,12 @@ const AddUser = () => {
 
               <Form.Item
                 style={{ marginBottom: "10px" }}
-                label="Phone"
+                label="téléphone"
                 name="phone"
                 rules={[
                   {
                     required: true,
-                    message: "Please input phone",
+                    message: "Veuillez saisir le numéro de téléphone",
                   },
                 ]}
               >
@@ -226,12 +226,12 @@ const AddUser = () => {
               </Form.Item>
               <Form.Item
                 style={{ marginBottom: "10px" }}
-                label="Address"
+                label="Adresse"
                 name="address"
                 rules={[
                   {
                     required: true,
-                    message: "Please input address",
+                    message: "Veuillez saisir l'adresse",
                   },
                 ]}
               >
@@ -240,12 +240,12 @@ const AddUser = () => {
 
               <Form.Item
                 style={{ marginBottom: "10px" }}
-                label="Salary"
+                label="Salaire"
                 name="salary"
                 rules={[
                   {
                     required: true,
-                    message: "Please input salary",
+                    message: "Veuillez saisir le montant du salaire",
                   },
                 ]}
               >
@@ -254,12 +254,12 @@ const AddUser = () => {
 
               <Form.Item
                 style={{ marginBottom: "10px" }}
-                label="Blood Group"
+                label="Groupe sanguin"
                 name="blood_group"
                 rules={[
                   {
                     required: true,
-                    message: "Please input blood group",
+                    message: "Veuillez  le Groupe sanguin ",
                   },
                 ]}
               >
@@ -270,7 +270,7 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Pleases Select Designation!",
+                    message: "Veuillez sélectionner la Designation!",
                   },
                 ]}
                 label="Designation"
@@ -289,7 +289,7 @@ const AddUser = () => {
                   style={{
                     width: "100%",
                   }}
-                  placeholder="Please select"
+                  placeholder="Veuillez sélectionner"
                 >
                   {designation &&
                     designation.map((desg) => (
@@ -313,7 +313,7 @@ const AddUser = () => {
                   shape="round"
                   loading={loader}
                 >
-                  Add New Staff
+                  Ajouter personnel
                 </Button>
               </Form.Item>
             </Form>

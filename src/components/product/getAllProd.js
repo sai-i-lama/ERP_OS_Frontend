@@ -36,47 +36,47 @@ function CustomTable({ list, total, status }) {
       key: "sku",
     },
     {
-      title: "Name",
+      title: "Nom",
       dataIndex: "name",
       key: "name",
       render: (name, { id }) => <Link to={`/product/${id}`}>{name}</Link>,
     },
     {
-      title: "Unit Messurement",
+      title: "Unité de mésure",
       dataIndex: "unit_measurement",
       key: "unit_measurement",
     },
     {
-      title: "Quantity",
+      title: "Quantité recu",
       dataIndex: "quantity",
       key: "quantity",
     },
     {
-      title: "Purchase price",
+      title: "Prix d'achat",
       dataIndex: "purchase_price",
       key: "purchase_price",
       responsive: ["md"],
     },
     {
-      title: "Sale price",
+      title: "Prix de vente",
       dataIndex: "sale_price",
       key: "sale_price",
       responsive: ["md"],
     },
     {
-      title: "Category",
+      title: "Categorie",
       dataIndex: "product_category",
       key: "product_category",
       render: (product_category) => product_category?.name,
     },
     {
-      title: "Unit Type",
+      title: "Type d'unité",
       dataIndex: "unit_type",
       key: "unit_type",
     },
 
     {
-      title: "Reorder QTY",
+      title: "Quantité Commandée",
       dataIndex: "reorder_quantity",
       key: "reorder_quantity",
     },
@@ -185,7 +185,7 @@ const GetAllProd = (props) => {
   return (
     <div className="card column-design">
       <div className="card-body">
-        <h5>Products List</h5>
+        <h5>Liste des produits</h5>
         {list && (
           <div className="card-title d-flex justify-content-end">
             <div className="me-2" style={{ marginTop: "4px" }}>
@@ -194,7 +194,7 @@ const GetAllProd = (props) => {
                 className="btn btn-dark btn-sm mb-1"
                 filename="products"
               >
-                Download CSV
+                Télécharger le fichier CSV
               </CSVLink>
             </div>
             <div>

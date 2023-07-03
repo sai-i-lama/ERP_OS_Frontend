@@ -46,7 +46,7 @@ function SupplierInvoiceTable({ list, linkTo }) {
       key: "payment",
       render: (id) => (
         <Link to={`/payment/supplier/${id}`}>
-          <button className='btn btn-dark btn-sm'> Payment</button>
+          <button className='btn btn-dark btn-sm'> paiement</button>
         </Link>
       ),
     },

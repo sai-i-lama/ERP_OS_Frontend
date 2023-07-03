@@ -21,7 +21,7 @@ function CustomTable({ list, total }) {
       key: "id",
     },
     {
-      title: "Name",
+      title: "Nom",
       dataIndex: "name",
       key: "name",
       render: (name, { id }) => (
@@ -29,7 +29,7 @@ function CustomTable({ list, total }) {
       ),
     },
     {
-      title: "Created At",
+      title: "Créé le",
       dataIndex: "createdAt",
       key: "createdAt",
       render: (createdAt) => moment(createdAt).format("YYYY-MM-DD"),
@@ -70,7 +70,7 @@ function CustomTable({ list, total }) {
     <div className="card column-design">
       <div className="card-body">
         <div className="card-title d-flex justify-content-between">
-          <h5>Product List</h5>
+          <h5>Liste de produits</h5>
           {list && (
             <div>
               <CSVLink
@@ -78,7 +78,7 @@ function CustomTable({ list, total }) {
                 className="btn btn-dark btn-sm mb-1"
                 filename="customer"
               >
-                Download CSV
+                Télécharger le fichier CSV
               </CSVLink>
             </div>
           )}

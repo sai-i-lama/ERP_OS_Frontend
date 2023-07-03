@@ -46,7 +46,7 @@ const SaleProductListCard = ({ list }) => {
           bordered={false}
           title={[
             <h6 className="font-semibold m-0 text-center">
-              Sale Products Information
+              Informations sur les produits vendus
             </h6>,
           ]}
           bodyStyle={{ paddingTop: "0" }}>

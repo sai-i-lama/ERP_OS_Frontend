@@ -76,7 +76,7 @@ const DetailRole = () => {
                       icon={<EditOutlined />}
                     >
                       {" "}
-                      New Permission{" "}
+                      Nouvelle autorisation{" "}
                     </Button>
                   </Link>
                   <Popover

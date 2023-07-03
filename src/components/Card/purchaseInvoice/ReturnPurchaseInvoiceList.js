@@ -78,7 +78,7 @@ const ReturnPurchaseInvoiceList = ({ list }) => {
           bordered={false}
           title={[
             <h6 className="font-semibold m-0 text-center">
-              Return Purchase Information
+              Informations sur les retours d’achat
             </h6>,
           ]}
           bodyStyle={{ paddingTop: "0" }}

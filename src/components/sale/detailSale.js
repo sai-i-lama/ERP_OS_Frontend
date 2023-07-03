@@ -84,7 +84,7 @@ const DetailSale = () => {
 									<Link to={`/sale/return/${id}`}>
 										<Button type='primary' shape='round'>
 											{" "}
-											Return Product{" "}
+											Retour de produit{" "}
 										</Button>
 									</Link>
 								</div>
@@ -126,7 +126,7 @@ const DetailSale = () => {
 												<div>
 													<p>
 														<Typography.Text strong>
-															Sale Date :
+														Date de vente :
 														</Typography.Text>{" "}
 														<strong>
 															{moment(singleSaleInvoice.date).format("ll")}
@@ -134,7 +134,7 @@ const DetailSale = () => {
 													</p>
 													<p>
 														<Typography.Text strong>
-															Customer :{" "}
+														Client :{" "}
 														</Typography.Text>{" "}
 														<Link
 															to={`/customer/${singleSaleInvoice.customer.id}`}>
@@ -144,23 +144,23 @@ const DetailSale = () => {
 
 													<p>
 														<Typography.Text strong>
-															Total Amount :
+														Montant total :
 														</Typography.Text>{" "}
 														<strong>{singleSaleInvoice.total_amount}</strong>
 													</p>
 													<p>
-														<Typography.Text strong>Discount :</Typography.Text>{" "}
+														<Typography.Text strong>Rabais :</Typography.Text>{" "}
 														<strong>{singleSaleInvoice.discount}</strong>
 													</p>
 													<p>
 														<Typography.Text strong>
-															Paid Amount :
+														Montant payé :
 														</Typography.Text>{" "}
 														<strong>{singleSaleInvoice.paid_amount}</strong>
 													</p>
 													<p>
 														<Typography.Text strong>
-															Due Amount :
+														Montant dû :
 														</Typography.Text>{" "}
 														<strong style={{ color: "red" }}>
 															{" "}
@@ -168,7 +168,7 @@ const DetailSale = () => {
 														</strong>
 													</p>
 													<p>
-														<Typography.Text strong>Profit :</Typography.Text>{" "}
+														<Typography.Text strong>Bénéfice :</Typography.Text>{" "}
 														<strong>{singleSaleInvoice.profit}</strong>
 													</p>
 												</div>
@@ -185,21 +185,21 @@ const DetailSale = () => {
 												<div>
 													<p>
 														<Typography.Text strong>
-															Total Paid Amount :
+														Montant total payé :
 														</Typography.Text>{" "}
 														<strong>{totalPaidAmount}</strong>
 													</p>
 
 													<p>
 														<Typography.Text strong>
-															Total Return Amount:
+														Montant total du retour:
 														</Typography.Text>{" "}
 														<strong>{totalReturnAmount}</strong>
 													</p>
 
 													<p>
 														<Typography.Text strong>
-															Due Amount :
+														Montant dû :
 														</Typography.Text>{" "}
 														<strong style={{ color: "red" }}>
 															{dueAmount}

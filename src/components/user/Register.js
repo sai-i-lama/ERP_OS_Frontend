@@ -43,7 +43,7 @@ const Register = () => {
 				<Col span={12} offset={4}>
 					<Card bordered={false} className='criclebox h-full'>
 						<Title level={3} className='m-3 text-center'>
-							Register
+						s'inscrire
 						</Title>
 						<Form
 							form={form}
@@ -63,12 +63,12 @@ const Register = () => {
 							autoComplete='off'>
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='User Name'
+								label='Nom d’utilisateur'
 								name='username'
 								rules={[
 									{
 										required: true,
-										message: "Please input username!",
+										message: "Veuillez saisir le nom d’utilisateur!",
 									},
 								]}>
 								<Input />
@@ -76,12 +76,12 @@ const Register = () => {
 
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Security Key'
+								label='Clé de sécurité'
 								name='key'
 								rules={[
 									{
 										required: true,
-										message: "Please input your security key !",
+										message: "Veuillez saisir votre clé de sécurité!",
 									},
 								]}>
 								<Input />
@@ -91,14 +91,14 @@ const Register = () => {
 								rules={[
 									{
 										required: true,
-										message: "Pleases Select Type!",
+										message: "Veuillez sélectionner le type!",
 									},
 								]}
-								label='Staff Type '
+								label='Type de personnel '
 								name={"role"}
 								style={{ marginBottom: "10px" }}>
 								<Radio.Group>
-									<Radio value='user'> Staff </Radio>
+									<Radio value='user'> Personnel </Radio>
 									<Radio value='admin'> Admin </Radio>
 								</Radio.Group>
 							</Form.Item>
@@ -116,12 +116,12 @@ const Register = () => {
 									htmlType='submit'
 									shape='round'
 									loading={loader}>
-									Register
+									s'inscrire
 								</Button>
 							</Form.Item>
 							<h6 className='text-center mt-2'>
-								Already have an account ?{" "}
-								<Link to={"/auth/login"}>Login Here</Link>
+							Vous avez déjà un compte ?{" "}
+								<Link to={"/auth/login"}>Connectez-vous ici</Link>
 							</h6>
 						</Form>
 					</Card>

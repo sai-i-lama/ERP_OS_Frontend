@@ -53,7 +53,7 @@ const UserListCard = ({ list }) => {
 					bordered={false}
 					title={[
 						<h5 className='font-semibold m-0 text-center'>
-							Staffs Information
+							Informations sur le personnel
 						</h5>,
 					]}
 					bodyStyle={{ padding: "0" }}>

@@ -17,7 +17,7 @@ const NewDashboardCard = ({ information }) => {
                           ? information?.purchase_total
                           : 0}
                       </h3>
-                      <span className="">Total Purchase</span>
+                      <span className="">Total vente</span>
                     </div>
                     <div className="align-self-center">
                       <i className="icon-cloud-download font-large-2 float-right"></i>
@@ -36,7 +36,7 @@ const NewDashboardCard = ({ information }) => {
                       <h3 className="dark">
                         {information?.sale_total ? information?.sale_total : 0}
                       </h3>
-                      <span className="dark">Total Sale</span>
+                      <span className="dark">Total Vente</span>
                     </div>
                     <div className="align-self-center">
                       <i className="icon-rocket font-large-2 float-right"></i>
@@ -58,7 +58,7 @@ const NewDashboardCard = ({ information }) => {
                           ? information?.sale_profit
                           : 0}
                       </h3>
-                      <span className="dark">Total Profit</span>
+                      <span className="dark">Bénéfice total</span>
                     </div>
                     <div className="align-self-center">
                       <i className="icon-wallet font-large-2 float-right"></i>
@@ -82,7 +82,7 @@ const NewDashboardCard = ({ information }) => {
                       <span
                         className="strong dark"
                         style={{ fontSize: "11px", fontWeight: "bold" }}>
-                        Purchase Invoice{" "}
+                        Facture d’achat{" "}
                       </span>
                     </div>
                     <div className="media-body text-right">
@@ -92,7 +92,7 @@ const NewDashboardCard = ({ information }) => {
                       <span
                         className="strong dark"
                         style={{ fontSize: "11px", fontWeight: "bold" }}>
-                        Sale Invoice{" "}
+                        Facture de vente{" "}
                       </span>
                     </div>
                   </div>

@@ -107,19 +107,19 @@ const DetailsSup = () => {
               <div className="mt-3 mb-3">
                 <p>
                   <Typography.Text className="font-semibold">
-                    Phone Number : {supplier.phone}
+                    Numero de telephone : {supplier.phone}
                   </Typography.Text>{" "}
                 </p>
 
                 <p>
                   <Typography.Text className="font-semibold">
-                    Address :
+                    Adresse :
                   </Typography.Text>{" "}
                   {supplier.address}
                 </p>
 
                 <p>
-                  <Typography.Text strong>Due Amount :</Typography.Text>{" "}
+                  <Typography.Text strong>Montant dû :</Typography.Text>{" "}
                   {supplier.due_amount}
                 </p>
               </div>
@@ -135,7 +135,7 @@ const DetailsSup = () => {
                       className="btn btn-dark btn-sm mb-1"
                       filename="suppliers"
                     >
-                      Download CSV
+                      Télécharger un fichier CSV
                     </CSVLink>
                   </div>
                 )}

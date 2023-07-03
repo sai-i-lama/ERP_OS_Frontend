@@ -103,17 +103,17 @@ const DetailCust = () => {
               </div>
               <div className="card-body m-2">
                 <p>
-                  <Typography.Text strong>Phone Number :</Typography.Text>{" "}
+                  <Typography.Text strong>Numero de telephone :</Typography.Text>{" "}
                   {customer.phone}
                 </p>
 
                 <p>
-                  <Typography.Text strong>Address :</Typography.Text>{" "}
+                  <Typography.Text strong>Adresse :</Typography.Text>{" "}
                   {customer.address}
                 </p>
 
                 <p>
-                  <Typography.Text strong>Due Amount :</Typography.Text>{" "}
+                  <Typography.Text strong>Montant dû :</Typography.Text>{" "}
                   {customer.due_amount}
                 </p>
               </div>

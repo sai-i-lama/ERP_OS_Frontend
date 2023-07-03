@@ -37,7 +37,7 @@ const Login = () => {
         <Col span={24}>
           <Card bordered={false} className={styles.card}>
             <Title level={3} className="m-3 text-center">
-              Login
+            Connectez-vous
             </Title>
             <Form
               name="basic"
@@ -53,12 +53,12 @@ const Login = () => {
             >
               <Form.Item
                 className="mb-1"
-                label="Username"
+                label="Nom d’utilisateur"
                 name="username"
                 rules={[
                   {
                     required: true,
-                    message: "Please input your username!",
+                    message: "Veuillez entrer votre nom d’utilisateur!",
                   },
                 ]}
               >
@@ -67,12 +67,12 @@ const Login = () => {
 
               <Form.Item
                 className="mb-2"
-                label="Password"
+                label="Mot de passe"
                 name="password"
                 rules={[
                   {
                     required: true,
-                    message: "Please input your password!",
+                    message: "Veuillez entrer votre mot de passe!",
                   },
                 ]}
               >
@@ -86,7 +86,7 @@ const Login = () => {
                   loading={loader}
                   onClick={() => setLoader(true)}
                 >
-                  Submit
+                  Envoyer
                 </Button>
               </Form.Item>
 

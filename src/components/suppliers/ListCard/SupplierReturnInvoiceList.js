@@ -47,7 +47,7 @@ const SupplierReturnInvoiceList = ({ list }) => {
 					bordered={false}
 					title={[
 						<h6 className='font-semibold m-0 text-center'>
-							All Return Information
+							Toutes les informations de retour
 						</h6>,
 					]}
 					bodyStyle={{ paddingTop: "0" }}>

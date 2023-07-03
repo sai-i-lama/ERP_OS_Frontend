@@ -117,7 +117,7 @@ const AddReturnPurchase = () => {
 
   return (
     <div>
-      <PageTitle title=" Back " />
+      <PageTitle title=" Retour " />
       <div className="mr-top">
         {singlePurchaseInvoice ? (
           <Fragment key={singlePurchaseInvoice.id}>
@@ -148,7 +148,7 @@ const AddReturnPurchase = () => {
                         borderRadius: "2px",
                       }}
                     >
-                      Total Return Amount :
+                      Montant total du retour :
                       <strong>
                         {"  "}
                         {totalReturnAmount ? totalReturnAmount : 0}
@@ -187,7 +187,7 @@ const AddReturnPurchase = () => {
                           block
                           loading={loading}
                         >
-                          Make A Return
+                          Faire un retour
                         </Button>
                       </Form.Item>
                     </Form>

@@ -27,7 +27,7 @@ function Footer() {
 
 							<li className='nav-item'>
 								<a href='/' className='nav-link text-muted' target='/'>
-									About Us
+								Qui sommes-nous ?
 								</a>
 							</li>
 							<li className='nav-item'>

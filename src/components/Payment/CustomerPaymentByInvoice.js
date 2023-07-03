@@ -80,7 +80,7 @@ const AddCustPaymentByInvoice = () => {
 					className='border rounded column-design'>
 					<Card bordered={false} className='criclebox h-full'>
 						<Title level={3} className='m-3 text-center'>
-							Sale Invoice Payment
+						Paiement de la facture de vente
 						</Title>
 						<Form
 							form={form}
@@ -103,7 +103,7 @@ const AddCustPaymentByInvoice = () => {
 								rules={[
 									{
 										required: true,
-										message: "Please input the date!",
+										message: "Veuillez saisir la date!",
 									},
 								]}>
 								<DatePicker
@@ -115,7 +115,7 @@ const AddCustPaymentByInvoice = () => {
 									rules={[
 										{
 											required: true,
-											message: "Please input Date",
+											message: "Veuillez saisir la date",
 										},
 									]}
 								/>
@@ -123,12 +123,12 @@ const AddCustPaymentByInvoice = () => {
 
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Discount'
+								label='Rabais'
 								name='discount'
 								rules={[
 									{
 										required: true,
-										message: "Please input Discount!",
+										message: "S’il vous plaît entrer le montant de la Réduction!",
 									},
 								]}>
 								<Input />
@@ -136,12 +136,12 @@ const AddCustPaymentByInvoice = () => {
 
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Amount'
+								label='Montant'
 								name='amount'
 								rules={[
 									{
 										required: true,
-										message: "Please input amount!",
+										message: "Veuillez saisir le montant!",
 									},
 								]}>
 								<Input type='number' />
@@ -152,12 +152,12 @@ const AddCustPaymentByInvoice = () => {
 								validateStatus='success'
 								initialValue={pid}
 								style={{ marginBottom: "10px" }}
-								label='Sale Invoice No'
+								label='Facture de vente No'
 								name='sale_invoice_no'
 								rules={[
 									{
 										required: true,
-										message: "Please input Invoice No!",
+										message: "Veuillez saisir la facture No!",
 									},
 								]}>
 								<Input type='number' disabled col />
@@ -189,7 +189,7 @@ const AddCustPaymentByInvoice = () => {
 									htmlType='submit'
 									shape='round'
 									loading={loader}>
-									Pay Now
+									Payer maintenant
 								</Button>
 							</Form.Item>
 						</Form>

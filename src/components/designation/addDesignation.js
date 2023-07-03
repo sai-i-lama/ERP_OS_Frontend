@@ -48,7 +48,7 @@ const AddDesignation = () => {
         >
           <Card bordered={false}>
             <Title level={4} className="m-2 text-center">
-              Add designation
+            Ajouter une désignation
             </Title>
             <Form
               form={form}
@@ -69,11 +69,11 @@ const AddDesignation = () => {
               <Form.Item
                 style={{ marginBottom: "10px" }}
                 label="Name"
-                name="name"
+                name="Nom"
                 rules={[
                   {
                     required: true,
-                    message: "Please input designation name!",
+                    message: "Veuillez entrer le nom de la désignation!",
                   },
                 ]}
               >
@@ -91,7 +91,7 @@ const AddDesignation = () => {
                   shape="round"
                   loading={loader}
                 >
-                  Add designation
+                  Ajouter une désignation
                 </Button>
               </Form.Item>
             </Form>
@@ -100,7 +100,7 @@ const AddDesignation = () => {
         <Col xs={24} sm={24} md={24} lg={11} xl={11} className="rounded column-design">
           <Card bordered={false} className={styles.importCsvCard}>
             <Title level={4} className="m-2 text-center">
-              Import From CSV
+            Importer à partir d’un fichier CSV
             </Title>
             <UploadMany urlPath={"designation"} />
           </Card>

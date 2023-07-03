@@ -30,7 +30,7 @@ const TrialBalance = () => {
 					<table className='table report-section-table'>
 						<thead className='thead-dark'>
 							<tr>
-								<th scope='col'>Account</th>
+								<th scope='col'>compte</th>
 								<th scope='col'>Debit</th>
 								<th scope='col'>Credit</th>
 							</tr>

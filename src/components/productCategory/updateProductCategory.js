@@ -112,12 +112,12 @@ function UpdateProductCategory() {
                 <Form.Item
                   style={{ marginBottom: "10px" }}
                   fields={[{ name: "Name" }]}
-                  label="Name"
+                  label="Nom"
                   name="name"
                   rules={[
                     {
                       required: true,
-                      message: "Please input Category name!",
+                      message: "Veuillez saisir le nom de la catégorie!",
                     },
                   ]}
                 >
@@ -132,7 +132,7 @@ function UpdateProductCategory() {
                   }}
                 >
                   <Button block type="primary" htmlType="submit" shape="round">
-                    Update Now
+                  Mettre à jour
                   </Button>
                 </Form.Item>
               </Form>

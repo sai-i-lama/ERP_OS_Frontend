@@ -11,7 +11,7 @@ const Purchase = (props) => {
 	}
 	return (
 		<div>
-			<PageTitle title='Back' />
+			<PageTitle title='Retour' />
 
 			<AddPurch />
 		</div>

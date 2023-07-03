@@ -50,7 +50,7 @@ const AddSup = () => {
 					className='rounded column-design'>
 					<Card bordered={false}>
 						<Title level={4} className='m-2 text-center'>
-							Add Supplier
+						Ajouter un fournisseur
 						</Title>
 						<Form
 							form={form}
@@ -70,12 +70,12 @@ const AddSup = () => {
 							autoComplete='off'>
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Name'
+								label='Nom'
 								name='name'
 								rules={[
 									{
 										required: true,
-										message: "Please input supplier name!",
+										message: "Veuillez saisir le nom du fournisseur!",
 									},
 								]}>
 								<Input />
@@ -83,12 +83,12 @@ const AddSup = () => {
 
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Phone'
+								label='téléphone'
 								name='phone'
 								rules={[
 									{
 										required: true,
-										message: "Please input supplier Phone!",
+										message: "Veuillez saisir le numéro de téléphone !",
 									},
 								]}>
 								<Input />
@@ -96,12 +96,12 @@ const AddSup = () => {
 
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Address'
+								label='Adresse'
 								name='address'
 								rules={[
 									{
 										required: true,
-										message: "Please input supplier Address!",
+										message: "Veuillez saisir l'adresse !",
 									},
 								]}>
 								<Input />
@@ -118,7 +118,7 @@ const AddSup = () => {
 									type='primary'
 									htmlType='submit'
 									shape='round'>
-									Add Supplier
+									Ajouter un fournisseur
 								</Button>
 							</Form.Item>
 						</Form>
@@ -133,7 +133,7 @@ const AddSup = () => {
 					className='rounded column-design'>
 					<Card bordered={false} className={styles.importCsvCard}>
 						<Title level={4} className='m-2 text-center'>
-							Import From CSV
+						Importer à partir d’un fichier CSV
 						</Title>
 						<UploadMany urlPath={"supplier"} />
 					</Card>

@@ -63,7 +63,7 @@ const DetailsPurch = () => {
 
 	return (
 		<div>
-			<PageTitle title=' Back ' />
+			<PageTitle title=' Retour ' />
 			<div className='mr-top'>
 				{singlePurchaseInvoice ? (
 					<Fragment key={singlePurchaseInvoice.id}>
@@ -80,7 +80,7 @@ const DetailsPurch = () => {
 										<Link to={`/purchase/return/${id}`}>
 											<Button type='primary' shape='round'>
 												{" "}
-												Return Product{" "}
+												Retour de produit{" "}
 											</Button>
 										</Link>
 									</div>
@@ -93,7 +93,7 @@ const DetailsPurch = () => {
 													</Button>
 												</a>
 											}
-											title='Are you sure you want to delete ?'
+											title='Voulez-vous vraiment supprimer ?'
 											trigger='click'
 											visible={visible}
 											onVisibleChange={handleVisibleChange}>
@@ -116,34 +116,34 @@ const DetailsPurch = () => {
 											<br />
 											<p>
 												<Typography.Text strong>
-													Purchase Date :
+												Date d’achat :
 												</Typography.Text>{" "}
 												<strong>
 													{moment(singlePurchaseInvoice.date).format("ll")}
 												</strong>
 											</p>
 											<p>
-												<Typography.Text strong> Supplier : </Typography.Text>{" "}
+												<Typography.Text strong> Fournisseur : </Typography.Text>{" "}
 												<Link
 													to={`/supplier/${singlePurchaseInvoice.supplier.id}`}>
 													<strong>{singlePurchaseInvoice.supplier.name}</strong>
 												</Link>
 											</p>
 											<p>
-												<Typography.Text strong>Total Amount :</Typography.Text>{" "}
+												<Typography.Text strong>Montant total :</Typography.Text>{" "}
 												<strong>{singlePurchaseInvoice.total_amount} </strong>
 											</p>
 											<p>
-												<Typography.Text strong>Discount :</Typography.Text>{" "}
+												<Typography.Text strong>Rabais :</Typography.Text>{" "}
 												<strong>{singlePurchaseInvoice.discount}</strong>
 											</p>
 											<p>
-												<Typography.Text strong>Paid Amount :</Typography.Text>{" "}
+												<Typography.Text strong>Montant payé :</Typography.Text>{" "}
 												<strong>{singlePurchaseInvoice.paid_amount}</strong>
 											</p>
 
 											<p>
-												<Typography.Text strong>Due Amount :</Typography.Text>{" "}
+												<Typography.Text strong>Montant dû :</Typography.Text>{" "}
 												<strong className='text-danger'>
 													{" "}
 													{singlePurchaseInvoice.due_amount}
@@ -158,7 +158,7 @@ const DetailsPurch = () => {
 											<CardComponent title=' New Invoice Information'>
 												<p>
 													<Typography.Text strong>
-														Total Paid Amount :
+													Montant total payé:
 													</Typography.Text>{" "}
 													<strong>{totalPaidAmount}</strong>
 												</p>

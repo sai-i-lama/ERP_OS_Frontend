@@ -143,7 +143,7 @@ const AddReturnSale = () => {
                         borderRadius: "2px",
                       }}
                     >
-                      Total Return Amount :
+                      Montant total du retour :
                       <strong>
                         {"  "}
                         {totalReturnAmount ? totalReturnAmount : 0}
@@ -182,7 +182,7 @@ const AddReturnSale = () => {
                           block
                           loading={loading}
                         >
-                          Make A Return
+                          Faire un retour
                         </Button>
                       </Form.Item>
                     </Form>

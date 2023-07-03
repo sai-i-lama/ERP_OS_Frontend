@@ -117,7 +117,7 @@ const AddTransaction = () => {
                   rules={[
                     {
                       required: true,
-                      message: "Please input date!",
+                      message: "Veuillez saisir la date!",
                     },
                   ]}
                 />
@@ -126,18 +126,18 @@ const AddTransaction = () => {
               <Form.Item
                 style={{ marginBottom: "10px" }}
                 name="debit_id"
-                label="Debit Account"
+                label="Compte de débit"
                 rules={[
                   {
                     required: true,
-                    message: "Please input debit account!",
+                    message: "Veuillez saisir le compte débiteur!",
                   },
                 ]}
               >
                 <Select
                   loading={!accounts}
                   showSearch
-                  placeholder="Select Debit ID"
+                  placeholder="Sélectionnez le compte débiteur ID"
                   optionFilterProp="children"
                   filterOption={(input, option) =>
                     option.children.includes(input)
@@ -160,18 +160,18 @@ const AddTransaction = () => {
               <Form.Item
                 style={{ marginBottom: "10px" }}
                 name="credit_id"
-                label="Credit Account"
+                label="Compte de crédit"
                 rules={[
                   {
                     required: true,
-                    message: "Please input debit account!",
+                    message: "Veuillez saisir le compte créditeur!",
                   },
                 ]}
               >
                 <Select
                   loading={!accounts}
                   showSearch
-                  placeholder="Select Credit ID"
+                  placeholder="selectionnez le compte créditeur ID"
                   optionFilterProp="children"
                   filterOption={(input, option) =>
                     option.children.includes(input)
@@ -193,12 +193,12 @@ const AddTransaction = () => {
 
               <Form.Item
                 style={{ marginBottom: "10px" }}
-                label="Amount"
+                label="Montant"
                 name="amount"
                 rules={[
                   {
                     required: true,
-                    message: "Please input amount!",
+                    message: "Veuillez saisir le montant!",
                   },
                 ]}
               >
@@ -207,12 +207,12 @@ const AddTransaction = () => {
 
               <Form.Item
                 style={{ marginBottom: "10px" }}
-                label="Particulars"
+                label="Particulier"
                 name="particulars"
                 rules={[
                   {
                     required: true,
-                    message: "Please input particulars!",
+                    message: "Veuillez saisir le nom du particulier!",
                   },
                 ]}
               >
@@ -230,7 +230,7 @@ const AddTransaction = () => {
                   loading={loader}
                   onClick={() => setLoader(true)}
                 >
-                  Pay Now
+                  Payer maintenant
                 </Button>
               </Form.Item>
             </Form>

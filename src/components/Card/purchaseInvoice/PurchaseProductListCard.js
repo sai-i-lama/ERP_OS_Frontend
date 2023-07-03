@@ -84,7 +84,7 @@ const PurchaseProductListCard = ({ list, updateReturn, returnOnChange }) => {
 					bordered={false}
 					bodyStyle={{ paddingTop: "0" }}>
 					<h6 className='font-semibold m-0 text-center'>
-						Purchased Product Information
+					Informations sur le produit acheté
 					</h6>
 					<hr />
 					<div className='col-info'>

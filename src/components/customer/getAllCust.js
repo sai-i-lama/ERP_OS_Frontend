@@ -136,7 +136,7 @@ const GetAllCust = (props) => {
   return (
     <div className="card column-design">
       <div className="card-body">
-        <h5>Customer List</h5>
+        <h5>Liste des clients</h5>
         {list && (
           <div className="text-center m-2 d-flex justify-content-end">
             <div className="me-2" style={{ marginTop: "4px" }}>

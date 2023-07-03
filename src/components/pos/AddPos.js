@@ -184,13 +184,13 @@ const AddPos = ({
 								justifyContent: "space-between",
 								alignItems: "center",
 							}}>
-							<strong>Discount: </strong>
+							<strong>Rabais: </strong>
 							<Form.Item
 								name='discount'
 								rules={[
 									{
 										required: true,
-										message: "Please input discount!",
+										message: "S’il vous plaît entrer la réduction!",
 									},
 								]}>
 								<InputNumber type='number' onChange={handleDiscount} />
@@ -203,7 +203,7 @@ const AddPos = ({
 								display: "flex",
 								justifyContent: "space-between",
 							}}>
-							<strong>After Discount: </strong>
+							<strong>Après remise: </strong>
 							<strong>{totalDiscountPaidDue.afterDiscount} cfa</strong>
 						</div>
 
@@ -214,13 +214,13 @@ const AddPos = ({
 								justifyContent: "space-between",
 								alignItems: "center",
 							}}>
-							<strong>Paid Amount: </strong>
+							<strong>Montant payé: </strong>
 							<Form.Item
 								name='paid_amount'
 								rules={[
 									{
 										required: true,
-										message: "Please input Paid amount!",
+										message: "Veuillez saisir le montant payé!",
 									},
 								]}>
 								<InputNumber type='number' onChange={handlePaid} />
@@ -233,7 +233,7 @@ const AddPos = ({
 								justifyContent: "space-between",
 								border: "1px solid #ccc",
 							}}>
-							<strong>Due Amount: </strong>
+							<strong>Montant dû: </strong>
 							<strong>{totalDiscountPaidDue.due} cfa</strong>
 						</div>
 					</Col>
@@ -242,19 +242,19 @@ const AddPos = ({
 						<div className='d-flex justify-content-between mb-1'>
 							<div className='w-50'>
 								<Form.Item
-									label='Customer '
+									label='Client '
 									name='customer_id'
 									style={{ maxWidth: "250px" }}
 									rules={[
 										{
 											required: true,
-											message: "Please Select a Customer!",
+											message: "Veuillez sélectionner un client!",
 										},
 									]}>
 									<Select
 										loading={!allCustomer}
 										showSearch
-										placeholder='Select a customer '
+										placeholder='Sélectionner un client '
 										optionFilterProp='children'
 										onChange={handleCustomerData}
 										onSearch={onSearch}
@@ -285,7 +285,7 @@ const AddPos = ({
 										rules={[
 											{
 												required: true,
-												message: "Please input Date!",
+												message: "Veuillez saisir la date!",
 											},
 										]}
 									/>
@@ -315,7 +315,7 @@ const AddPos = ({
 									onClickLoading();
 									onFormSubmit();
 								}}>
-								Sale Product
+								Vente Produit
 							</Button>
 						</Form.Item>
 					</Col>

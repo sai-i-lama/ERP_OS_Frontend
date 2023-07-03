@@ -8,11 +8,11 @@ const LoginTable = () => {
           <tr>
             <td>
               {" "}
-              <strong>username</strong>
+              <strong>nom d'utilisateur</strong>
             </td>
             <td>
               {" "}
-              <strong>password</strong>
+              <strong>mot de passe</strong>
             </td>
           </tr>
           <tr>

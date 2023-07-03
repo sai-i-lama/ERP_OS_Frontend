@@ -247,25 +247,25 @@ const AddPurch = () => {
 				<Row className='mr-top' gutter={[24, 24]}>
 					<Col span={24} className='border rounded column-design'>
 						<Title level={4} className='m-2 text-center'>
-							Purchase New Products
+						Acheter de nouveaux produits
 						</Title>
 					</Col>
 					<Col span={24} lg={16}>
 						<div className='d-flex justify-content-between mb-1'>
 							<Form.Item
-								label='Supplier '
+								label='Fournisseur '
 								name='supplier_id'
 								style={{ maxWidth: "250px" }}
 								rules={[
 									{
 										required: true,
-										message: "Please Select a supplier!",
+										message: "Veuillez sélectionner un fournisseur!",
 									},
 								]}>
 								<Select
 									loading={!allSuppliers}
 									showSearch
-									placeholder='Select a supplier '
+									placeholder='Sélectionner un fournisseur '
 									optionFilterProp='children'
 									onChange={(id) => setSupplier(id)}
 									onSearch={onSearch}
@@ -292,7 +292,7 @@ const AddPurch = () => {
 									rules={[
 										{
 											required: true,
-											message: "Please input Date!",
+											message: "Veuillez saisir la date!",
 										},
 									]}
 								/>
@@ -342,7 +342,7 @@ const AddPurch = () => {
 								alignItems: "center",
 							}}>
 							<div>
-								<strong>Discount: </strong>
+								<strong>Rabais: </strong>
 							</div>
 
 							<Form.Item
@@ -351,7 +351,7 @@ const AddPurch = () => {
 								rules={[
 									{
 										required: true,
-										message: "Please input Discount!",
+										message: "S’il vous plaît entrer Réduction!",
 									},
 								]}>
 								<InputNumber type='number' onChange={handleDiscount} />
@@ -364,7 +364,7 @@ const AddPurch = () => {
 								justifyContent: "space-between",
 							}}>
 							<div>
-								<strong>After Discount: </strong>
+								<strong>Après remise: </strong>
 							</div>
 							<strong>{totalDiscountPaidDue.afterDiscount} cfa</strong>
 						</div>
@@ -376,7 +376,7 @@ const AddPurch = () => {
 								alignItems: "center",
 							}}>
 							<div>
-								<strong>Paid Amount: </strong>
+								<strong>Montant payé: </strong>
 							</div>
 							<Form.Item
 								name='paid_amount'
@@ -384,7 +384,7 @@ const AddPurch = () => {
 								rules={[
 									{
 										required: true,
-										message: "Please input Paid amount!",
+										message: "Veuillez saisir le montant payé!",
 									},
 								]}>
 								<InputNumber type='number' onChange={handlePaid} />
@@ -399,7 +399,7 @@ const AddPurch = () => {
 								border: "1px solid #ccc",
 								marginBottom: "10px",
 							}}>
-							<strong>Due Amount: </strong>
+							<strong>Montant dû: </strong>
 							<strong>{totalDiscountPaidDue.due} cfa</strong>
 						</div>
 
@@ -413,7 +413,7 @@ const AddPurch = () => {
 									onClickLoading();
 									onFormSubmit();
 								}}>
-								Purchase Product
+								Acheter un produit
 							</Button>
 						</Form.Item>
 					</Col>

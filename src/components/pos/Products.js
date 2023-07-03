@@ -20,16 +20,16 @@ export default function Products({
 						<div className='font-weight-bold border-b'>SL</div>
 					</Col>
 					<Col span={5}>
-						<div className='font-weight-bold border-b'>Product</div>
+						<div className='font-weight-bold border-b'>Produit</div>
 					</Col>
 					<Col span={3}>
 						<div className='font-weight-bold border-b'>U.M</div>
 					</Col>
 					<Col span={4}>
-						<div className='font-weight-bold'>QTY </div>
+						<div className='font-weight-bold'>Quantité </div>
 					</Col>
 					<Col span={4}>
-						<div className='font-weight-bold'>U.Price</div>
+						<div className='font-weight-bold'>Prix unitaire</div>
 					</Col>
 					<Col span={3}>
 						<div className='font-weight-bold'>Total</div>
@@ -80,7 +80,7 @@ export default function Products({
 												name={[name, "product_quantity"]}>
 												<InputNumber
 													style={{ width: "100%" }}
-													placeholder='Product Quantity'
+													placeholder='Quantité de produit'
 													onChange={(qty) => handleSelectedProdsQty(id, qty)}
 													defaultValue={selectedQty}
 												/>
@@ -92,7 +92,7 @@ export default function Products({
 												name={[name, "product_sale_price"]}>
 												<InputNumber
 													style={{ width: "100%" }}
-													placeholder='Product Unit Price'
+													placeholder='Prix unitaire du produit'
 													onChange={(price) =>
 														handleSelectedProdsUnitPrice(id, price)
 													}

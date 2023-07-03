@@ -42,28 +42,28 @@ function CustomTable({ list, total, status, setStatus, startdate, enddate }) {
 			render: (date) => moment(date).format("ll"),
 		},
 		{
-			title: "Supplier Name ",
+			title: "Nom du fournisseur ",
 			dataIndex: `supplier`,
 			key: "supplier_id",
 			render: (supplier) => supplier?.name,
 		},
 		{
-			title: "Total Amount",
+			title: "Montant total",
 			dataIndex: "total_amount",
 			key: "total_amount",
 		},
 		{
-			title: "Discount",
+			title: "Rabais",
 			dataIndex: "discount",
 			key: "discount",
 		},
 		{
-			title: "Due Amount",
+			title: "Montant dû",
 			dataIndex: "due_amount",
 			key: "due_amount",
 		},
 		{
-			title: "Paid Amount",
+			title: "Montant payé",
 			dataIndex: "paid_amount",
 			key: "paid_amount",
 		},
@@ -76,7 +76,7 @@ function CustomTable({ list, total, status, setStatus, startdate, enddate }) {
 			key: "id",
 			render: (id) => (
 				<Link to={`/payment/supplier/${id}`}>
-					<button className='btn btn-dark btn-sm'> Payment</button>
+					<button className='btn btn-dark btn-sm'> Paiement</button>
 				</Link>
 			),
 		},
@@ -119,7 +119,7 @@ function CustomTable({ list, total, status, setStatus, startdate, enddate }) {
 
 	return (
 		<div>
-			<h5>PURCHASE HISTORY</h5>
+			<h5>HISTORIQUE DES ACHATS</h5>
 			{list && (
 				<div className='text-center my-2 d-flex justify-content-end'>
 					<div className='me-2' style={{ marginTop: "4px" }}>
@@ -127,7 +127,7 @@ function CustomTable({ list, total, status, setStatus, startdate, enddate }) {
 							data={CSVlist}
 							className='btn btn-dark btn-sm mb-1'
 							filename='purchase'>
-							Download CSV
+							Télécharger le fichier CSV
 						</CSVLink>
 					</div>
 					<div>
@@ -246,11 +246,11 @@ const GetAllPurch = (props) => {
 	}
 	return (
 		<>
-			<PageTitle title={"Back"} />
+			<PageTitle title={"Retour"} />
 			<div className='card card-custom mt-1 '>
 				<div className='card-body'>
 					<div className='card-title d-sm-flex justify-content-between'>
-						<h5 className='d-inline-flex'>Purchase Invoice List</h5>
+						<h5 className='d-inline-flex'>Liste des factures d’achat</h5>
 						<div>
 							<RangePicker
 								onCalendarChange={onCalendarChange}

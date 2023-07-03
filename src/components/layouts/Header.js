@@ -71,7 +71,7 @@ function Header({ onPress, collapsed, handleCollapsed }) {
           {isLogged ? (
             <Link to="/auth/logout" className={styles.logoutLink}>
               <LogoutOutlined className="text-danger" />
-              <span className="logout-text font-weight-bold">Log Out</span>
+              <span className="logout-text font-weight-bold">Se déconnecter</span>
             </Link>
           ) : (
             <Link to="/auth/login" className="btn-sign-in text-dark">

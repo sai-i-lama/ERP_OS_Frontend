@@ -32,8 +32,8 @@ const IncomeStatement = () => {
 						<h5 className='mt-2 mb-2 font-weight-bold'> Revenue </h5>
 						<thead className='thead-dark'>
 							<tr>
-								<th scope='col'>Account</th>
-								<th scope='col'>Amount</th>
+								<th scope='col'>compte</th>
+								<th scope='col'>montant</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -57,7 +57,7 @@ const IncomeStatement = () => {
 								</td>
 							</tr>
 
-							<h5 className='mt-2 mb-2 font-weight-bold'> Expense</h5>
+							<h5 className='mt-2 mb-2 font-weight-bold'> Dépense</h5>
 
 							{data &&
 								data?.expense.map((item, index) => {

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const PurchaseList = ({ data }) => {
   return (
     <div>
-      <h5 className='text-center m-4'>Invoice Product List :</h5>
+      <h5 className='text-center m-4'>Liste des produits facturés :</h5>
       <List
         bordered
         style={{ marginTop: "20px" }}
@@ -21,11 +21,11 @@ const PurchaseList = ({ data }) => {
             <div>
               <p>
                 {" "}
-                Purchase Price : <strong>{item.product_purchase_price} </strong>
+                Prix d’achat: <strong>{item.product_purchase_price} </strong>
               </p>
               <p>
                 {" "}
-                Purchase Quantity : <strong>{item.product_quantity} </strong>
+                Quantité achaté : <strong>{item.product_quantity} </strong>
               </p>
             </div>
           </List.Item>
