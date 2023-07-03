@@ -258,25 +258,25 @@ const AddSale = () => {
 				<Row className='mr-top' gutter={[24, 24]}>
 					<Col span={24} className='border rounded column-design'>
 						<Title level={4} className='m-2 text-center'>
-							Sale New Products
+						Vente de nouveaux produits
 						</Title>
 					</Col>
 					<Col span={24} lg={16}>
 						<div className='d-flex justify-content-between mb-1'>
 							<Form.Item
-								label='Customer '
+								label='Client '
 								name='customer_id'
 								style={{ maxWidth: "250px" }}
 								rules={[
 									{
 										required: true,
-										message: "Please Select a Customer!",
+										message: "Veuillez sélectionner un client!",
 									},
 								]}>
 								<Select
 									loading={!allCustomer}
 									showSearch
-									placeholder='Select a customer '
+									placeholder='sélectionner un client '
 									optionFilterProp='children'
 									onChange={(id) => setCustomer(id)}
 									onSearch={onSearch}
@@ -302,7 +302,7 @@ const AddSale = () => {
 									rules={[
 										{
 											required: true,
-											message: "Please input Date!",
+											message: "Veuillez sélectionner la Date!",
 										},
 									]}
 								/>
@@ -310,19 +310,19 @@ const AddSale = () => {
 
 							{/* Sales Person Input Field */}
 							<Form.Item
-								label='Sales Person '
+								label='Vendeur '
 								name='sales_person_id'
 								style={{ maxWidth: "250px" }}
 								rules={[
 									{
 										required: true,
-										message: "Please Select a sales person!",
+										message: "Veuillez sélectionner le Vendeur!",
 									},
 								]}>
 								<Select
 									loading={!allStaff}
 									showSearch
-									placeholder='Select sales person '
+									placeholder='Sélectionner un vendeur '
 									optionFilterProp='children'
 									onChange={(id) => setSalesPerson(id)}
 									onSearch={onSearch}
@@ -371,13 +371,13 @@ const AddSale = () => {
 								justifyContent: "space-between",
 								alignItems: "center",
 							}}>
-							<strong>Discount: </strong>
+							<strong>Rabais: </strong>
 							<Form.Item
 								name='discount'
 								rules={[
 									{
 										required: true,
-										message: "Please input discount!",
+										message: "S’il vous plaît entrer la réduction!",
 									},
 								]}>
 								<InputNumber type='number' onChange={handleDiscount} />
@@ -390,7 +390,7 @@ const AddSale = () => {
 								display: "flex",
 								justifyContent: "space-between",
 							}}>
-							<strong>After Discount: </strong>
+							<strong>Après remise: </strong>
 							<strong>{totalDiscountPaidDue.afterDiscount} cfa</strong>
 						</div>
 
@@ -401,13 +401,13 @@ const AddSale = () => {
 								justifyContent: "space-between",
 								alignItems: "center",
 							}}>
-							<strong>Paid Amount: </strong>
+							<strong>Montant payé: </strong>
 							<Form.Item
 								name='paid_amount'
 								rules={[
 									{
 										required: true,
-										message: "Please input Paid amount!",
+										message: "Veuillez saisir le montant payé!",
 									},
 								]}>
 								<InputNumber type='number' onChange={handlePaid} />
@@ -420,7 +420,7 @@ const AddSale = () => {
 								justifyContent: "space-between",
 								border: "1px solid #ccc",
 							}}>
-							<strong>Due Amount: </strong>
+							<strong>Montant dû: </strong>
 							<strong>{totalDiscountPaidDue.due} cfa</strong>
 						</div>
 
@@ -434,7 +434,7 @@ const AddSale = () => {
 									onClickLoading();
 									onFormSubmit();
 								}}>
-								Sale Product
+								Vente Produit
 							</Button>
 						</Form.Item>
 					</Col>

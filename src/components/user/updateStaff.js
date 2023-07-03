@@ -171,12 +171,12 @@ function UpdateStaff() {
                   <Form.Item
                     style={{ marginBottom: "10px" }}
                     fields={[{ name: "Name" }]}
-                    label="Userame"
+                    label="Nom d’utilisateur"
                     name="username"
                     rules={[
                       {
                         required: true,
-                        message: "Please input User name!",
+                        message: "Veuillez saisir le nom d’utilisateur!",
                       },
                     ]}
                   >
@@ -190,7 +190,7 @@ function UpdateStaff() {
                     rules={[
                       {
                         required: true,
-                        message: "Please input New Password!",
+                        message: "Veuillez saisir un nouveau mot de passe!",
                       },
                     ]}
                   >
@@ -202,10 +202,10 @@ function UpdateStaff() {
                       rules={[
                         {
                           required: true,
-                          message: "Pleases Select Type!",
+                          message: "Veuillez sélectionner le type!",
                         },
                       ]}
-                      label="Staff Type "
+                      label="Type de personnel "
                       name={"role"}
                       style={{ marginBottom: "20px" }}
                     >
@@ -222,7 +222,7 @@ function UpdateStaff() {
                         style={{
                           width: "100%",
                         }}
-                        placeholder="Please select"
+                        placeholder="Veuillez sélectionner"
                       >
                         {list &&
                           list.map((role) => (
@@ -241,7 +241,7 @@ function UpdateStaff() {
                     rules={[
                       {
                         required: true,
-                        message: "Please input email!",
+                        message: "S’il vous plaît entrer l’email!",
                       },
                     ]}
                   >
@@ -250,12 +250,12 @@ function UpdateStaff() {
 
                   <Form.Item
                     style={{ marginBottom: "10px" }}
-                    label="Joining Date"
+                    label="Date d’adhésion"
                     name="join_date"
                     rules={[
                       {
                         required: true,
-                        message: "Please input joining date!",
+                        message: "Veuillez saisir la date d’adhésion!",
                       },
                     ]}
                   >
@@ -283,7 +283,7 @@ function UpdateStaff() {
                     rules={[
                       {
                         required: true,
-                        message: "Please input id no",
+                        message: "Veuillez saisir id no",
                       },
                     ]}
                   >
@@ -292,12 +292,12 @@ function UpdateStaff() {
 
                   <Form.Item
                     style={{ marginBottom: "10px" }}
-                    label="Phone"
+                    label="Téléphone"
                     name="phone"
                     rules={[
                       {
                         required: true,
-                        message: "Please input phone",
+                        message: "S’il vous plaît entrer le numéro de téléphone",
                       },
                     ]}
                   >
@@ -305,12 +305,12 @@ function UpdateStaff() {
                   </Form.Item>
                   <Form.Item
                     style={{ marginBottom: "10px" }}
-                    label="Address"
+                    label="Adresse"
                     name="address"
                     rules={[
                       {
                         required: true,
-                        message: "Please input address",
+                        message: "Veuillez saisir l’adresse",
                       },
                     ]}
                   >
@@ -319,12 +319,12 @@ function UpdateStaff() {
 
                   <Form.Item
                     style={{ marginBottom: "10px" }}
-                    label="Salary"
+                    label="Salaire"
                     name="salary"
                     rules={[
                       {
                         required: true,
-                        message: "Please input salary",
+                        message: "Veuillez saisir le salaire",
                       },
                     ]}
                   >
@@ -333,12 +333,12 @@ function UpdateStaff() {
 
                   <Form.Item
                     style={{ marginBottom: "10px" }}
-                    label="Blood Group"
+                    label="Groupe sanguin"
                     name="blood_group"
                     rules={[
                       {
                         required: true,
-                        message: "Please input blood group",
+                        message: "Veuillez saisir le Groupe sanguin",
                       },
                     ]}
                   >
@@ -349,7 +349,7 @@ function UpdateStaff() {
                     rules={[
                       {
                         required: true,
-                        message: "Pleases Select Designation!",
+                        message: "Veuillez sélectionner la désignation!",
                       },
                     ]}
                     label="Designation"
@@ -393,7 +393,7 @@ function UpdateStaff() {
                       htmlType="submit"
                       shape="round"
                     >
-                      Change Now
+                      Changez maintenant
                     </Button>
                   </Form.Item>
                 </Form>

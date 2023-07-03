@@ -25,13 +25,13 @@ export default function Products({
           <div className="font-weight-bold border-b">SL</div>
         </Col>
         <Col span={6}>
-          <div className="font-weight-bold border-b">Product</div>
+          <div className="font-weight-bold border-b">Produit</div>
         </Col>
         <Col span={5}>
-          <div className="font-weight-bold">Quantity</div>
+          <div className="font-weight-bold">Quantité</div>
         </Col>
         <Col span={5}>
-          <div className="font-weight-bold">Unit Price</div>
+          <div className="font-weight-bold">Prix Unitaire</div>
         </Col>
         <Col span={3}>
           <div className="font-weight-bold">Total</div>
@@ -52,7 +52,7 @@ export default function Products({
                 <Col span={6}>
                   <Form.Item {...restField} name={[name, "product_id"]}>
                     <Select
-                      placeholder="Select Product"
+                      placeholder="Sélectionner un produit"
                       showSearch
                       optionFilterProp="children"
                       filterOption={(input, option) =>
@@ -75,7 +75,7 @@ export default function Products({
                   <Form.Item {...restField} name={[name, "product_quantity"]}>
                     <InputNumber
                       style={{ width: "100%" }}
-                      placeholder="Product Quantity"
+                      placeholder="Quantité de produit"
                       onChange={(qty) => handleSelectedProdsQty(key, qty)}
                       value={
                         selectedProds[key] ? selectedProds[key].selectedQty : ""
@@ -93,7 +93,7 @@ export default function Products({
                   >
                     <InputNumber
                       style={{ width: "100%" }}
-                      placeholder="Purchase price"
+                      placeholder="Prix d’achat"
                       onChange={(purchasePrice) =>
                         handleSelectedProdsPurchasePrice(key, purchasePrice)
                       }
@@ -140,7 +140,7 @@ export default function Products({
                 block
                 icon={<PlusOutlined />}
               >
-                Add Product
+              Ajouter Produit
               </Button>
             </Form.Item>
           </>

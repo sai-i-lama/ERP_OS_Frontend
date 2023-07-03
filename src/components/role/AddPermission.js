@@ -84,7 +84,7 @@ const AddPermission = () => {
         >
           <Card bordered={false} className="criclebox h-full">
             <Title level={3} className="m-3 text-center">
-              Add Permission : <span className="text-primary">{roleName}</span>
+            Ajouter une autorisation : <span className="text-primary">{roleName}</span>
             </Title>
 
             <Form
@@ -105,7 +105,7 @@ const AddPermission = () => {
               autoComplete="off"
             >
               <Form.Item
-                label="Has Permissions"
+                label="autorisations"
                 style={{ marginBottom: "20px" }}
               >
                 {rolePermissions &&
@@ -116,12 +116,12 @@ const AddPermission = () => {
 
               <Form.Item
                 style={{ marginBottom: "10px" }}
-                label="New Permission"
+                label="Nouvelle autorisations"
                 name="permission_id"
                 rules={[
                   {
                     required: true,
-                    message: "Please input customer name!",
+                    message: "Veuillez saisir le nom du client!",
                   },
                 ]}
               >
@@ -161,7 +161,7 @@ const AddPermission = () => {
                   shape="round"
                   loading={loader}
                 >
-                  Permit Now
+                  Autoriser maintenant
                 </Button>
               </Form.Item>
             </Form>

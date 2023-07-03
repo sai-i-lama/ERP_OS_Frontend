@@ -47,7 +47,7 @@ const DetailsProd = () => {
   }
   return (
     <div>
-      <PageTitle title=" Back  " />
+      <PageTitle title=" Retour  " />
 
       <div className="mr-top">
         {product ? (
@@ -93,23 +93,23 @@ const DetailsProd = () => {
               <Row className="d-flex justify-content-between">
                 <Col xs={24} xl={8}>
                   <div className="card-body ms-3">
-                    <h5> Product Information :</h5>
+                    <h5> Informations sur le produit :</h5>
                     <p>
-                      <Typography.Text strong>Quantity :</Typography.Text>{" "}
+                      <Typography.Text strong>Quantité :</Typography.Text>{" "}
                       {product.quantity}
                     </p>
 
                     <p>
-                      <Typography.Text strong>Purchase Price :</Typography.Text>{" "}
+                      <Typography.Text strong>Prix d’achat :</Typography.Text>{" "}
                       {product.purchase_price}
                     </p>
 
                     <p>
-                      <Typography.Text strong>Sale Price :</Typography.Text>{" "}
+                      <Typography.Text strong>Prix de vente :</Typography.Text>{" "}
                       {product.sale_price}
                     </p>
                     <p>
-                      <Typography.Text strong>Unit Type :</Typography.Text>{" "}
+                      <Typography.Text strong>Type d’unité :</Typography.Text>{" "}
                       {product.unit_type}
                     </p>
                   </div>

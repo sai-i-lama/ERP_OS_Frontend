@@ -134,7 +134,7 @@ const GetAllSup = (props) => {
     <div className="card column-design">
       <div className="card-body">
         <h5>
-          <i className="bi bi-card-list"> Suppliers List</i>
+          <i className="bi bi-card-list"> Liste des fournisseurs</i>
         </h5>
         {list && (
           <div className="card-title d-flex justify-content-end">
@@ -144,7 +144,7 @@ const GetAllSup = (props) => {
                 className="btn btn-dark btn-sm mb-1"
                 filename="suppliers"
               >
-                Download CSV
+                Télécharger un fichier CSV
               </CSVLink>
             </div>
 

@@ -27,11 +27,11 @@ const PrintToPdf = forwardRef(({ data, invoiceData }, ref) => {
 							<div className='website'>{invoiceData?.website} </div>
 							<div className='bill-details'>
 								<div className='flex justify-content-center'>
-									<div>BILL NO: {data?.saleInvoiceProduct[0].invoice_id}</div>
+									<div>FACTURE NO: {data?.saleInvoiceProduct[0].invoice_id}</div>
 								</div>
 								<div className='flex justify-content-center'>
 									<div>
-										BILL DATE: {moment(data?.date).format("YYYY-MM-DD")}
+									DATE DE LA FACTURE: {moment(data?.date).format("YYYY-MM-DD")}
 									</div>
 								</div>
 							</div>
@@ -39,8 +39,8 @@ const PrintToPdf = forwardRef(({ data, invoiceData }, ref) => {
 					</div>
 					<table className='table'>
 						<tr className='header'>
-							<th>Particulars</th> <th>Rate</th> <th>Qty</th>
-							<th>Amount</th>
+							<th>particulier</th> <th>Taux</th> <th>Qté</th>
+							<th>montant</th>
 						</tr>
 
 						{data &&
@@ -65,7 +65,7 @@ const PrintToPdf = forwardRef(({ data, invoiceData }, ref) => {
 						</tr>
 						<tr className='discount'>
 							<td></td>
-							<td>Discount</td>
+							<td>Rabais</td>
 							<td></td>
 							<td>{data.discount}</td>
 						</tr>
@@ -76,7 +76,7 @@ const PrintToPdf = forwardRef(({ data, invoiceData }, ref) => {
 							<td>{data.total_amount - data.discount}</td>
 						</tr>
 					</table>
-					{invoiceData?.footer} <br />© SAI I LUMA | #Slogan
+					{invoiceData?.footer} <br />© SAI I LAMA | #Slogan
 				</div>
 			</div>
 		</Fragment>

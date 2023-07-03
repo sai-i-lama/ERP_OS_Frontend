@@ -77,13 +77,13 @@ const ReturnPurchaseInvoiceProductList = ({ list }) => {
 				<CustomTable list={list} />
 				<div className='text-start ms-3'>
 					<h6>
-						Total Quantity:{"  "}{" "}
+					Quantité totale:{"  "}{" "}
 						<strong>
 							{list?.reduce((acc, item) => acc + item.product_quantity, 0)}
 						</strong>
 					</h6>
 					<h6>
-						Total Amount:{"  "}{" "}
+					Montant total:{"  "}{" "}
 						<strong>
 							{list?.reduce(
 								(acc, item) =>

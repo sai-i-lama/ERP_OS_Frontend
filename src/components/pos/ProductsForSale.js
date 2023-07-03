@@ -94,7 +94,7 @@ export default function ProductsForSale({ handleSelectedProds }) {
             </div>
             <div className="w-50 flex-grow-1">
               <p className="font-weight-bold mb-0">{item.name}</p>
-              <p className="mb-0"> Sale Price : {item.sale_price}</p>
+              <p className="mb-0"> Prix de vente : {item.sale_price}</p>
               <p> Stock : {item.quantity}</p>
             </div>
             <br />
@@ -144,7 +144,7 @@ export default function ProductsForSale({ handleSelectedProds }) {
             onFinishFailed={onFinishFailed}
             autoComplete="off"
           >
-            <Form.Item label="Search" name="s_id">
+            <Form.Item label="Rechercher" name="s_id">
               <Input />
             </Form.Item>
 
@@ -162,7 +162,7 @@ export default function ProductsForSale({ handleSelectedProds }) {
                 size="small"
                 htmlType="submit"
               >
-                Search
+                Rechercher
               </Button>
             </Form.Item>
           </Form>

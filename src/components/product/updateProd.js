@@ -68,7 +68,7 @@ function UpdateProd() {
 
   return (
     <>
-      <PageTitle title={`Back`} />
+      <PageTitle title={`Retour`} />
       <div className="text-center">
         <div className="">
           <Row className="mr-top">
@@ -92,7 +92,7 @@ function UpdateProd() {
               )}
               <Card bordered={false} className="criclebox h-full">
                 <Title level={3} className="m-3 text-center">
-                  Edit Product Form
+                Modifier le formulaire du produit
                 </Title>
                 <Form
                   initialValues={{
@@ -114,12 +114,12 @@ function UpdateProd() {
                   <Form.Item
                     style={{ marginBottom: "10px" }}
                     fields={[{ name: "Name" }]}
-                    label="Name"
+                    label="Nom"
                     name="name"
                     rules={[
                       {
                         required: true,
-                        message: "Please input product name!",
+                        message: "Veuillez saisir le nom du produit!",
                       },
                     ]}
                   >
@@ -128,12 +128,12 @@ function UpdateProd() {
 
                   <Form.Item
                     style={{ marginBottom: "10px" }}
-                    label="Quantity"
+                    label="Quantité"
                     name="quantity"
                     rules={[
                       {
                         required: true,
-                        message: "Please input Product Quantity!",
+                        message: "Veuillez saisir la Quantité du produit!",
                       },
                     ]}
                   >
@@ -142,12 +142,12 @@ function UpdateProd() {
 
                   <Form.Item
                     style={{ marginBottom: "10px" }}
-                    label="Purchase Price"
+                    label="Prix d’achat"
                     name="purchase_price"
                     rules={[
                       {
                         required: true,
-                        message: "Please input Purchase price !",
+                        message: " Veuillez saisir Prix d’achat !",
                       },
                     ]}
                   >
@@ -156,13 +156,13 @@ function UpdateProd() {
 
                   <Form.Item
                     style={{ marginBottom: "10px" }}
-                    label="Sale Price"
+                    label="Prix de vente"
                     name="sale_price"
                     rules={[
                       {
                         type: Number,
                         required: true,
-                        message: "Please input  Sale Price!",
+                        message: "Veuillez saisir le Prix de vente!",
                       },
                     ]}
                   >
@@ -181,7 +181,7 @@ function UpdateProd() {
                       htmlType="submit"
                       shape="round"
                     >
-                      Update Now
+                      Mettre à jour
                     </Button>
                   </Form.Item>
                 </Form>

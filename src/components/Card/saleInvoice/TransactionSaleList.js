@@ -90,7 +90,7 @@ const TransactionSaleList = ({ list }) => {
           bordered={false}
           title={[
             <h6 className="font-semibold m-0 text-center">
-              Transaction Information
+              Informations sur les transactions
             </h6>,
           ]}
           bodyStyle={{ paddingTop: "0" }}

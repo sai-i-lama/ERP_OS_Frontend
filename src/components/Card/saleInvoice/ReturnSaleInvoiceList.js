@@ -78,7 +78,7 @@ const ReturnSaleInvoiceList = ({ list }) => {
 					bordered={false}
 					title={[
 						<h6 className='font-semibold m-0 text-center'>
-							Return Sale Information
+							Informations de vente de retour
 						</h6>,
 					]}
 					bodyStyle={{ paddingTop: "0" }}>

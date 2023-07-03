@@ -14,7 +14,7 @@ const DashboardCard = ({ information, count, isCustomer, title }) => {
                   <div className="media d-flex">
                     <div className="media-body text-left">
                       <h3 className="">{count?.id ? count?.id : 0}</h3>
-                      <span className="">Invoice</span>
+                      <span className="">Facture</span>
                     </div>
                     <div className="align-self-center">
                       <i className="icon-cloud-download font-large-2 float-right"></i>
@@ -35,7 +35,7 @@ const DashboardCard = ({ information, count, isCustomer, title }) => {
                           ? information?.total_amount
                           : 0}
                       </h3>
-                      <span className="">Total Amount</span>
+                      <span className="">Montant total</span>
                     </div>
                     <div className="align-self-center">
                       <i className="icon-rocket font-large-2 float-right"></i>
@@ -56,7 +56,7 @@ const DashboardCard = ({ information, count, isCustomer, title }) => {
                         <h3 className="">
                           {information?.profit ? information?.profit : 0}
                         </h3>
-                        <span className="">Total Profit</span>
+                        <span className="">Bénéfice total</span>
                       </div>
                       <div className="align-self-center">
                         <i className="icon-wallet  font-large-2 float-right"></i>
@@ -78,7 +78,7 @@ const DashboardCard = ({ information, count, isCustomer, title }) => {
                             ? information?.paid_amount
                             : 0}
                         </h3>
-                        <span className="">Paid Amount</span>
+                        <span className="">Montant payé</span>
                       </div>
                       <div className="align-self-center">
                         <i className="icon-wallet  font-large-2 float-right"></i>
@@ -104,7 +104,7 @@ const DashboardCard = ({ information, count, isCustomer, title }) => {
                         <span
                           className="strong "
                           style={{ fontSize: "12px", fontWeight: "bold" }}>
-                          Paid Amount{" "}
+                          Montant payé{" "}
                         </span>
                       </div>
                       <div className="media-body text-right">
@@ -116,7 +116,7 @@ const DashboardCard = ({ information, count, isCustomer, title }) => {
                         <span
                           className="strong"
                           style={{ fontSize: "12px", fontWeight: "bold" }}>
-                          Due Amount{" "}
+                          Montant dû{" "}
                         </span>
                       </div>
                     </div>
@@ -136,7 +136,7 @@ const DashboardCard = ({ information, count, isCustomer, title }) => {
                             ? information?.due_amount
                             : 0}
                         </h3>
-                        <span className="">Total Due</span>
+                        <span className="">Total dû</span>
                       </div>
                       <div className="align-self-center">
                         <i className="icon-pie-chart font-large-2 float-right"></i>

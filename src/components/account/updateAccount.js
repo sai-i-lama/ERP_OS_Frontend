@@ -70,7 +70,7 @@ const UpdateAccount = ({ account, id }) => {
 	return (
 		<>
 			<Button onClick={showModal} size='small'>
-				Update Account
+			Moddifier le compte
 			</Button>
 			<Modal
 				open={open}
@@ -79,7 +79,7 @@ const UpdateAccount = ({ account, id }) => {
 				onCancel={handleCancel}
 				footer={[
 					<Button key='back' type='danger' onClick={handleCancel}>
-						cancel
+						Quitter
 					</Button>,
 				]}>
 				<Form
@@ -101,11 +101,11 @@ const UpdateAccount = ({ account, id }) => {
 					<Form.Item
 						style={{ marginBottom: "10px" }}
 						name='name'
-						label='Name'
+						label='Nom'
 						rules={[
 							{
 								required: true,
-								message: "Please input debit account!",
+								message: "Veuillez saisir le compte débiteur!",
 							},
 						]}>
 						<Input />
@@ -114,11 +114,11 @@ const UpdateAccount = ({ account, id }) => {
 					<Form.Item
 						style={{ marginBottom: "10px" }}
 						name='account_id'
-						label='Account Type'
+						label='Type de compte'
 						rules={[
 							{
 								required: true,
-								message: "Please input debit account!",
+								message: "Veuillez saisir le compte débiteur!",
 							},
 						]}>
 						<Select
@@ -127,7 +127,7 @@ const UpdateAccount = ({ account, id }) => {
 							style={{
 								width: 200,
 							}}
-							placeholder='Select Account Type'
+							placeholder='Sélectionnez le type de compte'
 							optionFilterProp='children'
 							filterOption={(input, option) => option.children.includes(input)}
 							filterSort={(optionA, optionB) =>
@@ -157,7 +157,7 @@ const UpdateAccount = ({ account, id }) => {
 							shape='round'
 							loading={loading}
 							onClick={() => setLoading(true)}>
-							Update Account
+							Moddifier le compte
 						</Button>
 					</Form.Item>
 				</Form>

@@ -102,7 +102,7 @@ function CustomTable({ list }) {
                 style={{ marginTop: "5px" }}
                 filename="staffs"
               >
-                Download CSV
+                Télécharger le fichier CSV
               </CSVLink>
             </div>
 

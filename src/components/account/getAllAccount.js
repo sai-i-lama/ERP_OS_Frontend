@@ -106,7 +106,7 @@ function CustomTable({ list, total }) {
             }
             placement="bottomLeft"
           >
-            <Button className="column-visibility">Column Visibility</Button>
+            <Button className="column-visibility"></Button>
           </Dropdown>
         </div>
       )}
@@ -143,7 +143,7 @@ const GetAllAccount = (props) => {
       <div className="card-body">
         <div className="card-title d-flex justify-content-between">
           <h5>
-            <span className="ms-2">Accounts</span>
+            <span className="ms-2">comptes</span>
           </h5>
         </div>
         <CustomTable list={list} startdate={startdate} enddate={enddate} />

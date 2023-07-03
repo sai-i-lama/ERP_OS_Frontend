@@ -77,7 +77,7 @@ const AddSupPaymentByInvoice = () => {
 					className='border rounded column-design'>
 					<Card bordered={false} className='criclebox h-full'>
 						<Title level={3} className='m-3 text-center'>
-							Purchase Invoice Payment
+						Paiement de la facture d’achat
 						</Title>
 						<Form
 							form={form}
@@ -105,19 +105,19 @@ const AddSupPaymentByInvoice = () => {
 									rules={[
 										{
 											required: true,
-											message: "Please input date!",
+											message: "Veuillez saisir la date!",
 										},
 									]}
 								/>
 							</Form.Item>
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Discount'
+								label='Rabais'
 								name='discount'
 								rules={[
 									{
 										required: true,
-										message: "Please input discount!",
+										message: "S’il vous plaît entrer la réduction!",
 									},
 								]}>
 								<Input />
@@ -125,12 +125,12 @@ const AddSupPaymentByInvoice = () => {
 
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Amount'
+								label='Montant'
 								name='amount'
 								rules={[
 									{
 										required: true,
-										message: "Please input amount!",
+										message: "Veuillez saisir le montant!",
 									},
 								]}>
 								<Input type='number' />
@@ -141,12 +141,12 @@ const AddSupPaymentByInvoice = () => {
 								validateStatus='success'
 								initialValue={pid}
 								style={{ marginBottom: "10px" }}
-								label='Purchase Invoice No'
+								label='Facture d’achat No'
 								name='purchase_invoice_no'
 								rules={[
 									{
 										required: true,
-										message: "Please input Invoice No!",
+										message: "Veuillez saisir la facture No!",
 									},
 								]}>
 								<Input type='number' disabled col />
@@ -179,7 +179,7 @@ const AddSupPaymentByInvoice = () => {
 									shape='round'
 									loading={loader}
 									onClick={() => setLoader(true)}>
-									Pay Now
+									Payer maintenant
 								</Button>
 							</Form.Item>
 						</Form>

@@ -74,7 +74,7 @@ const AddDetails = () => {
 					className='border rounded column-design'>
 					<Card bordered={false}>
 						<Title level={4} className='m-2 text-center'>
-							Invoice Setting
+						Réglage de la facture
 						</Title>
 						{initValues ? (
 							<Form
@@ -96,12 +96,12 @@ const AddDetails = () => {
 								<Form.Item
 									style={{ marginBottom: "10px" }}
 									fields={[{ name: "Company Name" }]}
-									label='Company Name'
+									label='Nom de l’entreprise'
 									name='company_name'
 									rules={[
 										{
 											required: true,
-											message: "Please input Company name!",
+											message: "Veuillez saisir le nom de l’entreprise!",
 										},
 									]}>
 									<Input />
@@ -109,12 +109,12 @@ const AddDetails = () => {
 								<Form.Item
 									style={{ marginBottom: "10px" }}
 									fields={[{ name: "Tagline" }]}
-									label='Tagline'
+									label='Slogan'
 									name='tag_line'
 									rules={[
 										{
 											required: true,
-											message: "Please input Tagline!",
+											message: "S’il vous plaît entrer le slogan!",
 										},
 									]}>
 									<Input />
@@ -122,12 +122,12 @@ const AddDetails = () => {
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Address'
+									label='Adresse'
 									name='address'
 									rules={[
 										{
 											required: true,
-											message: "Please input Address!",
+											message: "S’il vous plaît entrer l'adresse!",
 										},
 									]}>
 									<Input />
@@ -135,12 +135,12 @@ const AddDetails = () => {
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Phone Number'
+									label=' Numéro de téléphone'
 									name='phone'
 									rules={[
 										{
 											required: true,
-											message: "Please input Phone Number!",
+											message: "S’il vous plaît entrer le numéro de téléphone!",
 										},
 									]}>
 									<Input />
@@ -148,12 +148,12 @@ const AddDetails = () => {
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Email Address'
+									label='Email '
 									name='email'
 									rules={[
 										{
 											required: true,
-											message: "Please input Email Address!",
+											message: "S’il vous plaît entrer l'adresse Email !",
 										},
 									]}>
 									<Input />
@@ -161,12 +161,12 @@ const AddDetails = () => {
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Website'
+									label='Site Web'
 									name='website'
 									rules={[
 										{
 											required: true,
-											message: "Please input Website!",
+											message: "S’il vous plaît entrer le Site Web!",
 										},
 									]}>
 									<Input />
@@ -174,12 +174,12 @@ const AddDetails = () => {
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Footer'
+									label='Pied de page'
 									name='footer'
 									rules={[
 										{
 											required: true,
-											message: "Please input Footer!",
+											message: "S’il vous plaît entrer Pied de page!",
 										},
 									]}>
 									<Input />
@@ -194,7 +194,7 @@ const AddDetails = () => {
 										shape='round'
 										loading={loader}
 										onClick={onClickLoading}>
-										Update Details
+										Détails de la mise à jour
 									</Button>
 								</Form.Item>
 							</Form>

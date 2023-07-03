@@ -110,7 +110,7 @@ const DemoLine = () => {
 
 			<NewDashboardCard information={cardInformation} />
 
-			<Card title='Sales vs Profit'>
+			<Card title='Ventes vs bénéfices'>
 				{data ? <Line {...config} /> : <Loader />}
 			</Card>
 		</Fragment>

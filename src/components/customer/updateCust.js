@@ -93,7 +93,7 @@ function UpdateCust() {
                 </div>
               )}
               <Title level={3} className="m-3 text-center">
-                Edit Customer Form
+              Modifier le formulaire client
               </Title>
               <Form
                 initialValues={{
@@ -116,11 +116,11 @@ function UpdateCust() {
                   style={{ marginBottom: "10px" }}
                   fields={[{ name: "Name" }]}
                   label="Name"
-                  name="name"
+                  name="Nom"
                   rules={[
                     {
                       required: true,
-                      message: "Please input customer name!",
+                      message: "Veuillez saisir le nom du client!",
                     },
                   ]}
                 >
@@ -130,11 +130,11 @@ function UpdateCust() {
                 <Form.Item
                   style={{ marginBottom: "10px" }}
                   label="Phone"
-                  name="phone"
+                  name="téléphone"
                   rules={[
                     {
                       required: true,
-                      message: "Please input customer Phone!",
+                      message: "Veuillez saisir le numéro de téléphone du client!",
                     },
                   ]}
                 >
@@ -144,11 +144,11 @@ function UpdateCust() {
                 <Form.Item
                   style={{ marginBottom: "10px" }}
                   label="Address"
-                  name="address"
+                  name="adresse"
                   rules={[
                     {
                       required: true,
-                      message: "Please input customer Address!",
+                      message: "Veuillez saisir l'adresse du client!",
                     },
                   ]}
                 >
@@ -158,12 +158,12 @@ function UpdateCust() {
                 <Form.Item
                   style={{ marginBottom: "10px" }}
                   label="Due Amount"
-                  name="due_amount"
+                  name="Montant dû"
                   rules={[
                     {
                       type: Number,
                       required: true,
-                      message: "Please input customer amount!",
+                      message: "Veuillez saisir le montant du client!",
                     },
                   ]}
                 >
@@ -178,7 +178,7 @@ function UpdateCust() {
                   }}
                 >
                   <Button block type="primary" htmlType="submit" shape="round">
-                    Update Now
+                  Mettre à jour
                   </Button>
                 </Form.Item>
               </Form>

@@ -52,7 +52,7 @@ const GenerateBarcodePopUp = ({ sku, quantity }) => {
 	return (
 		<>
 			<button className='btn btn-primary btn-sm' onClick={showModal}>
-				Barcode
+			Code-barres
 			</button>
 			<Modal
 				width={800}
@@ -64,7 +64,7 @@ const GenerateBarcodePopUp = ({ sku, quantity }) => {
 					<form onSubmit={onSubmit}>
 						<div className='mb-3 text-center'>
 							<label htmlFor='count' className='form-label me-3'>
-								Number of barcodes:
+							Nombre de codes-barres:
 							</label>
 							<input
 								type='number'
@@ -78,7 +78,7 @@ const GenerateBarcodePopUp = ({ sku, quantity }) => {
 					<div>
 						<Button className='mt-2' type='primary' onClick={handlePrint}>
 							{" "}
-							Print{" "}
+							Imprimer{" "}
 						</Button>
 					</div>
 				</div>

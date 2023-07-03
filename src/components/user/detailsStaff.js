@@ -108,7 +108,7 @@ const DetailStaff = () => {
                   <Typography.Text strong>email :</Typography.Text> {user.email}
                 </p>
                 <p>
-                  <Typography.Text strong>salary :</Typography.Text>{" "}
+                  <Typography.Text strong>salaire :</Typography.Text>{" "}
                   {user.salary}
                 </p>
                 <p>
@@ -120,24 +120,24 @@ const DetailStaff = () => {
                   {user.department}
                 </p>
                 <p>
-                  <Typography.Text strong>phone :</Typography.Text> {user.phone}
+                  <Typography.Text strong>telephone :</Typography.Text> {user.phone}
                 </p>
                 <p>
-                  <Typography.Text strong>address :</Typography.Text>{" "}
+                  <Typography.Text strong>adresse :</Typography.Text>{" "}
                   {user.address}
                 </p>
                 <p>
-                  <Typography.Text strong>Blood Group :</Typography.Text>{" "}
+                  <Typography.Text strong>Groupe sanguin :</Typography.Text>{" "}
                   {user.blood_group}
                 </p>
 
                 <p>
-                  <Typography.Text strong>Joining Date</Typography.Text>{" "}
+                  <Typography.Text strong>Date d’adhésion</Typography.Text>{" "}
                   {moment(user.join_date).format("YYYY-MM-DD")}
                 </p>
 
                 <p>
-                  <Typography.Text strong>Leave Date</Typography.Text>{" "}
+                  <Typography.Text strong>Date de congé</Typography.Text>{" "}
                   {moment(user.leave_date).format("YYYY-MM-DD")}
                 </p>
               </div>

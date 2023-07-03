@@ -88,7 +88,7 @@ function UpdateSup() {
                 )}
                 <Card bordered={false} className='criclebox h-full'>
                   <Title level={3} className='m-3 text-center'>
-                    Edit Supplier Form
+                  Modifier le formulaire fournisseur
                   </Title>
                   <Form
                     initialValues={{
@@ -178,7 +178,7 @@ function UpdateSup() {
                         htmlType='submit'
                         shape='round'
                       >
-                        Update Now
+                        Mettre à jour
                       </Button>
                     </Form.Item>
                   </Form>

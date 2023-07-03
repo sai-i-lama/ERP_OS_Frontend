@@ -92,7 +92,7 @@ const AddProd = () => {
         >
           <Card bordered={false}>
             <Title level={4} className="m-2 text-center">
-              Add Product
+             Ajouter Produit
             </Title>
             <Form
               form={form}
@@ -113,12 +113,12 @@ const AddProd = () => {
             >
               <Form.Item
                 style={{ marginBottom: "15px" }}
-                label="Name"
+                label="Nom"
                 name="name"
                 rules={[
                   {
                     required: true,
-                    message: "Please input Product name!",
+                    message: "Veuillez saisir le nom du produit!",
                   },
                 ]}
               >
@@ -128,11 +128,11 @@ const AddProd = () => {
               <Form.Item
                 style={{ marginBottom: "15px" }}
                 name="product_category_id"
-                label="Select Category "
+                label="Sélectionner une catégorie "
                 rules={[
                   {
                     required: true,
-                    message: "Please select category!",
+                    message: "Veuillez sélectionner la catégorie!",
                   },
                 ]}
               >
@@ -140,7 +140,7 @@ const AddProd = () => {
                   name="product_category_id"
                   loading={!category}
                   showSearch
-                  placeholder="Select Category"
+                  placeholder="Sélectionner une catégorie"
                   optionFilterProp="children"
                   filterOption={(input, option) =>
                     option.children.includes(input)
@@ -163,11 +163,11 @@ const AddProd = () => {
               <Form.Item
                 style={{ marginBottom: "15px" }}
                 name="unit_type"
-                label="Select Unit Type "
+                label="Sélectionnez le type d’unité "
                 rules={[
                   {
                     required: true,
-                    message: "Please select unit type!",
+                    message: "Veuillez sélectionner le type d’unité!",
                   },
                 ]}
               >
@@ -175,7 +175,7 @@ const AddProd = () => {
                   name="unit_type"
                   loading={!category}
                   showSearch
-                  placeholder="Select Unit Type"
+                  placeholder="Sélectionnez le type d’unité"
                   optionFilterProp="children"
                   filterOption={(input, option) =>
                     option.children.includes(input)
@@ -197,12 +197,12 @@ const AddProd = () => {
 
               <Form.Item
                 style={{ marginBottom: "15px" }}
-                label="Unit Measurement"
+                label="Format"
                 name="unit_measurement"
                 rules={[
                   {
                     required: true,
-                    message: "Please input Unit Messurement!",
+                    message: "Veuillez saisir la Format!",
                   },
                 ]}
               >
@@ -211,12 +211,12 @@ const AddProd = () => {
 
               <Form.Item
                 style={{ marginBottom: "15px" }}
-                label="Quantity"
+                label="Quantité"
                 name="quantity"
                 rules={[
                   {
                     required: true,
-                    message: "Please input Quantity!",
+                    message: "Veuillez saisir la Quantité!",
                   },
                 ]}
               >
@@ -225,12 +225,12 @@ const AddProd = () => {
 
               <Form.Item
                 style={{ marginBottom: "15px" }}
-                label="Purchase Price"
+                label="Prix d’achat"
                 name="purchase_price"
                 rules={[
                   {
                     required: true,
-                    message: "Please input Purchase Price!",
+                    message: " Veuillez saisir le Prix d’achat!",
                   },
                 ]}
               >
@@ -239,12 +239,12 @@ const AddProd = () => {
 
               <Form.Item
                 style={{ marginBottom: "15px" }}
-                label="Sale Price"
+                label="Prix de vente"
                 name="sale_price"
                 rules={[
                   {
                     required: true,
-                    message: "Please input Sale Price!",
+                    message: "Veuillez saisir le Prix de vente!",
                   },
                 ]}
               >
@@ -253,19 +253,19 @@ const AddProd = () => {
 
               <Form.Item
                 style={{ marginBottom: "15px" }}
-                label="Reorder Quantity"
+                label="Quantité commandée"
                 name="reorder_quantity"
                 rules={[
                   {
                     required: true,
-                    message: "Please input  Reorder Quantity!",
+                    message: "Veuillez saisir la Quantité commandée !",
                   },
                 ]}
               >
                 <Input type="number" />
               </Form.Item>
 
-              <Form.Item label="Upload Image" valuePropName="image">
+              <Form.Item label="Envoyer image" valuePropName="image">
                 <Upload
                   listType="picture-card"
                   beforeUpload={() => false}
@@ -281,7 +281,7 @@ const AddProd = () => {
                         marginTop: 8,
                       }}
                     >
-                      Upload
+                      Envoyer
                     </div>
                   </div>
                 </Upload>
@@ -294,7 +294,7 @@ const AddProd = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input SKU!",
+                    message: " Veuillez saisir SKU!",
                   },
                 ]}
               >
@@ -312,7 +312,7 @@ const AddProd = () => {
                   loading={loader}
                   onClick={onClickLoading}
                 >
-                  Add Product
+                  Ajouter un produit
                 </Button>
               </Form.Item>
             </Form>
@@ -321,7 +321,7 @@ const AddProd = () => {
         <Col xs={24} sm={24} md={24} lg={11} xl={11} className=" rounded">
           <Card className={`${styles.importCsvCard} column-design`}>
             <Title level={4} className="m-2 text-center">
-              Import From CSV
+            Importer à partir d’un fichier CSV
             </Title>
             <UploadMany urlPath={"product"} />
           </Card>

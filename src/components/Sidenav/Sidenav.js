@@ -1,18 +1,25 @@
 import {
-	CheckOutlined, FileDoneOutlined,
-	FileOutlined,
-	FileSyncOutlined, FundOutlined, HomeOutlined,
-	InboxOutlined,
-	MinusSquareOutlined,
-	PlusSquareOutlined,
-	SettingOutlined, ShopOutlined, ShoppingCartOutlined, UnorderedListOutlined,
-	UsergroupAddOutlined,
-	UserOutlined,
-	UserSwitchOutlined
+  CheckOutlined,
+  FileDoneOutlined,
+  FileOutlined,
+  FileSyncOutlined,
+  FundOutlined,
+  HomeOutlined,
+  InboxOutlined,
+  MinusSquareOutlined,
+  PlusSquareOutlined,
+  SettingOutlined,
+  ShopOutlined,
+  ShoppingCartOutlined,
+  UnorderedListOutlined,
+  UsergroupAddOutlined,
+  UserOutlined,
+  UserSwitchOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
 import React from "react";
 import { NavLink } from "react-router-dom";
+import logo from "../../assets/images/sai-i-lama-logo.png";
 // import styles from "./Sidenav.module.css";
 
 const Test = ({ color }) => {
@@ -27,39 +34,39 @@ const Test = ({ color }) => {
       icon: <HomeOutlined />,
     },
     {
-      label: "PRODUCT",
+      label: "PRODUIT",
       key: "product",
       icon: <ShopOutlined />,
       children: [
         {
           label: (
-            <NavLink to="/product">
-              <span>Products</span>
-            </NavLink>
-          ),
-          key: "products",
-          icon: <UnorderedListOutlined />,
-        },
-        {
-          label: (
             <NavLink to="/product-category">
-              <span>Product Category</span>
+              <span>Catégorie de produit</span>
             </NavLink>
           ),
           key: "productCategory",
           icon: <UnorderedListOutlined />,
         },
+        {
+          label: (
+            <NavLink to="/product">
+              <span>Produits</span>
+            </NavLink>
+          ),
+          key: "products",
+          icon: <UnorderedListOutlined />,
+        },
       ],
     },
     {
-      label: "PURCHASE",
+      label: "APPROVISIONNEMENT",
       key: "purchaseSection",
       icon: <PlusSquareOutlined />,
       children: [
         {
           label: (
             <NavLink to="/supplier">
-              <span>Suppliers</span>
+              <span>Fournisseurs</span>
             </NavLink>
           ),
           key: "suppliers",
@@ -68,7 +75,7 @@ const Test = ({ color }) => {
         {
           label: (
             <NavLink to="/purchase">
-              <span>New Purchase</span>
+              <span>Nouvel Approvisionnement</span>
             </NavLink>
           ),
           key: "newPurchase",
@@ -77,7 +84,7 @@ const Test = ({ color }) => {
         {
           label: (
             <NavLink to="/purchaselist">
-              <span>Purchase List</span>
+              <span>Liste des Approvisionnements</span>
             </NavLink>
           ),
           key: "purchaseList",
@@ -86,14 +93,14 @@ const Test = ({ color }) => {
       ],
     },
     {
-      label: "SALE",
+      label: "SPA",
       key: "saleSection",
       icon: <MinusSquareOutlined />,
       children: [
         {
           label: (
             <NavLink to="/customer">
-              <span>Customers</span>
+              <span>Clientèle</span>
             </NavLink>
           ),
           key: "customers",
@@ -102,7 +109,7 @@ const Test = ({ color }) => {
         {
           label: (
             <NavLink to="/sale">
-              <span>New Sale</span>
+              <span>Nouvelle vente</span>
             </NavLink>
           ),
           key: "newSale",
@@ -111,7 +118,7 @@ const Test = ({ color }) => {
         {
           label: (
             <NavLink to="/salelist">
-              <span>Sale List</span>
+              <span>Liste de vente</span>
             </NavLink>
           ),
           key: "saleList",
@@ -120,14 +127,14 @@ const Test = ({ color }) => {
       ],
     },
     {
-      label: "ACCOUNTS",
+      label: "COMPTES",
       key: "accountSection",
       icon: <InboxOutlined />,
       children: [
         {
           label: (
             <NavLink to="/account/">
-              <span>Account</span>
+              <span>Compte</span>
             </NavLink>
           ),
           key: "accountList",
@@ -136,7 +143,7 @@ const Test = ({ color }) => {
         {
           label: (
             <NavLink to="/transaction/create">
-              <span>New Transaction</span>
+              <span>Nouvelle transaction</span>
             </NavLink>
           ),
           key: "newTransaction",
@@ -145,7 +152,7 @@ const Test = ({ color }) => {
         {
           label: (
             <NavLink to="/transaction/">
-              <span>Transaction List</span>
+              <span>Liste des transactions</span>
             </NavLink>
           ),
           key: "transactionList",
@@ -154,14 +161,14 @@ const Test = ({ color }) => {
       ],
     },
     {
-      label: "REPORT",
+      label: "RAPPORT",
       key: "reportSection",
       icon: <FundOutlined />,
       children: [
         {
           label: (
             <NavLink to="/account/trial-balance">
-              <span>Trial Balance</span>
+              <span>Balance de vérification</span>
             </NavLink>
           ),
           key: "trialBalance",
@@ -170,7 +177,7 @@ const Test = ({ color }) => {
         {
           label: (
             <NavLink to="/account/balance-sheet">
-              <span>Balance Sheet</span>
+              <span>Bilan</span>
             </NavLink>
           ),
           key: "balanceSheet",
@@ -179,7 +186,7 @@ const Test = ({ color }) => {
         {
           label: (
             <NavLink to="/account/income">
-              <span>Income Statement</span>
+              <span>État des résultats</span>
             </NavLink>
           ),
           key: "incomeStatement",
@@ -196,7 +203,7 @@ const Test = ({ color }) => {
         {
           label: (
             <NavLink to="/hr/staffs">
-              <span>Staffs</span>
+              <span>Personnel</span>
             </NavLink>
           ),
           key: "staffs",
@@ -205,7 +212,7 @@ const Test = ({ color }) => {
         {
           label: (
             <NavLink to="/role">
-              <span>Role & Permissions</span>
+              <span>Rôle et autorisations</span>
             </NavLink>
           ),
           key: "roleAndPermissions",
@@ -225,7 +232,7 @@ const Test = ({ color }) => {
     {
       label: (
         <NavLink to="/pos">
-          <span>POS</span>
+          <span>BOUTIQUE</span>
         </NavLink>
       ),
       key: "pos",
@@ -233,14 +240,14 @@ const Test = ({ color }) => {
     },
 
     {
-      label: "SETTINGS",
+      label: "PARAMÈTRES",
       key: "settings",
       icon: <SettingOutlined />,
       children: [
         {
           label: (
             <NavLink to="/invoice-setting">
-              <span>Invoice Settings</span>
+              <span>Paramètres de facturation</span>
             </NavLink>
           ),
           key: "invoiceSetting",
@@ -252,11 +259,22 @@ const Test = ({ color }) => {
 
   return (
     <div>
+      <center>
+        <img
+          src={logo}
+          alt="logo"
+          style={{
+            width: "50%",
+            height: "50%",
+            objectFit: "cover",
+          }}
+        />
+      </center>
       <Menu
         theme="dark"
         mode="inline"
         items={menu}
-		className="sidenav-menu"
+        className="sidenav-menu"
         // style={{ backgroundColor: "transparent" }}
       />
     </div>

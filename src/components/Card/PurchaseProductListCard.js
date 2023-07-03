@@ -46,7 +46,7 @@ const PurchaseProductListCard = ({ list }) => {
           bordered={false}
           title={[
             <h6 className='font-semibold m-0 text-center'>
-              Purchase Product Information
+              informations sur les produits achetés
             </h6>,
           ]}
           bodyStyle={{ paddingTop: "0" }}

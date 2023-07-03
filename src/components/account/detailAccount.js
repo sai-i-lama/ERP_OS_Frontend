@@ -32,7 +32,7 @@ const DetailAccount = () => {
 						<div className='card-title d-flex justify-content-between'>
 							<h5>
 								<i className='bi bi-card-list'>
-									<span className='ms-2'> Account Details: {data.name}</span>{" "}
+									<span className='ms-2'> Détails du compte: {data.name}</span>{" "}
 								</i>
 							</h5>
 							<UpdateAccount account={data?.name} id={id} />
@@ -42,7 +42,7 @@ const DetailAccount = () => {
 								<tr>
 									<th scope='col'>Debit</th>
 									<th scope='col'>Credit</th>
-									<th scope='col'> Perticulars</th>
+									<th scope='col'> Particulier</th>
 									<th scope='col'> Date</th>
 								</tr>
 							</thead>

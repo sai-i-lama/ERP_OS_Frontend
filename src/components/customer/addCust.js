@@ -48,7 +48,7 @@ const AddCust = () => {
 					className='rounded column-design'>
 					<Card bordered={false}>
 						<Title level={4} className='m-2 text-center'>
-							Add Customer
+							Ajouter un client
 						</Title>
 						<Form
 							form={form}
@@ -67,12 +67,12 @@ const AddCust = () => {
 							autoComplete='off'>
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Name'
+								label='Nom'
 								name='name'
 								rules={[
 									{
 										required: true,
-										message: "Please input customer name!",
+										message: "Veuillez saisir le nom du client!",
 									},
 								]}>
 								<Input />
@@ -80,12 +80,12 @@ const AddCust = () => {
 
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Phone'
+								label='téléphone'
 								name='phone'
 								rules={[
 									{
 										required: true,
-										message: "Please input customer Phone!",
+										message: "Veuillez saisir le numéro de téléphone du client!",
 									},
 								]}>
 								<Input />
@@ -93,12 +93,12 @@ const AddCust = () => {
 
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Address'
+								label='adresse'
 								name='address'
 								rules={[
 									{
 										required: true,
-										message: "Please input customer Address!",
+										message: "Veuillez saisir l'adresse du client!",
 									},
 								]}>
 								<Input />
@@ -115,7 +115,7 @@ const AddCust = () => {
 									type='primary'
 									htmlType='submit'
 									shape='round'>
-									Add Customer
+									Ajouter un client
 								</Button>
 							</Form.Item>
 						</Form>

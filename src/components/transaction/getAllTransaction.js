@@ -99,7 +99,7 @@ function CustomTable({ list, total, startdate, enddate }) {
 							data={CSVlist}
 							className='btn btn-dark btn-sm mb-1'
 							filename='transaction'>
-							Download CSV
+							Télécharger un fichier CSV
 						</CSVLink>
 					</div>
 				)}
@@ -176,7 +176,7 @@ const GetAllTransaction = (props) => {
 			<div className='card-body'>
 				<div className='card-title d-sm-flex justify-content-between'>
 					<h5 className=''>
-						<span>Transaction History</span>
+						<span>Historique des transactions</span>
 					</h5>
 					<div>
 						<RangePicker

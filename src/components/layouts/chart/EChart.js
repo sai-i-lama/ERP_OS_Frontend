@@ -48,13 +48,13 @@ function EChart() {
         />
       </div>
       <div className="chart-vistior">
-        <Title level={5}>Active Users</Title>
+        <Title level={5}>Utilisateurs actifs</Title>
         <Paragraph className="lastweek">
-          than last week <span className="bnb2">+30%</span>
+        la semaine dernière <span className="bnb2">+30%</span>
         </Paragraph>
         <Paragraph className="lastweek">
-          We have created multiple options for you to put together and customise
-          into pixel perfect pages.
+        Nous avons créé plusieurs options que vous pouvez assembler et personnaliser
+  
         </Paragraph>
         <Row gutter>
           {items.map((v, index) => (

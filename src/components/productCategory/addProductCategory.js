@@ -50,7 +50,7 @@ const AddProductCategory = () => {
 					className='rounded column-design'>
 					<Card bordered={false} className='criclebox h-full'>
 						<Title level={4} className='m-2 text-center'>
-							Add Product Category
+						Ajouter Categorie
 						</Title>
 						<Form
 							form={form}
@@ -70,12 +70,12 @@ const AddProductCategory = () => {
 							autoComplete='off'>
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Name'
+								label='Nom'
 								name='name'
 								rules={[
 									{
 										required: true,
-										message: "Please input category Dname!",
+										message: "Veuillez saisir le nom de la Catégorie!",
 									},
 								]}>
 								<Input />
@@ -90,7 +90,7 @@ const AddProductCategory = () => {
 									type='primary'
 									htmlType='submit'
 									shape='round'>
-									Add Category
+									Ajouter Categorie
 								</Button>
 							</Form.Item>
 						</Form>
@@ -105,7 +105,7 @@ const AddProductCategory = () => {
 					className='rounded column-design'>
 					<Card bordered={false} className={styles.importCsvCard}>
 						<Title level={4} className='m-2 text-center'>
-							Import From CSV
+							Importer à partir d’un fichier CSV
 						</Title>
 						<UploadMany urlPath={"category"} />
 					</Card>

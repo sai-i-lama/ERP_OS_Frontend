@@ -52,7 +52,7 @@ function CustomerInvoiceList({ list, linkTo }) {
 			render: (id) => (
 				<Link to={`/payment/customer/${id}`}>
 					<button className='btn btn-dark btn-sm' type='submit'>
-						Payment
+					Paiement
 					</button>
 				</Link>
 			),
@@ -69,7 +69,7 @@ function CustomerInvoiceList({ list, linkTo }) {
 				bordered={false}
 				title={[
 					<h5 className='font-semibold m-0 text-center'>
-						Customer Invoice Information
+						Informations sur la facture client
 					</h5>,
 				]}
 				bodyStyle={{ paddingTop: "0" }}>

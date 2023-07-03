@@ -86,7 +86,7 @@ const CustomTable = ({ role }) => {
   return (
     <div className="card-body mb-3 ">
       <div class="table-responsive">
-        <h4 className="text-center mb-2"> Permissions</h4>
+        <h4 className="text-center mb-2"> Autorisations</h4>
 
         {keys && keys.length > 0 && (
           <div className="text-start mb-1">

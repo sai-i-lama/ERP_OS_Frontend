@@ -16,14 +16,14 @@ const BalanceSheet = () => {
 
 	return (
 		<>
-			<PageTitle title={"Back"} />
+			<PageTitle title={"Retour"} />
 			<br />
 			<Card>
 				<div>
 					<div className='card-title d-flex justify-content-between'>
 						<h5>
 							<span className='ms-2 report-section-card-title'>
-								Balance Sheet
+							Bilan
 							</span>
 						</h5>
 					</div>
@@ -32,8 +32,8 @@ const BalanceSheet = () => {
 						<h5 className='mt-2 mb-2 font-weight-bold'> Assets</h5>
 						<thead className='thead-dark'>
 							<tr>
-								<th scope='col'>Account</th>
-								<th scope='col'>Amount</th>
+								<th scope='col'>compte</th>
+								<th scope='col'>montant</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -78,7 +78,7 @@ const BalanceSheet = () => {
 								</td>
 							</tr>
 
-							<h5 className='mt-2 mb-2 font-weight-bold'> Equity</h5>
+							<h5 className='mt-2 mb-2 font-weight-bold'> Équité </h5>
 
 							{data &&
 								data?.equity.map((item, index) => {
@@ -102,7 +102,7 @@ const BalanceSheet = () => {
 							<tr className='table-active'>
 								<td>
 									{" "}
-									<strong>Total Liability and Equity</strong>
+									<strong>Total Liability et Équité</strong>
 								</td>
 								<td>
 									<strong>{data?.totalEquity + data?.totalLiability}</strong>
