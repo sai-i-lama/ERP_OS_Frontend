@@ -20,7 +20,7 @@ import UploadMany from "../Card/UploadMany";
 import styles from "./AddProd.module.css";
 
 const AddProd = () => {
-  const unitType = ["kg", "ltr", "pc"];
+  const unitType = ["kg", "ltr"];
   const category = useSelector((state) => state.productCategories?.list);
   const dispatch = useDispatch();
   //useEffect for loading category list from redux

@@ -34,7 +34,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
 
   const columns = [
     {
-      title: "Invoice No",
+      title: "N° facture",
       dataIndex: "id",
       key: "id",
       render: (name, { id }) => <Link to={`/sale/${id}`}>{id}</Link>,
@@ -46,30 +46,30 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       render: (date) => moment(date).format("ll"),
     },
     {
-      title: "Customer Name ",
+      title: "nom client",
       dataIndex: `customer`,
       key: "customer_id",
       render: (customer) => customer?.name,
     },
 
     {
-      title: "Total Amount",
+      title: "montant total",
       dataIndex: "total_amount",
       key: "total_amount",
     },
     {
-      title: "Discount",
+      title: "Rabais",
       dataIndex: "discount",
       key: "discount",
     },
     {
-      title: "Due Amount",
+      title: "montant à payer",
       dataIndex: "due_amount",
       key: "due_amount",
       responsive: ["md"],
     },
     {
-      title: "Paid Amount",
+      title: "montant payé",
       dataIndex: "paid_amount",
       key: "paid_amount",
       responsive: ["md"],
@@ -78,13 +78,13 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
     //Update Supplier Name here
 
     {
-      title: "Profit",
+      title: "Bénéfice",
       dataIndex: "profit",
       key: "profit",
       responsive: ["md"],
     },
     {
-      title: "Sale Person",
+      title: "Vendeur",
       dataIndex: "user",
       key: "user",
       render: (user) => user?.username,
@@ -266,7 +266,7 @@ const GetAllSale = (props) => {
 
 	return (
 		<>
-			<PageTitle title={"Back"} />
+			<PageTitle title={"Retour"} />
 			<div className='card card-custom mt-1'>
 				<div className='card-body'>
 					<h5 className='d-inline-flex'>Liste des factures de vente</h5>
