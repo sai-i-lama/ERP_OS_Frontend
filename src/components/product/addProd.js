@@ -202,11 +202,11 @@ const AddProd = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez saisir la Format!",
+                    message: "Veuillez saisir le Format!",
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input type="number"  min={0} value={0} />
               </Form.Item>
 
               <Form.Item
@@ -220,7 +220,7 @@ const AddProd = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input type="number"  min={0} value={0} />
               </Form.Item>
 
               <Form.Item
@@ -234,7 +234,7 @@ const AddProd = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input type="number"  min={0} value={0} />
               </Form.Item>
 
               <Form.Item
@@ -248,7 +248,7 @@ const AddProd = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input type="number"  min={0} value={0} />
               </Form.Item>
 
               <Form.Item
@@ -262,7 +262,7 @@ const AddProd = () => {
                   },
                 ]}
               >
-                <Input type="number" />
+                <Input type="number"  min={0} value={0} />
               </Form.Item>
 
               <Form.Item label="Envoyer image" valuePropName="image">
