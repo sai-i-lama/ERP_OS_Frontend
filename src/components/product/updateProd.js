@@ -49,7 +49,7 @@ function UpdateProd() {
     try {
       updateProduct(id, values);
       setSuccess(true);
-      toast.success("Product details is updated");
+      toast.success("Les détails du produit sont mis à jour");
       setInitValues({});
     } catch (error) {
       console.log(error.message);
@@ -83,7 +83,7 @@ function UpdateProd() {
               {success && (
                 <div>
                   <Alert
-                    message={`Product details updated successfully`}
+                    message={`Les détails du produit ont été mis à jour avec succès`}
                     type="success"
                     closable={true}
                     showIcon
@@ -92,7 +92,7 @@ function UpdateProd() {
               )}
               <Card bordered={false} className="criclebox h-full">
                 <Title level={3} className="m-3 text-center">
-                Modifier le formulaire du produit
+                  Modifier le formulaire du produit
                 </Title>
                 <Form
                   initialValues={{
@@ -137,7 +137,11 @@ function UpdateProd() {
                       },
                     ]}
                   >
+<<<<<<< HEAD
                     <Input type="number"  min={0} value={0} />
+=======
+                    <Input type="number" min={0} />
+>>>>>>> eb1b86554b824c3437c2064c14029ce3a0ac093f
                   </Form.Item>
 
                   <Form.Item
@@ -151,7 +155,11 @@ function UpdateProd() {
                       },
                     ]}
                   >
+<<<<<<< HEAD
                     <Input type="number"  min={0} value={0} />
+=======
+                    <Input type="number" min={0} />
+>>>>>>> eb1b86554b824c3437c2064c14029ce3a0ac093f
                   </Form.Item>
 
                   <Form.Item
@@ -166,7 +174,11 @@ function UpdateProd() {
                       },
                     ]}
                   >
+<<<<<<< HEAD
                     <Input type="number"  min={0} value={0} />
+=======
+                    <Input type="number" min={0} />
+>>>>>>> eb1b86554b824c3437c2064c14029ce3a0ac093f
                   </Form.Item>
 
                   <Form.Item

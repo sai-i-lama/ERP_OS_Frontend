@@ -68,8 +68,8 @@ const AddDesignation = () => {
             >
               <Form.Item
                 style={{ marginBottom: "10px" }}
-                label="Name"
-                name="Nom"
+                label="Nom"
+                name="name"
                 rules={[
                   {
                     required: true,

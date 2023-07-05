@@ -37,36 +37,36 @@ function CustomTable({ list, categoryName }) {
       key: "sku",
     },
     {
-      title: "Name",
+      title: "Nom",
       dataIndex: "name",
       key: "name",
       render: (name, { id }) => <Link to={`/product/${id}`}>{name}</Link>,
     },
     {
-      title: "Quantity",
+      title: "Quantité",
       dataIndex: "quantity",
       key: "quantity",
     },
     {
-      title: "Purchase price",
+      title: "Prix d'achat",
       dataIndex: "purchase_price",
       key: "purchase_price",
       responsive: ["md"],
     },
     {
-      title: "Sale price",
+      title: " prix de vente",
       dataIndex: "sale_price",
       key: "sale_price",
       responsive: ["md"],
     },
     {
-      title: "Unit Type",
+      title: " Type Unitaire",
       dataIndex: "unit_type",
       key: "unit_type",
     },
 
     {
-      title: "Reorder QTY",
+      title: "Quantité commandée ",
       dataIndex: "reorder_quantity",
       key: "reorder_quantity",
     },
@@ -119,7 +119,7 @@ function CustomTable({ list, categoryName }) {
                 data={list}
                 className="btn btn-dark btn-sm mb-1"
                 filename={`category_${categoryName}`}>
-                Download CSV
+                Télécharger le fichier CSV
               </CSVLink>
             </div>
           )}
@@ -163,7 +163,7 @@ const DetailProductCategory = () => {
       dispatch(DeleteProductCategory(id));
 
       setVisible(false);
-      toast.warning(`Product : ${category.name} is removed `);
+      toast.warning(`le Produit : ${category.name} est supprimé `);
       return navigate("/product-category");
     } catch (error) {
       console.log(error.message);
@@ -188,7 +188,7 @@ const DetailProductCategory = () => {
 
   return (
     <div>
-      <PageTitle title=" Back " subtitle=" " />
+      <PageTitle title=" Retour " subtitle=" " />
 
       <div className="mr-top">
         {category ? (
@@ -219,11 +219,11 @@ const DetailProductCategory = () => {
                     content={
                       <a onClick={onDelete}>
                         <Button type="primary" danger>
-                          Yes Please !
+                         Oui !
                         </Button>
                       </a>
                     }
-                    title="Are you sure you want to delete ?"
+                    title=" Voulez-vous vraiment supprimer?"
                     trigger="click"
                     visible={visible}
                     onVisibleChange={handleVisibleChange}>
@@ -239,7 +239,7 @@ const DetailProductCategory = () => {
               <div className="my-2 table-responsive">
                 <h5 className="text-center mb-2">
                   {" "}
-                  Products under <strong>{category.name} </strong>
+                 Produit Appartenant <strong>{category.name} </strong>
                 </h5>
 
                 <CustomTable

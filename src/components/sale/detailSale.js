@@ -44,7 +44,7 @@ const DetailSale = () => {
 			dispatch(deleteSale(id));
 
 			setVisible(false);
-			toast.warning(`Sale : ${sale.id} is removed `);
+			toast.warning(`La vente : ${sale.id} est supprimée `);
 			return navigate("/salelist");
 		} catch (error) {
 			console.log(error.message);
@@ -69,7 +69,7 @@ const DetailSale = () => {
 
 	return (
 		<div>
-			<PageTitle title='Back' />
+			<PageTitle title='Retour' />
 
 			<div className='mr-top'>
 				{singleSaleInvoice ? (
@@ -93,11 +93,11 @@ const DetailSale = () => {
 										content={
 											<a onClick={onDelete}>
 												<Button type='primary' danger>
-													Yes Please !
+													Oui
 												</Button>
 											</a>
 										}
-										title='Are you sure you want to delete ?'
+										title='Voulez-vous vraiment supprimer ?'
 										trigger='click'
 										visible={visible}
 										onVisibleChange={handleVisibleChange}>

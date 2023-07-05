@@ -67,7 +67,7 @@ function UpdateDesignation() {
 
 	return (
 		<>
-			<PageTitle title={`back`} />
+			<PageTitle title={`Retour`} />
 			<div className='text-center'>
 				<Card className='mt-2'>
 					<Row className='mr-top'>
@@ -81,7 +81,7 @@ function UpdateDesignation() {
 							{success && (
 								<div>
 									<Alert
-										message={`Designation details updated successfully`}
+										message={`Mise à jour réussie des détails de la désignation`}
 										type='success'
 										closable={true}
 										showIcon

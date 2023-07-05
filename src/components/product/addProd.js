@@ -8,7 +8,7 @@ import {
   Row,
   Select,
   Typography,
-  Upload
+  Upload,
 } from "antd";
 import { toast } from "react-toastify";
 
@@ -20,7 +20,7 @@ import UploadMany from "../Card/UploadMany";
 import styles from "./AddProd.module.css";
 
 const AddProd = () => {
-  const unitType = ["kg", "ltr", "pc"];
+  const unitType = ["kg", "ltr", "g"];
   const category = useSelector((state) => state.productCategories?.list);
   const dispatch = useDispatch();
   //useEffect for loading category list from redux
@@ -31,6 +31,7 @@ const AddProd = () => {
   const { Title } = Typography;
   const [fileList, setFileList] = useState([]);
   const [loader, setLoader] = useState(false);
+  const [sku, setSku] = useState("");
 
   const [form] = Form.useForm();
 
@@ -44,7 +45,7 @@ const AddProd = () => {
       formData.append("purchase_price", values.purchase_price);
       formData.append("sale_price", values.sale_price);
       formData.append("product_category_id", values.product_category_id);
-      formData.append("sku", values.sku);
+      formData.append("sku", sku || values.sku); // use generated sku if available
       formData.append("unit_type", values.unit_type);
       formData.append("reorder_quantity", values.reorder_quantity);
       formData.append("unit_measurement", values.unit_measurement);
@@ -55,19 +56,20 @@ const AddProd = () => {
         form.resetFields();
         setFileList([]);
         setLoader(false);
+        setSku(""); // reset generated sku
       } else {
         setLoader(false);
       }
     } catch (error) {
       console.log(error.message);
-      toast.error("error at creating");
+      toast.error("érreur de création");
       setLoader(false);
     }
   };
 
   const onFinishFailed = (errorInfo) => {
     setLoader(false);
-    toast.error("Something went wrong !");
+    toast.error("les champs comportant * doivent être remplis");
     console.log("Failed:", errorInfo);
   };
 
@@ -77,6 +79,12 @@ const AddProd = () => {
 
   const onClickLoading = () => {
     setLoader(true);
+  };
+
+  const handleGenerateSku = () => {
+    const generatedSku = Math.floor(Math.random() * 900000000) + 100000000;
+    const productName = form.getFieldValue("name").slice(0, 3).toUpperCase(); // Get the first three letters of the selected category
+    setSku(`SKU-${productName}${generatedSku.toString()}`);
   };
 
   return (
@@ -92,7 +100,7 @@ const AddProd = () => {
         >
           <Card bordered={false}>
             <Title level={4} className="m-2 text-center">
-             Ajouter Produit
+              Ajouter Produit
             </Title>
             <Form
               form={form}
@@ -206,7 +214,11 @@ const AddProd = () => {
                   },
                 ]}
               >
+<<<<<<< HEAD
                 <Input type="number"  min={0} value={0} />
+=======
+                <Input type="number" min={0} />
+>>>>>>> eb1b86554b824c3437c2064c14029ce3a0ac093f
               </Form.Item>
 
               <Form.Item
@@ -220,7 +232,11 @@ const AddProd = () => {
                   },
                 ]}
               >
+<<<<<<< HEAD
                 <Input type="number"  min={0} value={0} />
+=======
+                <Input type="number" min={0} />
+>>>>>>> eb1b86554b824c3437c2064c14029ce3a0ac093f
               </Form.Item>
 
               <Form.Item
@@ -248,7 +264,11 @@ const AddProd = () => {
                   },
                 ]}
               >
+<<<<<<< HEAD
                 <Input type="number"  min={0} value={0} />
+=======
+                <Input type="number" min={0} />
+>>>>>>> eb1b86554b824c3437c2064c14029ce3a0ac093f
               </Form.Item>
 
               <Form.Item
@@ -262,7 +282,11 @@ const AddProd = () => {
                   },
                 ]}
               >
+<<<<<<< HEAD
                 <Input type="number"  min={0} value={0} />
+=======
+                <Input type="number" min={0} />
+>>>>>>> eb1b86554b824c3437c2064c14029ce3a0ac093f
               </Form.Item>
 
               <Form.Item label="Envoyer image" valuePropName="image">
@@ -289,18 +313,30 @@ const AddProd = () => {
 
               <Form.Item
                 style={{ marginBottom: "15px" }}
-                label="SKU No"
+                label="SKU"
                 name="sku"
-                rules={[
-                  {
-                    required: true,
-                    message: " Veuillez saisir SKU!",
-                  },
-                ]}
               >
-                <Input />
+                <Input
+                  value={sku}
+                  readOnly
+                  addonBefore={sku && sku}
+                  maxLength={9}
+                  suffix={
+                    <Button
+                      type="primary"
+                      size="small"
+                      style={{
+                        backgroundColor: "#1890ff",
+                        borderColor: "#1890ff",
+                        borderRadius: "4px",
+                        marginRight: "5px",
+                      }}
+                      icon={<PlusOutlined style={{ color: "white" }} />}
+                      onClick={handleGenerateSku}
+                    />
+                  }
+                />
               </Form.Item>
-
               <Form.Item
                 style={{ marginBottom: "15px" }}
                 className={styles.addProductBtnContainer}
@@ -321,7 +357,7 @@ const AddProd = () => {
         <Col xs={24} sm={24} md={24} lg={11} xl={11} className=" rounded">
           <Card className={`${styles.importCsvCard} column-design`}>
             <Title level={4} className="m-2 text-center">
-            Importer à partir d’un fichier CSV
+              Importer à partir d’un fichier CSV
             </Title>
             <UploadMany urlPath={"product"} />
           </Card>

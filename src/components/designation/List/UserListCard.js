@@ -11,7 +11,7 @@ const UserListCard = ({ list }) => {
 			render: (id_no, { id }) => <Link to={`/hr/staffs/${id}`}>{id_no}</Link>,
 		},
 		{
-			title: "User Name",
+			title: "Nom d’utilisateur",
 			dataIndex: "username",
 			key: "username",
 		},
@@ -27,12 +27,12 @@ const UserListCard = ({ list }) => {
 			key: "email",
 		},
 		{
-			title: "phone",
+			title: "téléphone",
 			dataIndex: "phone",
 			key: "phone",
 		},
 		{
-			title: "salary",
+			title: "salaire",
 			dataIndex: "salary",
 			key: "salary",
 		},
