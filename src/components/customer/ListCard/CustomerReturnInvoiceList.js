@@ -28,7 +28,7 @@ const CustomerReturnInvoiceList = ({ list }) => {
 			key: "note",
 		},
 		{
-			title: "Facture de vente No",
+			title: "Facture de vente N°",
 			dataIndex: "saleInvoice_id",
 			key: "saleInvoice_id",
 			render: (saleInvoice_id) => (

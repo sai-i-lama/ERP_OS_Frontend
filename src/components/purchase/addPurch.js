@@ -399,7 +399,7 @@ const AddPurch = () => {
 								border: "1px solid #ccc",
 								marginBottom: "10px",
 							}}>
-							<strong>Montant dû: </strong>
+							<strong>Montant a payer: </strong>
 							<strong>{totalDiscountPaidDue.due} cfa</strong>
 						</div>
 

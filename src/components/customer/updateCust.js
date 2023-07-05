@@ -157,8 +157,8 @@ function UpdateCust() {
 
                 <Form.Item
                   style={{ marginBottom: "10px" }}
-                  label="Due Amount"
-                  name="Montant dû"
+                  label="Montant à payer"
+                  name="due Amount"
                   rules={[
                     {
                       type: Number,

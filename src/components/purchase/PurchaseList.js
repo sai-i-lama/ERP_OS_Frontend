@@ -25,7 +25,7 @@ const PurchaseList = ({ data }) => {
               </p>
               <p>
                 {" "}
-                Quantité achaté : <strong>{item.product_quantity} </strong>
+                Quantité acheté : <strong>{item.product_quantity} </strong>
               </p>
             </div>
           </List.Item>

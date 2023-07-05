@@ -65,7 +65,7 @@ const DetailAccount = () => {
 												<td></td>
 												<td>{item.amount}</td>
 												<td>{item.particulars}</td>
-												<td>{moment(item.date).format("YYYY-MM-DD")}</td>
+												<td>{moment(item.date).format("YYYY-MM-DD ")}</td>
 											</tr>
 										);
 									})}

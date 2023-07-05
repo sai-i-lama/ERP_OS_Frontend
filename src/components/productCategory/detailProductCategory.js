@@ -112,7 +112,7 @@ function CustomTable({ list, categoryName }) {
     <div className="card card-custom border">
       <div className="card-body">
         <div className="card-title d-flex justify-content-between">
-          <h5>Product List</h5>
+          <h5>Liste des Produits</h5>
           {list && (
             <div>
               <CSVLink

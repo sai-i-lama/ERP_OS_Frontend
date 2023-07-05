@@ -48,7 +48,7 @@ function UpdateDesignation() {
 		try {
 			updateDesignation(id, values);
 			setSuccess(true);
-			toast.success("Designation details is updated");
+			toast.success("Les détails de la fonction sont mis à jour");
 			setInitValues({});
 		} catch (error) {
 			console.log(error.message);
@@ -81,7 +81,7 @@ function UpdateDesignation() {
 							{success && (
 								<div>
 									<Alert
-										message={`Mise à jour réussie des détails de la désignation`}
+										message={`Mise à jour réussie des détails de la fonction`}
 										type='success'
 										closable={true}
 										showIcon
@@ -89,7 +89,7 @@ function UpdateDesignation() {
 								</div>
 							)}
 							<Title level={3} className='m-3 text-center'>
-							Modifier le formulaire de désignation
+							Modifier le formulaire de la fonction
 							</Title>
 							<Form
 								initialValues={{
@@ -115,7 +115,7 @@ function UpdateDesignation() {
 									rules={[
 										{
 											required: true,
-											message: "Veuillez entrer le nom de la désignation!",
+											message: "Veuillez entrer le nom de la Fonction!",
 										},
 									]}>
 									<Input />

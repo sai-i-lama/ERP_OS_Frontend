@@ -103,7 +103,7 @@ const DashboardCard = ({ information, count, isCustomer, title }) => {
                         </h3>
                         <span
                           className="strong "
-                          style={{ fontSize: "12px", fontWeight: "bold" }}>
+                          style={{ fontSize: "14px", fontWeight: "" }}>
                           Montant payé{" "}
                         </span>
                       </div>
@@ -115,8 +115,8 @@ const DashboardCard = ({ information, count, isCustomer, title }) => {
                         </h3>
                         <span
                           className="strong"
-                          style={{ fontSize: "12px", fontWeight: "bold" }}>
-                          Montant dû{" "}
+                          style={{ fontSize: "14px", fontWeight: "" }}>
+                          Montant à payer{" "}
                         </span>
                       </div>
                     </div>
@@ -136,7 +136,7 @@ const DashboardCard = ({ information, count, isCustomer, title }) => {
                             ? information?.due_amount
                             : 0}
                         </h3>
-                        <span className="">Total dû</span>
+                        <span className="">Total à payer</span>
                       </div>
                       <div className="align-self-center">
                         <i className="icon-pie-chart font-large-2 float-right"></i>

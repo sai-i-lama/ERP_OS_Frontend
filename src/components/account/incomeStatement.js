@@ -23,7 +23,7 @@ const IncomeStatement = () => {
 					<div className='card-title d-flex justify-content-between'>
 						<h5>
 							<span className='ms-2 report-section-card-title'>
-								Income Statement{" "}
+							État des résultats{" "}
 							</span>
 						</h5>
 					</div>
@@ -78,7 +78,7 @@ const IncomeStatement = () => {
 								</td>
 							</tr>
 
-							<h5 className='mt-2 mb-2 font-weight-bold'> Profit</h5>
+							<h5 className='mt-2 mb-2 font-weight-bold'> bénéfice</h5>
 							<tr className='table-active'>
 								<td>
 									{" "}
