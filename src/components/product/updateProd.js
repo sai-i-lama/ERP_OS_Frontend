@@ -92,7 +92,7 @@ function UpdateProd() {
               )}
               <Card bordered={false} className="criclebox h-full">
                 <Title level={3} className="m-3 text-center">
-                Modifier le formulaire du produit
+                  Modifier le formulaire du produit
                 </Title>
                 <Form
                   initialValues={{
@@ -137,7 +137,7 @@ function UpdateProd() {
                       },
                     ]}
                   >
-                    <Input type="number" />
+                    <Input type="number" min={0} />
                   </Form.Item>
 
                   <Form.Item
@@ -151,7 +151,7 @@ function UpdateProd() {
                       },
                     ]}
                   >
-                    <Input type="number" />
+                    <Input type="number" min={0} />
                   </Form.Item>
 
                   <Form.Item
@@ -166,7 +166,7 @@ function UpdateProd() {
                       },
                     ]}
                   >
-                    <Input type="number" />
+                    <Input type="number" min={0} />
                   </Form.Item>
 
                   <Form.Item
