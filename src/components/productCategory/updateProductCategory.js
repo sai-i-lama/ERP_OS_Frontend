@@ -45,7 +45,7 @@ function UpdateProductCategory() {
     try {
       updateProductCategory(id, values);
       setSuccess(true);
-      toast.success("category details is updated");
+      toast.success("Les détails de la catégorie sont mis à jour");
       setInitValues({});
     } catch (error) {
       console.log(error.message);
@@ -65,8 +65,8 @@ function UpdateProductCategory() {
   return (
     <>
       <PageTitle
-        title={`Update Category/ ${id}`}
-        subtitle="Update Category information"
+        title={`Mettre à jour la catégorie/ ${id}`}
+        subtitle="Information de Mise à jou "
       />
       <div className="text-center">
         <div className="">
@@ -82,7 +82,7 @@ function UpdateProductCategory() {
               {success && (
                 <div>
                   <Alert
-                    message={`Category details updated successfully`}
+                    message={`Les détails de la catégorie ont été mis à jour avec succès`}
                     type="success"
                     closable={true}
                     showIcon
@@ -90,7 +90,7 @@ function UpdateProductCategory() {
                 </div>
               )}
               <Title level={3} className="m-3 text-center">
-                Edit Category Form
+                Modifier le formulaire de catégorie
               </Title>
               <Form
                 initialValues={{

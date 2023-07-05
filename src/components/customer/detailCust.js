@@ -54,7 +54,7 @@ const DetailCust = () => {
 
   return (
     <div>
-      <PageTitle title=" Back " subtitle=" " />
+      <PageTitle title=" Retour " subtitle=" " />
 
       <div className="mr-top">
         {customer ? (
@@ -87,7 +87,7 @@ const DetailCust = () => {
                         </Button>
                       </a>
                     }
-                    title="Are you sure you want to delete ?"
+                    title="Voulez-vous vraiment supprimer ?"
                     trigger="click"
                     visible={visible}
                     onVisibleChange={handleVisibleChange}

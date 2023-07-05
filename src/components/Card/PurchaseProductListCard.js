@@ -10,7 +10,7 @@ const PurchaseProductListCard = ({ list }) => {
       key: "id",
     },
     {
-      title: "Name",
+      title: "Nom",
       dataIndex: "product",
       key: "product.name",
       render: (product) => (
@@ -18,17 +18,17 @@ const PurchaseProductListCard = ({ list }) => {
       ),
     },
     {
-      title: "Product Quantity",
+      title: "Quantité de Produit ",
       dataIndex: "product_quantity",
       key: "product_quantity",
     },
     {
-      title: "Product Purchase Price",
+      title: "Prix d’achat du produit",
       dataIndex: "product_purchase_price",
       key: "product_purchase_price",
     },
     {
-      title: "Total Price ",
+      title: " Prix Total  ",
       key: "Total Price ",
       dataIndex: "",
       render: ({ product_quantity, product_purchase_price }) =>

@@ -299,7 +299,7 @@ const AddPurch = () => {
 							</Form.Item>
 						</div>
 						<div className='d-flex justify-content-between mb-1'>
-							<Form.Item name='supplier_memo_no' label='Supplier Memo'>
+							<Form.Item name='supplier_memo_no' label='Historique des fournisseurs'>
 								<Input placeholder='Memo no ' onChange={updateFormData} />
 							</Form.Item>
 

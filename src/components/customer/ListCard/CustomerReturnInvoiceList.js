@@ -8,7 +8,7 @@ const CustomerReturnInvoiceList = ({ list }) => {
 		{
 			title: "ID",
 			dataIndex: "id",
-			key: "id",
+			key: "id", 
 		},
 		{
 			title: "Date",
@@ -18,7 +18,7 @@ const CustomerReturnInvoiceList = ({ list }) => {
 		},
 
 		{
-			title: "Total Amount",
+			title: "Montant Total",
 			dataIndex: "total_amount",
 			key: "total_amount",
 		},
@@ -28,7 +28,7 @@ const CustomerReturnInvoiceList = ({ list }) => {
 			key: "note",
 		},
 		{
-			title: "Sale Invoice No",
+			title: "Facture de vente No",
 			dataIndex: "saleInvoice_id",
 			key: "saleInvoice_id",
 			render: (saleInvoice_id) => (

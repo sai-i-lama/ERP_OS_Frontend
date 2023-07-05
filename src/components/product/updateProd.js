@@ -49,7 +49,7 @@ function UpdateProd() {
     try {
       updateProduct(id, values);
       setSuccess(true);
-      toast.success("Product details is updated");
+      toast.success("Les détails du produit sont mis à jour");
       setInitValues({});
     } catch (error) {
       console.log(error.message);
@@ -83,7 +83,7 @@ function UpdateProd() {
               {success && (
                 <div>
                   <Alert
-                    message={`Product details updated successfully`}
+                    message={`Les détails du produit ont été mis à jour avec succès`}
                     type="success"
                     closable={true}
                     showIcon

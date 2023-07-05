@@ -16,7 +16,7 @@ const IncomeStatement = () => {
 
 	return (
 		<>
-			<PageTitle title={"Back"} />
+			<PageTitle title={"Retour"} />
 			<br />
 			<Card>
 				<div>

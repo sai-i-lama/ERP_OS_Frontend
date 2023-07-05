@@ -9,7 +9,7 @@ const ReturnSaleInvoiceList = ({ list }) => {
 
 	const columns = [
 		{
-			title: "View Details",
+			title: " Details",
 			dataIndex: "returnSaleInvoiceProduct",
 			key: "returnSaleInvoiceProduct",
 			render: (returnSaleInvoiceProduct) => (
@@ -29,7 +29,7 @@ const ReturnSaleInvoiceList = ({ list }) => {
 		},
 
 		{
-			title: "Total Amount",
+			title: "Montant Total",
 			dataIndex: "total_amount",
 			key: "total_amount",
 		},

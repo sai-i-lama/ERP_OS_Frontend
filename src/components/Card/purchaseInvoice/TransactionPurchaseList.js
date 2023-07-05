@@ -34,7 +34,7 @@ const TransactionPurchaseList = ({ list }) => {
       render: (credit) => credit.name,
     },
     {
-      title: "Amount",
+      title: "Montant",
       dataIndex: "amount",
       key: "amount",
     },
@@ -45,7 +45,7 @@ const TransactionPurchaseList = ({ list }) => {
       key: "type",
     },
     {
-      title: "Particulars",
+      title: "Particuliers",
       dataIndex: "particulars",
       key: "particulars",
     },

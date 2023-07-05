@@ -20,7 +20,7 @@ function CustomTable({ list, total }) {
       key: "id",
     },
     {
-      title: "Name",
+      title: "Nom",
       dataIndex: "name",
       key: "name",
       render: (name, { id }) => <Link to={`/designation/${id}`}>{name}</Link>,
@@ -68,7 +68,7 @@ function CustomTable({ list, total }) {
               className="btn btn-dark btn-sm mb-1"
               filename="designation"
             >
-              Download CSV
+              Télécharger le fichier CSV
             </CSVLink>
           </div>
         )}

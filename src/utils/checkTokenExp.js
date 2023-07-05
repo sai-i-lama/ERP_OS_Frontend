@@ -5,7 +5,7 @@ const checkTokenExp = (token) => {
   //   console.log(token);
   try {
     if (jwtDecode(token).exp * 1000 < Date.now()) {
-      console.log("Time Expired");
+      console.log("Délai expiré");
       return (window.location.href = "/auth/logout");
     } else {
       //   console.log(

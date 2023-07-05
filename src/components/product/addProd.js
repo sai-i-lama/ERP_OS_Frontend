@@ -60,14 +60,14 @@ const AddProd = () => {
       }
     } catch (error) {
       console.log(error.message);
-      toast.error("error at creating");
+      toast.error("érreur de création");
       setLoader(false);
     }
   };
 
   const onFinishFailed = (errorInfo) => {
     setLoader(false);
-    toast.error("Something went wrong !");
+    toast.error("les champs comportant * doivent être remplis");
     console.log("Failed:", errorInfo);
   };
 

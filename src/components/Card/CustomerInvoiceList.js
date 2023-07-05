@@ -5,7 +5,7 @@ import moment from "moment";
 function CustomerInvoiceList({ list, linkTo }) {
 	const columns = [
 		{
-			title: "Invoice ",
+			title: "Facture ",
 			dataIndex: "id",
 			key: "id",
 			render: (id) => <Link to={`${linkTo}/${id}`}>{id}</Link>,
@@ -17,30 +17,30 @@ function CustomerInvoiceList({ list, linkTo }) {
 			render: (date) => moment(date).format("ll"),
 		},
 		{
-			title: "Total Amount",
+			title: "Montant Total ",
 			dataIndex: "total_amount",
 			key: "total_amount",
 		},
 		{
-			title: "Discount",
+			title: "Rabais",
 			dataIndex: "discount",
 			key: "discount",
 			responsive: ["md"],
 		},
 		{
-			title: "Due Amount",
+			title: "Montant dû",
 			dataIndex: "due_amount",
 			key: "due_amount",
 			responsive: ["md"],
 		},
 		{
-			title: "Paid Amount",
+			title: "Montant payé",
 			dataIndex: "paid_amount",
 			key: "paid_amount",
 			responsive: ["md"],
 		},
 		{
-			title: "Profit",
+			title: "Bénefice",
 			dataIndex: "profit",
 			key: "profit",
 			responsive: ["md"],
