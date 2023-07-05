@@ -193,7 +193,7 @@ const AddPos = ({
 										message: "S’il vous plaît entrer la réduction!",
 									},
 								]}>
-								<InputNumber type='number' onChange={handleDiscount} />
+								<InputNumber type='number' value={0} min={0} onChange={(value) => handleDiscount(Math.max(value, 0))} />
 							</Form.Item>
 						</div>
 

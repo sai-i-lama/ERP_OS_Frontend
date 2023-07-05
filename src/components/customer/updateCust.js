@@ -167,7 +167,7 @@ function UpdateCust() {
                     },
                   ]}
                 >
-                  <Input type="number" />
+                  <Input type="number"  min={0} value={0} />
                 </Form.Item>
 
                 <Form.Item

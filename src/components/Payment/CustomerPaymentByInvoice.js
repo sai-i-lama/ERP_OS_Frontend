@@ -4,6 +4,7 @@ import {
 	Col,
 	DatePicker,
 	Form,
+	InputNumber,
 	Input,
 	Row,
 	Typography,
@@ -131,7 +132,7 @@ const AddCustPaymentByInvoice = () => {
 										message: "S’il vous plaît entrer le montant de la Réduction!",
 									},
 								]}>
-								<Input />
+								<InputNumber type='number' value={0} min={0}  />
 							</Form.Item>
 
 							<Form.Item
@@ -144,7 +145,7 @@ const AddCustPaymentByInvoice = () => {
 										message: "Veuillez saisir le montant!",
 									},
 								]}>
-								<Input type='number' />
+								<Input type='number' value={0} min={0} />
 							</Form.Item>
 
 							<Form.Item

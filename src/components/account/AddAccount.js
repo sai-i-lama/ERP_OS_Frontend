@@ -91,7 +91,13 @@ const AddAccoun = () => {
                   },
                 ]}
               >
-                <Input placeholder="Nom" />
+                <Input
+                  type="text"
+                  name="name"
+                  placeholder="Nom"
+                  maxLength={40}
+                  pattern="[a-zA-Z]+"
+                />
               </Form.Item>
 
               <Form.Item
