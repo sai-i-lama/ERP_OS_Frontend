@@ -80,7 +80,7 @@ function registerValidSW(swUrl, config) {
               // At this point, everything has been precached.
               // It's the perfect time to display a
               // "Content is cached for offline use." message.
-              console.log('Content is cached for offline use.');
+              console.log('Le contenu est mis en cache pour une utilisation hors connexion.');
 
               // Execute callback
               if (config && config.onSuccess) {
@@ -92,7 +92,7 @@ function registerValidSW(swUrl, config) {
       };
     })
     .catch((error) => {
-      console.error('Error during service worker registration:', error);
+      console.error('Erreur lors de l’inscription du technicien de service :', error);
     });
 }
 
@@ -120,7 +120,7 @@ function checkValidServiceWorker(swUrl, config) {
       }
     })
     .catch(() => {
-      console.log('No internet connection found. App is running in offline mode.');
+      console.log('Aucune connexion Internet trouvée. L’application s’exécute en mode hors connexion.');
     });
 }
 

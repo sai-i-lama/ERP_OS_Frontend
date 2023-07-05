@@ -12,7 +12,7 @@ const Customer = (props) => {
 
   return (
     <div>
-      <PageTitle title="Back" />
+      <PageTitle title="Retour" />
       <AddCust />
       <GetAllCust />
     </div>

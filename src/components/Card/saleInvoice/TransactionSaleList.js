@@ -35,7 +35,7 @@ const TransactionSaleList = ({ list }) => {
     },
 
     {
-      title: "Amount",
+      title: "Montant",
       dataIndex: "amount",
       key: "amount",
     },
@@ -46,7 +46,7 @@ const TransactionSaleList = ({ list }) => {
       key: "type",
     },
     {
-      title: "Particulars",
+      title: "Particuliers",
       dataIndex: "particulars",
       key: "particulars",
     },

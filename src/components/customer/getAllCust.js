@@ -22,18 +22,18 @@ function CustomTable({ list, total, status }) {
       key: "id",
     },
     {
-      title: "Name",
+      title: "Nom",
       dataIndex: "name",
       key: "name",
       render: (name, { id }) => <Link to={`/customer/${id}`}>{name}</Link>,
     },
     {
-      title: "Phone",
+      title: "téléphone",
       dataIndex: "phone",
       key: "phone",
     },
     {
-      title: "Address",
+      title: "Adresse",
       dataIndex: "address",
       key: "address",
       responsive: ["md"],
@@ -145,7 +145,7 @@ const GetAllCust = (props) => {
                 className="btn btn-dark btn-sm mb-1"
                 filename="customer"
               >
-                Download CSV
+                Télécharger un fichier CSV
               </CSVLink>
             </div>
             <div>

@@ -130,7 +130,7 @@ const AddCust = () => {
 					className='column-design rounded'>
 					<Card bordered={false} className={styles.importCsvCard}>
 						<Title level={4} className='m-2 text-center'>
-							Import From CSV
+							Importer à partir d’un fichier CSV
 						</Title>
 						<UploadMany urlPath={"customer"} />
 					</Card>

@@ -31,7 +31,7 @@ const CustomerTransactionList = ({ list }) => {
 			render: (credit) => credit?.name,
 		},
 		{
-			title: "Amount",
+			title: "Montant",
 			dataIndex: "amount",
 			key: "amount",
 		},
@@ -42,7 +42,7 @@ const CustomerTransactionList = ({ list }) => {
 			key: "type",
 		},
 		{
-			title: "Particulars",
+			title: "Particuliers",
 			dataIndex: "particulars",
 			key: "particulars",
 		},

@@ -27,7 +27,7 @@ const Test = ({ color }) => {
     {
       label: (
         <NavLink to="/dashboard">
-          <span>Dashboard</span>
+          <span>DASHBOARD</span>
         </NavLink>
       ),
       key: "dashboard",

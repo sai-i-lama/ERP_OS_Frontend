@@ -12,7 +12,7 @@ const Sale = (props) => {
 
 	return (
 		<div>
-			<PageTitle title='Back' />
+			<PageTitle title='Retour' />
 			<AddSale />
 		</div>
 	);

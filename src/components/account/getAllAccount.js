@@ -33,13 +33,13 @@ function CustomTable({ list, total }) {
     // },
 
     {
-      title: "Account",
+      title: "Compte",
       dataIndex: "name",
       key: "name",
     },
 
     {
-      title: "Account Type ",
+      title: "Type de Compte ",
       dataIndex: "account",
       key: "account",
       render: (account) => account?.name,
@@ -92,7 +92,7 @@ function CustomTable({ list, total }) {
               className="btn btn-dark btn-sm mb-1"
               filename="accounts"
             >
-              Download CSV
+              Télécharger le fichier CSV
             </CSVLink>
           </div>
         )}

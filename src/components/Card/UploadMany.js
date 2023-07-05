@@ -78,7 +78,7 @@ const UploadMany = ({ urlPath }) => {
 					shape='round'
 					loading={loader}
 					onClick={handleOnSubmit}>
-					Import From CSV
+					Importer à partir d’un fichier CSV
 				</Button>
 			</form>
 		</div>

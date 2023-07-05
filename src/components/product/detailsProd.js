@@ -23,7 +23,7 @@ const DetailsProd = () => {
       dispatch(deleteProduct(id));
 
       setVisible(false);
-      toast.warning(`Product : ${product.name} is removed `);
+      toast.warning(`le Produit : ${product.name} est supprimé `);
       return navigate("/product");
     } catch (error) {
       console.log(error.message);
@@ -79,7 +79,7 @@ const DetailsProd = () => {
                         </Button>
                       </a>
                     }
-                    title="Are you sure you want to delete ?"
+                    title="Voulez-vous vraiment supprimer ?"
                     trigger="click"
                     visible={visible}
                     onVisibleChange={handleVisibleChange}>

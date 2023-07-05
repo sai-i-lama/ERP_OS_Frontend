@@ -10,7 +10,7 @@ const SaleProductListCard = ({ list, updateReturn, returnOnChange }) => {
 			key: "product_id",
 		},
 		{
-			title: "Name",
+			title: "Nom",
 			dataIndex: "product",
 			key: "product.name",
 			render: (product) => (
@@ -18,17 +18,17 @@ const SaleProductListCard = ({ list, updateReturn, returnOnChange }) => {
 			),
 		},
 		{
-			title: "Product Quantity",
+			title: " Quantité de Produit ",
 			dataIndex: "product_quantity",
 			key: "product_quantity",
 		},
 		{
-			title: "Product  Unit Price",
+			title: "Prix Unitaire ",
 			dataIndex: "product_sale_price",
 			key: "product_sale_price",
 		},
 		{
-			title: "Total Price ",
+			title: " Prix Total  ",
 			key: "Total Price ",
 			dataIndex: "",
 			render: ({
@@ -54,7 +54,7 @@ const SaleProductListCard = ({ list, updateReturn, returnOnChange }) => {
 		//   width: "120px",
 		// });
 		columns.splice(4, 0, {
-			title: "Return Quantity",
+			title: "Return Quantité",
 			dataIndex: "return_quantity",
 			key: "return_quantity",
 			width: "150px",

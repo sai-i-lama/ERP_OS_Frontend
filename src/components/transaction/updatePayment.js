@@ -152,13 +152,13 @@ function UpdateSup() {
 
                     <Form.Item
                       style={{ marginBottom: "10px" }}
-                      label='Montant dû'
+                      label='Montant à payer'
                       name='due_amount'
                       rules={[
                         {
                           type: Number,
                           required: true,
-                          message: "Veuillez saisir le montant du!",
+                          message: "Veuillez saisir le montant à payer!",
                         },
                       ]}
                     >

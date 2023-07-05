@@ -14,10 +14,10 @@ export const addReturnSale = async (values) => {
 				...values,
 			},
 		});
-		toast.success("Return Sale Added Successfully");
+		toast.success("La vente a été ajoutée avec succès");
 		return "success";
 	} catch (error) {
-		toast.error("Something went wrong at Return Sale ");
+		toast.error("Quelque chose s’est mal passé lors de l'affichage de la vente ");
 		console.log(error.message);
 	}
 };

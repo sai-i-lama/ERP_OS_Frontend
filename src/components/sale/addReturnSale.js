@@ -114,7 +114,7 @@ const AddReturnSale = () => {
 
   return (
     <div>
-      <PageTitle title=" Back " />
+      <PageTitle title=" Retour " />
       <div className="mr-top">
         {singleSaleInvoice ? (
           <Fragment key={singleSaleInvoice.id}>

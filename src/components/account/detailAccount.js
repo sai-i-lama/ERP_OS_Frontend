@@ -24,7 +24,7 @@ const DetailAccount = () => {
 
 	return (
 		<>
-			<PageTitle title={"Back"} />
+			<PageTitle title={"Retour"} />
 			<br />
 			<Card>
 				{data ? (
