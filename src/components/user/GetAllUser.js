@@ -24,7 +24,7 @@ function CustomTable({ list }) {
       key: "id",
     },
     {
-      title: "Name",
+      title: "Nom",
       dataIndex: "username",
       key: "username",
     },
@@ -34,10 +34,10 @@ function CustomTable({ list }) {
       key: "role",
     },
     {
-      title: "Created at",
+      title: "Créer le",
       dataIndex: "createdAt",
       key: "addrcreatedAtess",
-      render: (createdAt) => moment(createdAt).format("YYYY-MM-DD"),
+      render: (createdAt) => moment(createdAt).format("YYYY-MM-DD HH:mm:ss"),
     },
     {
       title: "Action",
@@ -91,7 +91,7 @@ function CustomTable({ list }) {
     <div>
       <div className="d-flex my-2">
         <div className="w-50">
-          <h4>Staff List</h4>
+          <h4>Liste du Personnel</h4>
         </div>
         {list && (
           <div className="text-center d-flex justify-content-end w-50">

@@ -58,7 +58,7 @@ function CustomTable({ list, total, status, setStatus, startdate, enddate }) {
 			key: "discount",
 		},
 		{
-			title: "Montant dû",
+			title: "Montant à payer",
 			dataIndex: "due_amount",
 			key: "due_amount",
 		},

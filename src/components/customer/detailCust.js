@@ -29,7 +29,7 @@ const DetailCust = () => {
       dispatch(deleteCustomer(id));
 
       setVisible(false);
-      toast.warning(`Customer : ${customer.name} is removed `);
+      toast.warning(`Client : ${customer.name} est supprimé `);
       return navigate("/customer");
     } catch (error) {
       console.log(error.message);
@@ -83,7 +83,7 @@ const DetailCust = () => {
                     content={
                       <a onClick={onDelete}>
                         <Button type="primary" danger>
-                          Yes Please !
+                          Oui !
                         </Button>
                       </a>
                     }
@@ -113,7 +113,7 @@ const DetailCust = () => {
                 </p>
 
                 <p>
-                  <Typography.Text strong>Montant dû :</Typography.Text>{" "}
+                  <Typography.Text strong>Montant à payer :</Typography.Text>{" "}
                   {customer.due_amount}
                 </p>
               </div>

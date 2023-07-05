@@ -89,7 +89,7 @@ const DetailsPurch = () => {
 											content={
 												<a onClick={onDelete}>
 													<Button type='primary' danger>
-														Yes Please !
+														Oui !
 													</Button>
 												</a>
 											}
@@ -143,7 +143,7 @@ const DetailsPurch = () => {
 											</p>
 
 											<p>
-												<Typography.Text strong>Montant dû :</Typography.Text>{" "}
+												<Typography.Text strong>Montant à payer :</Typography.Text>{" "}
 												<strong className='text-danger'>
 													{" "}
 													{singlePurchaseInvoice.due_amount}
@@ -165,13 +165,13 @@ const DetailsPurch = () => {
 
 												<p>
 													<Typography.Text strong>
-														Total Return Amount:
+													Montant total du retour:
 													</Typography.Text>{" "}
 													<strong>{totalReturnAmount}</strong>
 												</p>
 
 												<p>
-													<Typography.Text strong>Due Amount :</Typography.Text>{" "}
+													<Typography.Text strong>montant à payer :</Typography.Text>{" "}
 													<strong style={{ color: "red" }}>{dueAmount}</strong>
 												</p>
 											</CardComponent>
@@ -180,7 +180,7 @@ const DetailsPurch = () => {
 											<CardComponent>
 												<p>
 													<Typography.Text strong>
-														Supplier Memo No :
+														Fournisseur Memo No :
 													</Typography.Text>{" "}
 													<strong>
 														{singlePurchaseInvoice.supplier_memo_no}

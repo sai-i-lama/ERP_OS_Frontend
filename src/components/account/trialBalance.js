@@ -16,14 +16,14 @@ const TrialBalance = () => {
 
 	return (
 		<>
-			<PageTitle title={"Back"} />
+			<PageTitle title={"Retour"} />
 			<br />
 			<Card>
 				<div>
 					<div className='card-title d-flex justify-content-between'>
 						<h5>
 							<span className='ms-2 report-section-card-title'>
-								Trail Balance
+								Solde des Comptes
 							</span>
 						</h5>
 					</div>

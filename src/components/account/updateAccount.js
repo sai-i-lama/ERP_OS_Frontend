@@ -35,12 +35,12 @@ const UpdateAccount = ({ account, id }) => {
 				setOpen(false);
 				navigate(`/account`);
 			}
-			toast.success("Account Updated");
+			toast.success("Compte mis à jour");
 			form.resetFields();
 			setInitValues({});
 			setLoading(false);
 		} catch (error) {
-			toast.error("Error in adding account");
+			toast.error("Erreur lors de l’ajout d’un compte");
 			console.log(error.message);
 			setLoading(false);
 		}

@@ -139,7 +139,7 @@ const AddUser = () => {
 
               <Form.Item
                 style={{ marginBottom: "10px" }}
-                label="Date d’adhésion"
+                label="Date de début de fonction"
                 name="join_date"
                 rules={[
                   {
@@ -153,7 +153,7 @@ const AddUser = () => {
 
               <Form.Item
                 style={{ marginBottom: "10px" }}
-                label="Leave Date"
+                label="Date de fin de fonction"
                 name="leave_date"
                 rules={[
                   {
@@ -270,10 +270,10 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez sélectionner la Designation!",
+                    message: "Veuillez sélectionner la Fonction!",
                   },
                 ]}
-                label="Designation"
+                label="Fonction"
                 name={"designation_id"}
                 style={{ marginBottom: "20px" }}
               >
