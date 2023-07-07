@@ -29,6 +29,7 @@ const AddSale = () => {
 	const { Option } = Select;
 	const [formData, setFormData] = useState({});
 	const [loader, setLoader] = useState(false);
+	const [isDisabled, setIsDisabled] = useState(false);
 	const navigate = useNavigate();
 
 	const onClickLoading = () => {
@@ -380,7 +381,19 @@ const AddSale = () => {
 										message: "S’il vous plaît entrer la réduction!",
 									},
 								]}>
-								<InputNumber type='number' onChange={handleDiscount} />
+								<InputNumber
+									type='number'
+									value={0}
+									min={0}
+									max={totalDiscountPaidDue.total}
+									onChange={(value) => {
+										handleDiscount(Math.max(value, 0));
+										if (value > totalDiscountPaidDue.total) {
+											setIsDisabled(true);
+										}
+									}}
+									disabled={isDisabled}
+								/>
 							</Form.Item>
 						</div>
 
@@ -410,7 +423,7 @@ const AddSale = () => {
 										message: "Veuillez saisir le montant payé!",
 									},
 								]}>
-								<InputNumber type='number' onChange={handlePaid} />
+								<InputNumber type='number' onChange={handlePaid} min={0} />
 							</Form.Item>
 						</div>
 						<div

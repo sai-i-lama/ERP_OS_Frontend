@@ -83,6 +83,7 @@ export default function Products({
 													placeholder='Quantité de produit'
 													onChange={(qty) => handleSelectedProdsQty(id, qty)}
 													defaultValue={selectedQty}
+													min={0}
 												/>
 											</Form.Item>
 										</Col>
@@ -97,6 +98,8 @@ export default function Products({
 														handleSelectedProdsUnitPrice(id, price)
 													}
 													defaultValue={sale_price}
+													min={0}
+													disabled
 												/>
 											</Form.Item>
 										</Col>

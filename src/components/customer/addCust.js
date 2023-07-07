@@ -88,7 +88,7 @@ const AddCust = () => {
 										message: "Veuillez saisir le numéro de téléphone du client!",
 									},
 								]}>
-								<Input />
+								<Input maxLength={14}/>
 							</Form.Item>
 
 							<Form.Item

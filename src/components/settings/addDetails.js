@@ -143,7 +143,7 @@ const AddDetails = () => {
 											message: "S’il vous plaît entrer le numéro de téléphone!",
 										},
 									]}>
-									<Input />
+									<Input maxLength={14}/>
 								</Form.Item>
 
 								<Form.Item

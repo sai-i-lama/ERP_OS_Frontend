@@ -138,7 +138,7 @@ function UpdateSup() {
                         },
                       ]}
                     >
-                      <Input />
+                      <Input maxLength={14}/>
                     </Form.Item>
 
                     <Form.Item
@@ -167,7 +167,7 @@ function UpdateSup() {
                         },
                       ]}
                     >
-                      <Input type='number' />
+                      <Input type='number' min={0} />
                     </Form.Item>
 
                     <Form.Item

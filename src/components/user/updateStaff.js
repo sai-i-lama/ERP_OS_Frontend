@@ -301,7 +301,7 @@ function UpdateStaff() {
                       },
                     ]}
                   >
-                    <Input />
+                    <Input maxLength={14}/>
                   </Form.Item>
                   <Form.Item
                     style={{ marginBottom: "10px" }}
@@ -328,7 +328,7 @@ function UpdateStaff() {
                       },
                     ]}
                   >
-                    <InputNumber />
+                    <InputNumber min={0}/>
                   </Form.Item>
 
                   <Form.Item
@@ -342,7 +342,7 @@ function UpdateStaff() {
                       },
                     ]}
                   >
-                    <Input />
+                    <Input maxLength={3} />
                   </Form.Item>
 
                   <Form.Item

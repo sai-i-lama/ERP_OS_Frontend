@@ -120,7 +120,7 @@ const AddSupPaymentByInvoice = () => {
 										message: "S’il vous plaît entrer la réduction!",
 									},
 								]}>
-								<Input />
+								<Input min={0} />
 							</Form.Item>
 
 							<Form.Item
@@ -133,7 +133,7 @@ const AddSupPaymentByInvoice = () => {
 										message: "Veuillez saisir le montant!",
 									},
 								]}>
-								<Input type='number' />
+								<Input type='number' min={0} />
 							</Form.Item>
 
 							<Form.Item
@@ -149,7 +149,7 @@ const AddSupPaymentByInvoice = () => {
 										message: "Veuillez saisir la facture No!",
 									},
 								]}>
-								<Input type='number' disabled col />
+								<Input type='number' disabled col min={0}/>
 							</Form.Item>
 							{/* 
               <Form.Item

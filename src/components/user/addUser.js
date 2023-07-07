@@ -222,7 +222,7 @@ const AddUser = () => {
                   },
                 ]}
               >
-                <Input />
+                <Input maxLength={14}/>
               </Form.Item>
               <Form.Item
                 style={{ marginBottom: "10px" }}
@@ -249,7 +249,7 @@ const AddUser = () => {
                   },
                 ]}
               >
-                <InputNumber />
+                <InputNumber min={0} />
               </Form.Item>
 
               <Form.Item
@@ -263,7 +263,7 @@ const AddUser = () => {
                   },
                 ]}
               >
-                <Input />
+                <Input max={3}/>
               </Form.Item>
 
               <Form.Item

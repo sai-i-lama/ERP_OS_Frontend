@@ -138,7 +138,7 @@ function UpdateCust() {
                     },
                   ]}
                 >
-                  <Input />
+                  <Input maxLength={14}/>
                 </Form.Item>
 
                 <Form.Item
