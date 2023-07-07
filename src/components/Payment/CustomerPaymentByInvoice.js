@@ -47,7 +47,7 @@ const AddCustPaymentByInvoice = () => {
 			if (resp == "success") {
 				navigate(-1);
 				setLoader(false);
-				toast.success("Payment Added Successfully");
+				toast.success("Paiement éffectué avec succès");
 			}
 
 			form.resetFields();
@@ -70,7 +70,7 @@ const AddCustPaymentByInvoice = () => {
 
 	return (
 		<>
-			<PageTitle title={"Back"} />
+			<PageTitle title={"Retour"} />
 			<Row className='mr-top'>
 				<Col
 					xs={24}
@@ -124,7 +124,7 @@ const AddCustPaymentByInvoice = () => {
 
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Rabais'
+								label='Remise'
 								name='discount'
 								rules={[
 									{
@@ -153,12 +153,12 @@ const AddCustPaymentByInvoice = () => {
 								validateStatus='success'
 								initialValue={pid}
 								style={{ marginBottom: "10px" }}
-								label='Facture de vente No'
+								label='N° Facture de vente'
 								name='sale_invoice_no'
 								rules={[
 									{
 										required: true,
-										message: "Veuillez saisir la facture No!",
+										message: "Veuillez saisir le N° de la facture!",
 									},
 								]}>
 								<Input type='number' disabled col />

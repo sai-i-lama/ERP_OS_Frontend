@@ -20,18 +20,18 @@ function CustomTable({ list, total, status }) {
       key: "id",
     },
     {
-      title: "Name",
+      title: "Nom",
       dataIndex: "name",
       key: "name",
       render: (name, { id }) => <Link to={`/supplier/${id}`}>{name}</Link>,
     },
     {
-      title: "Phone",
+      title: "Téléphone",
       dataIndex: "phone",
       key: "phone",
     },
     {
-      title: "Address",
+      title: "Adresse",
       dataIndex: "address",
       key: "address",
       responsive: ["md"],

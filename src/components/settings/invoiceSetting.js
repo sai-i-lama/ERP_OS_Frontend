@@ -12,7 +12,7 @@ const InvoiceSetting = (props) => {
 
   return (
     <>
-      <PageTitle title="Back" />
+      <PageTitle title="Retour" />
 
       <AddDetails />
     </>

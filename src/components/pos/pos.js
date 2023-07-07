@@ -54,7 +54,7 @@ const Sale = (props) => {
 
 	return (
 		<div>
-			<PageTitle title='Back' />
+			<PageTitle title='Retour' />
 
 			<Row gutter={[20]}>
 				<Col span={24} lg={13} xl={14}>

@@ -5,7 +5,7 @@ function Logout(props) {
   useEffect(() => {
     localStorage.clear();
     // deleteAllCookies();
-    toast.success("Logged Out");
+    toast.success("Déconnecté");
     // localStorage.setItem("isLogged", false);;
 
     localStorage.setItem("isLogged", "");

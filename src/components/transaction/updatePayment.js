@@ -50,7 +50,7 @@ function UpdateSup() {
     try {
       updateSupplier(id, values);
       setSuccess(true);
-      toast.success("Supplier details is updated");
+      toast.success("Mise à jour des coordonnées du fournisseur");
       setInitValues({});
     } catch (error) {
       console.log(error.message);
@@ -64,7 +64,7 @@ function UpdateSup() {
   return (
     <Fragment>
       <Main>
-        <PageTitle title={`Back`} />
+        <PageTitle title={`Retour`} />
         <div className='text-center'>
           <div className=''>
             <Row className='mr-top'>
@@ -79,7 +79,7 @@ function UpdateSup() {
                 {success && (
                   <div>
                     <Alert
-                      message={`Supplier details updated successfully`}
+                      message={`Mise à jour réussie des coordonnées du fournisseur`}
                       type='success'
                       closable={true}
                       showIcon

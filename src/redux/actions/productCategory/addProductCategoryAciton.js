@@ -25,12 +25,12 @@ export const addProductCategory = (values) => {
 			});
 			//dispatching data
 			dispatch(addProductCategoryAction(data));
-			toast.success("product category Added");
+			toast.success("Catégorie de produit Ajoutée");
 			return {
 				message: "success",
 			};
 		} catch (error) {
-			toast.error("Error in adding product category try again");
+			toast.error("Cette Catégorie de produit existe déja, veuillez entrer un nouveau nom de Catégorie");
 			console.log(error.message);
 		}
 	};

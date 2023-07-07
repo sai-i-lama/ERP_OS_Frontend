@@ -25,13 +25,13 @@ export const addSupplier = (values) => {
 			});
 			//dispatching data
 			dispatch(addSupplieraction(data));
-			toast.success("Supplier Added");
+			toast.success("Fournisseur ajouté");
 			return {
 				message: "success",
 			};
 		} catch (error) {
 			console.log(error.message);
-			toast.error("Error : Supplier already exists");
+			toast.error("Erreur : Le fournisseur existe déjà");
 		}
 	};
 };

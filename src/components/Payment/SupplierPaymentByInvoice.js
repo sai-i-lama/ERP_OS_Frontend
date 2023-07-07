@@ -43,7 +43,7 @@ const AddSupPaymentByInvoice = () => {
 				setLoader(false);
 				navigate(-1);
 			}
-			toast.success("Payment Successfully done");
+			toast.success("Paiement effectué avec succès");
 
 			form.resetFields();
 			setLoader(false);
@@ -66,7 +66,7 @@ const AddSupPaymentByInvoice = () => {
 
 	return (
 		<>
-			<PageTitle title='Back' />
+			<PageTitle title='Retour' />
 			<Row className='mr-top'>
 				<Col
 					xs={24}
@@ -112,12 +112,12 @@ const AddSupPaymentByInvoice = () => {
 							</Form.Item>
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Rabais'
+								label='Remise'
 								name='discount'
 								rules={[
 									{
 										required: true,
-										message: "S’il vous plaît entrer la réduction!",
+										message: "S’il vous plaît entrer le montant de la Remise!",
 									},
 								]}>
 								<Input min={0} />
@@ -141,12 +141,12 @@ const AddSupPaymentByInvoice = () => {
 								validateStatus='success'
 								initialValue={pid}
 								style={{ marginBottom: "10px" }}
-								label='Facture d’achat No'
+								label='N° Facture d’achat'
 								name='purchase_invoice_no'
 								rules={[
 									{
 										required: true,
-										message: "Veuillez saisir la facture No!",
+										message: "Veuillez saisir le N° facture!",
 									},
 								]}>
 								<Input type='number' disabled col min={0}/>

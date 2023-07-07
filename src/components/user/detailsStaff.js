@@ -26,7 +26,7 @@ const DetailStaff = () => {
       dispatch(deleteStaff(id));
 
       setVisible(false);
-      toast.warning(`User Name : ${user.username} is removed `);
+      toast.warning(`Nom de l'utilisateur : ${user.username} est supprimé `);
       return navigate("/hr/staffs");
     } catch (error) {
       console.log(error.message);
@@ -50,7 +50,7 @@ const DetailStaff = () => {
   }
   return (
     <div>
-      <PageTitle title=" Back  " />
+      <PageTitle title=" Retour  " />
 
       <div className="mr-top">
         {user ? (
@@ -80,11 +80,11 @@ const DetailStaff = () => {
                     content={
                       <a onClick={onDelete}>
                         <Button type="primary" danger>
-                          Yes Please !
+                          Oui !
                         </Button>
                       </a>
                     }
-                    title="Are you sure you want to delete ?"
+                    title="Êtes-vous sûr de vouloir supprimer ?"
                     trigger="click"
                     visible={visible}
                     onVisibleChange={handleVisibleChange}
@@ -132,12 +132,12 @@ const DetailStaff = () => {
                 </p>
 
                 <p>
-                  <Typography.Text strong>Date d’adhésion</Typography.Text>{" "}
+                  <Typography.Text strong>Date de début de fonction</Typography.Text>{" "}
                   {moment(user.join_date).format("YYYY-MM-DD")}
                 </p>
 
                 <p>
-                  <Typography.Text strong>Date de congé</Typography.Text>{" "}
+                  <Typography.Text strong>Date de fin de fonction</Typography.Text>{" "}
                   {moment(user.leave_date).format("YYYY-MM-DD")}
                 </p>
               </div>

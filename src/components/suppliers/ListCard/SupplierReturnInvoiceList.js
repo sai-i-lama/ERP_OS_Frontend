@@ -18,7 +18,7 @@ const SupplierReturnInvoiceList = ({ list }) => {
 		},
 
 		{
-			title: "Total Amount",
+			title: "Montant Total ",
 			dataIndex: "total_amount",
 			key: "total_amount",
 		},
@@ -28,7 +28,7 @@ const SupplierReturnInvoiceList = ({ list }) => {
 			key: "note",
 		},
 		{
-			title: "Purchase Invoice No",
+			title: " N° Facture d'achat",
 			dataIndex: "purchaseInvoice_id",
 			key: "purchaseInvoice_id",
 			render: (purchaseInvoice_id) => (

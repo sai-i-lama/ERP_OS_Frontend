@@ -11,7 +11,7 @@ const UserList = (props) => {
   }
   return (
     <div>
-      <PageTitle title="Back" />
+      <PageTitle title="Retour" />
       <AddUser />
       <GetAllUser />
     </div>

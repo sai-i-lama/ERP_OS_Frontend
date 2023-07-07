@@ -40,7 +40,7 @@ const UpdateAccount = ({ account, id }) => {
 			setInitValues({});
 			setLoading(false);
 		} catch (error) {
-			toast.error("Erreur lors de l’ajout d’un compte");
+			toast.error("Erreur lors de l’ajout du compte");
 			console.log(error.message);
 			setLoading(false);
 		}

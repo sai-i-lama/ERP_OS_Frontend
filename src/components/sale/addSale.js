@@ -110,7 +110,7 @@ const AddSale = () => {
 		} catch (error) {
 			console.log(error.message);
 			setLoader(false);
-			toast.error("Error while sales");
+			toast.error("Erreur lors de la vente");
 		}
 	};
 
@@ -372,13 +372,13 @@ const AddSale = () => {
 								justifyContent: "space-between",
 								alignItems: "center",
 							}}>
-							<strong>Rabais: </strong>
+							<strong>Remise: </strong>
 							<Form.Item
 								name='discount'
 								rules={[
 									{
 										required: true,
-										message: "S’il vous plaît entrer la réduction!",
+										message: "S’il vous plaît entrer le montant de la Remise!",
 									},
 								]}>
 								<InputNumber
@@ -433,7 +433,7 @@ const AddSale = () => {
 								justifyContent: "space-between",
 								border: "1px solid #ccc",
 							}}>
-							<strong>Montant dû: </strong>
+							<strong>Montant à payer: </strong>
 							<strong>{totalDiscountPaidDue.due} cfa</strong>
 						</div>
 

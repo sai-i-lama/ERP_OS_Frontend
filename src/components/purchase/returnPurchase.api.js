@@ -14,10 +14,10 @@ export const addReturnPurchase = async (values) => {
 				...values,
 			},
 		});
-		toast.success("Return Purchase Added Successfully");
+		toast.success("Retour d'achat ajouté avec succès");
 		return "success";
 	} catch (error) {
-		toast.error("Something went wrong at Return Purchase ");
+		toast.error("Quelque chose n'a pas fonctionné lors de l'achat en retour ");
 		console.log(error.message);
 	}
 };

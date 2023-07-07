@@ -38,7 +38,7 @@ const DetailsPurch = () => {
 			dispatch(deletePurchase(id));
 
 			setVisible(false);
-			toast.warning(`Purchase : ${singlePurchaseInvoice.id} is removed `);
+			toast.warning(`l'Achat : ${singlePurchaseInvoice.id} est supprimée`);
 			return navigate("/purchaselist");
 		} catch (error) {
 			console.log(error.message);
@@ -112,7 +112,7 @@ const DetailsPurch = () => {
 							<div className='card-body'>
 								<Row justify='space-around'>
 									<Col span={11}>
-										<CardComponent title=' Initial invoice infromation '>
+										<CardComponent title=' Informations sur la facture initiale'>
 											<br />
 											<p>
 												<Typography.Text strong>
@@ -134,7 +134,7 @@ const DetailsPurch = () => {
 												<strong>{singlePurchaseInvoice.total_amount} </strong>
 											</p>
 											<p>
-												<Typography.Text strong>Rabais :</Typography.Text>{" "}
+												<Typography.Text strong>Remise :</Typography.Text>{" "}
 												<strong>{singlePurchaseInvoice.discount}</strong>
 											</p>
 											<p>
@@ -155,7 +155,7 @@ const DetailsPurch = () => {
 										<Badge.Ribbon
 											text={status}
 											color={status === "PAID" ? "green" : "red"}>
-											<CardComponent title=' New Invoice Information'>
+											<CardComponent title='Nouvelles informations sur la facture'>
 												<p>
 													<Typography.Text strong>
 													Montant total payé:

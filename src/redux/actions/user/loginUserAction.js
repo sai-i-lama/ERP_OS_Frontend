@@ -31,13 +31,13 @@ export const addUser = (values) => {
 			localStorage.setItem("user", data.username);
 			localStorage.setItem("id", data.id);
 			localStorage.setItem("isLogged", true);
-			toast.success(" Login Successfully Done");
+			toast.success(" Connexion effectuée avec succès");
 
 			// <Navigate to="home" />;
 			return "success";
 		} catch (error) {
 			console.log(error.message);
-			toast.error("Incorrect Username or Password !");
+			toast.error("Nom d'utilisateur ou mot de passe incorrect !");
 			return "error";
 		}
 	};

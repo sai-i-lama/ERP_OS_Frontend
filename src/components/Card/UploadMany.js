@@ -35,12 +35,12 @@ const UploadMany = ({ urlPath }) => {
 			.then((d) => {
 				if (d.statusText === "OK") {
 					setLoader(false);
-					toast.success("Uploaded Success");
+					toast.success(" Téléchargé avec Succès");
 				}
 			})
 			.catch((err) => {
 				console.log(err, "err");
-				toast.error("error in uploading ");
+				toast.error("erreur dans le téléchargement ");
 				setLoader(false);
 			});
 	};

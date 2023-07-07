@@ -93,7 +93,7 @@ const AddPurch = () => {
 		} catch (error) {
 			setLoader(false);
 			console.log(error.message);
-			toast.error("Errror while purchase");
+			toast.error("Erreur lors de l'achat");
 		}
 	};
 
@@ -342,7 +342,7 @@ const AddPurch = () => {
 								alignItems: "center",
 							}}>
 							<div>
-								<strong>Rabais: </strong>
+								<strong>Remise: </strong>
 							</div>
 
 							<Form.Item
@@ -399,7 +399,7 @@ const AddPurch = () => {
 								border: "1px solid #ccc",
 								marginBottom: "10px",
 							}}>
-							<strong>Montant a payer: </strong>
+							<strong>Montant à payer: </strong>
 							<strong>{totalDiscountPaidDue.due} cfa</strong>
 						</div>
 

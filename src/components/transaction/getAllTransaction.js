@@ -28,27 +28,27 @@ function CustomTable({ list, total, startdate, enddate }) {
 		},
 
 		{
-			title: "Debit Account",
+			title: "Compte débiteur",
 			dataIndex: "debit",
 			key: "debit",
 			render: (debit) => debit?.name,
 		},
 
 		{
-			title: "Credit Account",
+			title: "Compte de crédit",
 			dataIndex: "credit",
 			key: "credit",
 			render: (credit) => credit?.name,
 		},
 
 		{
-			title: "Amount",
+			title: "Montant",
 			dataIndex: "amount",
 			key: "amount",
 			responsive: ["md"],
 		},
 		{
-			title: "Particulars",
+			title: "Particuliers",
 			dataIndex: "particulars",
 			key: "particulars",
 		},

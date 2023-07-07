@@ -27,7 +27,7 @@ export const addAccount = (values) => {
 			dispatch(addAccountAction(data));
 			return "success";
 		} catch (error) {
-			toast.error("Error in adding account");
+			toast.error("Erreur lors de l'ajout d'un compte");
 			console.log(error.message);
 		}
 	};

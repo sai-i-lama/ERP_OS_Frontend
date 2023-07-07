@@ -23,7 +23,7 @@ function SupplierInvoiceTable({ list, linkTo }) {
       key: "total_amount",
     },
     {
-      title: "Rabais",
+      title: "Remise",
       dataIndex: "discount",
       key: "discount",
       responsive: ["md"],
@@ -35,7 +35,7 @@ function SupplierInvoiceTable({ list, linkTo }) {
       responsive: ["md"],
     },
     {
-      title: "Montant dû",
+      title: "Montant à payer",
       dataIndex: "due_amount",
       key: "due_amount",
       responsive: ["md"],

@@ -75,7 +75,7 @@ const DetailsProd = () => {
                     content={
                       <a onClick={onDelete}>
                         <Button type="primary" danger>
-                          Yes Please !
+                          Oui !
                         </Button>
                       </a>
                     }
