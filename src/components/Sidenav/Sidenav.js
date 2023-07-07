@@ -93,7 +93,7 @@ const Test = ({ color }) => {
       ],
     },
     {
-      label: "SPA",
+      label: "VENTE",
       key: "saleSection",
       icon: <MinusSquareOutlined />,
       children: [
@@ -109,11 +109,20 @@ const Test = ({ color }) => {
         {
           label: (
             <NavLink to="/sale">
-              <span>Nouvelle vente</span>
+              <span>SPA</span>
             </NavLink>
           ),
           key: "newSale",
           icon: <CheckOutlined />,
+        },
+        {
+          label: (       
+            <NavLink to="/pos">
+              <span>Boutique</span>
+            </NavLink>
+          ),
+          key: "pos",
+          icon: <ShoppingCartOutlined />,
         },
         {
           label: (
@@ -229,16 +238,6 @@ const Test = ({ color }) => {
         },
       ],
     },
-    {
-      label: (
-        <NavLink to="/pos">
-          <span>BOUTIQUE</span>
-        </NavLink>
-      ),
-      key: "pos",
-      icon: <ShoppingCartOutlined />,
-    },
-
     {
       label: "PARAMÈTRES",
       key: "settings",
