@@ -214,11 +214,9 @@ const AddProd = () => {
                   },
                 ]}
               >
-<<<<<<< HEAD
-                <Input type="number"  min={0} value={0} />
-=======
+
                 <Input type="number" min={0} />
->>>>>>> eb1b86554b824c3437c2064c14029ce3a0ac093f
+
               </Form.Item>
 
               <Form.Item
@@ -232,11 +230,9 @@ const AddProd = () => {
                   },
                 ]}
               >
-<<<<<<< HEAD
-                <Input type="number"  min={0} value={0} />
-=======
+
                 <Input type="number" min={0} />
->>>>>>> eb1b86554b824c3437c2064c14029ce3a0ac093f
+
               </Form.Item>
 
               <Form.Item
@@ -264,11 +260,9 @@ const AddProd = () => {
                   },
                 ]}
               >
-<<<<<<< HEAD
-                <Input type="number"  min={0} value={0} />
-=======
+
                 <Input type="number" min={0} />
->>>>>>> eb1b86554b824c3437c2064c14029ce3a0ac093f
+
               </Form.Item>
 
               <Form.Item
@@ -282,11 +276,9 @@ const AddProd = () => {
                   },
                 ]}
               >
-<<<<<<< HEAD
-                <Input type="number"  min={0} value={0} />
-=======
+
                 <Input type="number" min={0} />
->>>>>>> eb1b86554b824c3437c2064c14029ce3a0ac093f
+
               </Form.Item>
 
               <Form.Item label="Envoyer image" valuePropName="image">
