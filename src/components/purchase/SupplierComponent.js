@@ -18,7 +18,7 @@ export const SupplierDetail = ({ supplier }) => {
 				<Tag>{supplier.phone}</Tag>
 				<Tag>{supplier.address}</Tag>
 				<Tag>
-				Montant dû : <strong>{supplier.due_amount}</strong>
+				Montant à payer : <strong>{supplier.due_amount}</strong>
 				</Tag>
 			</div>
 		</div>

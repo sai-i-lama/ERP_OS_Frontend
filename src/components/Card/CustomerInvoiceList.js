@@ -28,7 +28,7 @@ function CustomerInvoiceList({ list, linkTo }) {
 			responsive: ["md"],
 		},
 		{
-			title: "Montant dû",
+			title: "Montant à payer",
 			dataIndex: "due_amount",
 			key: "due_amount",
 			responsive: ["md"],

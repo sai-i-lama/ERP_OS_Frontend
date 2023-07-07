@@ -25,7 +25,7 @@ const DetailDesignation = () => {
       dispatch(deleteDesignation(id));
 
       setVisible(false);
-      toast.warning(`Designation : ${designation.name} is removed `);
+      toast.warning(`La fonction : ${designation.name} est supprimé `);
       return navigate("/designation");
     } catch (error) {
       console.log(error.message);
@@ -85,11 +85,11 @@ const DetailDesignation = () => {
                     content={
                       <a onClick={onDelete}>
                         <Button type="primary" danger>
-                          Yes Please !
+                          Oui !
                         </Button>
                       </a>
                     }
-                    title="Are you sure you want to delete ?"
+                    title="Voulez-vous vraiment supprimer ?"
                     trigger="click"
                     visible={visible}
                     onVisibleChange={handleVisibleChange}

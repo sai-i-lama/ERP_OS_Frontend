@@ -48,7 +48,7 @@ const AddDesignation = () => {
         >
           <Card bordered={false}>
             <Title level={4} className="m-2 text-center">
-            Ajouter une désignation
+            Ajouter une Fonction
             </Title>
             <Form
               form={form}
@@ -91,7 +91,7 @@ const AddDesignation = () => {
                   shape="round"
                   loading={loader}
                 >
-                  Ajouter une désignation
+                  Ajouter une Fonction
                 </Button>
               </Form.Item>
             </Form>

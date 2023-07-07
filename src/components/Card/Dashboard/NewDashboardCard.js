@@ -17,7 +17,7 @@ const NewDashboardCard = ({ information }) => {
                           ? information?.purchase_total
                           : 0}
                       </h3>
-                      <span className="">Total vente</span>
+                      <span className="">Total Achat</span>
                     </div>
                     <div className="align-self-center">
                       <i className="icon-cloud-download font-large-2 float-right"></i>
@@ -81,7 +81,7 @@ const NewDashboardCard = ({ information }) => {
                       </h3>
                       <span
                         className="strong dark"
-                        style={{ fontSize: "11px", fontWeight: "bold" }}>
+                        style={{ fontSize: "14px", fontWeight: "" }}>
                         Facture d’achat{" "}
                       </span>
                     </div>
@@ -91,7 +91,7 @@ const NewDashboardCard = ({ information }) => {
                       </h3>
                       <span
                         className="strong dark"
-                        style={{ fontSize: "11px", fontWeight: "bold" }}>
+                        style={{ fontSize: "14px", fontWeight: "" }}>
                         Facture de vente{" "}
                       </span>
                     </div>

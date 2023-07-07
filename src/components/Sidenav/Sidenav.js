@@ -221,7 +221,7 @@ const Test = ({ color }) => {
         {
           label: (
             <NavLink to="/designation/">
-              <span>Designation</span>
+              <span>Fonction</span>
             </NavLink>
           ),
           key: "designation",

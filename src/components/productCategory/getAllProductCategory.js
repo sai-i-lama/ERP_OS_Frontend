@@ -70,7 +70,7 @@ function CustomTable({ list, total }) {
     <div className="card column-design">
       <div className="card-body">
         <div className="card-title d-flex justify-content-between">
-          <h5>Liste de produits</h5>
+          <h5>Liste des Catégories</h5>
           {list && (
             <div>
               <CSVLink
