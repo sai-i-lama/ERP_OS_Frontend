@@ -163,7 +163,7 @@ const DetailProductCategory = () => {
       dispatch(DeleteProductCategory(id));
 
       setVisible(false);
-      toast.warning(`le Produit : ${category.name} est supprimé `);
+      toast.warning(`la Catégorie : ${category.name} est supprimée `);
       return navigate("/product-category");
     } catch (error) {
       console.log(error.message);

@@ -24,13 +24,13 @@ export const addProduct = (values) => {
       });
       //dispatching data
       dispatch(addProducAction(data));
-      toast.success("Product Added ");
+      toast.success("Produit ajouté ");
       return {
         message: "success",
       };
     } catch (error) {
       console.log(error.message);
-      toast.error("Error, Check Name and Others ");
+      toast.error("Ce nom de Produit existe déjà");
       return {
         message: "error",
       };

@@ -56,7 +56,7 @@ const GenerateBarcodePopUp = ({ sku, quantity }) => {
       </button>
       <Modal
         width={800}
-        title={`View Barcode of Product`}
+        title={`Afficher le code-barres du produit`}
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}

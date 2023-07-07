@@ -41,7 +41,7 @@ const AddDetails = () => {
 		try {
 			const resp = await updateInvoice(values);
 			if (resp === "success") {
-				toast.success("Invoice Updated Successfully");
+				toast.success("Facture mise à jour avec succès");
 				setInitValues({});
 				window.location.reload();
 			}
@@ -51,7 +51,7 @@ const AddDetails = () => {
 	};
 
 	const onFinishFailed = (errorInfo) => {
-		toast.error("Something went wrong !");
+		toast.error("Quelque chose n'a pas fonctionné !");
 		console.log("Failed:", errorInfo);
 	};
 

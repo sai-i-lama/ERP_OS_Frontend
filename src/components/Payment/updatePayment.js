@@ -50,7 +50,7 @@ function UpdateSup() {
     try {
       updateSupplier(id, values);
       setSuccess(true);
-      toast.success("Supplier details is updated");
+      toast.success("Les détails du fournisseur sont mis à jour");
       setInitValues({});
     } catch (error) {
       console.log(error.message);
@@ -64,7 +64,7 @@ function UpdateSup() {
   return (
     <Fragment>
       <Main>
-        <PageTitle title={`Back`} />
+        <PageTitle title={`Retour`} />
         <div className='text-center'>
           <div className=''>
             <Row className='mr-top'>
@@ -79,7 +79,7 @@ function UpdateSup() {
                 {success && (
                   <div>
                     <Alert
-                      message={`Supplier details updated successfully`}
+                      message={`Les détails du fournisseur ont été mis à jour avec succès`}
                       type='success'
                       closable={true}
                       showIcon
@@ -110,12 +110,12 @@ function UpdateSup() {
                     <Form.Item
                       style={{ marginBottom: "10px" }}
                       fields={[{ name: "Name" }]}
-                      label='Name'
+                      label='Nom'
                       name='name'
                       rules={[
                         {
                           required: true,
-                          message: "Please input supplier name!",
+                          message: "Veuillez saisir le nom du fournisseur!",
                         },
                       ]}
                     >
@@ -124,12 +124,12 @@ function UpdateSup() {
 
                     <Form.Item
                       style={{ marginBottom: "10px" }}
-                      label='Phone'
+                      label='Téléphone'
                       name='phone'
                       rules={[
                         {
                           required: true,
-                          message: "Please input supplier Phone!",
+                          message: "S’il vous plaît entrer le Téléphone du fournisseur !",
                         },
                       ]}
                     >
@@ -138,12 +138,12 @@ function UpdateSup() {
 
                     <Form.Item
                       style={{ marginBottom: "10px" }}
-                      label='Address'
+                      label='Adresse'
                       name='address'
                       rules={[
                         {
                           required: true,
-                          message: "Please input supplier Address!",
+                          message: "Veuillez saisir l’adresse du fournisseur!",
                         },
                       ]}
                     >
@@ -152,13 +152,13 @@ function UpdateSup() {
 
                     <Form.Item
                       style={{ marginBottom: "10px" }}
-                      label='Due Amount'
+                      label='Montant à payer'
                       name='due_amount'
                       rules={[
                         {
                           type: Number,
                           required: true,
-                          message: "Please input supplier amount!",
+                          message: "Veuillez saisir le montant du fournisseur!",
                         },
                       ]}
                     >

@@ -95,7 +95,7 @@ function UpdateStaff() {
       const resp = await updateStaff(id, values);
 
       setSuccess(true);
-      toast.success("User Details updated");
+      toast.success("Mise à jour des détails de l'utilisateur");
       setInitValues({});
       if (resp === "success") {
         setLoader(false);
@@ -125,7 +125,7 @@ function UpdateStaff() {
 
   return (
     <>
-      <PageTitle title={`Back`} />
+      <PageTitle title={`Retour`} />
       <div className="text-center">
         <div className="">
           <Row className="mr-top">
@@ -140,7 +140,7 @@ function UpdateStaff() {
               {success && (
                 <div>
                   <Alert
-                    message={`User details updated successfully`}
+                    message={`Mise à jour réussie des données de l'utilisateur`}
                     type="success"
                     closable={true}
                     showIcon
@@ -250,12 +250,12 @@ function UpdateStaff() {
 
                   <Form.Item
                     style={{ marginBottom: "10px" }}
-                    label="Date d’adhésion"
+                    label="Date de début de fonction"
                     name="join_date"
                     rules={[
                       {
                         required: true,
-                        message: "Veuillez saisir la date d’adhésion!",
+                        message: "Veuillez saisir la date de début de fonction!",
                       },
                     ]}
                   >
@@ -264,12 +264,12 @@ function UpdateStaff() {
 
                   <Form.Item
                     style={{ marginBottom: "10px" }}
-                    label="Leave Date"
+                    label="date de fin de fonction"
                     name="leave_date"
                     rules={[
                       {
                         required: true,
-                        message: "Please input leave date!",
+                        message: "Veuillez saisir la date de fin de fonction!",
                       },
                     ]}
                   >
@@ -278,12 +278,12 @@ function UpdateStaff() {
 
                   <Form.Item
                     style={{ marginBottom: "10px" }}
-                    label="Id No"
+                    label="Id"
                     name="id_no"
                     rules={[
                       {
                         required: true,
-                        message: "Veuillez saisir id no",
+                        message: "Veuillez saisir id",
                       },
                     ]}
                   >
@@ -370,7 +370,7 @@ function UpdateStaff() {
                       style={{
                         width: "100%",
                       }}
-                      placeholder="Please select"
+                      placeholder="Veuillez sélectionner"
                     >
                       {designation &&
                         designation.map((desg) => (

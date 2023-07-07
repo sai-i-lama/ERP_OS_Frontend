@@ -28,7 +28,7 @@ const DetailTransaction = () => {
       // dispatch(deleteSupplierPayment(id));
 
       setVisible(false);
-      toast.warning(`Transaction : ${payment.id} is removed `);
+      toast.warning(`La Transaction : ${payment.id} est supprimée `);
       return navigate("/payment");
     } catch (error) {
       console.log(error.message);
@@ -53,7 +53,7 @@ const DetailTransaction = () => {
 
   return (
     <div>
-      <PageTitle title=" Back " subtitle={`Payment ${id} information`} />
+      <PageTitle title=" Retour " subtitle={`Paiement ${id} information`} />
 
       <div className="mr-top">
         {payment ? (
@@ -71,11 +71,11 @@ const DetailTransaction = () => {
                     content={
                       <a onClick={onDelete}>
                         <Button type="primary" danger>
-                          Yes Please !
+                          Oui !
                         </Button>
                       </a>
                     }
-                    title="Are you sure you want to delete ?"
+                    title="Êtes-vous sûr de vouloir supprimer ?"
                     trigger="click"
                     visible={visible}
                     onVisibleChange={handleVisibleChange}

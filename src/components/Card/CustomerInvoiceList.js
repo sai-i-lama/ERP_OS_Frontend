@@ -22,7 +22,7 @@ function CustomerInvoiceList({ list, linkTo }) {
 			key: "total_amount",
 		},
 		{
-			title: "Rabais",
+			title: "Remise",
 			dataIndex: "discount",
 			key: "discount",
 			responsive: ["md"],

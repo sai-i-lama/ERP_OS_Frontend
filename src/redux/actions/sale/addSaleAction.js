@@ -31,7 +31,7 @@ export const addSale = (values) => {
       };
 
       dispatch(addPurchaseAciton(newData));
-      toast.success("New Product Sold ");
+      toast.success("Nouveau produit vendu ");
       return {
         createdInvoiceId: data.createdInvoice.id,
         message: "success",

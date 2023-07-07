@@ -10,7 +10,7 @@ const RoleList = (props) => {
   }
   return (
     <div>
-      <PageTitle title="Back" />
+      <PageTitle title="Retour" />
       <AddRole />
     </div>
   );

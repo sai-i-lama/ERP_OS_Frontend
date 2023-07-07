@@ -28,7 +28,7 @@ const Login = () => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
     setLoader(false);
-    toast.error("Error at login Please try again");
+    toast.error("Erreur de connexion Veuillez réessayer");
   };
 
   return (

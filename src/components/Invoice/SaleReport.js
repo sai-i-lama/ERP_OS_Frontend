@@ -71,7 +71,7 @@ const PrintToPdf = forwardRef(
 								<th>Type d'unité</th>
 								<th>Total</th>
 								<th>S Total</th>
-								<th>Rabais</th>
+								<th>Remise</th>
 								<th>G Total</th>
 								<th>Payé</th>
 								<th>Montant Du</th>

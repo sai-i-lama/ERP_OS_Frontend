@@ -54,7 +54,7 @@ const SaleProductListCard = ({ list, updateReturn, returnOnChange }) => {
 		//   width: "120px",
 		// });
 		columns.splice(4, 0, {
-			title: "Return Quantité",
+			title: " Quantité Retournée",
 			dataIndex: "return_quantity",
 			key: "return_quantity",
 			width: "150px",
@@ -69,7 +69,7 @@ const SaleProductListCard = ({ list, updateReturn, returnOnChange }) => {
 								returnOnChange({ id: product_id, value, price })
 							}
 							style={{ width: "120px" }}
-							placeholder='Return Qty'
+							placeholder='Quantité Retournée'
 							max={product_quantity}
 							min={0}
 							value={value}

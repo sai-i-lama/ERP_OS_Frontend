@@ -4,23 +4,23 @@ import React, { useState } from "react";
 const CustomTable = ({ list }) => {
 	const columns = [
 		{
-			title: "Name",
+			title: "Nom",
 			dataIndex: "product",
 			key: "product",
 			render: (product) => product?.name,
 		},
 		{
-			title: "Product Quantity",
+			title: " Quantité de Produit",
 			dataIndex: "product_quantity",
 			key: "product_quantity",
 		},
 		{
-			title: "Product Unit Price ",
+			title: "Prix Unitaire Produit",
 			dataIndex: "product_sale_price",
 			key: "product_sale_price",
 		},
 		{
-			title: "Total Amount",
+			title: " Montant Total ",
 			dataIndex: "",
 			render: ({ product_quantity, product_sale_price }) =>
 				product_quantity * product_sale_price,
@@ -71,7 +71,7 @@ const ReturnSaleInvoiceProductList = ({ list }) => {
 			</button>
 			<Modal
 				width={1000}
-				title={`View Details of Product`}
+				title={`Voir les détails du produit`}
 				open={isModalOpen}
 				onOk={handleOk}
 				onCancel={handleCancel}>

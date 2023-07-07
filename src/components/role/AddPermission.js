@@ -45,7 +45,7 @@ const AddPermission = () => {
         setLoader(false);
       }
       if (resp.message === "error") {
-        toast.error("Error at giving permission, Try again");
+        toast.error("Erreur d'autorisation, réessayez");
         setLoader(false);
         form.resetFields();
       }
@@ -136,7 +136,7 @@ const AddPermission = () => {
                   style={{
                     width: "100%",
                   }}
-                  placeholder="Please select"
+                  placeholder="Veuillez sélectionner"
                   onChange={handleChange}
                 >
                   {permissions &&

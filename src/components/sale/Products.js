@@ -47,7 +47,7 @@ export default function Products({
 				</Col>
 			</Row>
 
-			<hr style={{ backgroundColor: "black" }} />
+			<hr style={{ backgroundColor: "Retour" }} />
 
 			<Form.List name='saleInvoiceProduct'>
 				{(fields, { add, remove }) => (

@@ -100,7 +100,7 @@ const PrintToPdf = forwardRef(({ data, invoiceData }, ref) => {
 							<td>{data.total_amount}</td>
 						</tr>
 						<tr>
-							<th>Rabais (-)</th>
+							<th>Remise (-)</th>
 							<td>{data.discount}</td>
 						</tr>
 						<tr>

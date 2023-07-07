@@ -53,7 +53,7 @@ function CustomTable({ list, total, status, setStatus, startdate, enddate }) {
 			key: "total_amount",
 		},
 		{
-			title: "Rabais",
+			title: "Remise",
 			dataIndex: "discount",
 			key: "discount",
 		},

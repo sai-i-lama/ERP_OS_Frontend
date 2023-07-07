@@ -25,7 +25,7 @@ export const loadAllSale = ({ page, limit, startdate, enddate, user }) => {
 			};
 		} catch (error) {
 			console.log(error.message);
-			toast.error("Error in loading sales");
+			toast.error("Erreur de chargement des ventes");
 		}
 	};
 };

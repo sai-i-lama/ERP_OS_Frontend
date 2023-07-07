@@ -34,11 +34,11 @@ const AddAccoun = () => {
         setLoader(false);
       }
 
-      toast.success("Account Added");
+      toast.success("Compte ajouté");
       form.resetFields();
       setLoader(false);
     } catch (error) {
-      toast.error("Error in adding account");
+      toast.error("Erreur lors de l'ajout du compte");
       console.log(error.message);
       setLoader(false);
     }

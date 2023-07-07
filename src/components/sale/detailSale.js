@@ -121,7 +121,7 @@ const DetailSale = () => {
 							<div className='card-body'>
 								<Row justify='space-around'>
 									<Col span={11}>
-										<CardComponent title='Initial Invoice Information '>
+										<CardComponent title='Informations sur la facture initiale '>
 											<div className='d-flex justify-content-between'>
 												<div>
 													<p>
@@ -149,7 +149,7 @@ const DetailSale = () => {
 														<strong>{singleSaleInvoice.total_amount}</strong>
 													</p>
 													<p>
-														<Typography.Text strong>Rabais :</Typography.Text>{" "}
+														<Typography.Text strong>Remise :</Typography.Text>{" "}
 														<strong>{singleSaleInvoice.discount}</strong>
 													</p>
 													<p>
@@ -160,7 +160,7 @@ const DetailSale = () => {
 													</p>
 													<p>
 														<Typography.Text strong>
-														Montant dû :
+														Montant à payer :
 														</Typography.Text>{" "}
 														<strong style={{ color: "red" }}>
 															{" "}
@@ -181,7 +181,7 @@ const DetailSale = () => {
 										<Badge.Ribbon
 											text={status}
 											color={status === "PAID" ? "green" : "red"}>
-											<CardComponent title='Update Invoice Information '>
+											<CardComponent title='Mise à jour des informations sur la facture '>
 												<div>
 													<p>
 														<Typography.Text strong>
@@ -199,7 +199,7 @@ const DetailSale = () => {
 
 													<p>
 														<Typography.Text strong>
-														Montant dû :
+														Montant à payer :
 														</Typography.Text>{" "}
 														<strong style={{ color: "red" }}>
 															{dueAmount}

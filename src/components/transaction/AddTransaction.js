@@ -49,12 +49,12 @@ const AddTransaction = () => {
       };
 
       const resp = await dispatch(addTransaction(data));
-      if (resp === "Transaction created successfully") {
+      if (resp === "Transaction créée avec succès") {
         setLoader(false);
         navigate(-1);
       }
 
-      toast.success("Payment Successfully done");
+      toast.success("Paiement effectué avec succès");
       form.resetFields();
       setLoader(false);
     } catch (error) {
@@ -76,7 +76,7 @@ const AddTransaction = () => {
 
   return (
     <>
-      <PageTitle title="Back" />
+      <PageTitle title="Retour" />
       <Row className="mr-top">
         <Col
           xs={24}

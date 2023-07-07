@@ -25,10 +25,10 @@ export const addDesignation = (values) => {
 			});
 			//dispatching data
 			dispatch(addDesignationAction(data));
-			toast.success("designation Added");
+			toast.success("Fonction ajoutée");
 			return "success";
 		} catch (error) {
-			toast.error("Error in adding designation try again");
+			toast.error("Erreur lors de l'ajout de la fonction, essayez à nouveau");
 			console.log(error.message);
 			return "error";
 		}

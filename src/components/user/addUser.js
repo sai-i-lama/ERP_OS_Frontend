@@ -158,7 +158,7 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input leave date!",
+                    message: "Veuillez saisir la date de fin de fonction!",
                   },
                 ]}
               >
@@ -204,7 +204,7 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez saisir id no",
+                    message: "Veuillez saisir id ",
                   },
                 ]}
               >

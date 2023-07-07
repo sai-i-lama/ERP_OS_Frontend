@@ -27,7 +27,7 @@ export const addCustomerPayment = (values) => {
 			dispatch(addCustomerPaymentAction(data));
 			return "success";
 		} catch (error) {
-			toast.error("Something went wrong in payment");
+			toast.error("Un problème s'est produit lors du paiement");
 			console.log(error.message);
 		}
 	};

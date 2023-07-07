@@ -58,7 +58,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       key: "total_amount",
     },
     {
-      title: "Rabais",
+      title: "Remise",
       dataIndex: "discount",
       key: "discount",
     },

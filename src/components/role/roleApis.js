@@ -23,14 +23,14 @@ export const addRole = async (values) => {
 			},
 		});
 		//dispatching data
-		toast.success("Added successful");
+		toast.success("Succès lors de l'Ajout");
 
 		return {
 			data,
 			message: "success",
 		};
 	} catch (error) {
-		toast.error("Error in adding Role try again");
+		toast.error("Erreur lors de l'ajout d'un rôle, essayez à nouveau");
 		console.log(error.message);
 		return {
 			message: "error",
@@ -71,14 +71,14 @@ export const addPermission = async (values) => {
 			},
 		});
 		//dispatching data
-		toast.success("Added successful");
+		toast.success("Succès lors de l'Ajout");
 
 		return {
 			data,
 			message: "success",
 		};
 	} catch (error) {
-		toast.error("Error in adding Permission try again");
+		toast.error("Erreur lors de l'ajout d'une autorisation, essayez à nouveau");
 		console.log(error.message);
 		return {
 			message: "error",
@@ -105,14 +105,14 @@ export const deleteRolePermission = async (value) => {
 			data: value,
 		});
 		//dispatching data
-		toast.success("Deleted successful");
+		toast.success("Supprimé avec succès");
 
 		return {
 			data,
 			message: "success",
 		};
 	} catch (error) {
-		toast.error("Error in deleting Permission try again");
+		toast.error("Erreur lors de la suppression de l'autorisation, essayez à nouveau");
 		console.log(error.message);
 		return {
 			message: "error",

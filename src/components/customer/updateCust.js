@@ -48,7 +48,7 @@ function UpdateCust() {
     try {
       updateCustomer(id, values);
       setSuccess(true);
-      toast.success("Customer details is updated");
+      toast.success("Mise à jour des coordonnées du client");
       setInitValues({});
     } catch (error) {
       console.log(error.message);
@@ -85,7 +85,7 @@ function UpdateCust() {
               {success && (
                 <div>
                   <Alert
-                    message={`customer details updated successfully`}
+                    message={`les données du client ont été mises à jour avec succès`}
                     type="success"
                     closable={true}
                     showIcon

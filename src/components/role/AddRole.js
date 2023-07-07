@@ -25,13 +25,13 @@ function CustomTable({ list }) {
       key: "id",
     },
     {
-      title: "Name",
+      title: "Nom",
       dataIndex: "name",
       key: "name",
     },
 
     {
-      title: "Created at",
+      title: "Créé le",
       dataIndex: "createdAt",
       key: "addrcreatedAtess",
       render: (createdAt) => moment(createdAt).format("YYYY-MM-DD"),
@@ -143,7 +143,7 @@ const Role = () => {
   };
 
   const onFinishFailed = (errorInfo) => {
-    toast.warning("Failed at adding role");
+    toast.warning("Échec de l'ajout d'un rôle");
     setLoader(false);
   };
   return (

@@ -31,7 +31,7 @@ const DetailsSup = () => {
       dispatch(deleteSupplier(id));
 
       setVisible(false);
-      toast.warning(`Supplier : ${supplier.name} is removed `);
+      toast.warning(`Fournisseur : ${supplier.name} est supprimé `);
       return navigate("/supplier");
     } catch (error) {
       console.log(error.message);
@@ -56,7 +56,7 @@ const DetailsSup = () => {
 
   return (
     <div>
-      <PageTitle title=" Back " subtitle={`Supplier ${id} information`} />
+      <PageTitle title=" Retour " subtitle={`Insformation sur le Fournisseur ${supplier.name} `} />
 
       <div className="mr-top">
         {supplier ? (
@@ -87,11 +87,11 @@ const DetailsSup = () => {
                     content={
                       <a onClick={onDelete}>
                         <Button type="primary" danger>
-                          Yes Please !
+                          Oui !
                         </Button>
                       </a>
                     }
-                    title="Are you sure you want to delete ?"
+                    title="Êtes-vous sûr de vouloir supprimer ?"
                     trigger="click"
                     visible={visible}
                     onVisibleChange={handleVisibleChange}
@@ -119,13 +119,13 @@ const DetailsSup = () => {
                 </p>
 
                 <p>
-                  <Typography.Text strong>Montant dû :</Typography.Text>{" "}
+                  <Typography.Text strong>Montant à payer :</Typography.Text>{" "}
                   {supplier.due_amount}
                 </p>
               </div>
               <hr />
               <h6 className="font-semibold m-0 text-center">
-                All Invoice Information
+              Toutes les informations sur la facture
               </h6>
               <div className="text-center m-2 d-flex justify-content-end">
                 {supplier.purchaseInvoice && (

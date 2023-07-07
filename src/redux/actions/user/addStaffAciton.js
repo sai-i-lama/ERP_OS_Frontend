@@ -25,11 +25,11 @@ export const addStaff = (values) => {
 			});
 			//dispatching data
 			dispatch(addStaffAction(data));
-			toast.success("Registration successful");
+			toast.success("Inscription réussie");
 
 			return "success";
 		} catch (error) {
-			toast.error("Error in adding staff try again");
+			toast.error("Erreur lors de l'ajout du personnel, essayez à nouveau");
 			console.log(error.message);
 			return "error";
 		}

@@ -26,7 +26,7 @@ const DetailRole = () => {
       dispatch(deleteProduct(id));
 
       setVisible(false);
-      toast.warning(`role Name : ${role.rolename} is removed `);
+      toast.warning(`Nom du rôle : ${role.rolename} est supprimé `);
       return navigate("/dashboard");
     } catch (error) {
       console.log(error.message);
@@ -51,7 +51,7 @@ const DetailRole = () => {
 
   return (
     <div>
-      <PageTitle title=" Back  " />
+      <PageTitle title=" Retour  " />
 
       <div className="mr-top">
         {role ? (
@@ -84,11 +84,11 @@ const DetailRole = () => {
                     content={
                       <a onClick={onDelete}>
                         <Button disabled={true} type="primary" danger>
-                          Yes Please !
+                          Oui !
                         </Button>
                       </a>
                     }
-                    title="Are you sure you want to delete ?"
+                    title="Êtes-vous sûr de vouloir supprimer ?"
                     trigger="click"
                     visible={visible}
                     onVisibleChange={handleVisibleChange}

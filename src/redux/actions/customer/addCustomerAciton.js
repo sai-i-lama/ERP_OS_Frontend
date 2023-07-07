@@ -25,12 +25,12 @@ export const addCustomer = (values) => {
 			});
 			//dispatching data
 			dispatch(addCustomerAction(data));
-			toast.success("Customer Added");
+			toast.success("Client ajouté");
 			return {
 				message: "success",
 			};
 		} catch (error) {
-			toast.error("Error in adding customer try again");
+			toast.error("Erreur lors l'ajout d'un client, essayez à nouveau");
 			console.log(error.message);
 		}
 	};
