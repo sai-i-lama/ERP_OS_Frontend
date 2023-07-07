@@ -80,6 +80,7 @@ export default function Products({
                       value={
                         selectedProds[key] ? selectedProds[key].selectedQty : ""
                       }
+                      min={0}
                     />
                     <p style={{ display: "none" }}>
                       {selectedProds[key] ? selectedProds[key].selectedQty : ""}
@@ -102,6 +103,7 @@ export default function Products({
                           ? selectedProds[key].purchase_price
                           : ""
                       }
+                      min={0}
                     />
                     <p style={{ display: "none" }}>
                       {selectedProds[key]

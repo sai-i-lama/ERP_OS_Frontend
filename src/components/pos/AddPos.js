@@ -47,7 +47,7 @@ const AddPos = ({
 	const allCustomer = useSelector((state) => state.customers.list);
 	const allProducts = useSelector((state) => state.products.list);
 	const [customer, setCustomer] = useState(null);
-
+	const [isDisabled, setIsDisabled] = useState(false);
 	const [formData, setFormData] = useState({});
 	const [totalDiscountPaidDue, setTotalDiscountPaidDue] = useState({
 		total: 0,
@@ -124,7 +124,7 @@ const AddPos = ({
 		setCustomer(data);
 	};
 
-	const onSearch = (value) => {};
+	const onSearch = (value) => { };
 
 	useEffect(() => {
 		if (selectedProds.length > 0) {
@@ -193,7 +193,19 @@ const AddPos = ({
 										message: "S’il vous plaît entrer la réduction!",
 									},
 								]}>
-								<InputNumber type='number' value={0} min={0} onChange={(value) => handleDiscount(Math.max(value, 0))} />
+								<InputNumber
+									type='number'
+									value={0}
+									min={0}
+									max={totalDiscountPaidDue.total}
+									onChange={(value) => {
+										handleDiscount(Math.max(value, 0));
+										if (value > totalDiscountPaidDue.total) {
+											setIsDisabled(true);
+										}
+									}}
+									disabled={isDisabled}
+								/>
 							</Form.Item>
 						</div>
 
@@ -223,7 +235,7 @@ const AddPos = ({
 										message: "Veuillez saisir le montant payé!",
 									},
 								]}>
-								<InputNumber type='number' onChange={handlePaid} />
+								<InputNumber type='number' onChange={handlePaid} min={0} />
 							</Form.Item>
 						</div>
 						<div

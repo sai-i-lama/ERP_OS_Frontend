@@ -118,7 +118,7 @@ function UpdateDesignation() {
 											message: "Veuillez entrer le nom de la Fonction!",
 										},
 									]}>
-									<Input />
+									<Input maxLength={50}/>
 								</Form.Item>
 
 								<Form.Item

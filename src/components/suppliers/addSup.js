@@ -91,7 +91,7 @@ const AddSup = () => {
 										message: "Veuillez saisir le numéro de téléphone !",
 									},
 								]}>
-								<Input />
+								<Input maxLength={14} />
 							</Form.Item>
 
 							<Form.Item

@@ -354,7 +354,7 @@ const AddPurch = () => {
 										message: "S’il vous plaît entrer Réduction!",
 									},
 								]}>
-								<InputNumber type='number' onChange={handleDiscount} />
+								<InputNumber type='number' onChange={handleDiscount} min={0} />
 							</Form.Item>
 						</div>
 						<div
@@ -387,7 +387,7 @@ const AddPurch = () => {
 										message: "Veuillez saisir le montant payé!",
 									},
 								]}>
-								<InputNumber type='number' onChange={handlePaid} />
+								<InputNumber type='number' onChange={handlePaid} min={0} />
 							</Form.Item>
 						</div>
 

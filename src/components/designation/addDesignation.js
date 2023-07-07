@@ -77,7 +77,7 @@ const AddDesignation = () => {
                   },
                 ]}
               >
-                <Input />
+                <Input maxLength={50}/>
               </Form.Item>
 
               <Form.Item
