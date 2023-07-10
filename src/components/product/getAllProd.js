@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./product.css";
 
-import { Button, Dropdown, Menu, Segmented, Table } from "antd";
+import { Button, Dropdown, Menu, Segmented, Table, Alert } from "antd";
 import { useEffect } from "react";
 
 import { CSVLink } from "react-csv";
@@ -120,6 +120,36 @@ function CustomTable({ list, total, status }) {
 
   return (
     <div>
+      {list && (
+        <div>
+          {list.map((item) => {
+            if (item.quantity <= 10) {
+              return (
+                <Alert
+                  key={item.id}
+                  message="warning"
+                  showIcon
+                  description={
+                    <span>
+                      Le produit{" "}
+                      <Link to={`/product/${item.id}`}>{item.name}</Link> a une
+                      quantité inférieure ou égale à 10. Nous vous recommandons
+                      de vous approvisionner dès que possible afin de garantir
+                      que vous disposez suffisamment de stock pour répondre
+                      aux demandes de vos clients.
+                    </span>
+                  }
+                  type="warning"
+                  style={{ marginBottom: "16px" }}
+                  closable
+                />
+              );
+            } else {
+              return null;
+            }
+          })}
+        </div>
+      )}
       <div>
         {list && (
           <div style={{ marginBottom: "30px" }}>
