@@ -1,15 +1,49 @@
-# ERP_OS_Frontend
-# Elegant Dashboard Design
+# SAI I LAMA - Installation Guide
 
-Welcome to the Elegant Dashboard Design, a comprehensive business management solution that offers a range of features to manage your business operations efficiently.
+[![License](https://img.shields.io/github/license/username/erp-os.svg?style=flat-square)](https://github.com/username/erp-os/blob/master/LICENSE)
+
+This setup guide is for setting up the ERP OS application in a local development environment. You can also host this application on various cloud hosting providers such as AWS, GCP, AZURE, DigitalOcean, Heroku, Netlify, Vercel, Render, etc.
 
 ## Table of Contents
 
-- [Features and Functionalities](#features-and-functionalities)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
+- [Prerequisites](#prerequisites)
+- [Database (PostgreSQL)](#database-postgresql)
+- [Backend (Express/Node.js)](#backend-expressnodejs)
+- [Frontend (React.js)](#frontend-reactjs)
+- [Features and Functionalities](#Features-and-Functionalities)
+- [Collaboration](#collaboration)
 - [License](#license)
+
+## Prerequisites
+
+Before starting the installation process, you need to ensure that the following prerequisites are met:
+
+- Download and Install the LTS version (Current LTS version is 16.18.0) of the Node.js runtime environment from the official website [here](https://nodejs.org/en/download/).
+- Download and Install the PostgreSQL database from the official website [here](https://www.postgresql.org/download/).
+- Type command: `npm install --global yarn`. It will install the Yarn package manager globally on your machine if it is not already installed.
+
+Without installing Node.js, you cannot use the npm command. To check whether Node.js has been installed correctly, type the command `node --version` in your terminal. It will show the current Node.js version of your machine.
+
+## Database (PostgreSQL)
+
+1. At the time of installation, make a note of the database username, password, and port number.
+2. After installing PostgreSQL, you need to create a database. To create a database, open the psql command shell and type: `CREATE DATABASE erp;`.
+3. Remember your database username, password, port, and the name of the created database. You will need them later in the backend part to set up the environmental variable in the .env file.
+
+## Backend (Express/Node.js)
+
+1. Navigate into the backend folder `ERP_OS_Backend` from your command prompt/terminal.
+2. Type command: `yarn`. It will install all the required libraries and packages required for the backend. If you see any warnings while running yarn, you have to activate the script to run the yarn command in your machine. Or you can use the npm install command instead of yarn.
+3. You will find a `.env` file in the root directory of the backend `ERP_OS_Backend`, set appropriate values for all the variables. To do this, edit the `.env` file and change all the variables accordingly.
+4. Type command: `yarn prisma migrate dev`. It will create the required database table and data in the PostgreSQL database that you have installed previously.
+5. Type command: `yarn start`. It will start the backend server on `http://localhost:5000/`.
+
+## Frontend (React.js)
+
+1. Navigate to the frontend folder `ERP_OS_Frontend` from your command prompt/terminal.
+2. Type command: `yarn`. It will install all the required libraries and packages required for the frontend.
+3. You will find a `.env` file in the root directory of the front and set the variable `REACT_APP_API = http://localhost:5000/v1/`.
+4. Type in your terminal command: `yarn start`. It will start the frontend server on `http://localhost:3000/`.
 
 ## Features and Functionalities
 
@@ -72,37 +106,11 @@ The Elegant Dashboard Design includes the following features and functionalities
 - Download data as CSV
 - Product search
 
-## Installation
 
-To install the Elegant Dashboard Design, follow these steps:
+## Collaboration
 
-1. Clone the repository to your local machine.
-2. Install the required dependencies using the package manager of your choice.
-3. Set up a database for the application.
-4. Configure the database connection in the `.env` file.
-5. Run the database migrations using the `php artisan migrate` command.
-6. Seed the database with sample data using the `php artisan db:seed` command.
-7. Run the application using the `php artisan serve` command.
-
-## Usage
-
-To use the Elegant Dashboard Design, follow these steps:
-
-1. Open your web browser and navigate to the application URL.
-2. Log in to the application using the default administrator account: `admin@example.com` with password: `password`.
-3. Navigate to the desired module and start managing your business operations.
-
-## Contributing
-
-We welcome contributions to the Elegant Dashboard Design project. To contribute, please follow these guidelines:
-
-1. Fork the repository to your own GitHub account.
-2. Create a new branch from the `main` branch with a descriptive name.
-3. Make your changes and commit them to the new branch.
-4. Push the new branch to your GitHub account.
-5. Create a pull request from your new branch to the `main` branch of the original repository.
-6. Wait for the maintainers to review and merge your pull request.
+Contributions to this project are welcome! Please see our [Contributing Guidelines](CONTRIBUTING.md) for more information.
 
 ## License
 
-The Elegant Dashboard Design is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the [MIT License](LICENSE).
