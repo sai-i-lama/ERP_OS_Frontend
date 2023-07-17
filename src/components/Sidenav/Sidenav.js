@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   CheckOutlined,
   FileDoneOutlined,
@@ -17,16 +18,29 @@ import {
   UserSwitchOutlined,
   QuestionCircleOutlined,
 } from "@ant-design/icons";
-import { Menu } from "antd";
+import { Divider, Menu } from "antd";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import logo from "../../assets/images/sai-i-lama-logo.png";
 import NotificationIcon from "../notification/NotificationIcon";
+import { loadProduct } from "../../redux/actions/product/getAllProductAction";
 // import styles from "./Sidenav.module.css";
 
-const Test = ( props) => {
-  const list = useSelector((state) => state.products.list);
+const Test = (props) => {
+  const dispatch = useDispatch();
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    dispatch(loadProduct({ status: "true", page: 1, limit: 10 }));
+  }, []);
+
+  const productsList = useSelector((state) => state.products.list);
+
+  useEffect(() => {
+    setList(productsList);
+  }, [productsList]);
+
   const menu = [
     {
       label: (
@@ -285,7 +299,10 @@ const Test = ( props) => {
           className="sidenav-menu"
           // style={{ backgroundColor: "transparent" }}
         />
-          <NotificationIcon list={list} />
+        <Divider
+          style={{ borderColor: "white", borderWidth: "2px",borderRadius:"10px" }}
+        />
+        <NotificationIcon list={list} />
       </center>
     </div>
   );

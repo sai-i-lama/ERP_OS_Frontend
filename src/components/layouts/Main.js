@@ -9,7 +9,7 @@ import styles from "./Main.module.css";
 const { Header: AntHeader, Content, Sider } = Layout;
 
 function Main({ children }) {
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(false); // set the initial state to false to change the default state open
 
   const handleCollapsed = (val) => {
     setCollapsed(val);
