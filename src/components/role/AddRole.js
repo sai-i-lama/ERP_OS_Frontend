@@ -88,8 +88,9 @@ function CustomTable({ list }) {
               data={list}
               className="btn btn-dark btn-sm mb-1"
               filename="roles"
+              style={{ margin: "5px" }}
             >
-              Télécharger le fichier CSV
+              Télécharger .CSV
             </CSVLink>
           </div>
         )}

@@ -118,8 +118,9 @@ function CustomTable({ list, categoryName }) {
               <CSVLink
                 data={list}
                 className="btn btn-dark btn-sm mb-1"
+                style={{ margin: "5px" }}
                 filename={`category_${categoryName}`}>
-                Télécharger le fichier CSV
+                Télécharger .CSV
               </CSVLink>
             </div>
           )}
@@ -163,7 +164,8 @@ const DetailProductCategory = () => {
       dispatch(DeleteProductCategory(id));
 
       setVisible(false);
-      toast.warning(`la Catégorie : ${category.name} est supprimée `);
+      toast.warning(`la Catégorie : ${category.name} ne peux pas etre supprimée `);
+      toast.warning(`Elle contient encore des produits`);
       return navigate("/product-category");
     } catch (error) {
       console.log(error.message);
@@ -226,7 +228,7 @@ const DetailProductCategory = () => {
                     title=" Voulez-vous vraiment supprimer?"
                     trigger="click"
                     visible={visible}
-                    onVisibleChange={handleVisibleChange}>
+                    onOpenChange={handleVisibleChange}>
                     <Button
                       type="danger"
                       DetailProductCategory

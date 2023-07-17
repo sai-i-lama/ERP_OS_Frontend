@@ -91,8 +91,9 @@ function CustomTable({ list, total }) {
               data={CSVlist}
               className="btn btn-dark btn-sm mb-1"
               filename="accounts"
+              style={{ margin: "5px" }}
             >
-              Télécharger le fichier CSV
+              Télécharger .CSV
             </CSVLink>
           </div>
         )}

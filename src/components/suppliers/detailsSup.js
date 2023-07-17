@@ -94,7 +94,7 @@ const DetailsSup = () => {
                     title="Êtes-vous sûr de vouloir supprimer ?"
                     trigger="click"
                     visible={visible}
-                    onVisibleChange={handleVisibleChange}
+                    onOpenChange={handleVisibleChange}
                   >
                     <Button
                       type="danger"
@@ -134,8 +134,9 @@ const DetailsSup = () => {
                       data={supplier.purchaseInvoice}
                       className="btn btn-dark btn-sm mb-1"
                       filename="suppliers"
+                      style={{ margin: "5px" }}
                     >
-                      Télécharger un fichier CSV
+                      Télécharger .CSV
                     </CSVLink>
                   </div>
                 )}

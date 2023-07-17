@@ -144,8 +144,9 @@ const GetAllCust = (props) => {
                 data={list}
                 className="btn btn-dark btn-sm mb-1"
                 filename="customer"
+                style={{ margin: "5px" }}
               >
-                Télécharger un fichier CSV
+                Télécharger .CSV
               </CSVLink>
             </div>
             <div>

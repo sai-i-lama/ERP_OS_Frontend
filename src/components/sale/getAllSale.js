@@ -332,8 +332,9 @@ const GetAllSale = (props) => {
                       data={CSVlist}
                       className="btn btn-dark btn-sm mb-1"
                       filename="sales"
+                      style={{ margin: "5px" }}
                     >
-                      Télécharger le fichier CSV
+                      Télécharger .CSV
                     </CSVLink>
                   </div>
                   <div className="me-2" style={{ marginTop: "-4px" }}>

@@ -87,7 +87,7 @@ const DetailStaff = () => {
                     title="Êtes-vous sûr de vouloir supprimer ?"
                     trigger="click"
                     visible={visible}
-                    onVisibleChange={handleVisibleChange}
+                    onOpenChange={handleVisibleChange}
                   >
                     <Button
                       type="danger"

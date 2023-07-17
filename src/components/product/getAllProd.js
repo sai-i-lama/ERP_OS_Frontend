@@ -160,7 +160,7 @@ function CustomTable({ list, total, status }) {
 const GetAllProd = (props) => {
   const dispatch = useDispatch();
   const list = useSelector((state) => state.products.list);
-  console.log("list", list);
+  // console.log("list", list);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -193,10 +193,11 @@ const GetAllProd = (props) => {
             <div className="me-2" style={{ marginTop: "4px" }}>
               <CSVLink
                 data={CSVlist}
+                style={{ margin: "5px" }}
                 className="btn btn-dark btn-sm mb-1"
                 filename="products"
               >
-                Télécharger le fichier CSV
+                Télécharger .CSV
               </CSVLink>
             </div>
             <div>

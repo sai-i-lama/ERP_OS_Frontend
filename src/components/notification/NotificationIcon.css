@@ -17,7 +17,6 @@
 .notification-count {
   position: absolute;
   top: -0.5rem;
-
   left: 1.7rem;
   display: flex;
   align-items: center;
@@ -33,9 +32,9 @@
 
 .notification-list-container {
   position: absolute;
-  top: 1px;
-  left: 3rem;
-  width: 95%;
+  top: calc(100% + 1rem);
+  left: 0;
+  width: 100%;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -61,4 +60,15 @@
 .notification-list-container .ant-alert-link {
   font-weight: 600;
   color: #1890ff;
+}
+
+/* Add this to prevent the page from moving when the notification list is opened */
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/* Add this to make sure the notification icon is always on top */
+.notification-icon-container {
+  z-index: 2;
 }

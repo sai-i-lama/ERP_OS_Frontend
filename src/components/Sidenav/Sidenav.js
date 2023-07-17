@@ -15,14 +15,18 @@ import {
   UsergroupAddOutlined,
   UserOutlined,
   UserSwitchOutlined,
+  QuestionCircleOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/images/sai-i-lama-logo.png";
+import NotificationIcon from "../notification/NotificationIcon";
 // import styles from "./Sidenav.module.css";
 
-const Test = ({ color }) => {
+const Test = ( props) => {
+  const list = useSelector((state) => state.products.list);
   const menu = [
     {
       label: (
@@ -116,7 +120,7 @@ const Test = ({ color }) => {
           icon: <CheckOutlined />,
         },
         {
-          label: (       
+          label: (
             <NavLink to="/pos">
               <span>Boutique</span>
             </NavLink>
@@ -254,6 +258,11 @@ const Test = ({ color }) => {
         },
       ],
     },
+    {
+      label: <NavLink to="../help">AIDE</NavLink>,
+      key: "help",
+      icon: <QuestionCircleOutlined />,
+    },
   ];
 
   return (
@@ -268,14 +277,16 @@ const Test = ({ color }) => {
             objectFit: "cover",
           }}
         />
+
+        <Menu
+          theme="dark"
+          mode="inline"
+          items={menu}
+          className="sidenav-menu"
+          // style={{ backgroundColor: "transparent" }}
+        />
+          <NotificationIcon list={list} />
       </center>
-      <Menu
-        theme="dark"
-        mode="inline"
-        items={menu}
-        className="sidenav-menu"
-        // style={{ backgroundColor: "transparent" }}
-      />
     </div>
   );
 };
