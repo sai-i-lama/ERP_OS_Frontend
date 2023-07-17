@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./product.css";
 
-import { Button, Dropdown, Menu, Segmented, Table, Alert } from "antd";
+import { Button, Dropdown, Menu, Segmented, Table } from "antd";
 import { useEffect } from "react";
 
 import { CSVLink } from "react-csv";
@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import getTotalProduct from "../../api/getAllApis/getTotalProduct";
 import { loadProduct } from "../../redux/actions/product/getAllProductAction";
 import GenerateBarcodePopUp from "./generateBarcodePopUp";
+import NotificationIcon from "../notification/NotificationIcon";
 
 function CustomTable({ list, total, status }) {
   const dispatch = useDispatch();
@@ -120,36 +121,6 @@ function CustomTable({ list, total, status }) {
 
   return (
     <div>
-      {list && (
-        <div>
-          {list.map((item) => {
-            if (item.quantity <= 10) {
-              return (
-                <Alert
-                  key={item.id}
-                  message="warning"
-                  showIcon
-                  description={
-                    <span>
-                      Le produit{" "}
-                      <Link to={`/product/${item.id}`}>{item.name}</Link> a une
-                      quantité inférieure ou égale à 10. Nous vous recommandons
-                      de vous approvisionner dès que possible afin de garantir
-                      que vous disposez suffisamment de stock pour répondre
-                      aux demandes de vos clients.
-                    </span>
-                  }
-                  type="warning"
-                  style={{ marginBottom: "16px" }}
-                  closable
-                />
-              );
-            } else {
-              return null;
-            }
-          })}
-        </div>
-      )}
       <div>
         {list && (
           <div style={{ marginBottom: "30px" }}>
@@ -216,6 +187,7 @@ const GetAllProd = (props) => {
     <div className="card column-design">
       <div className="card-body">
         <h5>Liste des produits</h5>
+        <NotificationIcon list={list} />
         {list && (
           <div className="card-title d-flex justify-content-end">
             <div className="me-2" style={{ marginTop: "4px" }}>
