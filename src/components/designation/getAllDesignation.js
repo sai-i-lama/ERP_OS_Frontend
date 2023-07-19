@@ -67,8 +67,9 @@ function CustomTable({ list, total }) {
               data={list}
               className="btn btn-dark btn-sm mb-1"
               filename="designation"
+              style={{ margin: "5px" }}
             >
-              Télécharger le fichier CSV
+              Télécharger .CSV
             </CSVLink>
           </div>
         )}

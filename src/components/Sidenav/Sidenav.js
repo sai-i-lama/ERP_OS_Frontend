@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   CheckOutlined,
   FileDoneOutlined,
@@ -15,14 +16,31 @@ import {
   UsergroupAddOutlined,
   UserOutlined,
   UserSwitchOutlined,
+  QuestionCircleOutlined,
 } from "@ant-design/icons";
-import { Menu } from "antd";
+import { Divider, Menu } from "antd";
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useDispatch,useSelector } from "react-redux";
 import logo from "../../assets/images/sai-i-lama-logo.png";
+import NotificationIcon from "../notification/NotificationIcon";
+import { loadProduct } from "../../redux/actions/product/getAllProductAction";
 // import styles from "./Sidenav.module.css";
 
-const Test = ({ color }) => {
+const Test = (props) => {
+  const dispatch = useDispatch();
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    dispatch(loadProduct({ status: "true", page: 1, limit: 10 }));
+  }, []);
+
+  const productsList = useSelector((state) => state.products.list);
+
+  useEffect(() => {
+    setList(productsList);
+  }, [productsList]);
+
   const menu = [
     {
       label: (
@@ -116,7 +134,7 @@ const Test = ({ color }) => {
           icon: <CheckOutlined />,
         },
         {
-          label: (       
+          label: (
             <NavLink to="/pos">
               <span>Boutique</span>
             </NavLink>
@@ -254,6 +272,11 @@ const Test = ({ color }) => {
         },
       ],
     },
+    {
+      label: <NavLink to="../help">AIDE</NavLink>,
+      key: "help",
+      icon: <QuestionCircleOutlined />,
+    },
   ];
 
   return (
@@ -268,14 +291,19 @@ const Test = ({ color }) => {
             objectFit: "cover",
           }}
         />
+
+        <Menu
+          theme="dark"
+          mode="inline"
+          items={menu}
+          className="sidenav-menu"
+          // style={{ backgroundColor: "transparent" }}
+        />
+        <Divider
+          style={{ borderColor: "white", borderWidth: "2px",borderRadius:"10px" }}
+        />
+        <NotificationIcon list={list} />
       </center>
-      <Menu
-        theme="dark"
-        mode="inline"
-        items={menu}
-        className="sidenav-menu"
-        // style={{ backgroundColor: "transparent" }}
-      />
     </div>
   );
 };

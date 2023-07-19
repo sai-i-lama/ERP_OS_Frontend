@@ -82,7 +82,7 @@ const DetailsProd = () => {
                     title="Voulez-vous vraiment supprimer ?"
                     trigger="click"
                     visible={visible}
-                    onVisibleChange={handleVisibleChange}>
+                    onOpenChange={handleVisibleChange}>
                     <Button
                       type="danger"
                       shape="round"

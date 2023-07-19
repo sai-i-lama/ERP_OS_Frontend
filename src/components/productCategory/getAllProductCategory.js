@@ -75,10 +75,11 @@ function CustomTable({ list, total }) {
             <div>
               <CSVLink
                 data={list}
+                style={{ margin: "5px" }}
                 className="btn btn-dark btn-sm mb-1"
                 filename="customer"
               >
-                Télécharger le fichier CSV
+                Télécharger .CSV
               </CSVLink>
             </div>
           )}

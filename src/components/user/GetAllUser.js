@@ -99,10 +99,10 @@ function CustomTable({ list }) {
               <CSVLink
                 data={list}
                 className="btn btn-dark btn-sm"
-                style={{ marginTop: "5px" }}
+                style={{ margin: "5px" }}
                 filename="staffs"
               >
-                Télécharger le fichier CSV
+                Télécharger .CSV
               </CSVLink>
             </div>
 

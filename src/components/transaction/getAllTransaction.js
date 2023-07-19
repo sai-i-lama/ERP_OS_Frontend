@@ -98,8 +98,9 @@ function CustomTable({ list, total, startdate, enddate }) {
 						<CSVLink
 							data={CSVlist}
 							className='btn btn-dark btn-sm mb-1'
+							style={{ margin: "5px" }}
 							filename='transaction'>
-							Télécharger un fichier CSV
+							Télécharger .CSV
 						</CSVLink>
 					</div>
 				)}
