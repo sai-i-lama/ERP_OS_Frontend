@@ -56,22 +56,22 @@ const DetailsSup = () => {
 
   return (
     <div>
-      <PageTitle title=" Retour " subtitle={`Insformation sur le Fournisseur ${supplier.name} `} />
+      <PageTitle title=" Retour " subtitle={`Insformation sur le Fournisseur ${supplier?.name} `} />
 
       <div className="mr-top">
         {supplier ? (
           <Fragment key={supplier.id}>
             <Card bordered={false} style={{}}>
               <div className="card-header d-flex justify-content-between" style={{ padding: 0 }}>
-              <div className="w-50">
-                <h5>
-                  <i className="bi bi-person-lines-fill"></i>
-                  <span className="mr-left">
-                    ID : {supplier.id} | {supplier.name}
-                  </span>
-                </h5>
+                <div className="w-50">
+                  <h5>
+                    <i className="bi bi-person-lines-fill"></i>
+                    <span className="mr-left">
+                      ID : {supplier.id} | {supplier.name}
+                    </span>
+                  </h5>
                 </div>
-                <div className="text-end w-50">
+                <div className="text-end w-50 gap">
                   <Link
                     className="me-3 d-inline-block"
                     to={`/supplier/${supplier.id}/update`}
@@ -81,7 +81,7 @@ const DetailsSup = () => {
                       type="primary"
                       shape="round"
                       icon={<EditOutlined />}
-                    ></Button>
+                    >Renommer</Button>
                   </Link>
                   <Popover
                     content={
@@ -100,7 +100,7 @@ const DetailsSup = () => {
                       type="danger"
                       shape="round"
                       icon={<DeleteOutlined />}
-                    ></Button>
+                    >Supprimer</Button>
                   </Popover>
                 </div>
               </div>

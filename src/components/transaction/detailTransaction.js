@@ -84,7 +84,7 @@ const DetailTransaction = () => {
                       type="danger"
                       shape="round"
                       icon={<DeleteOutlined />}
-                    ></Button>
+                    >Supprimer</Button>
                   </Popover>
                 </div>
               </div>

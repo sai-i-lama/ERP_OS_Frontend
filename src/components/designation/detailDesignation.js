@@ -79,7 +79,7 @@ const DetailDesignation = () => {
                       type="primary"
                       shape="round"
                       icon={<EditOutlined />}
-                    ></Button>
+                    >Renommer</Button>
                   </Link>
                   <Popover
                     content={
@@ -99,7 +99,7 @@ const DetailDesignation = () => {
                       DetailDesignation
                       shape="round"
                       icon={<DeleteOutlined />}
-                    ></Button>
+                    >Supprimer</Button>
                   </Popover>
                 </div>
               </div>

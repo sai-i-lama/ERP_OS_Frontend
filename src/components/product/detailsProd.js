@@ -68,7 +68,7 @@ const DetailsProd = () => {
                     <Button
                       type="primary"
                       shape="round"
-                      icon={<EditOutlined />}></Button>
+                      icon={<EditOutlined />}>Renommer</Button>
                   </Link>
                   <Popover
                     className="m-2"
@@ -86,7 +86,7 @@ const DetailsProd = () => {
                     <Button
                       type="danger"
                       shape="round"
-                      icon={<DeleteOutlined />}></Button>
+                      icon={<DeleteOutlined />}>Supprimer</Button>
                   </Popover>
                 </div>
               </div>

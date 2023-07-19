@@ -77,7 +77,7 @@ const DetailCust = () => {
                       type="primary"
                       shape="round"
                       icon={<EditOutlined />}
-                    ></Button>
+                    >Renommer</Button>
                   </Link>
                   <Popover
                     content={
@@ -97,7 +97,7 @@ const DetailCust = () => {
                       DetailCust
                       shape="round"
                       icon={<DeleteOutlined />}
-                    ></Button>
+                    >Supprimer</Button>
                   </Popover>
                 </div>
               </div>

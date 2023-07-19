@@ -15,14 +15,14 @@
 }
 
 .notification-count {
-  position: absolute;
-  top: -0.5rem;
-  left: 1.7rem;
+  position: relative;
+  top: 0.5rem;
+  left: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   background-color: #f5222d;
   color: white;

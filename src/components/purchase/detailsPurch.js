@@ -101,7 +101,7 @@ const DetailsPurch = () => {
 												type='danger'
 												DetailCust
 												shape='round'
-												icon={<DeleteOutlined />}></Button>
+												icon={<DeleteOutlined />}>Supprimer</Button>
 										</Popover>
 									</div>
 									<div className={"text-end me-2"}>

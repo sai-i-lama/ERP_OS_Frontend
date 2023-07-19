@@ -215,7 +215,7 @@ const DetailProductCategory = () => {
                     <Button
                       type="primary"
                       shape="round"
-                      icon={<EditOutlined />}></Button>
+                      icon={<EditOutlined />}>Renommer</Button>
                   </Link>
                   <Popover
                     content={
@@ -233,7 +233,7 @@ const DetailProductCategory = () => {
                       type="danger"
                       DetailProductCategory
                       shape="round"
-                      icon={<DeleteOutlined />}></Button>
+                      icon={<DeleteOutlined />}>Supprimer</Button>
                   </Popover>
                 </div>
               </div>
