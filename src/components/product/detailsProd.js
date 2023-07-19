@@ -38,7 +38,7 @@ const DetailsProd = () => {
 
   useEffect(() => {
     dispatch(loadSingleProduct(id));
-  }, [id]);
+  }, [dispatch, id]);
 
   const isLogged = Boolean(localStorage.getItem("isLogged"));
 
@@ -81,7 +81,7 @@ const DetailsProd = () => {
                     }
                     title="Voulez-vous vraiment supprimer ?"
                     trigger="click"
-                    visible={visible}
+                   open={visible}
                     onOpenChange={handleVisibleChange}>
                     <Button
                       type="danger"

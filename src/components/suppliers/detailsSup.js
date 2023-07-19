@@ -46,7 +46,7 @@ const DetailsSup = () => {
 
   useEffect(() => {
     dispatch(loadSupplier(id));
-  }, [id]);
+  }, [dispatch, id]);
 
   const isLogged = Boolean(localStorage.getItem("isLogged"));
 
@@ -56,7 +56,7 @@ const DetailsSup = () => {
 
   return (
     <div>
-      <PageTitle title=" Retour " subtitle={`Insformation sur le Fournisseur ${supplier.name} `} />
+      <PageTitle title=" Retour " subtitle={`Insformation sur le Fournisseur ${supplier?.name} `} />
 
       <div className="mr-top">
         {supplier ? (
@@ -93,7 +93,7 @@ const DetailsSup = () => {
                     }
                     title="Êtes-vous sûr de vouloir supprimer ?"
                     trigger="click"
-                    visible={visible}
+                   open={visible}
                     onOpenChange={handleVisibleChange}
                   >
                     <Button

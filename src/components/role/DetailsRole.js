@@ -90,7 +90,7 @@ const DetailRole = () => {
                     }
                     title="Êtes-vous sûr de vouloir supprimer ?"
                     trigger="click"
-                    visible={visible}
+                   open={visible}
                     onOpenChange={handleVisibleChange}
                   >
                     <Button
