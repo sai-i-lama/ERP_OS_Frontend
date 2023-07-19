@@ -1,12 +1,13 @@
 import { Button, Card, Col, Form, Input, Row, Typography } from "antd";
 import React, { useState } from "react";
 import styles from "./Login.module.css";
-
 import { useDispatch } from "react-redux";
 import { addUser } from "../../redux/actions/user/loginUserAction";
 
+import logo from "../../assets/images/sai-i-lama-logo.png";
+import logbg from "../../assets/images/login-bg.png"
 import { toast } from "react-toastify";
-import LoginTable from "../Card/LoginTable";
+// import LoginTable from "../Card/LoginTable";
 
 //TODO : redirect to home
 
@@ -33,12 +34,23 @@ const Login = () => {
 
   return (
     <>
-      <Row className="card-row">
+      <Row className="card-row ">
         <Col span={24}>
           <Card bordered={false} className={styles.card}>
             <Title level={3} className="m-3 text-center">
-            Connectez-vous
+              BIENVENU A SAI I LAMA
             </Title>
+            <div className={styles.logoContainer}>
+              <img
+                src={logo}
+                alt="logo"
+                style={{
+                  width: "50%",
+                  height: "50%",
+                  objectFit: "cover",
+                }}
+              />
+            </div>
             <Form
               name="basic"
               labelCol={{
@@ -53,7 +65,7 @@ const Login = () => {
             >
               <Form.Item
                 className="mb-1"
-                label="Nom d’utilisateur"
+                label="Utilisateur"
                 name="username"
                 rules={[
                   {
@@ -92,9 +104,7 @@ const Login = () => {
 
               <Form.Item className={styles.loginTableContainer}>
                 <Row>
-                  <Col span={24}>
-                    <LoginTable />
-                  </Col>
+                  <Col span={24}>{/* <LoginTable /> */}</Col>
                 </Row>
               </Form.Item>
             </Form>

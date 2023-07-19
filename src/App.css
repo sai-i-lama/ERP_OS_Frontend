@@ -47,6 +47,10 @@ body {
 
 .ant-layout {
   background-color: var(--bg);
+   /* background-image: url('./assets/images/login-bg.png'); */
+  background-size: cover;
+  background-position: center;
+;
 }
 
 .ant-page-header-heading-title {
