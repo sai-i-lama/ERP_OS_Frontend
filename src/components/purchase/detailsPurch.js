@@ -95,7 +95,7 @@ const DetailsPurch = () => {
 											}
 											title='Voulez-vous vraiment supprimer ?'
 											trigger='click'
-											visible={visible}
+											open={visible}
 											onOpenChange={handleVisibleChange}>
 											<Button
 												type='danger'

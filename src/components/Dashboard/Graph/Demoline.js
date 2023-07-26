@@ -10,111 +10,112 @@ import NewDashboardCard from "../../Card/Dashboard/NewDashboardCard";
 import Loader from "../../loader/loader";
 
 const DemoLine = () => {
-	//Date fucntinalities
-	const [startdate, setStartdate] = useState(moment().startOf("month"));
-	const [enddate, setEnddate] = useState(moment().endOf("month"));
-	const dispatch = useDispatch();
+  //Date fucntinalities
+  const [startdate, setStartdate] = useState(moment().startOf("month"));
+  const [enddate, setEnddate] = useState(moment().endOf("month"));
+  const dispatch = useDispatch();
 
-	const data = useSelector((state) => state.dashboard.list?.saleProfitCount);
-	const cardInformation = useSelector(
-		(state) => state.dashboard.list?.cardInfo
-	);
+  const data = useSelector((state) => state.dashboard.list?.saleProfitCount);
+  const cardInformation = useSelector(
+    (state) => state.dashboard.list?.cardInfo
+  );
 
-	const { RangePicker } = DatePicker;
+  const { RangePicker } = DatePicker;
 
-	useEffect(() => {
-		dispatch(loadDashboardData({ startdate, enddate }));
-		dispatch(
-			loadAllPurchase({
-				page: 1,
-				limit: 10,
-				startdate: startdate,
-				enddate: enddate,
-			})
-		);
-		dispatch(
-			loadAllSale({
-				page: 1,
-				limit: 10,
-				startdate: startdate,
-				enddate: enddate,
-				user: "",
-			})
-		);
-	}, []);
+  useEffect(() => {
+    dispatch(loadDashboardData({ startdate, enddate }));
+    dispatch(
+      loadAllPurchase({
+        page: 1,
+        limit: 10,
+        startdate: startdate,
+        enddate: enddate,
+      })
+    );
+    dispatch(
+      loadAllSale({
+        page: 1,
+        limit: 10,
+        startdate: startdate,
+        enddate: enddate,
+        user: "",
+      })
+    );
+  }, []);
 
-	const onCalendarChange = (dates) => {
-		const newStartdate = (dates?.[0]).format("YYYY-MM-DD");
-		const newEnddate = (dates?.[1]).format("YYYY-MM-DD");
+  const onCalendarChange = (dates) => {
+    const newStartdate = dates?.[0] ? dates[0].format("YYYY-MM-DD") : startdate;
+    const newEnddate = dates?.[1] ? dates[1].format("YYYY-MM-DD") : enddate;
 
-		setStartdate(newStartdate ? newStartdate : startdate);
-		setEnddate(newEnddate ? newEnddate : enddate);
-		dispatch(
-			loadDashboardData({
-				startdate: newStartdate,
-				enddate: newEnddate,
-			})
-		);
+    setStartdate(newStartdate);
+    setEnddate(newEnddate);
 
-		dispatch(
-			loadAllPurchase({
-				page: 1,
-				limit: 10,
-				startdate: newStartdate,
-				enddate: newEnddate,
-			})
-		);
+    dispatch(
+      loadDashboardData({
+        startdate: newStartdate,
+        enddate: newEnddate,
+      })
+    );
 
-		dispatch(
-			loadAllSale({
-				page: 1,
-				limit: 10,
-				startdate: newStartdate,
-				enddate: newEnddate,
-				user: "",
-			})
-		);
-	};
+    dispatch(
+      loadAllPurchase({
+        page: 1,
+        limit: 10,
+        startdate: newStartdate,
+        enddate: newEnddate,
+      })
+    );
 
-	const config = {
-		data,
-		xField: "date",
-		yField: "amount",
-		seriesField: "type",
-		yAxis: {
-			label: {
-				formatter: (v) => `${v / 1000} K`,
-			},
-		},
-		legend: {
-			position: "top",
-		},
-		smooth: true,
-		animation: {
-			appear: {
-				animation: "path-in",
-				duration: 5000,
-			},
-		},
-	};
+    dispatch(
+      loadAllSale({
+        page: 1,
+        limit: 10,
+        startdate: newStartdate,
+        enddate: newEnddate,
+        user: "",
+      })
+    );
+  };
 
-	return (
-		<Fragment>
-			<div className='mb-3 mt-3 w-full' style={{ maxWidth: "25rem" }}>
-				<RangePicker
-					onCalendarChange={onCalendarChange}
-					defaultValue={[startdate, enddate]}
-					className='range-picker'
-				/>
-			</div>
+  const config = {
+    data,
+    xField: "date",
+    yField: "amount",
+    seriesField: "type",
+    yAxis: {
+      label: {
+        formatter: (v) => `${v / 1000} K`,
+      },
+    },
+    legend: {
+      position: "top",
+    },
+    smooth: true,
+    animation: {
+      appear: {
+        animation: "path-in",
+        duration: 5000,
+      },
+    },
+  };
 
-			<NewDashboardCard information={cardInformation} />
+  return (
+    <Fragment>
+      <div className="mb-3 mt-3 w-full" style={{ maxWidth: "25rem" }}>
+        <RangePicker
+          onCalendarChange={onCalendarChange}
+          defaultValue={[startdate, enddate]}
+          className="range-picker"
+        />
+      </div>
 
-			<Card title='Ventes vs bénéfices'>
-				{data ? <Line {...config} /> : <Loader />}
-			</Card>
-		</Fragment>
-	);
+      <NewDashboardCard information={cardInformation} />
+
+      <Card title="Ventes vs bénéfices">
+        {data ? <Line {...config} /> : <Loader />}
+      </Card>
+    </Fragment>
+  );
 };
 
 export default DemoLine;

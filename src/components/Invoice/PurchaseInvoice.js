@@ -50,7 +50,7 @@ const PrintToPdf = forwardRef(({ data }, ref) => {
               <td>{data?.supplier.address}</td>
             </tr>
             <tr>
-              <th>Contact No</th>
+              <th>Contact </th>
               <td>{data?.supplier.phone}</td>
             </tr>
           </table>
@@ -59,7 +59,7 @@ const PrintToPdf = forwardRef(({ data }, ref) => {
         <div className="box6">
           <table className="table2">
             <tr>
-              <th>Facture No</th>
+              <th>N° Facture </th>
               <td>{data?.id}</td>
             </tr>
             <tr>
@@ -98,23 +98,23 @@ const PrintToPdf = forwardRef(({ data }, ref) => {
         <div className="box9">
           <table className="table2">
             <tr>
-              <th>Sub total</th>
+              <th>Montant Total</th>
               <td>{data.total_amount}</td>
             </tr>
             <tr>
-              <th>Discount (-)</th>
+              <th>Remise (-)</th>
               <td>{data.discount}</td>
             </tr>
             <tr>
-              <th>Grand total</th>
+              <th>Après Remise</th>
               <td>{data.total_amount - data.discount}</td>
             </tr>
             <tr>
-              <th>Payé</th>
+              <th>Montant Payé</th>
               <td>{data.paid_amount}</td>
             </tr>
             <tr>
-              <th>du</th>
+              <th>Montant Du</th>
               <td>{data.due_amount}</td>
             </tr>
           </table>
@@ -122,12 +122,12 @@ const PrintToPdf = forwardRef(({ data }, ref) => {
 
         <div className="box10">
           <hr />
-          <p>Reçu par</p>
+          <p>Signature Client</p>
         </div>
 
         <div className="box11">
           <hr />
-          <p>Autorisé par</p>
+          <p>Signature Vendeur</p>
         </div>
 
         <div className="box12">

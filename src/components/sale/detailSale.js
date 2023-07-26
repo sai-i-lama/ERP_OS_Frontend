@@ -99,7 +99,7 @@ const DetailSale = () => {
 										}
 										title='Voulez-vous vraiment supprimer ?'
 										trigger='click'
-										visible={visible}
+										open={visible}
 										onOpenChange={handleVisibleChange}>
 										<Button
 											type='danger'
@@ -140,6 +140,13 @@ const DetailSale = () => {
 															to={`/customer/${singleSaleInvoice.customer.id}`}>
 															<strong>{singleSaleInvoice.customer.name}</strong>
 														</Link>
+													</p>
+
+													<p>
+														<Typography.Text strong>
+														Type de client :{" "}
+														</Typography.Text>{" "}
+															<strong>{singleSaleInvoice.customer.type_customer}</strong>
 													</p>
 
 													<p>

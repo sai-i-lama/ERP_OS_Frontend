@@ -17,6 +17,7 @@ export const CustomerDetails = ({ customer }) => {
         <Tag>{customer.name}</Tag>
         <Tag>{customer.phone}</Tag>
         <Tag>{customer.address}</Tag>
+        <Tag>{customer.type_customer}</Tag>
         <Tag>
         Montant à payer : <strong>{customer.due_amount}</strong>
         </Tag>

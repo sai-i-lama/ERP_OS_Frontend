@@ -46,14 +46,21 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       render: (date) => moment(date).format("ll"),
     },
     {
-      title: "nom client",
+      title: "Nom Client",
       dataIndex: `customer`,
       key: "customer_id",
       render: (customer) => customer?.name,
     },
 
     {
-      title: "montant total",
+      title: "Type Client",
+      dataIndex: `customer`,
+      key: "customer",
+      render: (customer) => customer?.type_customer,
+    },
+
+    {
+      title: "Montant Total",
       dataIndex: "total_amount",
       key: "total_amount",
     },
@@ -63,13 +70,13 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       key: "discount",
     },
     {
-      title: "montant à payer",
+      title: "Montant à Payer",
       dataIndex: "due_amount",
       key: "due_amount",
       responsive: ["md"],
     },
     {
-      title: "montant payé",
+      title: "Montant Payé",
       dataIndex: "paid_amount",
       key: "paid_amount",
       responsive: ["md"],
