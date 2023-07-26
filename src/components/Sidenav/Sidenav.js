@@ -10,7 +10,9 @@ import {
   MinusSquareOutlined,
   PlusSquareOutlined,
   SettingOutlined,
-  ShopOutlined,
+  FolderAddOutlined,
+  SnippetsOutlined, 
+  FileAddOutlined,
   ShoppingCartOutlined,
   UnorderedListOutlined,
   UsergroupAddOutlined,
@@ -21,7 +23,7 @@ import {
 import { Divider, Menu } from "antd";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/images/sai-i-lama-logo.png";
 import NotificationIcon from "../notification/NotificationIcon";
 import { loadProduct } from "../../redux/actions/product/getAllProductAction";
@@ -51,31 +53,14 @@ const Test = (props) => {
       key: "dashboard",
       icon: <HomeOutlined />,
     },
-    {
-      label: "PRODUIT",
-      key: "product",
-      icon: <ShopOutlined />,
-      children: [
-        {
-          label: (
-            <NavLink to="/product-category">
-              <span>Catégorie de produit</span>
-            </NavLink>
-          ),
-          key: "productCategory",
-          icon: <UnorderedListOutlined />,
-        },
-        {
-          label: (
-            <NavLink to="/product">
-              <span>Produits</span>
-            </NavLink>
-          ),
-          key: "products",
-          icon: <UnorderedListOutlined />,
-        },
-      ],
-    },
+    // {
+    //   label: "PRODUIT",
+    //   key: "product",
+    //   icon: <ShopOutlined />,
+    //   children: [
+
+    //   ],
+    // },
     {
       label: "APPROVISIONNEMENT",
       key: "purchaseSection",
@@ -92,13 +77,31 @@ const Test = (props) => {
         },
         {
           label: (
-            <NavLink to="/purchase">
-              <span>Nouvel Approvisionnement</span>
+            <NavLink to="/product-category">
+              <span>Catégorie de produit</span>
             </NavLink>
           ),
-          key: "newPurchase",
-          icon: <CheckOutlined />,
+          key: "productCategory",
+          icon: <FolderAddOutlined />,
         },
+        {
+          label: (
+            <NavLink to="/product">
+              <span>Produits</span>
+            </NavLink>
+          ),
+          key: "products",
+          icon: <FileAddOutlined />,
+        },
+        //{
+        //  label: (
+        //    <NavLink to="/purchase">
+        //      <span>Facture</span>
+        //    </NavLink>
+         // ),
+         // key: "newPurchase",
+        //  icon: <SnippetsOutlined />,
+        //},
         {
           label: (
             <NavLink to="/purchaselist">
@@ -300,7 +303,11 @@ const Test = (props) => {
           // style={{ backgroundColor: "transparent" }}
         />
         <Divider
-          style={{ borderColor: "white", borderWidth: "2px",borderRadius:"10px" }}
+          style={{
+            borderColor: "white",
+            borderWidth: "2px",
+            borderRadius: "10px",
+          }}
         />
         <NotificationIcon list={list} />
       </center>
