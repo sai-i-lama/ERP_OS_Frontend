@@ -247,7 +247,7 @@ const AddPurch = () => {
 				<Row className='mr-top' gutter={[24, 24]}>
 					<Col span={24} className='border rounded column-design'>
 						<Title level={4} className='m-2 text-center'>
-						Acheter de nouveaux produits
+						Etablir une Facture d'Approvisionnement
 						</Title>
 					</Col>
 					<Col span={24} lg={16}>
@@ -413,7 +413,7 @@ const AddPurch = () => {
 									onClickLoading();
 									onFormSubmit();
 								}}>
-								Acheter un produit
+								Facturer
 							</Button>
 						</Form.Item>
 					</Col>
