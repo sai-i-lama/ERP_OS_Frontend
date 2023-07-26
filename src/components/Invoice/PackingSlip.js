@@ -51,13 +51,17 @@ const PrintToPdf = forwardRef(({ data, invoiceData }, ref) => {
 							<th>Contact </th>
 							<td>{data?.customer.phone}</td>
 						</tr>
+						<tr>
+							<th>Type de Client </th>
+							<td>{data?.customer.type_customer}</td>
+						</tr>
 					</table>
 				</div>
 
 				<div className='box6'>
 					<table className='table2'>
 						<tr>
-							<th>Facture No</th>
+							<th>N° Facture</th>
 							<td>{data?.id}</td>
 						</tr>
 						<tr>
@@ -91,12 +95,12 @@ const PrintToPdf = forwardRef(({ data, invoiceData }, ref) => {
 
 				<div className='box10'>
 					<hr />
-					<p>Reçu par</p>
+					<p>Signature Client</p>
 				</div>
 
 				<div className='box11'>
 					<hr />
-					<p>Autorisé par</p>
+					<p>Signature Vendeur</p>
 				</div>
 
 				<div className='box12'>
@@ -126,7 +130,7 @@ const PackingSlip = ({ data }) => {
 			</div>
 			{invoiceData && (
 				<Button type='primary' shape='round' onClick={handlePrint}>
-					Impression du bordereau d’expédition
+					Imprimer
 				</Button>
 			)}
 		</div>

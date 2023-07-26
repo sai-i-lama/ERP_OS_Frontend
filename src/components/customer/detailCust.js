@@ -89,12 +89,12 @@ const DetailCust = () => {
                     }
                     title="Voulez-vous vraiment supprimer ?"
                     trigger="click"
-                    visible={visible}
+                    open={visible}
                     onOpenChange={handleVisibleChange}
                   >
                     <Button
                       type="danger"
-                      DetailCust
+                      data-detailcust={true}
                       shape="round"
                       icon={<DeleteOutlined />}
                     >Supprimer</Button>
@@ -119,6 +119,7 @@ const DetailCust = () => {
               </div>
               <CustomerInvoiceList
                 list={customer?.saleInvoice}
+                key={customer?.saleInvoice?.id}
                 linkTo="/sale"
               />
               <CustomerReturnInvoiceList

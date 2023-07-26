@@ -33,6 +33,11 @@ function CustomTable({ list, total, status }) {
       key: "phone",
     },
     {
+      title: "Type de Client",
+      dataIndex: "type_customer",
+      key: "type_customer",
+    },
+    {
       title: "Adresse",
       dataIndex: "address",
       key: "address",
