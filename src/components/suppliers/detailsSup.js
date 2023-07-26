@@ -46,7 +46,7 @@ const DetailsSup = () => {
 
   useEffect(() => {
     dispatch(loadSupplier(id));
-  }, [id]);
+  }, [dispatch, id]);
 
   const isLogged = Boolean(localStorage.getItem("isLogged"));
 
