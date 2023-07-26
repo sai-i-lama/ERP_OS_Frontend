@@ -43,6 +43,12 @@ function CustomTable({ list, total, status }) {
       render: (name, { id }) => <Link to={`/product/${id}`}>{name}</Link>,
     },
     {
+      title: "Fournisseur",
+      dataIndex: "supplier",
+      key: "supplier",
+      render: (supplier) => supplier?.name,
+    },
+    {
       title: "Unité de mésure",
       dataIndex: "unit_measurement",
       key: "unit_measurement",
