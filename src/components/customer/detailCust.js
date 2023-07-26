@@ -77,7 +77,7 @@ const DetailCust = () => {
                       type="primary"
                       shape="round"
                       icon={<EditOutlined />}
-                    ></Button>
+                    >Renommer</Button>
                   </Link>
                   <Popover
                     content={
@@ -89,15 +89,15 @@ const DetailCust = () => {
                     }
                     title="Voulez-vous vraiment supprimer ?"
                     trigger="click"
-                    visible={visible}
+                    open={visible}
                     onOpenChange={handleVisibleChange}
                   >
                     <Button
                       type="danger"
-                      DetailCust
+                      data-detailcust={true}
                       shape="round"
                       icon={<DeleteOutlined />}
-                    ></Button>
+                    >Supprimer</Button>
                   </Popover>
                 </div>
               </div>
@@ -119,6 +119,7 @@ const DetailCust = () => {
               </div>
               <CustomerInvoiceList
                 list={customer?.saleInvoice}
+                key={customer?.saleInvoice?.id}
                 linkTo="/sale"
               />
               <CustomerReturnInvoiceList

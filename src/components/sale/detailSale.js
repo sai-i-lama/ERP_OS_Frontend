@@ -99,13 +99,13 @@ const DetailSale = () => {
 										}
 										title='Voulez-vous vraiment supprimer ?'
 										trigger='click'
-										visible={visible}
+										open={visible}
 										onOpenChange={handleVisibleChange}>
 										<Button
 											type='danger'
 											DetailCust
 											shape='round'
-											icon={<DeleteOutlined />}></Button>
+											icon={<DeleteOutlined />}>Supprimer</Button>
 									</Popover>
 								</div>
 								<div className={"text-end me-2"}>
@@ -140,6 +140,13 @@ const DetailSale = () => {
 															to={`/customer/${singleSaleInvoice.customer.id}`}>
 															<strong>{singleSaleInvoice.customer.name}</strong>
 														</Link>
+													</p>
+
+													<p>
+														<Typography.Text strong>
+														Type de client :{" "}
+														</Typography.Text>{" "}
+															<strong>{singleSaleInvoice.customer.type_customer}</strong>
 													</p>
 
 													<p>

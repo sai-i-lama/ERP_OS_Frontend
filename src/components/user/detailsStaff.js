@@ -73,7 +73,7 @@ const DetailStaff = () => {
                       type="primary"
                       shape="round"
                       icon={<EditOutlined />}
-                    ></Button>
+                    >Renommer</Button>
                   </Link>
                   <Popover
                     className="m-2"
@@ -86,14 +86,14 @@ const DetailStaff = () => {
                     }
                     title="Êtes-vous sûr de vouloir supprimer ?"
                     trigger="click"
-                    visible={visible}
+                    open={visible}
                     onOpenChange={handleVisibleChange}
                   >
                     <Button
                       type="danger"
                       shape="round"
                       icon={<DeleteOutlined />}
-                    ></Button>
+                    >Supprimer</Button>
                   </Popover>
                 </div>
               </div>

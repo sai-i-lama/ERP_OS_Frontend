@@ -15,11 +15,13 @@ function NotificationIcon({ list }) {
 
   return (
     <div className="notification-icon-container">
-      <div className="notification-icon" onClick={handleNotificationClick}>
-        <BellOutlined style={{ color: "#fadb14" }} />
+      <div>
         {list && list.length > 0 && (
           <span className="notification-count">{notify.length}</span>
         )}
+      </div>
+      <div className="notification-icon" onClick={handleNotificationClick}>
+        <BellOutlined style={{ color: "#fadb14" }} />
       </div>
       {showNotifications && (
         <div className="notification-list-container">

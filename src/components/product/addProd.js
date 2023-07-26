@@ -237,7 +237,7 @@ const AddProd = () => {
 
               <Form.Item
                 style={{ marginBottom: "15px" }}
-                label="Prix d’achat"
+                label="coût de production"
                 name="purchase_price"
                 rules={[
                   {

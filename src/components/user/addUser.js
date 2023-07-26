@@ -222,7 +222,7 @@ const AddUser = () => {
                   },
                 ]}
               >
-                <Input maxLength={14}/>
+                <Input maxLength={14} pattern="[0-9]{1,14}" />
               </Form.Item>
               <Form.Item
                 style={{ marginBottom: "10px" }}

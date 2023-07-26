@@ -90,7 +90,7 @@ const DetailRole = () => {
                     }
                     title="Êtes-vous sûr de vouloir supprimer ?"
                     trigger="click"
-                    visible={visible}
+                    open={visible}
                     onOpenChange={handleVisibleChange}
                   >
                     <Button
@@ -98,7 +98,7 @@ const DetailRole = () => {
                       type="danger"
                       shape="round"
                       icon={<DeleteOutlined />}
-                    ></Button>
+                    >Supprimer</Button>
                   </Popover>
                 </div>
               </div>

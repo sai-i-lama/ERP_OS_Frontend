@@ -8,6 +8,14 @@
     margin-left: 20px;
 }
 
+.gap{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-left: 55rem;
+  
+}
+
 .example {
     margin: 20px 0;
     margin-bottom: 20px;
