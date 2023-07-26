@@ -227,11 +227,7 @@ const DetailProductCategory = () => {
                     }
                     title=" Voulez-vous vraiment supprimer?"
                     trigger="click"
-<<<<<<< HEAD
-                   open={visible}
-=======
                     open={visible}
->>>>>>> dec573cf8449ca944aa9e8a903b907c4664ed90b
                     onOpenChange={handleVisibleChange}>
                     <Button
                       type="danger"
