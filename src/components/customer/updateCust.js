@@ -68,8 +68,8 @@ function UpdateCust() {
   return (
     <>
       <PageTitle
-        title={`Update Customer/ ${id}`}
-        subtitle="Update customer information"
+        title={`Modifier le Client/ ${id}`}
+        subtitle="Modifier les information du Client"
       />
       <div className="text-center">
         <div className="">
@@ -115,8 +115,8 @@ function UpdateCust() {
                 <Form.Item
                   style={{ marginBottom: "10px" }}
                   fields={[{ name: "Name" }]}
-                  label="Name"
-                  name="Nom"
+                  label="Nom"
+                  name="Name"
                   rules={[
                     {
                       required: true,
@@ -129,8 +129,8 @@ function UpdateCust() {
 
                 <Form.Item
                   style={{ marginBottom: "10px" }}
-                  label="Phone"
-                  name="téléphone"
+                  label="Téléphone"
+                  name="phone"
                   rules={[
                     {
                       required: true,
@@ -143,8 +143,8 @@ function UpdateCust() {
 
                 <Form.Item
                   style={{ marginBottom: "10px" }}
-                  label="Address"
-                  name="adresse"
+                  label="Adresse"
+                  name="address"
                   rules={[
                     {
                       required: true,

@@ -16,12 +16,14 @@ import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../redux/actions/product/addProductAction";
 import { loadAllProductCategory } from "../../redux/actions/productCategory/getProductCategoryAction";
+import {loadSuppliers} from "../../redux/actions/supplier/getSuppliersAction";
 import UploadMany from "../Card/UploadMany";
 import styles from "./AddProd.module.css";
 
 const AddProd = () => {
   const unitType = ["kg", "ltr", "g"];
   const category = useSelector((state) => state.productCategories?.list);
+  const supplier = useSelector((state) => state.suppliers?.list);
   const dispatch = useDispatch();
   //useEffect for loading category list from redux
   useEffect(() => {
@@ -45,6 +47,7 @@ const AddProd = () => {
       formData.append("purchase_price", values.purchase_price);
       formData.append("sale_price", values.sale_price);
       formData.append("product_category_id", values.product_category_id);
+      formData.append("idSupplier", values.idSupplier);
       formData.append("sku", sku || values.sku); // use generated sku if available
       formData.append("unit_type", values.unit_type);
       formData.append("reorder_quantity", values.reorder_quantity);
@@ -131,6 +134,41 @@ const AddProd = () => {
                 ]}
               >
                 <Input />
+              </Form.Item>
+
+              <Form.Item
+                style={{ marginBottom: "15px" }}
+                name="idSupplier"
+                label="Sélectionner uu fournisseur "
+                rules={[
+                  {
+                    required: true,
+                    message: "Veuillez sélectionner le fournisseur!",
+                  },
+                ]}
+              >
+                <Select
+                  name="idSupplier"
+                  loading={!supplier}
+                  showSearch
+                  placeholder="Sélectionner un fournisseur"
+                  optionFilterProp="children"
+                  filterOption={(input, option) =>
+                    option.children.includes(input)
+                  }
+                  filterSort={(optionA, optionB) =>
+                    optionA.children
+                      .toLowerCase()
+                      .localeCompare(optionB.children.toLowerCase())
+                  }
+                >
+                  {supplier &&
+                    supplier.map((sup) => (
+                      <Select.Option key={sup.id} value={sup.id}>
+                        {sup.name}
+                      </Select.Option>
+                    ))}
+                </Select>
               </Form.Item>
 
               <Form.Item
@@ -237,7 +275,7 @@ const AddProd = () => {
 
               <Form.Item
                 style={{ marginBottom: "15px" }}
-                label="Prix d’achat"
+                label="coût de production"
                 name="purchase_price"
                 rules={[
                   {

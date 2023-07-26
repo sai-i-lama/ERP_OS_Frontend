@@ -73,7 +73,7 @@ const DetailStaff = () => {
                       type="primary"
                       shape="round"
                       icon={<EditOutlined />}
-                    ></Button>
+                    >Renommer</Button>
                   </Link>
                   <Popover
                     className="m-2"
@@ -93,7 +93,7 @@ const DetailStaff = () => {
                       type="danger"
                       shape="round"
                       icon={<DeleteOutlined />}
-                    ></Button>
+                    >Supprimer</Button>
                   </Popover>
                 </div>
               </div>

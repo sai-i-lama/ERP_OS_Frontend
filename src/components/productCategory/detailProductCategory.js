@@ -215,7 +215,7 @@ const DetailProductCategory = () => {
                     <Button
                       type="primary"
                       shape="round"
-                      icon={<EditOutlined />}></Button>
+                      icon={<EditOutlined />}>Renommer</Button>
                   </Link>
                   <Popover
                     content={
@@ -227,13 +227,17 @@ const DetailProductCategory = () => {
                     }
                     title=" Voulez-vous vraiment supprimer?"
                     trigger="click"
+<<<<<<< HEAD
                    open={visible}
+=======
+                    open={visible}
+>>>>>>> dec573cf8449ca944aa9e8a903b907c4664ed90b
                     onOpenChange={handleVisibleChange}>
                     <Button
                       type="danger"
                       DetailProductCategory
                       shape="round"
-                      icon={<DeleteOutlined />}></Button>
+                      icon={<DeleteOutlined />}>Supprimer</Button>
                   </Popover>
                 </div>
               </div>

@@ -189,12 +189,13 @@ const AddPos = ({
 								name='discount'
 								rules={[
 									{
-										required: true,
+										required: false,
 										message: "S’il vous plaît entrer le montant de la Remise!",
 									},
 								]}>
 								<InputNumber
 									type='number'
+									defaultValue={0}
 									value={0}
 									min={0}
 									max={totalDiscountPaidDue.total}

@@ -32,13 +32,13 @@ const Dashboard = () => {
 					<div>
 						<Row gutter={[30, 30]}>
 							<Col sm={24} md={24} lg={12} span={24}>
-								<Card title='Vente VS Achat'>
+								<Card title='Ventes Btq et Ventes Spa'>
 									<DemoPie />
 								</Card>
 							</Col>
 
 							<Col sm={24} md={24} lg={12} span={24}>
-								<Card title='Client le plus acheteur en termes de ventes et de bénéfices'>
+								<Card title='Client le plus acheteur'>
 									<DemoBar />
 								</Card>
 							</Col>

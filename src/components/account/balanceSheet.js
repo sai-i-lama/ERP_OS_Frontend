@@ -57,7 +57,7 @@ const BalanceSheet = () => {
 								</td>
 							</tr>
 
-							<h5 className='mt-2 mb-2 font-weight-bold'> Liabilities</h5>
+							<h5 className='mt-2 mb-2 font-weight-bold'> Passifs </h5>
 
 							{data &&
 								data?.liabilities.map((item, index) => {
@@ -102,7 +102,7 @@ const BalanceSheet = () => {
 							<tr className='table-active'>
 								<td>
 									{" "}
-									<strong>Total Liability et Équité</strong>
+									<strong>Total Passifs et Équité</strong>
 								</td>
 								<td>
 									<strong>{data?.totalEquity + data?.totalLiability}</strong>

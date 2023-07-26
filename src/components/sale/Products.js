@@ -103,7 +103,7 @@ export default function Products({
 									<Form.Item {...restField} name={[name, "product_sale_price"]}>
 										<InputNumber
 											style={{ width: "100%" }}
-											placeholder='Prix d’achat'
+											placeholder='coût de Production'
 											onChange={(salePrice) =>
 												handleSelectedProdsSalePrice(key, salePrice)
 											}
