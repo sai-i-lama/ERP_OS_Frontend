@@ -60,6 +60,7 @@ const Sale = (props) => {
 			<PageTitle title='Retour' />
 
 			<Row gutter={[20]}>
+				
 				<Col span={24} lg={13} xl={14}>
 					<ProductsForSale handleSelectedProds={handleSelectedProds} />
 				</Col>

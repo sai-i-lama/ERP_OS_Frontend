@@ -187,7 +187,7 @@ const DetailSale = () => {
 									<Col span={12}>
 										<Badge.Ribbon
 											text={status}
-											color={status === "PAID" ? "green" : "red"}>
+											color={status === "PAYÉ" ? "green" : "red"}>
 											<CardComponent title='Mise à jour des informations sur la facture '>
 												<div>
 													<p>
@@ -212,12 +212,12 @@ const DetailSale = () => {
 															{dueAmount}
 														</strong>
 													</p>
-													<p>
+													{/* <p>
 														<Typography.Text strong>
 															Total Unit Messurement :
 														</Typography.Text>{" "}
 														<strong>{totalUnitMeasurement}</strong>
-													</p>
+													</p> */}
 												</div>
 											</CardComponent>
 										</Badge.Ribbon>

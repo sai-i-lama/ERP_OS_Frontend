@@ -64,14 +64,14 @@ function CustomTable({ list, total, status }) {
       sortDirections: ["ascend", "descend"],
     },
     {
-      title: "Quantité recu",
+      title: "Quantité en Stock",
       dataIndex: "quantity",
       key: "quantity",
       sorter: (a, b) => a.quantity - b.quantity,
       sortDirections: ["ascend", "descend"],
     },
     {
-      title: "Prix d'achat",
+      title: "Coût de Production",
       dataIndex: "purchase_price",
       key: "purchase_price",
       responsive: ["md"],

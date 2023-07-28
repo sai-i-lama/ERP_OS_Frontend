@@ -95,7 +95,7 @@ export default function ProductsForSale({ handleSelectedProds }) {
             <div className="w-50 flex-grow-1">
               <p className="font-weight-bold mb-0">{item.name}</p>
               <p className="mb-0"> Prix de vente : {item.sale_price}</p>
-              <p> Stock : {item.quantity}</p>
+              <p> Quantité en Stock : {item.quantity}</p>
             </div>
             <br />
           </div>

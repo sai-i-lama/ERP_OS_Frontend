@@ -62,6 +62,17 @@ const Test = (props) => {
     //   ],
     // },
     {
+          label: (
+            <NavLink to="/customer">
+              <span>CLIENT</span>
+            </NavLink>
+          ),
+          key: "customers",
+          icon: <UserOutlined />,
+    },
+
+
+    {
       label: "APPROVISIONNEMENT",
       key: "purchaseSection",
       icon: <PlusSquareOutlined />,
@@ -87,30 +98,30 @@ const Test = (props) => {
         {
           label: (
             <NavLink to="/product">
-              <span>Produits</span>
+              <span>Approvisionnement</span>
             </NavLink>
           ),
           key: "products",
           icon: <FileAddOutlined />,
         },
-        //{
-        //  label: (
-        //    <NavLink to="/purchase">
-        //      <span>Facture</span>
-        //    </NavLink>
-         // ),
-         // key: "newPurchase",
-        //  icon: <SnippetsOutlined />,
-        //},
-        {
-          label: (
-            <NavLink to="/purchaselist">
-              <span>Liste des Approvisionnements</span>
-            </NavLink>
-          ),
-          key: "purchaseList",
-          icon: <UnorderedListOutlined />,
-        },
+        // {
+        //   label: (
+        //     <NavLink to="/purchase">
+        //       <span>Facture</span>
+        //     </NavLink>
+        //   ),
+        //   key: "newPurchase",
+        //   icon: <SnippetsOutlined />,
+        // },
+        // {
+        //   label: (
+        //     <NavLink to="/purchaselist">
+        //       <span>Liste des Approvisionnements</span>
+        //     </NavLink>
+        //   ),
+        //   key: "purchaseList",
+        //   icon: <UnorderedListOutlined />,
+        // },
       ],
     },
     {
@@ -118,15 +129,15 @@ const Test = (props) => {
       key: "saleSection",
       icon: <MinusSquareOutlined />,
       children: [
-        {
-          label: (
-            <NavLink to="/customer">
-              <span>Clientèle</span>
-            </NavLink>
-          ),
-          key: "customers",
-          icon: <UserOutlined />,
-        },
+        // {
+        //   label: (
+        //     <NavLink to="/customer">
+        //       <span>Clientèle</span>
+        //     </NavLink>
+        //   ),
+        //   key: "customers",
+        //   icon: <UserOutlined />,
+        // },
         {
           label: (
             <NavLink to="/sale">
@@ -156,63 +167,63 @@ const Test = (props) => {
         },
       ],
     },
-    {
-      label: "COMPTES",
-      key: "accountSection",
-      icon: <InboxOutlined />,
-      children: [
-        {
-          label: (
-            <NavLink to="/account/">
-              <span>Compte</span>
-            </NavLink>
-          ),
-          key: "accountList",
-          icon: <UnorderedListOutlined />,
-        },
-        {
-          label: (
-            <NavLink to="/transaction/create">
-              <span>Nouvelle transaction</span>
-            </NavLink>
-          ),
-          key: "newTransaction",
-          icon: <CheckOutlined />,
-        },
-        {
-          label: (
-            <NavLink to="/transaction/">
-              <span>Liste des transactions</span>
-            </NavLink>
-          ),
-          key: "transactionList",
-          icon: <UnorderedListOutlined />,
-        },
-      ],
-    },
+    // {
+    //   label: "COMPTES",
+    //   key: "accountSection",
+    //   icon: <InboxOutlined />,
+    //   children: [
+    //     {
+    //       label: (
+    //         <NavLink to="/account/">
+    //           <span>Compte</span>
+    //         </NavLink>
+    //       ),
+    //       key: "accountList",
+    //       icon: <UnorderedListOutlined />,
+    //     },
+    //     {
+    //       label: (
+    //         <NavLink to="/transaction/create">
+    //           <span>Nouvelle transaction</span>
+    //         </NavLink>
+    //       ),
+    //       key: "newTransaction",
+    //       icon: <CheckOutlined />,
+    //     },
+    //     {
+    //       label: (
+    //         <NavLink to="/transaction/">
+    //           <span>Liste des transactions</span>
+    //         </NavLink>
+    //       ),
+    //       key: "transactionList",
+    //       icon: <UnorderedListOutlined />,
+    //     },
+    //   ],
+    // },
     {
       label: "RAPPORT",
       key: "reportSection",
       icon: <FundOutlined />,
       children: [
-        {
-          label: (
-            <NavLink to="/account/trial-balance">
-              <span>Balance de vérification</span>
-            </NavLink>
-          ),
-          key: "trialBalance",
-          icon: <FileDoneOutlined />,
-        },
-        {
-          label: (
-            <NavLink to="/account/balance-sheet">
-              <span>Bilan</span>
-            </NavLink>
-          ),
-          key: "balanceSheet",
-          icon: <FileOutlined />,
-        },
+        // {
+        //   label: (
+        //     <NavLink to="/account/trial-balance">
+        //       <span>Balance de vérification</span>
+        //     </NavLink>
+        //   ),
+        //   key: "trialBalance",
+        //   icon: <FileDoneOutlined />,
+        // },
+        // {
+        //   label: (
+        //     <NavLink to="/account/balance-sheet">
+        //       <span>Bilan</span>
+        //     </NavLink>
+        //   ),
+        //   key: "balanceSheet",
+        //   icon: <FileOutlined />,
+        // },
         {
           label: (
             <NavLink to="/account/income">
