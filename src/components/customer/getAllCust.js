@@ -20,28 +20,33 @@ function CustomTable({ list, total, status }) {
       title: "ID",
       dataIndex: "id",
       key: "id",
+      sorter: (a, b) => a.id - b.id,
     },
     {
       title: "Nom",
       dataIndex: "name",
       key: "name",
       render: (name, { id }) => <Link to={`/customer/${id}`}>{name}</Link>,
+      sorter: (a, b) => a.name.localeCompare(b.name),
     },
     {
       title: "téléphone",
       dataIndex: "phone",
       key: "phone",
+      sorter: (a, b) => a.phone.localeCompare(b.phone),
     },
     {
       title: "Type de Client",
       dataIndex: "type_customer",
       key: "type_customer",
+      sorter: (a, b) => a.type_customer.localeCompare(b.type_customer),
     },
     {
       title: "Adresse",
       dataIndex: "address",
       key: "address",
       responsive: ["md"],
+      sorter: (a, b) => a.address.localeCompare(b.address),
     },
     // {
     //   title: "Due Amount",
@@ -83,7 +88,7 @@ function CustomTable({ list, total, status }) {
 
   return (
     <div>
-		<div>
+      <div>
         {list && (
           <div style={{ marginBottom: "30px" }}>
             <Dropdown
@@ -97,24 +102,24 @@ function CustomTable({ list, total, status }) {
           </div>
         )}
       </div>
-	  <div>
-      <Table
-        scroll={{ x: true }}
-        loading={!list}
-        pagination={{
-          defaultPageSize: 10,
-          pageSizeOptions: [10, 20, 50, 100, 200],
-          showSizeChanger: true,
-          total: total,
+      <div>
+        <Table
+          scroll={{ x: true }}
+          loading={!list}
+          pagination={{
+            defaultPageSize: 10,
+            pageSizeOptions: [10, 20, 50, 100, 200],
+            showSizeChanger: true,
+            total: total,
 
-          onChange: (page, limit) => {
-            dispatch(loadAllCustomer({ page, limit, status }));
-          },
-        }}
-        columns={columnsToShow}
-        dataSource={list ? addKeys(list) : []}
-      />
-	  </div>
+            onChange: (page, limit) => {
+              dispatch(loadAllCustomer({ page, limit, status }));
+            },
+          }}
+          columns={columnsToShow}
+          dataSource={list ? addKeys(list) : []}
+        />
+      </div>
     </div>
   );
 }

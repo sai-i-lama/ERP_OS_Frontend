@@ -18,17 +18,20 @@ function CustomTable({ list, total, status }) {
       title: "ID",
       dataIndex: "id",
       key: "id",
+      sorter: (a, b) => a.id - b.id
     },
     {
       title: "Nom",
       dataIndex: "name",
       key: "name",
+      sorter: (a, b) => a.name.localeCompare(b.name),
       render: (name, { id }) => <Link to={`/supplier/${id}`}>{name}</Link>,
     },
     {
       title: "Téléphone",
       dataIndex: "phone",
       key: "phone",
+      sorter: (a, b) => a.phone.localeCompare(b.phone)
     },
     {
       title: "Adresse",
@@ -36,12 +39,13 @@ function CustomTable({ list, total, status }) {
       key: "address",
       responsive: ["md"],
     },
-    // {
-    //   title: "Due Amount",
-    //   dataIndex: "due_amount",
-    //   key: "due_amount",
-    //   responsive: ["md"],
-    // },
+    {
+      title: "Due Amount",
+      dataIndex: "due_amount",
+      key: "due_amount",
+      responsive: ["md"],
+      sorter: (a, b) => a.due_amount - b.due_amount
+    },
   ];
 
   useEffect(() => {

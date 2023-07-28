@@ -1,10 +1,14 @@
 import {
-    Button,
-    Card,
-    Col, Dropdown, Form,
-    Input, Menu, Row,
-    Table,
-    Typography
+  Button,
+  Card,
+  Col,
+  Dropdown,
+  Form,
+  Input,
+  Menu,
+  Row,
+  Table,
+  Typography,
 } from "antd";
 
 import moment from "moment";
@@ -23,18 +27,23 @@ function CustomTable({ list }) {
       title: "ID",
       dataIndex: "id",
       key: "id",
+      sorter: (a, b) => a.id - b.id,
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Nom",
       dataIndex: "name",
       key: "name",
+      sorter: (a, b) => a.name.localeCompare(b.name),
+      sortDirections: ["ascend", "descend"],
     },
-
     {
       title: "Créé le",
       dataIndex: "createdAt",
-      key: "addrcreatedAtess",
+      key: "createdAt",
       render: (createdAt) => moment(createdAt).format("YYYY-MM-DD"),
+      sorter: (a, b) => moment(a.createdAt).unix() - moment(b.createdAt).unix(),
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Action",
@@ -159,7 +168,7 @@ const Role = () => {
           className="column-design border rounded card-custom"
         >
           <Title level={4} className="m-2 text-center">
-          Ajouter un nouveau rôle
+            Ajouter un nouveau rôle
           </Title>
           <Form
             style={{ marginBottom: "100px" }}
@@ -205,7 +214,7 @@ const Role = () => {
                   block
                   loading={loader}
                 >
-                   Ajouter un nouveau rôle
+                  Ajouter un nouveau rôle
                 </Button>
               </Form.Item>
             </div>

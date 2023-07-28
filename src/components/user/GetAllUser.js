@@ -22,22 +22,30 @@ function CustomTable({ list }) {
       title: "ID",
       dataIndex: "id",
       key: "id",
+      sorter: (a, b) => a.id - b.id,
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Nom",
       dataIndex: "username",
       key: "username",
+      sorter: (a, b) => a.username.localeCompare(b.username),
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Role",
       dataIndex: "role",
       key: "role",
+      sorter: (a, b) => a.role.localeCompare(b.role),
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Créer le",
       dataIndex: "createdAt",
-      key: "addrcreatedAtess",
+      key: "createdAt",
       render: (createdAt) => moment(createdAt).format("YYYY-MM-DD HH:mm:ss"),
+      sorter: (a, b) => moment(a.createdAt).unix() - moment(b.createdAt).unix(),
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Action",
@@ -135,18 +143,18 @@ function CustomTable({ list }) {
           </div>
         )}
       </div>
-	  {list && (
-          <div style={{ marginBottom: "30px" }}>
-            <Dropdown
-              overlay={
-                <Menu onClick={colVisibilityClickHandler} items={columnItems} />
-              }
-              placement="bottomLeft"
-            >
-              <Button className="column-visibility">Column Visibility</Button>
-            </Dropdown>
-          </div>
-        )}
+      {list && (
+        <div style={{ marginBottom: "30px" }}>
+          <Dropdown
+            overlay={
+              <Menu onClick={colVisibilityClickHandler} items={columnItems} />
+            }
+            placement="bottomLeft"
+          >
+            <Button className="column-visibility">Column Visibility</Button>
+          </Dropdown>
+        </div>
+      )}
       <Table
         scroll={{ x: true }}
         loading={!list}

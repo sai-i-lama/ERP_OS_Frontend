@@ -4,14 +4,14 @@ import "./sale.css";
 
 import { SearchOutlined } from "@ant-design/icons";
 import {
-    Button,
-    DatePicker,
-    Dropdown,
-    Form,
-    Menu,
-    Segmented,
-    Select,
-    Table
+  Button,
+  DatePicker,
+  Dropdown,
+  Form,
+  Menu,
+  Segmented,
+  Select,
+  Table,
 } from "antd";
 import moment from "moment";
 import { useEffect, useState } from "react";
@@ -38,57 +38,79 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       dataIndex: "id",
       key: "id",
       render: (name, { id }) => <Link to={`/sale/${id}`}>{id}</Link>,
+      sorter: (a, b) => a.id - b.id,
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Date",
       dataIndex: "date",
       key: "date",
       render: (date) => moment(date).format("ll"),
+      sorter: (a, b) => moment(a.date).unix() - moment(b.date).unix(),
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Nom Client",
       dataIndex: `customer`,
       key: "customer_id",
       render: (customer) => customer?.name,
+      sorter: (a, b) => a.customer.name.localeCompare(b.customer.name),
+      sortDirections: ["ascend", "descend"],
     },
-
     {
       title: "Type Client",
       dataIndex: `customer`,
       key: "customer",
       render: (customer) => customer?.type_customer,
+      sorter: (a, b) =>
+        a.customer.type_customer.localeCompare(b.customer.type_customer),
+      sortDirections: ["ascend", "descend"],
     },
-
     {
       title: "Montant Total",
       dataIndex: "total_amount",
       key: "total_amount",
+      sorter: (a, b) => a.total_amount - b.total_amount,
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Remise",
       dataIndex: "discount",
       key: "discount",
+      sorter: (a, b) => a.discount - b.discount,
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Montant à Payer",
       dataIndex: "due_amount",
       key: "due_amount",
       responsive: ["md"],
+      sorter: (a, b) => a.due_amount - b.due_amount,
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Montant Payé",
       dataIndex: "paid_amount",
       key: "paid_amount",
       responsive: ["md"],
+      sorter: (a, b) => a.paid_amount - b.paid_amount,
+      sortDirections: ["ascend", "descend"],
     },
-
-    //Update Supplier Name here
-
+    {
+      title: "Nom du fournisseur",
+      dataIndex: `supplier`,
+      key: "supplier_id",
+      render: (supplier) => supplier?.name,
+      sorter: (a, b) => a.supplier.name.localeCompare(b.supplier.name),
+      sortDirections: ["ascend", "descend"],
+    },
     {
       title: "Bénéfice",
       dataIndex: "profit",
       key: "profit",
       responsive: ["md"],
+      sorter: (a, b) => a.profit - b.profit,
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Vendeur",
@@ -96,6 +118,8 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       key: "user",
       render: (user) => user?.username,
       responsive: ["md"],
+      sorter: (a, b) => a.user.username.localeCompare(b.user.username),
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Action",
@@ -184,18 +208,16 @@ const GetAllSale = (props) => {
   const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(false);
 
+  const [startdate, setStartdate] = useState(
+    moment().startOf("month").format("YYYY-MM-DD")
+  );
+  const [enddate, setEnddate] = useState(
+    moment().endOf("month").format("YYYY-MM-DD")
+  );
 
-	const [startdate, setStartdate] = useState(
-		moment().startOf("month").format("YYYY-MM-DD")
-	);
-	const [enddate, setEnddate] = useState(
-		moment().endOf("month").format("YYYY-MM-DD")
-	);
-
-	useEffect(() => {
-		dispatch(loadAllStaff({ status: true }));
-	}, [dispatch]);
-
+  useEffect(() => {
+    dispatch(loadAllStaff({ status: true }));
+  }, [dispatch]);
 
   const { RangePicker } = DatePicker;
   const totalCount = total?._count?.id;
@@ -204,19 +226,17 @@ const GetAllSale = (props) => {
     setCount(totalCount);
   }, [totalCount]);
 
-
-	useEffect(() => {
-		dispatch(
-			loadAllSale({
-				page: 1,
-				limit: 10,
-				startdate: moment().startOf("month"),
-				enddate: moment().endOf("month"),
-				user: "",
-			})
-		);
-	}, []);
-
+  useEffect(() => {
+    dispatch(
+      loadAllSale({
+        page: 1,
+        limit: 10,
+        startdate: moment().startOf("month"),
+        enddate: moment().endOf("month"),
+        user: "",
+      })
+    );
+  }, []);
 
   const CSVlist = list?.map((i) => ({
     ...i,
@@ -255,14 +275,12 @@ const GetAllSale = (props) => {
     );
   };
 
-
-	const onCalendarChange = (dates) => {
-		const newStartdate = dates[0].format("YYYY-MM-DD");
-		const newEnddate = dates[1].format("YYYY-MM-DD");
-		setStartdate(newStartdate ? newStartdate : startdate);
-		setEnddate(newEnddate ? newEnddate : enddate);
-	};
-
+  const onCalendarChange = (dates) => {
+    const newStartdate = dates[0].format("YYYY-MM-DD");
+    const newEnddate = dates[1].format("YYYY-MM-DD");
+    setStartdate(newStartdate ? newStartdate : startdate);
+    setEnddate(newEnddate ? newEnddate : enddate);
+  };
 
   const isLogged = Boolean(localStorage.getItem("isLogged"));
 
@@ -270,44 +288,44 @@ const GetAllSale = (props) => {
     return <Navigate to={"/auth/login"} replace={true} />;
   }
 
-
-	return (
-		<>
-			<PageTitle title={"Retour"} />
-			<div className='card card-custom mt-1'>
-				<div className='card-body'>
-					<h5 className='d-inline-flex'>Liste des factures de vente</h5>
-					<div className='card-title d-flex flex-column flex-md-row align-items-center justify-content-md-center mt-1 py-2'>
-						<div>
-							<Form
-								onFinish={onSearchFinish}
-								form={form}
-								layout={"inline"}
-								onFinishFailed={() => setLoading(false)}>
-								<Form.Item name='user'>
-									<Select
-										loading={!userList}
-										placeholder='Vendeur'
-										style={{ width: 200 }}
-										allowClear>
-										<Select.Option value=''>Toute</Select.Option>
-										{userList &&
-											userList.map((i) => (
-												<Select.Option value={i.id}>{i.username}</Select.Option>
-											))}
-									</Select>
-								</Form.Item>
-								<div className=' me-2'>
-									<RangePicker
-										onCalendarChange={onCalendarChange}
-										defaultValue={[
-											moment().startOf("month"),
-											moment().endOf("month"),
-										]}
-										className='range-picker'
-									/>
-								</div>
-
+  return (
+    <>
+      <PageTitle title={"Retour"} />
+      <div className="card card-custom mt-1">
+        <div className="card-body">
+          <h5 className="d-inline-flex">Liste des factures de vente</h5>
+          <div className="card-title d-flex flex-column flex-md-row align-items-center justify-content-md-center mt-1 py-2">
+            <div>
+              <Form
+                onFinish={onSearchFinish}
+                form={form}
+                layout={"inline"}
+                onFinishFailed={() => setLoading(false)}
+              >
+                <Form.Item name="user">
+                  <Select
+                    loading={!userList}
+                    placeholder="Vendeur"
+                    style={{ width: 200 }}
+                    allowClear
+                  >
+                    <Select.Option value="">Toute</Select.Option>
+                    {userList &&
+                      userList.map((i) => (
+                        <Select.Option value={i.id}>{i.username}</Select.Option>
+                      ))}
+                  </Select>
+                </Form.Item>
+                <div className=" me-2">
+                  <RangePicker
+                    onCalendarChange={onCalendarChange}
+                    defaultValue={[
+                      moment().startOf("month"),
+                      moment().endOf("month"),
+                    ]}
+                    className="range-picker"
+                  />
+                </div>
 
                 <Form.Item>
                   <Button
@@ -360,8 +378,7 @@ const GetAllSale = (props) => {
                         {
                           label: (
                             <span>
-                              <i className="bi bi-person-dash-fill"></i>{" "}
-                              Paginé
+                              <i className="bi bi-person-dash-fill"></i> Paginé
                             </span>
                           ),
                           value: 10,

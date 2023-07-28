@@ -8,31 +8,38 @@ const SaleProductListCard = ({ list }) => {
       title: "ID",
       dataIndex: "id",
       key: "id",
+      sorter: (a, b) => a.id - b.id,
     },
     {
       title: "Nom",
       dataIndex: "product",
       key: "product.name",
+      sorter: (a, b) => a.product.name.localeCompare(b.product.name),
       render: (product) => (
         <Link to={`/product/${product.id}`}>{product.name}</Link>
       ),
     },
     {
-      title: " Quantité de Produit ",
+      title: "Quantité de Produit",
       dataIndex: "product_quantity",
       key: "product_quantity",
+      sorter: (a, b) => a.product_quantity - b.product_quantity,
     },
     {
-      title: "Prix de vente du produit",
-      dataIndex: "product_sale_price",
-      key: "product_sale_price",
+      title: "Prix d’achat du produit",
+      dataIndex: "product_purchase_price",
+      key: "product_purchase_price",
+      sorter: (a, b) => a.product_purchase_price - b.product_purchase_price,
     },
     {
-      title: "Prix Total  ",
-      key: "Total Price ",
+      title: "Prix Total",
+      key: "Total Price",
       dataIndex: "",
-      render: ({ product_quantity, product_sale_price }) =>
-        product_sale_price * product_quantity,
+      render: ({ product_quantity, product_purchase_price }) =>
+        product_purchase_price * product_quantity,
+      sorter: (a, b) =>
+        a.product_quantity * a.product_purchase_price -
+        b.product_quantity * b.product_purchase_price,
     },
   ];
 
@@ -49,7 +56,8 @@ const SaleProductListCard = ({ list }) => {
               Informations sur les produits vendus
             </h6>,
           ]}
-          bodyStyle={{ paddingTop: "0" }}>
+          bodyStyle={{ paddingTop: "0" }}
+        >
           <div className="col-info">
             <Table
               key={list.id}

@@ -23,30 +23,32 @@ function CustomTable({ list, total }) {
       title: "ID",
       dataIndex: "id",
       key: "id",
+      sorter: (a, b) => a.id - b.id,
       render: (id) => <Link to={`/account/${id}`}>{id}</Link>,
     },
-    // {
-    // 	title: "Date",
-    // 	dataIndex: "date",
-    // 	key: "date",
-    // 	render: (date) => moment(date).format("ll"),
-    // },
-
     {
       title: "Compte",
       dataIndex: "name",
       key: "name",
+      sorter: (a, b) => a.name.localeCompare(b.name),
     },
-
+  
     {
-      title: "Type de Compte ",
+      title: "Type de Compte",
       dataIndex: "account",
       key: "account",
       render: (account) => account?.name,
+      sorter: (a, b) => a.account?.name.localeCompare(b.account?.name),
       responsive: ["md"],
     },
+    {
+      title: "Date",
+      dataIndex: "date",
+      key: "date",
+      sorter: (a, b) => moment(a.date).unix() - moment(b.date).unix(),
+      render: (date) => moment(date).format("ll"),
+    },
   ];
-
   useEffect(() => {
     setColumnItems(menuItems);
     setColumnsToShow(columns);

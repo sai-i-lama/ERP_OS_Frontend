@@ -18,12 +18,14 @@ function CustomTable({ list, total }) {
       title: "ID",
       dataIndex: "id",
       key: "id",
+      sorter: (a, b) => a.id - b.id,
     },
     {
       title: "Nom",
       dataIndex: "name",
       key: "name",
       render: (name, { id }) => <Link to={`/designation/${id}`}>{name}</Link>,
+      sorter: (a, b) => a.name.localeCompare(b.name),
     },
   ];
 

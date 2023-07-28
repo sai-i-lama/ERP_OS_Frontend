@@ -13,42 +13,46 @@ const TransactionSaleList = ({ list }) => {
       dataIndex: "id",
       key: "id",
       render: (id) => <Link to={`/transaction/${id}`}>{id}</Link>,
+      sorter: (a, b) => a.id - b.id,
     },
     {
       title: "Date",
       dataIndex: "date",
       key: "date",
       render: (date) => moment(date).format("DD/MM/YYYY"),
+      sorter: (a, b) => moment(a.date).unix() - moment(b.date).unix(),
     },
-    //TODO : add Debit and credit column
     {
       title: "Debit",
       dataIndex: "debit",
       key: "debit",
       render: (debit) => debit.name,
+      sorter: (a, b) => a.debit.name.localeCompare(b.debit.name),
     },
     {
       title: "Credit",
       dataIndex: "credit",
       key: "credit",
       render: (credit) => credit.name,
+      sorter: (a, b) => a.credit.name.localeCompare(b.credit.name),
     },
-
     {
       title: "Montant",
       dataIndex: "amount",
       key: "amount",
+      sorter: (a, b) => a.amount - b.amount,
     },
-
     {
-      title: "Type ",
+      title: "Type",
       dataIndex: "type",
       key: "type",
+      sorter: (a, b) => a.type.localeCompare(b.type),
     },
     {
       title: "Particuliers",
       dataIndex: "particulars",
       key: "particulars",
+      sorter: (a, b) => a.particulars.localeCompare(b.particulars),
     },
   ];
 

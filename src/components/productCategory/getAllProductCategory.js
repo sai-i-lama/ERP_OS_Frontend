@@ -19,6 +19,8 @@ function CustomTable({ list, total }) {
       title: "ID",
       dataIndex: "id",
       key: "id",
+      sorter: (a, b) => a.id - b.id,
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Nom",
@@ -27,12 +29,16 @@ function CustomTable({ list, total }) {
       render: (name, { id }) => (
         <Link to={`/product-category/${id}`}>{name}</Link>
       ),
+      sorter: (a, b) => a.name.localeCompare(b.name),
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Créé le",
       dataIndex: "createdAt",
       key: "createdAt",
       render: (createdAt) => moment(createdAt).format("YYYY-MM-DD"),
+      sorter: (a, b) => moment(a.createdAt).unix() - moment(b.createdAt).unix(),
+      sortDirections: ["ascend", "descend"],
     },
   ];
 

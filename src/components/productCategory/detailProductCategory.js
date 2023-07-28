@@ -17,7 +17,6 @@ function CustomTable({ list, categoryName }) {
   const dispatch = useDispatch();
   const [columnItems, setColumnItems] = useState([]);
   const [columnsToShow, setColumnsToShow] = useState([]);
-
   const columns = [
     {
       title: "Image",
@@ -30,50 +29,65 @@ function CustomTable({ list, categoryName }) {
       title: "ID",
       dataIndex: "id",
       key: "id",
+      sorter: (a, b) => a.id - b.id,
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "SKU",
       dataIndex: "sku",
       key: "sku",
+      sorter: (a, b) => a.sku.localeCompare(b.sku),
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Nom",
       dataIndex: "name",
       key: "name",
       render: (name, { id }) => <Link to={`/product/${id}`}>{name}</Link>,
+      sorter: (a, b) => a.name.localeCompare(b.name),
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Quantité",
       dataIndex: "quantity",
       key: "quantity",
+      sorter: (a, b) => a.quantity - b.quantity,
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Prix d'achat",
       dataIndex: "purchase_price",
       key: "purchase_price",
       responsive: ["md"],
+      sorter: (a, b) => a.purchase_price - b.purchase_price,
+      sortDirections: ["ascend", "descend"],
     },
     {
-      title: " prix de vente",
+      title: "Prix de vente",
       dataIndex: "sale_price",
       key: "sale_price",
       responsive: ["md"],
+      sorter: (a, b) => a.sale_price - b.sale_price,
+      sortDirections: ["ascend", "descend"],
     },
     {
-      title: " Type Unitaire",
+      title: "Type Unitaire",
       dataIndex: "unit_type",
       key: "unit_type",
+      sorter: (a, b) => a.unit_type.localeCompare(b.unit_type),
+      sortDirections: ["ascend", "descend"],
     },
-
     {
-      title: "Quantité commandée ",
+      title: "Quantité commandée",
       dataIndex: "reorder_quantity",
       key: "reorder_quantity",
+      sorter: (a, b) => a.reorder_quantity - b.reorder_quantity,
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Action",
       dataIndex: "sku",
-      key: "sku",
+      key: "action",
       render: (sku) => <GenerateBarcodePopUp sku={sku ? sku : 0} />,
     },
   ];
@@ -119,7 +133,8 @@ function CustomTable({ list, categoryName }) {
                 data={list}
                 className="btn btn-dark btn-sm mb-1"
                 style={{ margin: "5px" }}
-                filename={`category_${categoryName}`}>
+                filename={`category_${categoryName}`}
+              >
                 Télécharger .CSV
               </CSVLink>
             </div>
@@ -164,7 +179,9 @@ const DetailProductCategory = () => {
       dispatch(DeleteProductCategory(id));
 
       setVisible(false);
-      toast.warning(`la Catégorie : ${category.name} ne peux pas etre supprimée `);
+      toast.warning(
+        `la Catégorie : ${category.name} ne peux pas etre supprimée `
+      );
       toast.warning(`Elle contient encore des produits`);
       return navigate("/product-category");
     } catch (error) {
@@ -198,7 +215,8 @@ const DetailProductCategory = () => {
             <Card bordered={false} className="card-custom">
               <div
                 className="card-header d-flex justify-content-between"
-                style={{ padding: 0 }}>
+                style={{ padding: 0 }}
+              >
                 <div className="w-50">
                   <h5>
                     <i className="bi bi-person-lines-fill"></i>
@@ -211,29 +229,37 @@ const DetailProductCategory = () => {
                   <Link
                     className="me-3 d-inline-block"
                     to={`/product-category/${category.id}/update`}
-                    state={{ data: category }}>
+                    state={{ data: category }}
+                  >
                     <Button
                       type="primary"
                       shape="round"
-                      icon={<EditOutlined />}>Renommer</Button>
+                      icon={<EditOutlined />}
+                    >
+                      Renommer
+                    </Button>
                   </Link>
                   <Popover
                     content={
                       <a onClick={onDelete}>
                         <Button type="primary" danger>
-                         Oui !
+                          Oui !
                         </Button>
                       </a>
                     }
                     title=" Voulez-vous vraiment supprimer?"
                     trigger="click"
                     open={visible}
-                    onOpenChange={handleVisibleChange}>
+                    onOpenChange={handleVisibleChange}
+                  >
                     <Button
                       type="danger"
                       DetailProductCategory
                       shape="round"
-                      icon={<DeleteOutlined />}>Supprimer</Button>
+                      icon={<DeleteOutlined />}
+                    >
+                      Supprimer
+                    </Button>
                   </Popover>
                 </div>
               </div>
@@ -241,7 +267,7 @@ const DetailProductCategory = () => {
               <div className="my-2 table-responsive">
                 <h5 className="text-center mb-2">
                   {" "}
-                 Produit Appartenant <strong>{category.name} </strong>
+                  Produit Appartenant <strong>{category.name} </strong>
                 </h5>
 
                 <CustomTable

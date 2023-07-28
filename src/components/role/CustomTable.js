@@ -13,24 +13,32 @@ const CustomTable = ({ role }) => {
       title: "ID",
       dataIndex: "id",
       key: "id",
+      sorter: (a, b) => a.id - b.id,
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Nom",
       dataIndex: "permission",
       key: "permission",
       render: ({ name } = {}) => name,
+      sorter: (a, b) => a.permission.name.localeCompare(b.permission.name),
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Créé le",
       dataIndex: "createdAt",
       key: "createdAt",
       render: (createdAt) => moment(createdAt).format("DD/MM/YYYY"),
+      sorter: (a, b) => moment(a.createdAt).unix() - moment(b.createdAt).unix(),
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Mis à jour le",
       dataIndex: "updatedAt",
       key: "updatedAt",
       render: (updatedAt) => moment(updatedAt).format("DD/MM/YYYY"),
+      sorter: (a, b) => moment(a.updatedAt).unix() - moment(b.updatedAt).unix(),
+      sortDirections: ["ascend", "descend"],
     },
   ];
 
@@ -91,7 +99,7 @@ const CustomTable = ({ role }) => {
         {keys && keys.length > 0 && (
           <div className="text-start mb-1">
             <Button type="danger" onClick={onDelete} loading={loader}>
-            Supprimer
+              Supprimer
             </Button>
           </div>
         )}

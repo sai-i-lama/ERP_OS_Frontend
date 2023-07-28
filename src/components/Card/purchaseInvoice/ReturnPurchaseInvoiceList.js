@@ -20,23 +20,26 @@ const ReturnPurchaseInvoiceList = ({ list }) => {
       title: "ID",
       dataIndex: "id",
       key: "id",
+      sorter: (a, b) => a.id - b.id,
     },
     {
       title: "Date",
       dataIndex: "date",
       key: "date",
       render: (date) => moment(date).format("DD/MM/YYYY"),
+      sorter: (a, b) => moment(a.date).unix() - moment(b.date).unix(),
     },
-
     {
-      title: "Montant Total ",
+      title: "Montant Total",
       dataIndex: "total_amount",
       key: "total_amount",
+      sorter: (a, b) => a.total_amount - b.total_amount,
     },
     {
       title: "Note",
       dataIndex: "note",
       key: "note",
+      sorter: (a, b) => a.note.localeCompare(b.note),
     },
   ];
 
