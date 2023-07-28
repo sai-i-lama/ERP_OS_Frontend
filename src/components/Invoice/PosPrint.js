@@ -101,7 +101,7 @@ const PosPrint = ({ data }) => {
 			</div>
 			{invoiceData && (
 				<Button type='primary' shape='round' onClick={handlePrint}>
-					POS Print
+					Imprimer
 				</Button>
 			)}
 		</div>

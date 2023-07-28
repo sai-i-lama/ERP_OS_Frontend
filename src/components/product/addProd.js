@@ -255,7 +255,21 @@ const AddProd = () => {
 
               <Form.Item
                 style={{ marginBottom: "15px" }}
-                label="Quantité"
+                label="Quantité commandée"
+                name="reorder_quantity"
+                rules={[
+                  {
+                    required: true,
+                    message: "Veuillez saisir la Quantité commandée !",
+                  },
+                ]}
+              >
+                <Input type="number" min={0} />
+              </Form.Item>
+
+              <Form.Item
+                style={{ marginBottom: "15px" }}
+                label="Quantité Reçue"
                 name="quantity"
                 rules={[
                   {
@@ -289,20 +303,6 @@ const AddProd = () => {
                   {
                     required: true,
                     message: "Veuillez saisir le Prix de vente!",
-                  },
-                ]}
-              >
-                <Input type="number" min={0} />
-              </Form.Item>
-
-              <Form.Item
-                style={{ marginBottom: "15px" }}
-                label="Quantité commandée"
-                name="reorder_quantity"
-                rules={[
-                  {
-                    required: true,
-                    message: "Veuillez saisir la Quantité commandée !",
                   },
                 ]}
               >
