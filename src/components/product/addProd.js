@@ -16,14 +16,14 @@ import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../redux/actions/product/addProductAction";
 import { loadAllProductCategory } from "../../redux/actions/productCategory/getProductCategoryAction";
-import {loadSuppliers} from "../../redux/actions/supplier/getSuppliersAction";
+import { loadSuppliers } from "../../redux/actions/supplier/getSuppliersAction";
 import UploadMany from "../Card/UploadMany";
 import styles from "./AddProd.module.css";
 
 const AddProd = () => {
   const unitType = ["kg", "ltr", "g"];
   const category = useSelector((state) => state.productCategories?.list);
-  const supplier = useSelector((state) => state.suppliers?.list);
+  const allSuppliers = useSelector((state) => state.suppliers.list);
   const dispatch = useDispatch();
   //useEffect for loading category list from redux
   useEffect(() => {
@@ -31,8 +31,8 @@ const AddProd = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(loadSuppliers({ page: 1, limit: 100 }));
-  }, [dispatch]);
+		dispatch(loadSuppliers({ page: 1, limit: 10 }));
+	}, []);
 
   const { Title } = Typography;
   const [fileList, setFileList] = useState([]);
@@ -93,7 +93,7 @@ const AddProd = () => {
     const productName = form.getFieldValue("name").slice(0, 3).toUpperCase(); // Get the first three letters of the selected category
     setSku(`SKU-${productName}${generatedSku.toString()}`);
   };
-
+  console.log("supplier list[ " + allSuppliers + " ]");
   return (
     <Fragment>
       <Row className="mr-top" justify="space-between" gutter={[0, 30]}>
@@ -143,7 +143,7 @@ const AddProd = () => {
               <Form.Item
                 style={{ marginBottom: "15px" }}
                 name="idSupplier"
-                label="Sélectionner uu fournisseur "
+                label="Sélectionner un fournisseur "
                 rules={[
                   {
                     required: true,
@@ -152,22 +152,16 @@ const AddProd = () => {
                 ]}
               >
                 <Select
-                  name="idSupplier"
-                  loading={!supplier}
+                  loading={!allSuppliers}
                   showSearch
-                  placeholder="Sélectionner un fournisseur"
+                  placeholder="Sélectionner un fournisseur "
                   optionFilterProp="children"
                   filterOption={(input, option) =>
-                    option.children.includes(input)
-                  }
-                  filterSort={(optionA, optionB) =>
-                    optionA.children
-                      .toLowerCase()
-                      .localeCompare(optionB.children.toLowerCase())
+                    option.children.toLowerCase().includes(input.toLowerCase())
                   }
                 >
-                  {supplier &&
-                    supplier.map((sup) => (
+                  {allSuppliers &&
+                    allSuppliers.map((sup) => (
                       <Select.Option key={sup.id} value={sup.id}>
                         {sup.name}
                       </Select.Option>
@@ -256,9 +250,7 @@ const AddProd = () => {
                   },
                 ]}
               >
-
                 <Input type="number" min={0} />
-
               </Form.Item>
 
               <Form.Item
@@ -272,9 +264,7 @@ const AddProd = () => {
                   },
                 ]}
               >
-
                 <Input type="number" min={0} />
-
               </Form.Item>
 
               <Form.Item
@@ -288,7 +278,7 @@ const AddProd = () => {
                   },
                 ]}
               >
-                <Input type="number"  min={0} value={0} />
+                <Input type="number" min={0} value={0} />
               </Form.Item>
 
               <Form.Item
@@ -302,9 +292,7 @@ const AddProd = () => {
                   },
                 ]}
               >
-
                 <Input type="number" min={0} />
-
               </Form.Item>
 
               <Form.Item
@@ -318,9 +306,7 @@ const AddProd = () => {
                   },
                 ]}
               >
-
                 <Input type="number" min={0} />
-
               </Form.Item>
 
               <Form.Item label="Envoyer image" valuePropName="image">

@@ -89,7 +89,7 @@ const DetailCust = () => {
                     }
                     title="Voulez-vous vraiment supprimer ?"
                     trigger="click"
-                    open={visible}
+                   open={visible}
                     onOpenChange={handleVisibleChange}
                   >
                     <Button

@@ -81,7 +81,7 @@ function CustomTable({ list, categoryName }) {
   useEffect(() => {
     setColumnItems(menuItems);
     setColumnsToShow(columns);
-  }, []);
+  }, [columns]);
 
   const colVisibilityClickHandler = (col) => {
     const ifColFound = columnsToShow.find((item) => item.key === col.key);
@@ -180,7 +180,7 @@ const DetailProductCategory = () => {
 
   useEffect(() => {
     dispatch(loadSingleProductCategory(id));
-  }, [id]);
+  }, [dispatch, id]);
 
   const isLogged = Boolean(localStorage.getItem("isLogged"));
 

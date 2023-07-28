@@ -124,7 +124,7 @@ const GetAllProductCategory = (props) => {
 
   useEffect(() => {
     dispatch(loadAllProductCategory({ page: 1, limit: 10 }));
-  }, []);
+  }, [dispatch]);
 
   // useEffect(() => {
   //   deleteHandler(list, deletedId);
