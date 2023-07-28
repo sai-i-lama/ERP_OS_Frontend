@@ -243,117 +243,18 @@ const AddSale = () => {
 	}, [selectedProds, totalDiscountPaidDue.paid, totalDiscountPaidDue.discount]);
 
 	return (
-		<Card className='mt-3'>
+<Card className='mt-3'>
 			<Form
 				form={form}
-				className='m-lg-4'
+				className='m-lg-1'
 				name='dynamic_form_nest_item'
 				// onFinish={onFinish}
-				onChange={onChange}
-				onFinishFailed={() => {
-					setLoader(false);
-				}}
+				// onChange={onChange}
 				layout='vertical'
 				size='large'
 				autoComplete='off'>
-				<Row className='mr-top' gutter={[24, 24]}>
-					<Col span={24} className='border rounded column-design'>
-						<Title level={4} className='m-2 text-center'>
-						Vente de nouveaux produits
-						</Title>
-					</Col>
-					<Col span={24} lg={16}>
-						<div className='d-flex justify-content-between mb-1'>
-							<Form.Item
-								label='Client '
-								name='customer_id'
-								style={{ maxWidth: "250px" }}
-								rules={[
-									{
-										required: true,
-										message: "Veuillez sélectionner un client!",
-									},
-								]}>
-								<Select
-									loading={!allCustomer}
-									showSearch
-									placeholder='sélectionner un client '
-									optionFilterProp='children'
-									onChange={(id) => setCustomer(id)}
-									onSearch={onSearch}
-									filterOption={(input, option) =>
-										option.children.toLowerCase().includes(input.toLowerCase())
-									}>
-									{allCustomer &&
-										allCustomer.map((sup) => (
-											<Option key={sup.id} value={sup.id}>
-												{sup.name}
-											</Option>
-										))}
-								</Select>
-							</Form.Item>
-
-							<Form.Item label='Date' required>
-								<DatePicker
-									onChange={(value) => setDate(value._d)}
-									defaultValue={date}
-									style={{ marginBottom: "10px" }}
-									label='date'
-									name='date'
-									rules={[
-										{
-											required: true,
-											message: "Veuillez sélectionner la Date!",
-										},
-									]}
-								/>
-							</Form.Item>
-
-							{/* Sales Person Input Field */}
-							<Form.Item
-								label='Vendeur '
-								name='sales_person_id'
-								style={{ maxWidth: "250px" }}
-								rules={[
-									{
-										required: true,
-										message: "Veuillez sélectionner le Vendeur!",
-									},
-								]}>
-								<Select
-									loading={!allStaff}
-									showSearch
-									placeholder='Sélectionner un vendeur '
-									optionFilterProp='children'
-									onChange={(id) => setSalesPerson(id)}
-									onSearch={onSearch}
-									filterOption={(input, option) =>
-										option.children.toLowerCase().includes(input.toLowerCase())
-									}>
-									{allStaff &&
-										allStaff?.map((info) => (
-											<Option key={info.id} value={info.id}>
-												{info.username}
-											</Option>
-										))}
-								</Select>
-							</Form.Item>
-						</div>
-
-						<Products
-							formData={formData}
-							setData={setFormData}
-							allProducts={allProducts}
-							// updateFormData={updateFormData}
-							selectedProds={selectedProds}
-							handleSelectedProds={handleSelectedProds}
-							handleSelectedProdsQty={handleSelectedProdsQty}
-							handleSelectedProdsSalePrice={handleSelectedProdsSalePrice}
-							handleDeleteProd={handleDeleteProd}
-						/>
-					</Col>
-
-					<Col span={24} lg={8}>
+				<Row gutter={[24, 24]}>
+					<Col span={24}>
 						<div
 							style={{
 								padding: "10px 20px",
@@ -377,12 +278,13 @@ const AddSale = () => {
 								name='discount'
 								rules={[
 									{
-										required: true,
+										required: false,
 										message: "S’il vous plaît entrer le montant de la Remise!",
 									},
 								]}>
 								<InputNumber
 									type='number'
+									defaultValue={0}
 									value={0}
 									min={0}
 									max={totalDiscountPaidDue.total}
@@ -436,7 +338,76 @@ const AddSale = () => {
 							<strong>Montant à payer: </strong>
 							<strong>{totalDiscountPaidDue.due} cfa</strong>
 						</div>
+					</Col>
 
+					<Col span={24}>
+						<div className='d-flex justify-content-between mb-1'>
+							<div className='w-50'>
+								<Form.Item
+									label='Client '
+									name='customer_id'
+									style={{ maxWidth: "250px" }}
+									rules={[
+										{
+											required: true,
+											message: "Veuillez sélectionner un client!",
+										},
+									]}>
+									<Select
+										loading={!allCustomer}
+										showSearch
+										placeholder='Sélectionner un client '
+										optionFilterProp='children'
+										onChange={(id) => setCustomer(id)}
+										onSearch={onSearch}
+										filterOption={(input, option) =>
+											option.children
+												.toString()
+												.toLowerCase()
+												.includes(input.toLowerCase())
+										}>
+										{allCustomer &&
+											allCustomer.map((cust) => (
+												<Option key={cust.id} value={cust.id}>
+													{cust.phone} - {cust.name}
+												</Option>
+											))}
+									</Select>
+								</Form.Item>
+							</div>
+
+							<div className='w-50'>
+								<Form.Item label='Date' required>
+									<DatePicker
+										onChange={(value) => setDate(value._d)}
+										defaultValue={moment()}
+										style={{ marginBottom: "10px" }}
+										label='date'
+										name='date'
+										rules={[
+											{
+												required: true,
+												message: "Veuillez saisir la date!",
+											},
+										]}
+									/>
+								</Form.Item>
+							</div>
+						</div>
+
+						<Products
+							formData={formData}
+							setData={setFormData}
+							allProducts={allProducts}
+							// updateFormData={updateFormData}
+							selectedProds={selectedProds}
+							handleSelectedProds={handleSelectedProds}
+							handleSelectedProdsQty={handleSelectedProdsQty}
+							handleSelectedProdsSalePrice={handleSelectedProdsSalePrice}
+							handleDeleteProd={handleDeleteProd}
+						/>
+					</Col>
+					<Col span={24}>
 						<Form.Item style={{ marginTop: "15px" }}>
 							<Button
 								block
