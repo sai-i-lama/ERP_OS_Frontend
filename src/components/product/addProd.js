@@ -30,6 +30,10 @@ const AddProd = () => {
     dispatch(loadAllProductCategory({ page: 1, limit: 100 }));
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(loadSuppliers({ page: 1, limit: 100 }));
+  }, [dispatch]);
+
   const { Title } = Typography;
   const [fileList, setFileList] = useState([]);
   const [loader, setLoader] = useState(false);
