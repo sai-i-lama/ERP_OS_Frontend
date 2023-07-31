@@ -24,8 +24,8 @@ import SaleReportPrint from "../Invoice/SaleReport";
 import PageTitle from "../page-header/PageHeader";
 
 // //Date fucntinalities
-// let startdate = moment(new Date()).format("YYYY-MM-DD");
-// let enddate = moment(new Date()).add(1, "day").format("YYYY-MM-DD");
+// let startdate = moment(new Date()).format("YYYY-MM-DD HH:mm");
+// let enddate = moment(new Date()).add(1, "day").format("YYYY-MM-DD HH:mm");
 
 function CustomTable({ list, total, startdate, enddate, count, user }) {
   const [columnItems, setColumnItems] = useState([]);
@@ -45,7 +45,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       title: "Date",
       dataIndex: "date",
       key: "date",
-      render: (date) => moment(date).format("ll"),
+      render: (date) => moment(date).format("lll"),
       sorter: (a, b) => moment(a.date).unix() - moment(b.date).unix(),
       sortDirections: ["ascend", "descend"],
     },
@@ -276,8 +276,8 @@ const GetAllSale = (props) => {
   };
 
   const onCalendarChange = (dates) => {
-    const newStartdate = dates[0].format("YYYY-MM-DD");
-    const newEnddate = dates[1].format("YYYY-MM-DD");
+    const newStartdate = dates[0].format("YYYY-MM-DD HH:mm");
+    const newEnddate = dates[1].format("YYYY-MM-DD HH:mm");
     setStartdate(newStartdate ? newStartdate : startdate);
     setEnddate(newEnddate ? newEnddate : enddate);
   };

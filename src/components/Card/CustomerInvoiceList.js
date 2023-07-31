@@ -16,7 +16,7 @@ function CustomerInvoiceList({ list, linkTo }) {
       dataIndex: "date",
       key: "date",
       sorter: (a, b) => moment(a.date).unix() - moment(b.date).unix(),
-      render: (date) => moment(date).format("ll"),
+      render: (date) => moment(date).format("lll"),
     },
     {
       title: "Montant Total",

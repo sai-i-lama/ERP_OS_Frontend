@@ -51,6 +51,7 @@ export default function Products({
 										name,
 										sale_price,
 										selectedQty,
+										unit_type,
 										unit_measurement,
 										...restField
 									},
@@ -70,7 +71,7 @@ export default function Products({
 										<Col span={3}>
 											<Form.Item>
 												<div className='font-weight-bold'>
-													{unit_measurement ? unit_measurement : 0}
+													{unit_measurement ? unit_measurement : 0} {unit_type}
 												</div>
 											</Form.Item>
 										</Col>

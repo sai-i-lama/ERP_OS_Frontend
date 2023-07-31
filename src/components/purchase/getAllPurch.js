@@ -41,7 +41,7 @@ function CustomTable({ list, total, status, setStatus, startdate, enddate }) {
       title: "Date",
       dataIndex: "date",
       key: "date",
-      render: (date) => moment(date).format("ll"),
+      render: (date) => moment(date).format("lll"),
       sorter: (a, b) => moment(a.date).unix() - moment(b.date).unix(),
       sortDirections: ["ascend", "descend"],
     },
@@ -237,8 +237,8 @@ const GetAllPurch = (props) => {
   // }, [list]);
 
   const onCalendarChange = (dates) => {
-    const Newstartdate = (dates?.[0]).format("YYYY-MM-DD");
-    const Newenddate = (dates?.[1]).format("YYYY-MM-DD");
+    const Newstartdate = (dates?.[0]).format("YYYY-MM-DD HH:mm");
+    const Newenddate = (dates?.[1]).format("YYYY-MM-DD HH:mm");
     setStartdate(Newstartdate ? Newstartdate : startdate);
     setEnddate(Newenddate ? Newenddate : enddate);
 

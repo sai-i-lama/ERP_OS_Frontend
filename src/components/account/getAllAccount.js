@@ -10,8 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadAllAccount } from "../../redux/actions/account/getAccountAction";
 
 //Date fucntinalities
-let startdate = moment(new Date()).format("YYYY-MM-DD");
-let enddate = moment(new Date()).add(1, "day").format("YYYY-MM-DD");
+let startdate = moment(new Date()).format("YYYY-MM-DD HH:mm");
+let enddate = moment(new Date()).add(1, "day").format("YYYY-MM-DD HH:mm");
 
 function CustomTable({ list, total }) {
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ function CustomTable({ list, total }) {
       dataIndex: "date",
       key: "date",
       sorter: (a, b) => moment(a.date).unix() - moment(b.date).unix(),
-      render: (date) => moment(date).format("ll"),
+      render: (date) => moment(date).format("lll"),
     },
   ];
   useEffect(() => {

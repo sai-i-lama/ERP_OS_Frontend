@@ -16,7 +16,7 @@ function SupplierInvoiceTable({ list, linkTo }) {
       title: "Date",
       dataIndex: "date",
       key: "date",
-      render: (date) => moment(date).format("ll"),
+      render: (date) => moment(date).format("lll"),
       sorter: (a, b) => moment(a.date).unix() - moment(b.date).unix(),
     },
     {

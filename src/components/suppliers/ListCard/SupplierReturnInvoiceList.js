@@ -16,7 +16,7 @@ const SupplierReturnInvoiceList = ({ list }) => {
       title: "Date",
       dataIndex: "date",
       key: "date",
-      render: (date) => moment(date).format("DD/MM/YYYY"),
+      render: (date) => moment(date).format("DD/MM/YYYY HH:mm"),
       sorter: (a, b) => moment(a.date).unix() - moment(b.date).unix(),
       sortDirections: ["ascend", "descend"],
     },
