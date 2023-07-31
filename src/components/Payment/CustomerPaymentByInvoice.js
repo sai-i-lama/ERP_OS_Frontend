@@ -1,170 +1,207 @@
 import {
-	Button,
-	Card,
-	Col,
-	DatePicker,
-	Form,
-	InputNumber,
-	Input,
-	Row,
-	Typography,
+  Button,
+  Card,
+  Col,
+  DatePicker,
+  Form,
+  InputNumber,
+  Input,
+  Row,
+  Typography,
 } from "antd";
 
 import { Navigate, useNavigate } from "react-router-dom";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-
+import { loadSingleSale } from "../../redux/actions/sale/detailSaleAction";
 import moment from "moment";
 import { addCustomerPayment } from "../../redux/actions/customerPayment/addCustomerPaymentAction";
 import PageTitle from "../page-header/PageHeader";
 import { toast } from "react-toastify";
 
 const AddCustPaymentByInvoice = () => {
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
-	const { pid } = useParams();
+  const { pid } = useParams();
 
-	const dispatch = useDispatch();
-	const { Title } = Typography;
+  const dispatch = useDispatch();
+  const [dueAmount, setDueAmount] = useState(0);
+  const { sale } = useSelector((state) => state?.sales);
+  const { Title } = Typography;
 
-	const [form] = Form.useForm();
+  const [form] = Form.useForm();
+  useEffect(() => {
+    dispatch(loadSingleSale(pid));
+  }, [dispatch, pid]);
 
-	let [date, setDate] = useState(moment());
-	const [loader, setLoader] = useState(false);
+  useEffect(() => {
+    if (sale) {
+      setDueAmount(sale.dueAmount);
+      form.setFieldsValue({ due_amount: sale.dueAmount });
+    }
+  }, [sale, form]);
 
-	const onFinish = async (values) => {
-		try {
-			const data = {
-				date: date,
-				...values,
-			};
+  let [date, setDate] = useState(moment());
+  const [loader, setLoader] = useState(false);
 
-			const resp = await dispatch(addCustomerPayment(data));
+  const onFinish = async (values) => {
+    try {
+      const data = {
+        date: date,
+        ...values,
+      };
 
-			if (resp == "success") {
-				navigate(-1);
-				setLoader(false);
-				toast.success("Paiement éffectué avec succès");
-			}
+      const resp = await dispatch(addCustomerPayment(data));
 
-			form.resetFields();
-		} catch (error) {
-			console.log(error.message);
-			setLoader(false);
-		}
-	};
+      if (resp == "success") {
+        navigate(-1);
+        setLoader(false);
+        toast.success("Paiement éffectué avec succès");
+      }
 
-	const onFinishFailed = (errorInfo) => {
-		console.log("Failed:", errorInfo);
-		setLoader(false);
-	};
+      form.resetFields();
+    } catch (error) {
+      console.log(error.message);
+      setLoader(false);
+    }
+  };
 
-	const isLogged = Boolean(localStorage.getItem("isLogged"));
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+    setLoader(false);
+  };
 
-	if (!isLogged) {
-		return <Navigate to={"/auth/login"} replace={true} />;
-	}
+  const isLogged = Boolean(localStorage.getItem("isLogged"));
 
-	return (
-		<>
-			<PageTitle title={"Retour"} />
-			<Row className='mr-top'>
-				<Col
-					xs={24}
-					sm={24}
-					md={12}
-					lg={12}
-					xl={14}
-					className='border rounded column-design'>
-					<Card bordered={false} className='criclebox h-full'>
-						<Title level={3} className='m-3 text-center'>
-						Paiement de la facture de vente
-						</Title>
-						<Form
-							form={form}
-							className='m-4'
-							name='basic'
-							labelCol={{
-								span: 8,
-							}}
-							wrapperCol={{
-								span: 16,
-							}}
-							initialValues={{
-								remember: true,
-							}}
-							onFinish={onFinish}
-							onFinishFailed={onFinishFailed}
-							autoComplete='off'>
-							<Form.Item
-								label='Date'
-								rules={[
-									{
-										required: true,
-										message: "Veuillez saisir la date!",
-									},
-								]}>
-								<DatePicker
-									onChange={(value) => setDate(value?._d)}
-									defaultValue={moment()}
-									style={{ marginBottom: "10px" }}
-									label='date'
-									name='date'
-									rules={[
-										{
-											required: true,
-											message: "Veuillez saisir la date",
-										},
-									]}
-								/>
-							</Form.Item>
+  if (!isLogged) {
+    return <Navigate to={"/auth/login"} replace={true} />;
+  }
 
-							<Form.Item
-								style={{ marginBottom: "10px" }}
-								label='Remise'
-								name='discount'
-								rules={[
-									{
-										required: true,
-										message: "S’il vous plaît entrer le montant de la Réduction!",
-									},
-								]}>
-								<InputNumber type='number' value={0} min={0} defaultValue={0}/>
-							</Form.Item>
+  return (
+    <>
+      <PageTitle title={"Retour"} />
+      <Row className="mr-top">
+        <Col
+          xs={24}
+          sm={24}
+          md={12}
+          lg={12}
+          xl={14}
+          className="border rounded column-design"
+        >
+          <Card bordered={false} className="criclebox h-full">
+            <Title level={3} className="m-3 text-center">
+              Paiement de la facture de vente
+            </Title>
+            <Form
+              form={form}
+              className="m-4"
+              name="basic"
+              labelCol={{
+                span: 8,
+              }}
+              wrapperCol={{
+                span: 16,
+              }}
+              initialValues={{
+                remember: true,
+              }}
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+              autoComplete="off"
+            >
+              <Form.Item
+                hasFeedback
+                validateStatus="success"
+                initialValue={pid}
+                style={{ marginBottom: "10px" }}
+                label="N° Facture de vente"
+                name="sale_invoice_no"
+                rules={[
+                  {
+                    required: true,
+                    message: "Veuillez saisir le N° de la facture!",
+                  },
+                ]}
+              >
+                <Input type="number" disabled col="true" />
+              </Form.Item>
 
-							<Form.Item
-								style={{ marginBottom: "10px" }}
-								label='Montant'
-								name='amount'
-								rules={[
-									{
-										required: true,
-										message: "Veuillez saisir le montant!",
-									},
-								]}>
-								<Input type='number' value={0} min={0} />
-							</Form.Item>
+              <Form.Item
+                label="Date"
+                rules={[
+                  {
+                    required: true,
+                    message: "Veuillez saisir la date!",
+                  },
+                ]}
+              >
+                <DatePicker
+                  onChange={(value) => setDate(value?._d)}
+                  defaultValue={moment()}
+                  style={{ marginBottom: "10px" }}
+                  label="date"
+                  name="date"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Veuillez saisir la date",
+                    },
+                  ]}
+                />
+              </Form.Item>
 
-							<Form.Item
-								hasFeedback
-								validateStatus='success'
-								initialValue={pid}
-								style={{ marginBottom: "10px" }}
-								label='N° Facture de vente'
-								name='sale_invoice_no'
-								rules={[
-									{
-										required: true,
-										message: "Veuillez saisir le N° de la facture!",
-									},
-								]}>
-								<Input type='number' disabled col />
-							</Form.Item>
+              <Form.Item
+                label="Amount Due"
+                name="due_amount"
+                style={{ marginBottom: "10px" }}
+              >
+                <InputNumber disabled value={dueAmount}   />
+              </Form.Item>
 
-							{/* <Form.Item
+              <Form.Item
+                style={{ marginBottom: "10px" }}
+                label="Remise"
+                name="discount"
+                rules={[
+                  {
+                    required: true,
+                    message:
+                      "S’il vous plaît entrer le montant de la Réduction!",
+                  },
+                ]}
+              >
+                <InputNumber
+                  type="number"
+                  value={0}
+                  min={0}
+                  placeholder="Entre le montant de la remise"
+                />
+              </Form.Item>
+
+              <Form.Item
+                style={{ marginBottom: "10px" }}
+                label="Montant"
+                name="amount"
+                rules={[
+                  {
+                    required: true,
+                    message: "Veuillez saisir le montant!",
+                  },
+                ]}
+              >
+                <Input
+                  type="number"
+                  value={0}
+                  min={0}
+                  placeholder="Entre le montant "
+                />
+              </Form.Item>
+
+              {/* <Form.Item
 								style={{ marginBottom: "10px" }}
 								label='Particulars'
 								name='particulars'
@@ -177,28 +214,30 @@ const AddCustPaymentByInvoice = () => {
 								<Input />
 							</Form.Item> */}
 
-							<Form.Item
-								style={{ marginBottom: "10px" }}
-								wrapperCol={{
-									offset: 8,
-									span: 16,
-								}}>
-								<Button
-									onClick={() => setLoader(true)}
-									block
-									type='primary'
-									htmlType='submit'
-									shape='round'
-									loading={loader}>
-									Payer maintenant
-								</Button>
-							</Form.Item>
-						</Form>
-					</Card>
-				</Col>
-			</Row>
-		</>
-	);
+              <Form.Item
+                style={{ marginBottom: "10px" }}
+                wrapperCol={{
+                  offset: 8,
+                  span: 16,
+                }}
+              >
+                <Button
+                  onClick={() => setLoader(true)}
+                  block
+                  type="primary"
+                  htmlType="submit"
+                  shape="round"
+                  loading={loader}
+                >
+                  Payer maintenant
+                </Button>
+              </Form.Item>
+            </Form>
+          </Card>
+        </Col>
+      </Row>
+    </>
+  );
 };
 
 export default AddCustPaymentByInvoice;
