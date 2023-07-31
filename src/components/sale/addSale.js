@@ -1,3 +1,28 @@
+// import {
+// 	Button,
+// 	Card,
+// 	Col,
+// 	DatePicker,
+// 	Form,
+// 	InputNumber,
+// 	Row,
+// 	Select,
+// 	Typography,
+// } from "antd";
+
+// import { useEffect, useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { loadAllCustomer } from "../../redux/actions/customer/getCustomerAction";
+// import { loadProduct } from "../../redux/actions/product/getAllProductAction";
+// import { addSale } from "../../redux/actions/sale/addSaleAction";
+// import Products from "./Products";
+
+// import moment from "moment";
+// import { useNavigate } from "react-router-dom";
+// import { toast } from "react-toastify";
+// import { loadAllStaff } from "../../redux/actions/user/getStaffAction";
+// import { loadAllSale } from "../../redux/actions/sale/getSaleAction";
+
 import {
 	Button,
 	Card,
@@ -13,23 +38,23 @@ import {
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadAllCustomer } from "../../redux/actions/customer/getCustomerAction";
-import { loadProduct } from "../../redux/actions/product/getAllProductAction";
 import { addSale } from "../../redux/actions/sale/addSaleAction";
 import Products from "./Products";
 
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { loadAllStaff } from "../../redux/actions/user/getStaffAction";
-import { loadAllSale } from "../../redux/actions/sale/getSaleAction";
 
 const { Title } = Typography;
 
-const AddSale = () => {
+const AddSale = ({
+	selectedProds,
+	handleSelectedProdsQty,
+	handleDeleteProd,
+	handleSelectedProdsUnitPrice,
+}) => {
 	const { Option } = Select;
-	const [formData, setFormData] = useState({});
 	const [loader, setLoader] = useState(false);
-	const [isDisabled, setIsDisabled] = useState(false);
 	const navigate = useNavigate();
 
 	const onClickLoading = () => {
@@ -42,25 +67,13 @@ const AddSale = () => {
 
 	useEffect(() => {
 		dispatch(loadAllCustomer({ page: 1, limit: 10 }));
-	}, []);
-
-	useEffect(() => {
-		dispatch(loadProduct({ page: 1, limit: 10 }));
-	}, []);
+	}, [dispatch]);
 
 	const allCustomer = useSelector((state) => state.customers.list);
 	const allProducts = useSelector((state) => state.products.list);
-	const allStaff = useSelector((state) => state.users.list);
-
-	useEffect(() => {
-		dispatch(loadAllStaff({ status: "true" }));
-	}, []);
-
 	const [customer, setCustomer] = useState(null);
-	const [salesPerson, setSalesPerson] = useState(null);
-
-	// Form Function
-	const [form] = Form.useForm();
+	const [isDisabled, setIsDisabled] = useState(false);
+	const [formData, setFormData] = useState({});
 	const [totalDiscountPaidDue, setTotalDiscountPaidDue] = useState({
 		total: 0,
 		discount: 0,
@@ -68,129 +81,6 @@ const AddSale = () => {
 		paid: 0,
 		due: 0,
 	});
-
-	const onFormSubmit = async (values) => {
-		const saleInvoiceProduct = selectedProds.map((prod) => {
-			return {
-				product_id: prod.id,
-				product_quantity: prod.selectedQty,
-				product_sale_price: prod.sale_price,
-			};
-		});
-
-		try {
-			const valueData = {
-				date: date,
-				paid_amount: totalDiscountPaidDue.paid,
-				discount: totalDiscountPaidDue.discount,
-				customer_id: customer,
-				user_id: salesPerson,
-				saleInvoiceProduct,
-			};
-			const resp = await dispatch(addSale(valueData));
-
-			if (resp.message === "success") {
-				form.resetFields();
-				setFormData({});
-				setAfterDiscount(0);
-				setLoader(false);
-				dispatch(
-					loadAllSale({
-						page: 1,
-						limit: "",
-						startdate: moment().format("YYYY-MM-DD"),
-						enddate: moment().format("YYYY-MM-DD"),
-						user: "",
-					})
-				);
-				navigate(`/sale/${resp.createdInvoiceId}`);
-			} else {
-				setLoader(false);
-			}
-		} catch (error) {
-			console.log(error.message);
-			setLoader(false);
-			toast.error("Erreur lors de la vente");
-		}
-	};
-
-	const updateFormData = () => {
-		const data = form.getFieldsValue();
-
-		const total = data.saleInvoiceProduct?.reduce((acc, p) => {
-			const { product_quantity = 0, product_sale_price = 0 } = p;
-			acc += product_quantity * product_sale_price;
-			return acc;
-		}, 0);
-
-		data.total = total;
-		data.due = total - (data.paid_amount ?? 0) - (data.discount ?? 0);
-
-		setFormData(data);
-		if (data.discount) {
-			setAfterDiscount(total - (data.discount ?? 0));
-		}
-		if (data.discount == 0) {
-			setAfterDiscount(0);
-		}
-	};
-
-	// Select Supplier Funciton
-	const onChange = async (values) => {
-		updateFormData();
-	};
-
-	const onSearch = (value) => {};
-
-	// Products Handlers
-
-	const [selectedProds, setSelectedProds] = useState([]);
-
-	const handleSelectedProds = (prodId, key) => {
-		const foundProd = allProducts.find((item) => item.id === prodId);
-		// if (foundProd === undefined) {
-		let updatedSelectedProds = [...selectedProds];
-		if (selectedProds[key]) {
-			updatedSelectedProds[key] = { ...foundProd, selectedQty: 1 };
-			setSelectedProds(updatedSelectedProds);
-		} else {
-			setSelectedProds((prev) => [...prev, { ...foundProd, selectedQty: 1 }]);
-		}
-
-		// }
-	};
-
-	const handleSelectedProdsQty = (key, qty) => {
-		const updatedSelectedProds = selectedProds.map((prod, index) => {
-			let prodCopy;
-			if (key === index) {
-				prodCopy = { ...prod, selectedQty: qty };
-			} else prodCopy = { ...prod };
-
-			return prodCopy;
-		});
-
-		setSelectedProds(updatedSelectedProds);
-	};
-
-	const handleSelectedProdsSalePrice = (key, salePrice) => {
-		const updatedSelectedProds = selectedProds.map((prod, index) => {
-			let prodCopy;
-			if (key === index) {
-				prodCopy = { ...prod, sale_price: salePrice };
-			} else prodCopy = { ...prod };
-
-			return prodCopy;
-		});
-		setSelectedProds(updatedSelectedProds);
-	};
-
-	const handleDeleteProd = (key) => {
-		if (selectedProds[key]) {
-			const updatedProds = selectedProds.filter((prod, index) => key !== index);
-			setSelectedProds(updatedProds);
-		}
-	};
 
 	const handleDiscount = (discountAmount) => {
 		const afterDiscount = totalDiscountPaidDue.total - discountAmount;
@@ -214,6 +104,52 @@ const AddSale = () => {
 			due: dueAmount,
 		}));
 	};
+
+	// Form Function
+	const [form] = Form.useForm();
+
+	const onFormSubmit = async (values) => {
+		const saleInvoiceProduct = selectedProds.map((prod) => {
+			return {
+				product_id: prod.id,
+				product_quantity: prod.selectedQty,
+				product_sale_price: prod.sale_price,
+			};
+		});
+
+		try {
+			const valueData = {
+				date: new Date().toString(),
+				paid_amount: totalDiscountPaidDue.paid,
+				discount: totalDiscountPaidDue.discount,
+				customer_id: customer,
+				user_id: 2,
+				// total_amount: totalDiscountPaidDue.total,
+				saleInvoiceProduct: [...saleInvoiceProduct],
+			};
+			const resp = await dispatch(addSale(valueData));
+
+			if (resp.message === "success") {
+				form.resetFields();
+				setFormData({});
+				setAfterDiscount(0);
+				setLoader(false);
+				navigate(`/sale/${resp.createdInvoiceId}`);
+			} else {
+				setLoader(false);
+			}
+		} catch (error) {
+			console.log(error.message);
+			setLoader(false);
+			toast.error("Erreur lors de la vente");
+		}
+	};
+
+	const handleCustomerData = (data) => {
+		setCustomer(data);
+	};
+
+	const onSearch = (value) => { };
 
 	useEffect(() => {
 		if (selectedProds.length > 0) {
@@ -243,7 +179,7 @@ const AddSale = () => {
 	}, [selectedProds, totalDiscountPaidDue.paid, totalDiscountPaidDue.discount]);
 
 	return (
-<Card className='mt-3'>
+		<Card className='mt-3'>
 			<Form
 				form={form}
 				className='m-lg-1'
@@ -358,7 +294,7 @@ const AddSale = () => {
 										showSearch
 										placeholder='Sélectionner un client '
 										optionFilterProp='children'
-										onChange={(id) => setCustomer(id)}
+										onChange={handleCustomerData}
 										onSearch={onSearch}
 										filterOption={(input, option) =>
 											option.children
@@ -401,9 +337,8 @@ const AddSale = () => {
 							allProducts={allProducts}
 							// updateFormData={updateFormData}
 							selectedProds={selectedProds}
-							handleSelectedProds={handleSelectedProds}
 							handleSelectedProdsQty={handleSelectedProdsQty}
-							handleSelectedProdsSalePrice={handleSelectedProdsSalePrice}
+							handleSelectedProdsUnitPrice={handleSelectedProdsUnitPrice}
 							handleDeleteProd={handleDeleteProd}
 						/>
 					</Col>
