@@ -303,7 +303,9 @@ const AddSale = ({
 												.includes(input.toLowerCase())
 										}>
 										{allCustomer &&
-											allCustomer.map((cust) => (
+											allCustomer
+											.filter((cust) => cust.type_customer === "SPA") 
+											.map((cust) => (
 												<Option key={cust.id} value={cust.id}>
 													{cust.phone} - {cust.name}
 												</Option>

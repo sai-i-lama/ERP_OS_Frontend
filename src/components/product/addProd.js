@@ -31,8 +31,8 @@ const AddProd = () => {
   }, [dispatch]);
 
   useEffect(() => {
-		dispatch(loadSuppliers({ page: 1, limit: 10 }));
-	}, []);
+    dispatch(loadSuppliers({ page: 1, limit: 10 }));
+  }, []);
 
   const { Title } = Typography;
   const [fileList, setFileList] = useState([]);
@@ -90,10 +90,15 @@ const AddProd = () => {
 
   const handleGenerateSku = () => {
     const generatedSku = Math.floor(Math.random() * 900000000) + 100000000;
-    const productName = form.getFieldValue("name").slice(0, 3).toUpperCase(); // Get the first three letters of the selected category
-    setSku(`SKU-${productName}${generatedSku.toString()}`);
+    const productName = form.getFieldValue("name");
+    if (productName) {
+      const productNameAbbrev = productName.slice(0, 3).toUpperCase();
+      setSku(`SAI-${productNameAbbrev}${generatedSku.toString()}`);
+    } else {
+      toast.warn("Veuillez sélectionner un nom avant de générer le SKU!");
+    }
   };
-  console.log("supplier list[ " + allSuppliers + " ]");
+  // console.log("supplier list[ " + allSuppliers + " ]");
   return (
     <Fragment>
       <Row className="mr-top" justify="space-between" gutter={[0, 30]}>
@@ -309,7 +314,16 @@ const AddProd = () => {
                 <Input type="number" min={0} />
               </Form.Item>
 
-              <Form.Item label="Envoyer image" valuePropName="image">
+              <Form.Item
+                label="Envoyer image"
+                valuePropName="image"
+                rules={[
+                  {
+                    required: true,
+                    message: "Veuillez selectioner une image",
+                  },
+                ]}
+              >
                 <Upload
                   listType="picture-card"
                   beforeUpload={() => false}
@@ -335,6 +349,21 @@ const AddProd = () => {
                 style={{ marginBottom: "15px" }}
                 label="SKU"
                 name="sku"
+                rules={[
+                  {
+                    validator: (_, value) => {
+                      if (!form.getFieldValue("name")) {
+                        return Promise.reject(
+                          "Veuillez d'abord sélectionner un nom avant de générer le SKU!"
+                        );
+                      }
+                      if (!value || !value.trim()) {
+                        return Promise.reject("Veuillez générer un SKU!");
+                      }
+                      return Promise.resolve();
+                    },
+                  },
+                ]}
               >
                 <Input
                   value={sku}

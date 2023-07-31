@@ -17,7 +17,7 @@ export default function Products({
 			<div className='products-container'>
 				<Row gutter={[16]}>
 					<Col span={2}>
-						<div className='font-weight-bold border-b'>SL</div>
+						<div className='font-weight-bold border-b'>No</div>
 					</Col>
 					<Col span={5}>
 						<div className='font-weight-bold border-b'>Produit</div>
@@ -51,6 +51,7 @@ export default function Products({
 										name,
 										sale_price,
 										selectedQty,
+										unit_type,
 										unit_measurement,
 										...restField
 									},
@@ -70,7 +71,7 @@ export default function Products({
 										<Col span={3}>
 											<Form.Item>
 												<div className='font-weight-bold'>
-													{unit_measurement ? unit_measurement : 0}
+													{unit_measurement ? unit_measurement : 0} {unit_type}
 												</div>
 											</Form.Item>
 										</Col>

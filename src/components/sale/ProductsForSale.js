@@ -1,14 +1,14 @@
 import {
-	Button,
-	Card,
-	Col,
-	Form,
-	Input,
-	Pagination,
-	Row,
-	Select,
-	Spin,
-	Tag
+  Button,
+  Card,
+  Col,
+  Form,
+  Input,
+  Pagination,
+  Row,
+  Select,
+  Spin,
+  Tag,
 } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -75,33 +75,38 @@ export default function ProductsForSale({ handleSelectedProds }) {
     return (
       <Col span={24} sm={12} xl={8} key={index}>
         <Card
-          hoverable
-          style={{
-            width: "100%",
-          }}
-          className="pos-product-card"
           onClick={() => {
             handleSelectedProds(item);
           }}
+          style={{ width: "100%", height: "100%" }}
+          cover={
+            <img
+              alt={`btq ${item.name}`}
+              src={item.imageUrl}
+              style={{
+                width: "100%",
+                height: "100px",
+                objectFit: "cover",
+              }}
+            />
+          }
+          actions={[
+            <p>
+              nom: <br />
+              {item.name}
+            </p>,
+            <p>
+              prix de vente: <br /> {item.sale_price}
+            </p>,
+            <p>
+              stock: <br /> {item.quantity}
+            </p>,
+          ]}
+          hoverable
         >
-          <div className="d-flex align-items-center gap-2">
-            <div className="w-50" style={{ maxWidth: "5rem" }}>
-              <img
-                alt="example"
-                src={item.imageUrl}
-                style={{ width: "100%", height: "auto" }}
-              />
-            </div>
-            <div className="w-50 flex-grow-1">
-              <p className="font-weight-bold mb-0">{item.name}</p>
-              <p className="mb-0"> Prix de vente : {item.sale_price}</p>
-              <p> Stock : {item.quantity}</p>
-            </div>
-            <br />
-          </div>
-          <div style={{ marginTop: "10px" }}>
-            <Tag>SKU : {item.sku}</Tag>
-          </div>
+          <center>
+            <Tag>id : {item.sku}</Tag>
+          </center>
         </Card>
       </Col>
     );
@@ -129,7 +134,7 @@ export default function ProductsForSale({ handleSelectedProds }) {
 
   return (
     <>
-      <div class="d-flex justify-content-around">
+      <div className="d-flex justify-content-around">
         <div className="mt-2">
           <Form
             form={form}
