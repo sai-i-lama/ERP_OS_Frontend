@@ -72,7 +72,7 @@ const AddPermission = () => {
 
   return (
     <>
-      <PageTitle title={"Retour"} />
+      <PageTitle title={"Retour"} subtitle={"PERMISSION"} />
       <Row className="mr-top">
         <Col
           xs={24}

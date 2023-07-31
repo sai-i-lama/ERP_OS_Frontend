@@ -16,7 +16,7 @@ const BalanceSheet = () => {
 
 	return (
 		<>
-			<PageTitle title={"Retour"} />
+			<PageTitle title={"Retour"} subtitle="ETAT DU COMMERCE" />
 			<br />
 			<Card>
 				<div>

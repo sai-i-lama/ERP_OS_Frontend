@@ -10,7 +10,7 @@ const RoleList = (props) => {
   }
   return (
     <div>
-      <PageTitle title="Retour" />
+      <PageTitle title="Retour" subtitle={"ROLE 🔐"}/>
       <AddRole />
     </div>
   );

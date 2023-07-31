@@ -54,11 +54,11 @@ const DetailCust = () => {
 
   return (
     <div>
-      <PageTitle title=" Retour " subtitle=" " />
+      <PageTitle title=" Retour " subtitle={`CLIENT ${customer?.id} `} />
 
       <div className="mr-top">
         {customer ? (
-          <Fragment key={customer.id}>
+          <Fragment key={customer?.id}>
             <Card bordered={false} style={{}}>
               <div className="card-header d-flex justify-content-between m-3">
                 <h5>

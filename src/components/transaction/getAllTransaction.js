@@ -26,7 +26,7 @@ function CustomTable({ list, total, startdate, enddate }) {
       title: "Date",
       dataIndex: "date",
       key: "date",
-      render: (date) => moment(date).format("lll"),
+      render: (date) => moment(date).format("DD/MM/YY HH:mm"),
       sorter: (a, b) => moment(a.date).unix() - moment(b.date).unix(),
       sortDirections: ["ascend", "descend"],
     },

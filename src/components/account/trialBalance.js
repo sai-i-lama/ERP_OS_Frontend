@@ -16,7 +16,7 @@ const TrialBalance = () => {
 
 	return (
 		<>
-			<PageTitle title={"Retour"} />
+			<PageTitle title={"Retour"} subtitle={"Solde des Comptes"}/>
 			<br />
 			<Card>
 				<div>

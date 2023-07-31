@@ -76,7 +76,7 @@ const AddTransaction = () => {
 
   return (
     <>
-      <PageTitle title="Retour" />
+      <PageTitle title="Retour" subtitle={"TRANSACTION"}/>
       <Row className="mr-top">
         <Col
           xs={24}

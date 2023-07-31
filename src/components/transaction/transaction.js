@@ -12,7 +12,7 @@ const Transaction = (props) => {
 
   return (
     <div>
-      <PageTitle title="Retour" />
+      <PageTitle title="Retour" subtitle={"TRANSACTION"}/>
       <br />
       <GetAllTransaction />
     </div>

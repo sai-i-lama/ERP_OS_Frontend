@@ -207,7 +207,7 @@ const DetailProductCategory = () => {
 
   return (
     <div>
-      <PageTitle title=" Retour " subtitle=" " />
+      <PageTitle title=" Retour " subtitle={`CATEGORY PRODUIT ${category?.id}`} />
 
       <div className="mr-top">
         {category ? (

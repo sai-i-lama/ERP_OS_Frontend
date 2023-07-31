@@ -93,7 +93,7 @@ const DetailTransaction = () => {
                   <Typography.Text className="font-semibold">
                     Date :
                   </Typography.Text>{" "}
-                  {moment(payment.date).format("YYYY-MM-DD")}
+                  {moment(payment.date).format("DD/MM/YY HH:mm")}
                 </p>
 
                 <p>
