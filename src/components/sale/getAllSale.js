@@ -96,14 +96,14 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       sorter: (a, b) => a.paid_amount - b.paid_amount,
       sortDirections: ["ascend", "descend"],
     },
-    {
-      title: "Nom du fournisseur",
-      dataIndex: `supplier`,
-      key: "supplier_id",
-      render: (supplier) => supplier?.name,
-      sorter: (a, b) => a.supplier.name.localeCompare(b.supplier.name),
-      sortDirections: ["ascend", "descend"],
-    },
+    // {
+    //   title: "Nom du fournisseur",
+    //   dataIndex: `supplier`,
+    //   key: "supplier_id",
+    //   render: (supplier) => supplier?.name,
+    //   sorter: (a, b) => a.supplier.name.localeCompare(b.supplier.name),
+    //   sortDirections: ["ascend", "descend"],
+    // },
     {
       title: "Bénéfice",
       dataIndex: "profit",
@@ -125,9 +125,11 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       title: "Action",
       dataIndex: "id",
       key: "payment",
-      render: (id) => (
+      render: (id, record) => (
         <Link to={`/payment/customer/${id}`}>
-          <button className="btn btn-dark btn-sm">Paiement</button>
+          <button className={`btn btn-sm ${record.due_amount === 0 ? 'btn-success' : 'btn-danger'}`}>
+            Paiement
+          </button>
         </Link>
       ),
     },
