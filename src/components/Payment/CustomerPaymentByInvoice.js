@@ -155,7 +155,7 @@ const AddCustPaymentByInvoice = () => {
               </Form.Item>
 
               <Form.Item
-                label="Amount Due"
+                label="Montant à Payer"
                 name="due_amount"
                 style={{ marginBottom: "10px" }}
               >

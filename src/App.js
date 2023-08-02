@@ -9,6 +9,7 @@ import UpdateSup from "./components/suppliers/updateSup";
 import DetailsProd from "./components/product/detailsProd";
 import Product from "./components/product/product";
 import UpdateProd from "./components/product/updateProd";
+import GetAllProd from "./components/product/getAllProd";
 
 import DetailsPurch from "./components/purchase/detailsPurch";
 import Purchase from "./components/purchase/purchase";
@@ -78,6 +79,7 @@ function App() {
             <Route path="/product" exact element={<Product />} />
             <Route path="/product/:id" element={<DetailsProd />} />
             <Route path="/product/:id/update" element={<UpdateProd />} />
+            <Route path="/productlist" exact element={<GetAllProd />} />
 
             <Route
               path="/product-category"

@@ -1,5 +1,5 @@
 import PageTitle from "../page-header/PageHeader";
-import GetAllProd from "./getAllProd";
+// import GetAllProd from "./getAllProd";
 
 import { Navigate } from "react-router-dom";
 import AddProd from "./addProd";
@@ -17,7 +17,7 @@ const Product = (props) => {
 
       <AddProd />
 
-      <GetAllProd />
+      {/* <GetAllProd /> */}
     </>
   );
 };
