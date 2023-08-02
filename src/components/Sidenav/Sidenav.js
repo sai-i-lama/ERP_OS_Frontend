@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
 import {
   CheckOutlined,
-  FileDoneOutlined,
-  FileOutlined,
+
   FileSyncOutlined,
   FundOutlined,
   HomeOutlined,
-  InboxOutlined,
+
   MinusSquareOutlined,
   PlusSquareOutlined,
   SettingOutlined,
   FolderAddOutlined,
-  SnippetsOutlined, 
+
   FileAddOutlined,
   ShoppingCartOutlined,
   UnorderedListOutlined,
@@ -113,15 +112,15 @@ const Test = (props) => {
         //   key: "newPurchase",
         //   icon: <SnippetsOutlined />,
         // },
-        // {
-        //   label: (
-        //     <NavLink to="/purchaselist">
-        //       <span>Liste des Approvisionnements</span>
-        //     </NavLink>
-        //   ),
-        //   key: "purchaseList",
-        //   icon: <UnorderedListOutlined />,
-        // },
+        {
+          label: (
+            <NavLink to="/productlist">
+              <span>Liste des produits</span>
+            </NavLink>
+          ),
+          key: "purchaseList",
+          icon: <UnorderedListOutlined />,
+        },
       ],
     },
     {
