@@ -129,7 +129,7 @@ const DetailSale = () => {
 														Date de vente :
 														</Typography.Text>{" "}
 														<strong>
-															{moment(singleSaleInvoice.date).format("ll")}
+															{moment(singleSaleInvoice.date).format("DD/MM/YY HH:mm")}
 														</strong>
 													</p>
 													<p>
@@ -231,7 +231,7 @@ const DetailSale = () => {
 
 						<ReturnSaleInvoiceList list={returnSaleInvoice} />
 
-						<TransactionSaleList list={transactions} />
+						{/* <TransactionSaleList list={transactions} /> */}
 					</Fragment>
 				) : (
 					<Loader />

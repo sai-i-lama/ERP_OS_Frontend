@@ -9,7 +9,7 @@ function PageTitle({ title, subtitle }) {
         className="site-page-header d-none d-lg-block"
         onBack={() => window.history.back()}
         title={title}
-        subTitle={subtitle}
+        subTitle={<b className="subtitle">{subtitle}</b>}
       />
     </Fragment>
   );

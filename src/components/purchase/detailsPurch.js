@@ -63,7 +63,7 @@ const DetailsPurch = () => {
 
 	return (
 		<div>
-			<PageTitle title=' Retour ' />
+			<PageTitle title=' Retour ' subtitle={`FACTURE ${singlePurchaseInvoice?.id}`} />
 			<div className='mr-top'>
 				{singlePurchaseInvoice ? (
 					<Fragment key={singlePurchaseInvoice.id}>
@@ -119,7 +119,7 @@ const DetailsPurch = () => {
 												Date d’achat :
 												</Typography.Text>{" "}
 												<strong>
-													{moment(singlePurchaseInvoice.date).format("ll")}
+													{moment(singlePurchaseInvoice.date).format("DD/MM/YY HH:mm")}
 												</strong>
 											</p>
 											<p>
@@ -202,7 +202,7 @@ const DetailsPurch = () => {
 								/>
 								<ReturnPurchaseInvoiceList list={returnPurchaseInvoice} />
 
-								<TransactionPurchaseList list={transactions} />
+								{/* <TransactionPurchaseList list={transactions} /> */}
 							</div>
 						</Card>
 					</Fragment>

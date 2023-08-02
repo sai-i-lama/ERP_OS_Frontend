@@ -64,7 +64,7 @@ const PrintToPdf = forwardRef(({ data }, ref) => {
             </tr>
             <tr>
               <th>Date de Facturation</th>
-              <td>{moment(data?.date).format("YYYY-MM-DD")}</td>
+              <td>{moment(data?.date).format("DD/MM/YY HH:mm")}</td>
             </tr>
           </table>
         </div>

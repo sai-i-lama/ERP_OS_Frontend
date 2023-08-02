@@ -57,13 +57,6 @@ function CustomTable({ list, total, status }) {
       sortDirections: ["ascend", "descend"],
     },
     {
-      title: "Unité de mésure",
-      dataIndex: "unit_measurement",
-      key: "unit_measurement",
-      sorter: (a, b) => a.unit_measurement.localeCompare(b.unit_measurement),
-      sortDirections: ["ascend", "descend"],
-    },
-    {
       title: "Quantité en Stock",
       dataIndex: "quantity",
       key: "quantity",
@@ -93,6 +86,13 @@ function CustomTable({ list, total, status }) {
       render: (product_category) => product_category?.name,
       sorter: (a, b) =>
         a.product_category?.name.localeCompare(b.product_category?.name),
+      sortDirections: ["ascend", "descend"],
+    },
+    {
+      title: "Unité de mésure",
+      dataIndex: "unit_measurement",
+      key: "unit_measurement",
+      sorter: (a, b) => a.unit_measurement.localeCompare(b.unit_measurement),
       sortDirections: ["ascend", "descend"],
     },
     {

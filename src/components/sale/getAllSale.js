@@ -45,7 +45,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       title: "Date",
       dataIndex: "date",
       key: "date",
-      render: (date) => moment(date).format("lll"),
+      render: (date) => moment(date).format("DD/MM/YY HH:mm"),
       sorter: (a, b) => moment(a.date).unix() - moment(b.date).unix(),
       sortDirections: ["ascend", "descend"],
     },
@@ -211,10 +211,10 @@ const GetAllSale = (props) => {
   const [loading, setLoading] = useState(false);
 
   const [startdate, setStartdate] = useState(
-    moment().startOf("month").format("YYYY-MM-DD")
+    moment().startOf("month").format("DD/MM/YY HH:mm")
   );
   const [enddate, setEnddate] = useState(
-    moment().endOf("month").format("YYYY-MM-DD")
+    moment().endOf("month").format("DD/MM/YY HH:mm")
   );
 
   useEffect(() => {
@@ -292,7 +292,7 @@ const GetAllSale = (props) => {
 
   return (
     <>
-      <PageTitle title={"Retour"} />
+      <PageTitle title={"Retour"} subtitle={"LIST DES FACTURE DE VENTE"}/>
       <div className="card card-custom mt-1">
         <div className="card-body">
           <h5 className="d-inline-flex">Liste des factures de vente</h5>

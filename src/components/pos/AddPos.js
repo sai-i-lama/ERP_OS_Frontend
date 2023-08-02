@@ -28,6 +28,9 @@ const AddPos = ({
   handleDeleteProd,
   handleSelectedProdsUnitPrice,
 }) => {
+  
+	const currentUserId = parseInt(localStorage.getItem("id"));
+
   const { Option } = Select;
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
@@ -98,7 +101,7 @@ const AddPos = ({
         paid_amount: totalDiscountPaidDue.paid,
         discount: totalDiscountPaidDue.discount,
         customer_id: customer,
-        user_id: 2,
+        user_id: currentUserId,
         // total_amount: totalDiscountPaidDue.total,
         saleInvoiceProduct: [...saleInvoiceProduct],
       };

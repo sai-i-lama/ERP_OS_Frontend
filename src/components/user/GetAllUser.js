@@ -43,7 +43,7 @@ function CustomTable({ list }) {
       title: "Créer le",
       dataIndex: "createdAt",
       key: "createdAt",
-      render: (createdAt) => moment(createdAt).format("YYYY-MM-DD HH:mm:ss"),
+      render: (createdAt) => moment(createdAt).format("DD/MM/YY HH:mm"),
       sorter: (a, b) => moment(a.createdAt).unix() - moment(b.createdAt).unix(),
       sortDirections: ["ascend", "descend"],
     },

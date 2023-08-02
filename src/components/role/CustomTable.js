@@ -28,7 +28,7 @@ const CustomTable = ({ role }) => {
       title: "Créé le",
       dataIndex: "createdAt",
       key: "createdAt",
-      render: (createdAt) => moment(createdAt).format("DD/MM/YYYY HH:mm"),
+      render: (createdAt) => moment(createdAt).format("DD/MM/YY HH:mm"),
       sorter: (a, b) => moment(a.createdAt).unix() - moment(b.createdAt).unix(),
       sortDirections: ["ascend", "descend"],
     },
@@ -136,8 +136,8 @@ const CustomTable = ({ role }) => {
 								<tr>
 									<th scope='row'>{i.id}</th>
 									<td>{i.permission.name}</td>
-									<td>{moment(i.createdAt).format("YYYY-MM-DD")}</td>
-									<td>{moment(i.updatedAt).format("YYYY-MM-DD")}</td>
+									<td>{moment(i.createdAt).format("DD/MM/YY HH:mm")}</td>
+									<td>{moment(i.updatedAt).format("DD/MM/YY HH:mm")}</td>
 								</tr>
 							))}
 					</tbody>

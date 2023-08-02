@@ -51,7 +51,7 @@ const DetailRole = () => {
 
   return (
     <div>
-      <PageTitle title=" Retour  " />
+      <PageTitle title=" Retour" subtitle={`ROLE ${role?.id}`} />
 
       <div className="mr-top">
         {role ? (

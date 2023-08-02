@@ -14,7 +14,7 @@ const Account = (props) => {
 
   return (
     <div>
-      <PageTitle title="Retour" />
+      <PageTitle title="Retour" subtitle="COMPTE" />
       <AddAccount />
 
       <GetAllAccount />

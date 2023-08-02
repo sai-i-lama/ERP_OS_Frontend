@@ -12,7 +12,7 @@ const ProductCategory = (props) => {
 
   return (
     <div>
-      <PageTitle title="Retour" />
+      <PageTitle title="Retour" subtitle={"CATEGORY PRODUIT"}/>
 
       <AddProductCategory />
 

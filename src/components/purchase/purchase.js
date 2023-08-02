@@ -11,7 +11,7 @@ const Purchase = (props) => {
 	}
 	return (
 		<div>
-			<PageTitle title='Retour' />
+			<PageTitle title='Retour' subtitle={"ACHAT"} />
 
 			<AddPurch />
 		</div>

@@ -47,7 +47,7 @@ const DetailsProd = () => {
   }
   return (
     <div>
-      <PageTitle title=" Retour  " />
+      <PageTitle title=" Retour" subtitle={`PRODUIT ${product?.id}`} />
 
       <div className="mr-top">
         {product ? (

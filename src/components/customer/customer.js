@@ -12,7 +12,7 @@ const Customer = (props) => {
 
   return (
     <div>
-      <PageTitle title="Retour" />
+      <PageTitle title="Retour" subtitle={"CLIENT"}/>
       <AddCust />
       <GetAllCust />
     </div>

@@ -14,7 +14,7 @@ function NotificationIcon({ list }) {
   const notify = list ? list.filter((product) => product.quantity <= 10) : [];
 
   return (
-    <div className="notification-icon-container">
+    <div className="notification-icon-container ">
       <div>
         {list && list.length > 0 && (
           <span className="notification-count">{notify.length}</span>
@@ -34,10 +34,7 @@ function NotificationIcon({ list }) {
                 <span>
                   Le produit{" "}
                   <Link to={`/product/${item.id}`}>{item.name}</Link> a une
-                  quantité inférieure ou égale à 10. Nous vous recommandons
-                  de vous approvisionner dès que possible afin de garantir
-                  que vous disposez suffisamment de stock pour répondre
-                  aux demandes de vos clients.
+                  quantité inférieure ou égale à 10 Pense à vous réapprovisionner.
                 </span>
               }
               type="warning"

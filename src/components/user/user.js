@@ -11,7 +11,7 @@ const UserList = (props) => {
   }
   return (
     <div>
-      <PageTitle title="Retour" />
+      <PageTitle title="Retour" subtitle={"EMPLOYEE"}/>
       <AddUser />
       <GetAllUser />
     </div>

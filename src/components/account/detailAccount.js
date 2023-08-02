@@ -24,7 +24,7 @@ const DetailAccount = () => {
 
 	return (
 		<>
-			<PageTitle title={"Retour"} />
+			<PageTitle title={"Retour"} subtitle={`Détails du compte: ${data?.name}`}/>
 			<br />
 			<Card>
 				{data ? (
@@ -54,7 +54,7 @@ const DetailAccount = () => {
 												<td>{item.amount}</td>
 												<td></td>
 												<td>{item.particulars}</td>
-												<td>{moment(item.date).format("YYYY-MM-DD")}</td>
+												<td>{moment(item.date).format("DD MM YY HH:mm")}</td>
 											</tr>
 										);
 									})}
@@ -65,7 +65,7 @@ const DetailAccount = () => {
 												<td></td>
 												<td>{item.amount}</td>
 												<td>{item.particulars}</td>
-												<td>{moment(item.date).format("YYYY-MM-DD ")}</td>
+												<td>{moment(item.date).format("DD MM YY HH:mm")}</td>
 											</tr>
 										);
 									})}

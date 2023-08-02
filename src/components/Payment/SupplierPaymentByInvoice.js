@@ -66,7 +66,7 @@ const AddSupPaymentByInvoice = () => {
 
 	return (
 		<>
-			<PageTitle title='Retour' />
+			<PageTitle title='Retour' subtitle={"PAIEMENT FACTURE FOURNISSEUR"}/>
 			<Row className='mr-top'>
 				<Col
 					xs={24}

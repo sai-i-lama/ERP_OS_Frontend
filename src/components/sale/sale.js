@@ -55,9 +55,8 @@ const Sale = (props) => {
 
 	return (
 
-
 		<div>
-			<PageTitle title='Retour' />
+			<PageTitle title='Retour' subtitle={"SPA"} />
 
 			<Row gutter={[20]}>
 				
@@ -75,12 +74,6 @@ const Sale = (props) => {
 			</Row>
 		</div>
 
-
-
-		// <div>
-		// 	<PageTitle title='Retour' />
-		// 	<AddSale />
-		// </div>
 	);
 };
 

@@ -24,7 +24,7 @@ const CustomTable = ({ list }) => {
     },
     {
       title: "Montant Total",
-      dataIndex: "",
+      dataIndex: "montant_total",
       render: ({ product_quantity, product_sale_price }) =>
         product_quantity * product_sale_price,
       sorter: (a, b) =>

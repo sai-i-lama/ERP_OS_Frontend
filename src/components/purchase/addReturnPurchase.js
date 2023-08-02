@@ -117,7 +117,7 @@ const AddReturnPurchase = () => {
 
   return (
     <div>
-      <PageTitle title=" Retour " />
+      <PageTitle title=" Retour" subtitle={`FACTURE ${singlePurchaseInvoice?.id}`} />
       <div className="mr-top">
         {singlePurchaseInvoice ? (
           <Fragment key={singlePurchaseInvoice.id}>

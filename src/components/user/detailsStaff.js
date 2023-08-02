@@ -133,12 +133,12 @@ const DetailStaff = () => {
 
                 <p>
                   <Typography.Text strong>Date de début de fonction</Typography.Text>{" "}
-                  {moment(user.join_date).format("YYYY-MM-DD")}
+                  {moment(user.join_date).format("DD/MM/YY HH:mm")}
                 </p>
 
                 <p>
                   <Typography.Text strong>Date de fin de fonction</Typography.Text>{" "}
-                  {moment(user.leave_date).format("YYYY-MM-DD")}
+                  {moment(user.leave_date).format("DD/MM/YY HH:mm")}
                 </p>
               </div>
             </Card>

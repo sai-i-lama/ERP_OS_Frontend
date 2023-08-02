@@ -12,7 +12,7 @@ const Designation = (props) => {
 
   return (
     <div>
-      <PageTitle title="Retour" />
+      <PageTitle title="Retour" subtitle={"FUNCTION "}/>
       <AddDesignation />
       <GetAllDesignation />
     </div>

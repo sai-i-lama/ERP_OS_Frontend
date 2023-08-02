@@ -31,7 +31,7 @@ const PrintToPdf = forwardRef(({ data, invoiceData }, ref) => {
 								</div>
 								<div className='flex justify-content-center'>
 									<div>
-									DATE DE LA FACTURE: {moment(data?.date).format("YYYY-MM-DD")}
+									DATE DE LA FACTURE: {moment(data?.date).format("DD MM YY HH:mm")}
 									</div>
 								</div>
 							</div>

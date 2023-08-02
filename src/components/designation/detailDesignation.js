@@ -51,7 +51,7 @@ const DetailDesignation = () => {
 
   return (
     <div>
-      <PageTitle title=" Retour " subtitle=" " />
+      <PageTitle title=" Retour " subtitle={designation?.id} />
 
       <div className="mr-top">
         {designation ? (

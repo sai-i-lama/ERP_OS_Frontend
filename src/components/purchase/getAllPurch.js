@@ -41,7 +41,7 @@ function CustomTable({ list, total, status, setStatus, startdate, enddate }) {
       title: "Date",
       dataIndex: "date",
       key: "date",
-      render: (date) => moment(date).format("lll"),
+      render: (date) => moment(date).format("DD/MM/YY HH:mm"),
       sorter: (a, b) => moment(a.date).unix() - moment(b.date).unix(),
       sortDirections: ["ascend", "descend"],
     },
@@ -260,7 +260,7 @@ const GetAllPurch = (props) => {
   }
   return (
     <>
-      <PageTitle title={"Retour"} />
+      <PageTitle title={"Retour"} subtitle={"LIST FACTURE D'ACHAT"}/>
       <div className="card card-custom mt-1 ">
         <div className="card-body">
           <div className="card-title d-sm-flex justify-content-between">

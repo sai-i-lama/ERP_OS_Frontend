@@ -13,7 +13,7 @@ const Product = (props) => {
 
   return (
     <>
-      <PageTitle title="Retour" />
+      <PageTitle title="Retour" subtitle={"PRODUIT"}/>
 
       <AddProd />
 

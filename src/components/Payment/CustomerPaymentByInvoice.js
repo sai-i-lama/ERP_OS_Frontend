@@ -82,7 +82,7 @@ const AddCustPaymentByInvoice = () => {
 
   return (
     <>
-      <PageTitle title={"Retour"} />
+      <PageTitle title={"Retour"} subtitle={"PAIEMENT FACTURE CLIENT"}/>
       <Row className="mr-top">
         <Col
           xs={24}
