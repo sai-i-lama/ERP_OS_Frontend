@@ -55,7 +55,6 @@ const Sale = (props) => {
 
 	return (
 
-
 		<div>
 			<PageTitle title='Retour' subtitle={"SPA"} />
 
@@ -75,12 +74,6 @@ const Sale = (props) => {
 			</Row>
 		</div>
 
-
-
-		// <div>
-		// 	<PageTitle title='Retour' />
-		// 	<AddSale />
-		// </div>
 	);
 };
 

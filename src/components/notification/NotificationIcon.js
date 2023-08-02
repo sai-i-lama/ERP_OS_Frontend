@@ -15,7 +15,6 @@ function NotificationIcon({ list }) {
 
   return (
     <div className="notification-icon-container ">
-      <u>Notificatin sur stock</u>
       <div>
         {list && list.length > 0 && (
           <span className="notification-count">{notify.length}</span>

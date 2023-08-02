@@ -349,21 +349,6 @@ const AddProd = () => {
                 style={{ marginBottom: "15px" }}
                 label="SKU"
                 name="sku"
-                rules={[
-                  {
-                    validator: (_, value) => {
-                      if (!form.getFieldValue("name")) {
-                        return Promise.reject(
-                          "Veuillez d'abord sélectionner un nom avant de générer le SKU!"
-                        );
-                      }
-                      if (!value || !value.trim()) {
-                        return Promise.reject("Veuillez générer un SKU!");
-                      }
-                      return Promise.resolve();
-                    },
-                  },
-                ]}
               >
                 <Input
                   value={sku}
@@ -384,6 +369,12 @@ const AddProd = () => {
                       onClick={handleGenerateSku}
                     />
                   }
+                  onChange={(e) => setSku(e.target.value)}
+                  onBlur={() => {
+                    if (!sku) {
+                      handleGenerateSku();
+                    }
+                  }}
                 />
               </Form.Item>
               <Form.Item

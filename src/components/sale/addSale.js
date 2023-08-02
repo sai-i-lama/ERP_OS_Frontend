@@ -1,28 +1,3 @@
-// import {
-// 	Button,
-// 	Card,
-// 	Col,
-// 	DatePicker,
-// 	Form,
-// 	InputNumber,
-// 	Row,
-// 	Select,
-// 	Typography,
-// } from "antd";
-
-// import { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { loadAllCustomer } from "../../redux/actions/customer/getCustomerAction";
-// import { loadProduct } from "../../redux/actions/product/getAllProductAction";
-// import { addSale } from "../../redux/actions/sale/addSaleAction";
-// import Products from "./Products";
-
-// import moment from "moment";
-// import { useNavigate } from "react-router-dom";
-// import { toast } from "react-toastify";
-// import { loadAllStaff } from "../../redux/actions/user/getStaffAction";
-// import { loadAllSale } from "../../redux/actions/sale/getSaleAction";
-
 import {
 	Button,
 	Card,
@@ -53,6 +28,9 @@ const AddSale = ({
 	handleDeleteProd,
 	handleSelectedProdsUnitPrice,
 }) => {
+
+	const currentUserId = parseInt(localStorage.getItem("id"));
+
 	const { Option } = Select;
 	const [loader, setLoader] = useState(false);
 	const navigate = useNavigate();
@@ -64,7 +42,7 @@ const AddSale = ({
 	const [date, setDate] = useState(moment());
 	const [afterDiscount, setAfterDiscount] = useState(0);
 	const dispatch = useDispatch();
-
+	
 	useEffect(() => {
 		dispatch(loadAllCustomer({ page: 1, limit: 10 }));
 	}, [dispatch]);
@@ -123,7 +101,7 @@ const AddSale = ({
 				paid_amount: totalDiscountPaidDue.paid,
 				discount: totalDiscountPaidDue.discount,
 				customer_id: customer,
-				user_id: 2,
+				user_id: currentUserId,
 				// total_amount: totalDiscountPaidDue.total,
 				saleInvoiceProduct: [...saleInvoiceProduct],
 			};

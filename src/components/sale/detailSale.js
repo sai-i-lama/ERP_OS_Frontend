@@ -231,7 +231,7 @@ const DetailSale = () => {
 
 						<ReturnSaleInvoiceList list={returnSaleInvoice} />
 
-						<TransactionSaleList list={transactions} />
+						{/* <TransactionSaleList list={transactions} /> */}
 					</Fragment>
 				) : (
 					<Loader />

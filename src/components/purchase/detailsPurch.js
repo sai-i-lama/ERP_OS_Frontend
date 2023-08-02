@@ -202,7 +202,7 @@ const DetailsPurch = () => {
 								/>
 								<ReturnPurchaseInvoiceList list={returnPurchaseInvoice} />
 
-								<TransactionPurchaseList list={transactions} />
+								{/* <TransactionPurchaseList list={transactions} /> */}
 							</div>
 						</Card>
 					</Fragment>

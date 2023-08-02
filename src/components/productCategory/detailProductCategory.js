@@ -71,10 +71,18 @@ function CustomTable({ list, categoryName }) {
       sortDirections: ["ascend", "descend"],
     },
     {
-      title: "Type Unitaire",
-      dataIndex: "unit_type",
-      key: "unit_type",
-      sorter: (a, b) => a.unit_type.localeCompare(b.unit_type),
+      title: "Format du produit",
+      key: "unit_measurement_and_type",
+      render: (text, record) => {
+        return `${record.unit_measurement} ${record.unit_type}`;
+      },
+      sorter: (a, b) => {
+        const measurementComparison = a.unit_measurement.localeCompare(b.unit_measurement);
+        if (measurementComparison !== 0) {
+          return measurementComparison;
+        }
+        return a.unit_type.localeCompare(b.unit_type);
+      },
       sortDirections: ["ascend", "descend"],
     },
     {
