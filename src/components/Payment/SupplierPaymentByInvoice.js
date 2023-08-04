@@ -149,7 +149,7 @@ const AddSupPaymentByInvoice = () => {
 										message: "Veuillez saisir le N° facture!",
 									},
 								]}>
-								<Input type='number' disabled col min={0}/>
+								<Input type='number' disabled col="true" min={0}/>
 							</Form.Item>
 							{/* 
               <Form.Item

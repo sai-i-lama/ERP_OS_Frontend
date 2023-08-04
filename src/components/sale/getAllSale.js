@@ -22,6 +22,7 @@ import { loadAllStaff } from "../../redux/actions/user/getStaffAction";
 import DashboardCard from "../Card/DashboardCard";
 import SaleReportPrint from "../Invoice/SaleReport";
 import PageTitle from "../page-header/PageHeader";
+import DueClientNotification from "../notification/DueClientNotification";
 
 // //Date fucntinalities
 // let startdate = moment(new Date()).format("YYYY-MM-DD HH:mm");
@@ -352,6 +353,9 @@ const GetAllSale = (props) => {
           <div>
             <div>
               <h5>Historique des ventes</h5>
+
+              <DueClientNotification list={list} />
+              
               {list && (
                 <div className="card-title d-flex justify-content-end ">
                   <div className="me-2">
