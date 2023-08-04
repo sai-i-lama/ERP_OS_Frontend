@@ -168,16 +168,18 @@ const AddCustPaymentByInvoice = () => {
                 name="discount"
                 rules={[
                   {
-                    required: true,
+                    required: false,
                     message:
                       "S’il vous plaît entrer le montant de la Réduction!",
                   },
                 ]}
               >
                 <InputNumber
-                  type="number"
-                  value={0}
-                  min={0}
+                 type='number'
+                 defaultValue={0}
+                 value={0}
+                 min={0}
+                 max={dueAmount}
                   placeholder="Entre le montant de la remise"
                 />
               </Form.Item>
@@ -198,6 +200,7 @@ const AddCustPaymentByInvoice = () => {
                   value={0}
                   min={0}
                   placeholder="Entre le montant "
+                  max={dueAmount}
                 />
               </Form.Item>
 
