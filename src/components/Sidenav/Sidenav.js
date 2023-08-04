@@ -26,21 +26,38 @@ import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/images/sai-i-lama-logo.png";
 import NotificationIcon from "../notification/NotificationIcon";
 import { loadProduct } from "../../redux/actions/product/getAllProductAction";
+import { loadAllSale } from "../../redux/actions/sale/getSaleAction";
+import DueClientNotification from "../notification/DueClientNotification";
+import moment from "moment";
 // import styles from "./Sidenav.module.css";
 
 const Test = (props) => {
   const dispatch = useDispatch();
   const [list, setList] = useState([]);
+  const [dueClientList, setDueClientList] = useState([]);
 
   useEffect(() => {
     dispatch(loadProduct({ status: "true", page: 1, limit: 10 }));
   }, []);
+  useEffect(() => {
+    dispatch(loadAllSale({ 
+      status: "true",
+      page: 1, limit: 100,
+      startdate: moment().startOf("month"),
+      enddate: moment().endOf("month"),
+      user: ""
+    }),
+    
+    );
+  }, []);
 
   const productsList = useSelector((state) => state.products.list);
+  const Clientlist = useSelector((state) => state.sales.list);
 
   useEffect(() => {
     setList(productsList);
-  }, [productsList]);
+    setDueClientList(Clientlist);
+  }, [productsList,Clientlist]);
 
   const menu = [
     {
@@ -314,12 +331,24 @@ const Test = (props) => {
         />
         <Divider
           style={{
-            borderColor: "white",
+            borderColor: "#fff",
             borderWidth: "2px",
             borderRadius: "10px",
           }}
-        />
+        >
+        <small style={{color: "#fff"}}>LIMIT STOCK</small>  
+        </Divider>
         <NotificationIcon list={list} />
+        <Divider
+          style={{
+            borderColor: "#fff",
+            borderWidth: "2px",
+            borderRadius: "10px",
+          }}
+        >
+        <small style={{color: "#fff"}}>MONTANT A PAYER</small>  
+        </Divider>
+        <DueClientNotification list={dueClientList}/>
       </center>
     </div>
   );
