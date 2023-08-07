@@ -293,7 +293,7 @@ const GetAllSale = (props) => {
 
   return (
     <>
-      <PageTitle title={"Retour"} subtitle={"LIST DES FACTURE DE VENTE"}/>
+      <PageTitle title={"Retour"} subtitle={"LISTE DES FACTURES DE VENTE"}/>
       <div className="card card-custom mt-1">
         <div className="card-body">
           <h5 className="d-inline-flex">Liste des factures de vente</h5>

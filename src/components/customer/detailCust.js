@@ -122,10 +122,10 @@ const DetailCust = () => {
                 key={customer?.saleInvoice?.id}
                 linkTo="/sale"
               />
-              <CustomerReturnInvoiceList
+              {/* <CustomerReturnInvoiceList
                 list={customer?.allReturnSaleInvoice}
               />
-              <CustomerTransactionList list={customer?.allTransaction} />
+              <CustomerTransactionList list={customer?.allTransaction} /> */}
             </Card>
           </Fragment>
         ) : (

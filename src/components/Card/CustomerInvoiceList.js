@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Table, Card } from "antd";
 import moment from "moment";
+import React from "react";
 
 function CustomerInvoiceList({ list, linkTo }) {
   const columns = [
@@ -56,12 +57,14 @@ function CustomerInvoiceList({ list, linkTo }) {
       title: "Action",
       dataIndex: "id",
       key: "payment",
-      render: (id) => (
-        <Link to={`/payment/customer/${id}`}>
-          <button className="btn btn-dark btn-sm" type="submit">
-            Paiement
-          </button>
-        </Link>
+      render: (id, record) => (
+        <React.Fragment>
+          <Link to={`/payment/customer/${id}`}>
+            <button className={`btn btn-sm ${record.due_amount === 0 ? 'btn-success' : 'btn-danger'}`}>
+              Paiement
+            </button>
+          </Link>
+        </React.Fragment>
       ),
       fixed: "right",
     },

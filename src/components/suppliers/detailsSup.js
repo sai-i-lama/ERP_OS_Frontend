@@ -145,10 +145,10 @@ const DetailsSup = () => {
                 list={supplier.purchaseInvoice}
                 linkTo="/purchase"
               />
-              <SupplierReturnInvoiceList
+              {/* <SupplierReturnInvoiceList
                 list={supplier?.allReturnPurchaseInvoice}
               />
-              <SupplierTransactionList list={supplier?.allTransaction} />
+              <SupplierTransactionList list={supplier?.allTransaction} /> */}
             </Card>
           </Fragment>
         ) : (
