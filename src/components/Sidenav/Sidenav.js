@@ -336,7 +336,7 @@ const Test = (props) => {
             borderRadius: "10px",
           }}
         >
-        <small style={{color: "#fff"}}>LIMIT STOCK</small>  
+        <small style={{color: "#fff"}}>LIMITE STOCK</small>  
         </Divider>
         <NotificationIcon list={list} />
         <Divider
@@ -346,7 +346,7 @@ const Test = (props) => {
             borderRadius: "10px",
           }}
         >
-        <small style={{color: "#fff"}}>MONTANT A PAYER</small>  
+        <small style={{color: "#fff"}}>MONTANT À PAYER</small>  
         </Divider>
         <DueClientNotification list={dueClientList}/>
       </center>
