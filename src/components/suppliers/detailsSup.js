@@ -12,8 +12,8 @@ import "./suppliers.css";
 
 import { CSVLink } from "react-csv";
 import SupplierInvoiceTable from "../Card/SupplierInvoiceList";
-import SupplierReturnInvoiceList from "./ListCard/SupplierReturnInvoiceList";
-import SupplierTransactionList from "./ListCard/SupplierTransactionList";
+// import SupplierReturnInvoiceList from "./ListCard/SupplierReturnInvoiceList";
+// import SupplierTransactionList from "./ListCard/SupplierTransactionList";
 
 //PopUp
 
@@ -56,11 +56,11 @@ const DetailsSup = () => {
 
   return (
     <div>
-      <PageTitle title=" Retour " subtitle={`Insformation sur le Fournisseur ${supplier?.name} `} />
+      <PageTitle title=" Retour " subtitle={`Information sur le Fournisseur ${supplier?.name} `} />
 
       <div className="mr-top">
         {supplier ? (
-          <Fragment key={supplier.id}>
+          <Fragment key={supplier.name}>
             <Card bordered={false} style={{}}>
               <div className="card-header d-flex justify-content-between" style={{ padding: 0 }}>
                 <div className="w-50">

@@ -116,7 +116,7 @@ function UpdateCust() {
                   style={{ marginBottom: "10px" }}
                   fields={[{ name: "Name" }]}
                   label="Nom"
-                  name="Name"
+                  name="name"
                   rules={[
                     {
                       required: true,
