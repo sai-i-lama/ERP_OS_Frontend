@@ -1,4 +1,4 @@
-import { Alert, Button, Col, Form, Input, Row, Typography } from "antd";
+import { Alert, Button, Col, Form, Input, Row, Typography, Select } from "antd";
 import axios from "axios";
 import React, { useState } from "react";
 import { Navigate, useLocation, useParams } from "react-router-dom";
@@ -64,7 +64,7 @@ function UpdateCust() {
   if (!isLogged) {
     return <Navigate to={"/auth/login"} replace={true} />;
   }
-
+  const TypeCustomer = ["SPA", "GROSSISTE", "PARTICULIER"];
   return (
     <>
       <PageTitle
@@ -93,7 +93,7 @@ function UpdateCust() {
                 </div>
               )}
               <Title level={3} className="m-3 text-center">
-              Modifier le formulaire client
+                Modifier le formulaire client
               </Title>
               <Form
                 initialValues={{
@@ -134,11 +134,12 @@ function UpdateCust() {
                   rules={[
                     {
                       required: true,
-                      message: "Veuillez saisir le numéro de téléphone du client!",
+                      message:
+                        "Veuillez saisir le numéro de téléphone du client!",
                     },
                   ]}
                 >
-                  <Input maxLength={14}/>
+                  <Input maxLength={14} />
                 </Form.Item>
 
                 <Form.Item
@@ -167,9 +168,42 @@ function UpdateCust() {
                     },
                   ]}
                 >
-                  <Input type="number"  min={0} value={0} />
+                  <Input type="number" min={0} value={0} />
                 </Form.Item>
-
+                <Form.Item
+                  style={{ marginBottom: "10px" }}
+                  name="type_customer"
+                  label="Type de Client "
+                  rules={[
+                    {
+                      required: true,
+                      message: "Veuillez sélectionner le type de client!",
+                    },
+                  ]}
+                >
+                  <Select
+                    name="type_customer"
+                    //loading={!category}
+                    showSearch
+                    placeholder="Sélectionnez le type de client"
+                    optionFilterProp="children"
+                    filterOption={(input, option) =>
+                      option.children.includes(input)
+                    }
+                    filterSort={(optionA, optionB) =>
+                      optionA.children
+                        .toLowerCase()
+                        .localeCompare(optionB.children.toLowerCase())
+                    }
+                  >
+                    {TypeCustomer &&
+                      TypeCustomer.map((custom) => (
+                        <Select.Option key={custom} value={custom}>
+                          {custom}
+                        </Select.Option>
+                      ))}
+                  </Select>
+                </Form.Item>
                 <Form.Item
                   style={{ marginBottom: "10px" }}
                   wrapperCol={{
@@ -178,7 +212,7 @@ function UpdateCust() {
                   }}
                 >
                   <Button block type="primary" htmlType="submit" shape="round">
-                  Mettre à jour
+                    Mettre à jour
                   </Button>
                 </Form.Item>
               </Form>
