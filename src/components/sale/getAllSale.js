@@ -82,19 +82,19 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       sortDirections: ["ascend", "descend"],
     },
     {
-      title: "Montant à Payer",
-      dataIndex: "due_amount",
-      key: "due_amount",
-      responsive: ["md"],
-      sorter: (a, b) => a.due_amount - b.due_amount,
-      sortDirections: ["ascend", "descend"],
-    },
-    {
       title: "Montant Payé",
       dataIndex: "paid_amount",
       key: "paid_amount",
       responsive: ["md"],
       sorter: (a, b) => a.paid_amount - b.paid_amount,
+      sortDirections: ["ascend", "descend"],
+    },
+    {
+      title: "Montant à Payer",
+      dataIndex: "due_amount",
+      key: "due_amount",
+      responsive: ["md"],
+      sorter: (a, b) => a.due_amount - b.due_amount,
       sortDirections: ["ascend", "descend"],
     },
     // {

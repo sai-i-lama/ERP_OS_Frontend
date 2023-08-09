@@ -1,20 +1,50 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BellOutlined } from "@ant-design/icons";
 import { Alert } from "antd";
 import { Link } from "react-router-dom";
-import "./NotificationIcon.css";
 import moment from "moment";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { loadAllCustomer } from "../../redux/actions/customer/getCustomerAction";
+
 function DueClientNotification({ list }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadAllCustomer({ status: true }));
+  }, []);
+  const customerList = useSelector((state) => state.customers.list);
   const [showNotifications, setShowNotifications] = useState(false);
 
   function handleNotificationClick() {
     setShowNotifications(!showNotifications);
+
+    if (!showNotifications) {
+      // Iterate over filteredList and send SMS to each customer
+      filteredList.forEach((item) => {
+        const customer = customerList.find(
+          (customer) => customer.id === item?.customer?.id
+        );
+console.log(customer)
+        // Make an HTTP POST request to the backend server's /send-sms route using Axios
+        axios
+          .post("/send-sms", {
+            customerId: customer?.phone, // Assuming the customer's phone number is stored in the "phone" property
+            message:
+              "Cher(e) [Momeni gille],\n\nJ'espère que vous allez bien. Je me permets de vous contacter au sujet du solde en suspens concernant votre dette envers notre entreprise, [sai i lama]. Le montant dû s'élève à [montant] et la date d'échéance était fixée au [15/04/2003].\nNous vous serions reconnaissants de bien vouloir effectuer le paiement dans les plus brefs délais afin de régulariser cette situation. Vous pouvez effectuer le règlement via [presenciel].\n\nMerci d'avance pour votre attention et votre coopération.\n\nCordialement,\n[service client],\n[sai i lama],\n[693972665]",
+          })
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.error("Error sending SMS:", error);
+          });
+      });
+    }
   }
-
   const filteredList = list ? list.filter((item) => item.due_amount > 0) : [];
-
+// console.log(filteredList)
   return (
-    <div className="notification-icon-container ">
+    <div className="notification-icon-container">
       <div>
         {list && list.length > 0 && (
           <span className="notification-count">{filteredList.length}</span>
@@ -25,24 +55,32 @@ function DueClientNotification({ list }) {
       </div>
       {showNotifications && (
         <div className="notification-list-container">
-          {filteredList.map((item) => (
-            
-            <Alert
-              key={item.id}
-              message="warning"
-              showIcon
-              description={
-                <span>
-                  Le Client{" "}
-                  <Link to={`/customer/${item?.customer?.id}`}>{item?.customer?.name}</Link> a une
-                  dette de {item?.due_amount}. depuis le {moment(item.updated_at).format('DD/MM/YYYY')}
-                </span>
-              }
-              type="warning"
-              style={{ marginBottom: "16px" }}
-              closable
-            />
-          ))}
+          {filteredList.map((item) => {
+            const customer = customerList.find(
+              (customer) => customer.id === item?.customer?.id
+            );
+
+            return (
+              <Alert
+                key={item.id}
+                message="warning"
+                showIcon
+                description={
+                  <span>
+                    Le Client{" "}
+                    <Link to={`/customer/${item?.customer?.id}`}>
+                      {item?.customer?.name}
+                    </Link>{" "}
+                    a une dette de {item?.due_amount}. depuis le{" "}
+                    {moment(item.updated_at).format("DD/MM/YYYY")}
+                  </span>
+                }
+                type="warning"
+                style={{ marginBottom: "16px" }}
+                closable
+              />
+            );
+          })}
         </div>
       )}
     </div>

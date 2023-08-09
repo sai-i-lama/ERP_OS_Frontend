@@ -9,6 +9,7 @@ import { CSVLink } from "react-csv";
 import { useDispatch, useSelector } from "react-redux";
 import GetTotalCustomers from "../../api/getTotalCustomers";
 import { loadAllCustomer } from "../../redux/actions/customer/getCustomerAction";
+import moment from "moment";
 
 function CustomTable({ list, total, status }) {
   const dispatch = useDispatch();
@@ -48,12 +49,22 @@ function CustomTable({ list, total, status }) {
       responsive: ["md"],
       sorter: (a, b) => a.address.localeCompare(b.address),
     },
-    // {
-    //   title: "Due Amount",
-    //   dataIndex: "due_amount",
-    //   key: "due_amount",
-    //   responsive: ["md"],
-    // },
+    {
+      title: "Créé le",
+      dataIndex: "createdAt",
+      key: "createdAt",
+      render: (createdAt) => moment(createdAt).format("DD/MM/YY HH:mm"),
+      sorter: (a, b) => moment(a.createdAt).unix() - moment(b.createdAt).unix(),
+      sortDirections: ["ascend", "descend"],
+    },
+    {
+      title: "Mis à jour le",
+      dataIndex: "updatedAt",
+      key: "updatedAt",
+      render: (updatedAt) => moment(updatedAt).format("DD/MM/YYYY HH:mm"),
+      sorter: (a, b) => moment(a.updatedAt).unix() - moment(b.updatedAt).unix(),
+      sortDirections: ["ascend", "descend"],
+    },
   ];
 
   useEffect(() => {
@@ -85,7 +96,6 @@ function CustomTable({ list, total, status }) {
   });
 
   const addKeys = (arr) => arr.map((i) => ({ ...i, key: i.id }));
-
   return (
     <div>
       <div>
