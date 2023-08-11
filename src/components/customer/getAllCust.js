@@ -9,6 +9,7 @@ import { CSVLink } from "react-csv";
 import { useDispatch, useSelector } from "react-redux";
 import GetTotalCustomers from "../../api/getTotalCustomers";
 import { loadAllCustomer } from "../../redux/actions/customer/getCustomerAction";
+
 import moment from "moment";
 
 function CustomTable({ list, total, status }) {
