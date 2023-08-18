@@ -26,7 +26,7 @@ function DueClientNotification({ list }) {
   // send message function
   function sendMessage(phoneNumber) {
     axios
-      .post("/sms", {
+      .post("/v1/sms", {
         number: phoneNumber,
         message:
           "Cher(e) [Momeni gille],\n\nJ'espère que vous allez bien. Je me permets de vous contacter au sujet du solde en suspens concernant votre dette envers notre entreprise, [sai i lama]. Le montant dû s'élève à [montant] et la date d'échéance était fixée au [15/04/2003].\nNous vous serions reconnaissants de bien vouloir effectuer le paiement dans les plus brefs délais afin de régulariser cette situation. Vous pouvez effectuer le règlement via [presenciel].\n\nMerci d'avance pour votre attention et votre coopération.\n\nCordialement,\n[service client],\n[sai i lama],\n[693972665]",
