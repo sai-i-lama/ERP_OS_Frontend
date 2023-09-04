@@ -1,16 +1,13 @@
 import { useState, useEffect } from "react";
 import {
   CheckOutlined,
-
   FileSyncOutlined,
   FundOutlined,
   HomeOutlined,
-
   MinusSquareOutlined,
   PlusSquareOutlined,
   SettingOutlined,
   FolderAddOutlined,
-
   FileAddOutlined,
   ShoppingCartOutlined,
   UnorderedListOutlined,
@@ -30,6 +27,7 @@ import { loadAllSale } from "../../redux/actions/sale/getSaleAction";
 import DueClientNotification from "../notification/DueClientNotification";
 import moment from "moment";
 // import styles from "./Sidenav.module.css";
+const pdfFile = require('./help.pdf');
 
 const Test = (props) => {
   const dispatch = useDispatch();
@@ -40,14 +38,15 @@ const Test = (props) => {
     dispatch(loadProduct({ status: "true", page: 1, limit: 10 }));
   }, []);
   useEffect(() => {
-    dispatch(loadAllSale({ 
-      status: "true",
-      page: 1, limit: 100,
-      startdate: moment().startOf("month"),
-      enddate: moment().endOf("month"),
-      user: ""
-    }),
-    
+    dispatch(
+      loadAllSale({
+        status: "true",
+        page: 1,
+        limit: 100,
+        startdate: moment().startOf("month"),
+        enddate: moment().endOf("month"),
+        user: "",
+      })
     );
   }, []);
 
@@ -57,7 +56,7 @@ const Test = (props) => {
   useEffect(() => {
     setList(productsList);
     setDueClientList(Clientlist);
-  }, [productsList,Clientlist]);
+  }, [productsList, Clientlist]);
 
   const menu = [
     {
@@ -78,15 +77,14 @@ const Test = (props) => {
     //   ],
     // },
     {
-          label: (
-            <NavLink to="/customer">
-              <span>CLIENT</span>
-            </NavLink>
-          ),
-          key: "customers",
-          icon: <UserOutlined />,
+      label: (
+        <NavLink to="/customer">
+          <span>CLIENT</span>
+        </NavLink>
+      ),
+      key: "customers",
+      icon: <UserOutlined />,
     },
-
 
     {
       label: "APPROVISIONNEMENT",
@@ -303,7 +301,7 @@ const Test = (props) => {
       ],
     },
     {
-      label: <NavLink to="../help">AIDE</NavLink>,
+      label: <NavLink to={pdfFile} target="_blank" >AIDE</NavLink>,
       key: "help",
       icon: <QuestionCircleOutlined />,
     },
@@ -336,7 +334,7 @@ const Test = (props) => {
             borderRadius: "10px",
           }}
         >
-        <small style={{color: "#fff"}}>LIMITE STOCK</small>  
+          <small style={{ color: "#fff" }}>LIMITE STOCK</small>
         </Divider>
         <NotificationIcon list={list} />
         <Divider
@@ -346,9 +344,9 @@ const Test = (props) => {
             borderRadius: "10px",
           }}
         >
-        <small style={{color: "#fff"}}>MONTANT À PAYER</small>  
+          <small style={{ color: "#fff" }}>MONTANT À PAYER</small>
         </Divider>
-        <DueClientNotification list={dueClientList}/>
+        <DueClientNotification list={dueClientList} />
       </center>
     </div>
   );
