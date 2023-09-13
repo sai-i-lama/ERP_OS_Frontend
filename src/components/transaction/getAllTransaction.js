@@ -118,7 +118,7 @@ function CustomTable({ list, total, startdate, enddate }) {
       {list && (
         <div style={{ marginBottom: "30px" }}>
           <Dropdown
-            overlay={
+            menu={
               <Menu onClick={colVisibilityClickHandler} items={columnItems} />
             }
             placement="bottomLeft"

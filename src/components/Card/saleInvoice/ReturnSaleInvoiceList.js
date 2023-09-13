@@ -90,7 +90,7 @@ const ReturnSaleInvoiceList = ({ list }) => {
           {list && (
             <div style={{ margin: "30px 0" }}>
               <Dropdown
-                overlay={
+                menu={
                   <Menu
                     onClick={colVisibilityClickHandler}
                     items={columnItems}
