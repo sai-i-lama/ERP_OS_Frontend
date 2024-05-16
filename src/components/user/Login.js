@@ -1,11 +1,20 @@
-import { Button, Card, Col, Form, Input, Row, Typography } from "antd";
+import {
+  Button,
+  Card,
+  Col,
+  Form,
+  Input,
+  PageHeader,
+  Row,
+  Typography,
+} from "antd";
 import React, { useState } from "react";
 import styles from "./Login.module.css";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../redux/actions/user/loginUserAction";
 
 import logo from "../../assets/images/sai-i-lama-logo.png";
-import logbg from "../../assets/images/login-bg.png"
+import logbg from "../../assets/images/login-bg.png";
 import { toast } from "react-toastify";
 // import LoginTable from "../Card/LoginTable";
 
@@ -36,9 +45,12 @@ const Login = () => {
     <>
       <Row className="card-row ">
         <Col span={24}>
+          {/* <Button type="primary" onClick={() => window.history.back()}>
+            Retour
+          </Button> */}
           <Card bordered={false} className={styles.card}>
             <Title level={3} className="m-3 text-center">
-              BIENVENU A SAI I LAMA
+              BIENVENUE A SAI I LAMA
             </Title>
             <div className={styles.logoContainer}>
               <img

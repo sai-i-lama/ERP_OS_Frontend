@@ -8,46 +8,45 @@ import DemoLine from "./Demoline";
 import DemoPie from "./DemoPie";
 
 const Dashboard = () => {
-	const isLogged = Boolean(localStorage.getItem("isLogged"));
+  const isLogged = Boolean(localStorage.getItem("isLogged"));
 
-	if (!isLogged) {
-		return <Navigate to={"/auth/login"} replace={true} />;
-	}
+  if (!isLogged) {
+    return <Navigate to={"/auth/login"} replace={true} />;
+  }
+  //Looging Out if token is expried
+  const accessToken = localStorage.getItem("access-token");
+  checkTokenExp(accessToken);
 
-	//Looging Out if token is expried
+  return (
+    <>
+      <div>
+        <div>
+          <div className="mb-3">
+            <Row>
+              <Col span={24}>
+                <DemoLine />
+              </Col>
+            </Row>
+          </div>
+          <div>
+            <Row gutter={[30, 30]}>
+              <Col sm={24} md={24} lg={12} span={24}>
+                <Card title="Ventes Btq et Ventes Spa">
+                  <DemoPie />
+                </Card>
+              </Col>
 
-	const accessToken = localStorage.getItem("access-token");
-	checkTokenExp(accessToken);
-	return (
-		<>
-			<div>
-				<div>
-					<div className='mb-3'>
-						<Row>
-							<Col span={24}>
-								<DemoLine />
-							</Col>
-						</Row>
-					</div>
-					<div>
-						<Row gutter={[30, 30]}>
-							<Col sm={24} md={24} lg={12} span={24}>
-								<Card title='Ventes Btq et Ventes Spa'>
-									<DemoPie />
-								</Card>
-							</Col>
-
-							<Col sm={24} md={24} lg={12} span={24}>
-								<Card title='Client le plus acheteur'>
-									<DemoBar />
-								</Card>
-							</Col>
-						</Row>
-					</div>
-				</div>
-			</div>
-		</>
-	);
+              <Col sm={24} md={24} lg={12} span={24}>
+                <Card title="Client le plus acheteur">
+                  <DemoBar />
+                </Card>
+              </Col>
+            </Row>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Dashboard;

@@ -7,7 +7,7 @@ import {
   InputNumber,
   Row,
   Select,
-  Typography,
+  Typography
 } from "antd";
 
 import { useEffect, useState } from "react";
@@ -26,10 +26,11 @@ const AddPos = ({
   selectedProds,
   handleSelectedProdsQty,
   handleDeleteProd,
-  handleSelectedProdsUnitPrice,
+  handleSelectedProdsUnitPrice
 }) => {
-  
-	const currentUserId = parseInt(localStorage.getItem("id"));
+  const currentUserId = parseInt(localStorage.getItem("id"));
+  const userRole = localStorage.getItem('role');
+  const currentRole = userRole ;
 
   const { Option } = Select;
   const [loader, setLoader] = useState(false);
@@ -57,7 +58,7 @@ const AddPos = ({
     discount: 0,
     afterDiscount: 0,
     paid: 0,
-    due: 0,
+    due: 0
   });
 
   const handleDiscount = (discountAmount) => {
@@ -70,7 +71,7 @@ const AddPos = ({
       ...prev,
       discount: discountAmount,
       due: dueAmount,
-      afterDiscount,
+      afterDiscount
     }));
   };
 
@@ -79,7 +80,7 @@ const AddPos = ({
     setTotalDiscountPaidDue((prev) => ({
       ...prev,
       paid: paidAmount,
-      due: dueAmount,
+      due: dueAmount
     }));
   };
 
@@ -91,7 +92,7 @@ const AddPos = ({
       return {
         product_id: prod.id,
         product_quantity: prod.selectedQty,
-        product_sale_price: prod.sale_price,
+        product_sale_price: prod.sale_price
       };
     });
 
@@ -103,7 +104,7 @@ const AddPos = ({
         customer_id: customer,
         user_id: currentUserId,
         // total_amount: totalDiscountPaidDue.total,
-        saleInvoiceProduct: [...saleInvoiceProduct],
+        saleInvoiceProduct: [...saleInvoiceProduct]
       };
       const resp = await dispatch(addSale(valueData));
 
@@ -151,11 +152,12 @@ const AddPos = ({
         ...prev,
         total,
         afterDiscount,
-        due,
+        due
       }));
     }
   }, [selectedProds, totalDiscountPaidDue.paid, totalDiscountPaidDue.discount]);
 
+  console.log(allCustomer, currentUserId);
   return (
     <Card className="mt-3">
       <Form
@@ -175,7 +177,7 @@ const AddPos = ({
                 padding: "10px 20px",
                 display: "flex",
                 justifyContent: "space-between",
-                border: "1px solid #ccc",
+                border: "1px solid #ccc"
               }}
             >
               <strong>Total: </strong>
@@ -187,7 +189,7 @@ const AddPos = ({
                 padding: "10px 20px",
                 display: "flex",
                 justifyContent: "space-between",
-                alignItems: "center",
+                alignItems: "center"
               }}
             >
               <strong>Remise: </strong>
@@ -196,8 +198,8 @@ const AddPos = ({
                 rules={[
                   {
                     required: false,
-                    message: "S’il vous plaît entrer le montant de la Remise!",
-                  },
+                    message: "S’il vous plaît entrer le montant de la Remise!"
+                  }
                 ]}
               >
                 <InputNumber
@@ -221,7 +223,7 @@ const AddPos = ({
               style={{
                 padding: "10px 20px",
                 display: "flex",
-                justifyContent: "space-between",
+                justifyContent: "space-between"
               }}
             >
               <strong>Après remise: </strong>
@@ -233,7 +235,7 @@ const AddPos = ({
                 padding: "10px 20px",
                 display: "flex",
                 justifyContent: "space-between",
-                alignItems: "center",
+                alignItems: "center"
               }}
             >
               <strong>Montant payé: </strong>
@@ -242,8 +244,8 @@ const AddPos = ({
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez saisir le montant payé!",
-                  },
+                    message: "Veuillez saisir le montant payé!"
+                  }
                 ]}
               >
                 <InputNumber type="number" onChange={handlePaid} min={0} />
@@ -254,7 +256,7 @@ const AddPos = ({
                 padding: "10px 20px",
                 display: "flex",
                 justifyContent: "space-between",
-                border: "1px solid #ccc",
+                border: "1px solid #ccc"
               }}
             >
               <strong>Montant à payer: </strong>
@@ -272,37 +274,67 @@ const AddPos = ({
                   rules={[
                     {
                       required: true,
-                      message: "Veuillez sélectionner un client!",
-                    },
+                      message: "Veuillez sélectionner un client!"
+                    }
                   ]}
                 >
-                  <Select
-                    loading={!allCustomer}
-                    showSearch
-                    placeholder="Sélectionner un client "
-                    optionFilterProp="children"
-                    onChange={handleCustomerData}
-                    onSearch={onSearch}
-                    filterOption={(input, option) =>
-                      option.children
-                        .toString()
-                        .toLowerCase()
-                        .includes(input.toLowerCase())
-                    }
-                  >
-                    {allCustomer &&
-                      allCustomer
-                        .filter(
-                          (cust) =>
-                            cust.type_customer === "PARTICULIER" ||
-                            cust.type_customer === "GROSSISTE" // filter the array of customers
-                        )
-                        .map((cust) => (
-                          <Option key={cust.id} value={cust.id}>
-                            {cust.phone} - {cust.name}
-                          </Option>
-                        ))}
-                  </Select>
+                  {currentRole === 'professionnel' ? (
+                    <Select
+                      loading={!allCustomer}
+                      showSearch
+                      placeholder="Sélectionner un client"
+                      optionFilterProp="children"
+                      onChange={handleCustomerData}
+                      onSearch={onSearch}
+                      filterOption={(input, option) =>
+                        option.children
+                          .toString()
+                          .toLowerCase()
+                          .includes(input.toLowerCase())
+                      }
+                    >
+                      {allCustomer &&
+                        allCustomer
+                          .filter(
+                            (cust) =>
+                              cust.type_customer === "professionnel" &&
+                              cust.userId === currentUserId
+                          )
+                          .map((cust) => (
+                            <Option key={cust.id} value={cust.id}>
+                              {cust.phone} - {cust.name}
+                            </Option>
+                          ))}
+                    </Select>
+                  ) : (
+                    <Select
+                      loading={!allCustomer}
+                      showSearch
+                      placeholder="Sélectionner un client "
+                      optionFilterProp="children"
+                      onChange={handleCustomerData}
+                      onSearch={onSearch}
+                      filterOption={(input, option) =>
+                        option.children
+                          .toString()
+                          .toLowerCase()
+                          .includes(input.toLowerCase())
+                      }
+                    >
+                      {allCustomer &&
+                        allCustomer
+                          .filter(
+                            (cust) =>
+                              cust.type_customer === "professionnel" ||
+                              cust.type_customer === "particulier" // filter the array of customers
+                          )
+                          .map((cust) => (
+                            <Option key={cust.id} value={cust.id}>
+                              {cust.phone} - {cust.name}
+                            </Option>
+                          ))}
+                    </Select>
+                  )}
                 </Form.Item>
               </div>
 
@@ -317,8 +349,8 @@ const AddPos = ({
                     rules={[
                       {
                         required: true,
-                        message: "Veuillez saisir la date!",
-                      },
+                        message: "Veuillez saisir la date!"
+                      }
                     ]}
                   />
                 </Form.Item>
