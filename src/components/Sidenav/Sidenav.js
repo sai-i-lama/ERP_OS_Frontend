@@ -11,10 +11,15 @@ import {
   FileAddOutlined,
   ShoppingCartOutlined,
   UnorderedListOutlined,
+  ShopOutlined,
   UsergroupAddOutlined,
   UserOutlined,
+  SnippetsOutlined,
   UserSwitchOutlined,
-  QuestionCircleOutlined,
+  InboxOutlined,
+  FileDoneOutlined,
+  FileOutlined,
+  QuestionCircleOutlined
 } from "@ant-design/icons";
 import { Divider, Menu } from "antd";
 import React from "react";
@@ -25,11 +30,20 @@ import NotificationIcon from "../notification/NotificationIcon";
 import { loadProduct } from "../../redux/actions/product/getAllProductAction";
 import { loadAllSale } from "../../redux/actions/sale/getSaleAction";
 import DueClientNotification from "../notification/DueClientNotification";
+import getPermissions from "../../utils/getPermissions";
 import moment from "moment";
 // import styles from "./Sidenav.module.css";
-const pdfFile = require('./help.pdf');
+const pdfFile = require("./help.pdf");
 
 const Test = (props) => {
+  const userRole = localStorage.getItem('role');
+  const isProRole = userRole === 'professionnel';
+
+  const permissions = getPermissions();
+  const hasPermission = (item) => {
+    return permissions?.includes(item ? item : "");
+  };
+  
   const dispatch = useDispatch();
   const [list, setList] = useState([]);
   const [dueClientList, setDueClientList] = useState([]);
@@ -45,7 +59,7 @@ const Test = (props) => {
         limit: 100,
         startdate: moment().startOf("month"),
         enddate: moment().endOf("month"),
-        user: "",
+        user: ""
       })
     );
   }, []);
@@ -59,34 +73,76 @@ const Test = (props) => {
   }, [productsList, Clientlist]);
 
   const menu = [
-    {
+     hasPermission("viewDashboard") && {
       label: (
         <NavLink to="/dashboard">
           <span>TABLEAU DE BORD</span>
         </NavLink>
       ),
       key: "dashboard",
-      icon: <HomeOutlined />,
+      icon: <HomeOutlined />
     },
-    // {
-    //   label: "PRODUIT",
-    //   key: "product",
-    //   icon: <ShopOutlined />,
-    //   children: [
-
-    //   ],
-    // },
-    {
+    !isProRole && ((hasPermission("createProduct") ||
+      hasPermission("viewProduct") ||
+      hasPermission("updateProduct") ||
+      hasPermission("deleteProduct") ||
+      hasPermission("createProductCategory") ||
+      hasPermission("viewProductCategory") ||
+      hasPermission("updateProductCategory") ||
+      hasPermission("deleteProductCategory"))) && {
+      label: "PRODUIT",
+      key: "product",
+      icon: <ShopOutlined />,
+      children: [
+        {
+          label: (
+            <NavLink to="/product-category">
+              <span>Catégorie de Produits</span>
+            </NavLink>
+          ),
+          key: "productCategory",
+          icon: <FolderAddOutlined />
+        },
+        {
+          label: (
+            <NavLink to="/product">
+              <span>Produit</span>
+            </NavLink>
+          ),
+          key: "products",
+          icon: <FileAddOutlined />
+        },
+        {
+          label: (
+            <NavLink to="/productlist">
+              <span>Liste des produits</span>
+            </NavLink>
+          ),
+          key: "purchaseList",
+          icon: <UnorderedListOutlined />
+        }
+      ]
+    },
+    !isProRole && (hasPermission("createCustomer") ||
+      hasPermission("viewCustomer") ||
+      hasPermission("updateCustomer") ||
+      hasPermission("deleteCustomer")) && {
       label: (
         <NavLink to="/customer">
           <span>CLIENT</span>
         </NavLink>
       ),
       key: "customers",
-      icon: <UserOutlined />,
+      icon: <UserOutlined />
     },
-
-    {
+    !isProRole &&(hasPermission("createSupplier") ||
+      hasPermission("viewSupplier") ||
+      hasPermission("updateSupplier") ||
+      hasPermission("deleteSupplier") ||
+      hasPermission("createPurchaseInvoice") ||
+      hasPermission("viewPurchaseInvoice") ||
+      hasPermission("updatePurchaseInvoice") ||
+      hasPermission("deletePurchaseInvoice")) && {
       label: "APPROVISIONNEMENT",
       key: "purchaseSection",
       icon: <PlusSquareOutlined />,
@@ -98,60 +154,27 @@ const Test = (props) => {
             </NavLink>
           ),
           key: "suppliers",
-          icon: <UserOutlined />,
+          icon: <UserOutlined />
         },
         {
           label: (
-            <NavLink to="/product-category">
-              <span>Catégorie de produit</span>
+            <NavLink to="/purchase">
+              <span>Facture</span>
             </NavLink>
           ),
-          key: "productCategory",
-          icon: <FolderAddOutlined />,
-        },
-        {
-          label: (
-            <NavLink to="/product">
-              <span>Approvisionnement</span>
-            </NavLink>
-          ),
-          key: "products",
-          icon: <FileAddOutlined />,
-        },
-        // {
-        //   label: (
-        //     <NavLink to="/purchase">
-        //       <span>Facture</span>
-        //     </NavLink>
-        //   ),
-        //   key: "newPurchase",
-        //   icon: <SnippetsOutlined />,
-        // },
-        {
-          label: (
-            <NavLink to="/productlist">
-              <span>Liste des produits</span>
-            </NavLink>
-          ),
-          key: "purchaseList",
-          icon: <UnorderedListOutlined />,
-        },
-      ],
+          key: "newPurchase",
+          icon: <SnippetsOutlined />
+        }
+      ]
     },
-    {
+    !isProRole &&((hasPermission("createSaleInvoice") ||
+      hasPermission("viewSaleInvoice") ||
+      hasPermission("updateSaleInvoice") ||
+      hasPermission("deleteSaleInvoice")) ) && {
       label: "VENTE",
       key: "saleSection",
       icon: <MinusSquareOutlined />,
       children: [
-        // {
-        //   label: (
-        //     <NavLink to="/customer">
-        //       <span>Clientèle</span>
-        //     </NavLink>
-        //   ),
-        //   key: "customers",
-        //   icon: <UserOutlined />,
-        // },
         {
           label: (
             <NavLink to="/sale">
@@ -159,98 +182,40 @@ const Test = (props) => {
             </NavLink>
           ),
           key: "newSale",
-          icon: <CheckOutlined />,
+          icon: <CheckOutlined />
         },
-        {
+        hasPermission("createSaleInvoice") && {
           label: (
             <NavLink to="/pos">
               <span>Boutique</span>
             </NavLink>
           ),
           key: "pos",
-          icon: <ShoppingCartOutlined />,
+          icon: <ShoppingCartOutlined />
         },
-        {
+        hasPermission("viewSaleInvoice")&&{
           label: (
             <NavLink to="/salelist">
               <span>Liste de vente</span>
             </NavLink>
           ),
           key: "saleList",
-          icon: <UnorderedListOutlined />,
-        },
-      ],
+          icon: <UnorderedListOutlined />
+        }
+      ]
     },
-    // {
-    //   label: "COMPTES",
-    //   key: "accountSection",
-    //   icon: <InboxOutlined />,
-    //   children: [
-    //     {
-    //       label: (
-    //         <NavLink to="/account/">
-    //           <span>Compte</span>
-    //         </NavLink>
-    //       ),
-    //       key: "accountList",
-    //       icon: <UnorderedListOutlined />,
-    //     },
-    //     {
-    //       label: (
-    //         <NavLink to="/transaction/create">
-    //           <span>Nouvelle transaction</span>
-    //         </NavLink>
-    //       ),
-    //       key: "newTransaction",
-    //       icon: <CheckOutlined />,
-    //     },
-    //     {
-    //       label: (
-    //         <NavLink to="/transaction/">
-    //           <span>Liste des transactions</span>
-    //         </NavLink>
-    //       ),
-    //       key: "transactionList",
-    //       icon: <UnorderedListOutlined />,
-    //     },
-    //   ],
-    // },
-    {
-      label: "RAPPORT",
-      key: "reportSection",
-      icon: <FundOutlined />,
-      children: [
-        // {
-        //   label: (
-        //     <NavLink to="/account/trial-balance">
-        //       <span>Balance de vérification</span>
-        //     </NavLink>
-        //   ),
-        //   key: "trialBalance",
-        //   icon: <FileDoneOutlined />,
-        // },
-        // {
-        //   label: (
-        //     <NavLink to="/account/balance-sheet">
-        //       <span>Bilan</span>
-        //     </NavLink>
-        //   ),
-        //   key: "balanceSheet",
-        //   icon: <FileOutlined />,
-        // },
-        {
-          label: (
-            <NavLink to="/account/income">
-              <span>État des résultats</span>
-            </NavLink>
-          ),
-          key: "incomeStatement",
-          icon: <FileSyncOutlined />,
-        },
-      ],
-    },
-
-    {
+    !isProRole &&(hasPermission("createUser") ||
+      hasPermission("viewUser") ||
+      hasPermission("updateUser") ||
+      hasPermission("deleteUser") ||
+      hasPermission("createRolePermission") ||
+      hasPermission("viewRolePermission") ||
+      hasPermission("updateRolePermission") ||
+      hasPermission("deleteRolePermission") ||
+      hasPermission("createDesignation") ||
+      hasPermission("viewDesignation") ||
+      hasPermission("updateDesignation") ||
+      hasPermission("deleteDesignation")) && {
       label: "HR",
       key: "hrSection",
       icon: <UserOutlined />,
@@ -262,7 +227,7 @@ const Test = (props) => {
             </NavLink>
           ),
           key: "staffs",
-          icon: <UsergroupAddOutlined />,
+          icon: <UsergroupAddOutlined />
         },
         {
           label: (
@@ -271,7 +236,7 @@ const Test = (props) => {
             </NavLink>
           ),
           key: "roleAndPermissions",
-          icon: <UserSwitchOutlined />,
+          icon: <UserSwitchOutlined />
         },
         {
           label: (
@@ -280,11 +245,11 @@ const Test = (props) => {
             </NavLink>
           ),
           key: "designation",
-          icon: <UserSwitchOutlined />,
-        },
-      ],
+          icon: <UserSwitchOutlined />
+        }
+      ]
     },
-    {
+    !isProRole &&(hasPermission("updateSetting") || hasPermission("viewSetting")) && {
       label: "PARAMÈTRES",
       key: "settings",
       icon: <SettingOutlined />,
@@ -296,15 +261,41 @@ const Test = (props) => {
             </NavLink>
           ),
           key: "invoiceSetting",
-          icon: <SettingOutlined />,
-        },
-      ],
+          icon: <SettingOutlined />
+        }
+      ]
     },
+    
+    
+    isProRole && (hasPermission("createSaleInvoice")) && {
+      label: (
+        <NavLink to="/pos">
+          <span>Boutique</span>
+        </NavLink>
+      ),
+      key: "pos",
+      icon: <ShoppingCartOutlined />
+    },
+    isProRole && hasPermission("viewSaleInvoice")&&{
+      label: (
+        <NavLink to="/salelistcustomer">
+          <span>Liste des Achats</span>
+        </NavLink>
+      ),
+      key: "saleList",
+      icon: <UnorderedListOutlined />
+    },
+
     {
-      label: <NavLink to={pdfFile} target="_blank" >AIDE</NavLink>,
+      label: (
+        <NavLink to={pdfFile} target="_blank">
+          AIDE
+        </NavLink>
+      ),
       key: "help",
-      icon: <QuestionCircleOutlined />,
+      icon: <QuestionCircleOutlined />
     },
+
   ];
 
   return (
@@ -316,7 +307,7 @@ const Test = (props) => {
           style={{
             width: "50%",
             height: "50%",
-            objectFit: "cover",
+            objectFit: "cover"
           }}
         />
 
@@ -327,7 +318,7 @@ const Test = (props) => {
           className="sidenav-menu"
           // style={{ backgroundColor: "transparent" }}
         />
-        <Divider
+        {/* <Divider
           style={{
             borderColor: "#fff",
             borderWidth: "2px",
@@ -346,7 +337,7 @@ const Test = (props) => {
         >
           <small style={{ color: "#fff" }}>MONTANT À PAYER</small>
         </Divider>
-        <DueClientNotification list={dueClientList} />
+        <DueClientNotification list={dueClientList} /> */}
       </center>
     </div>
   );

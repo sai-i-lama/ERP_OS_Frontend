@@ -59,6 +59,7 @@ import InvoiceSetting from "./components/settings/invoiceSetting";
 import AddTransaction from "./components/transaction/AddTransaction";
 import DetailTransaction from "./components/transaction/detailTransaction";
 import Transaction from "./components/transaction/transaction";
+import GetAllSaleCustomer from "./components/sale/getAllSaleCustomer";
 const { Sider } = Layout;
 
 function App() {
@@ -109,6 +110,7 @@ function App() {
 
             <Route path="/sale" exact element={<Sale />} />
             <Route path="/salelist" exact element={<GetAllSale />} />
+            <Route path="/salelistcustomer" exact element ={<GetAllSaleCustomer/>}/>
             <Route path="/sale/:id" element={<DetailSale />} />
             <Route path="/sale/:id/update" element={<UpdateProd />} />
             <Route path="/sale/return/:id" element={<AddReturnSale />} />
