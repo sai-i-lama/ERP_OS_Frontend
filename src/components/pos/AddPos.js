@@ -29,8 +29,8 @@ const AddPos = ({
   handleSelectedProdsUnitPrice
 }) => {
   const currentUserId = parseInt(localStorage.getItem("id"));
-  const userRole = localStorage.getItem('role');
-  const currentRole = userRole ;
+  const userRole = localStorage.getItem("role");
+  const currentRole = userRole;
 
   const { Option } = Select;
   const [loader, setLoader] = useState(false);
@@ -172,85 +172,95 @@ const AddPos = ({
       >
         <Row gutter={[24, 24]}>
           <Col span={24}>
-            <div
-              style={{
-                padding: "10px 20px",
-                display: "flex",
-                justifyContent: "space-between",
-                border: "1px solid #ccc"
-              }}
-            >
-              <strong>Total: </strong>
-              <strong>{totalDiscountPaidDue.total} cfa</strong>
-            </div>
-
-            <div
-              style={{
-                padding: "10px 20px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center"
-              }}
-            >
-              <strong>Remise: </strong>
-              <Form.Item
-                name="discount"
-                rules={[
-                  {
-                    required: false,
-                    message: "S’il vous plaît entrer le montant de la Remise!"
-                  }
-                ]}
-              >
-                <InputNumber
-                  type="number"
-                  defaultValue={0}
-                  value={0}
-                  min={0}
-                  max={totalDiscountPaidDue.total}
-                  onChange={(value) => {
-                    handleDiscount(Math.max(value, 0));
-                    if (value > totalDiscountPaidDue.total) {
-                      setIsDisabled(true);
-                    }
+            {currentRole !==
+              "professionnel" && (
+                <div
+                  style={{
+                    padding: "10px 20px",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    border: "1px solid #ccc"
                   }}
-                  disabled={isDisabled}
-                />
-              </Form.Item>
-            </div>
+                >
+                  <strong>Total: </strong>
+                  <strong>{totalDiscountPaidDue.total} cfa</strong>
+                </div>
+              )}
 
-            <div
-              style={{
-                padding: "10px 20px",
-                display: "flex",
-                justifyContent: "space-between"
-              }}
-            >
-              <strong>Après remise: </strong>
-              <strong>{totalDiscountPaidDue.afterDiscount} cfa</strong>
-            </div>
-
-            <div
-              style={{
-                padding: "10px 20px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center"
-              }}
-            >
-              <strong>Montant payé: </strong>
-              <Form.Item
-                name="paid_amount"
-                rules={[
-                  {
-                    required: true,
-                    message: "Veuillez saisir le montant payé!"
-                  }
-                ]}
+            {currentRole !== "professionnel" && (
+              <div
+                style={{
+                  padding: "10px 20px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center"
+                }}
               >
-                <InputNumber type="number" onChange={handlePaid} min={0} />
-              </Form.Item>
-            </div>
+                <strong>Remise: </strong>
+                <Form.Item
+                  name="discount"
+                  rules={[
+                    {
+                      required: false,
+                      message: "S’il vous plaît entrer le montant de la Remise!"
+                    }
+                  ]}
+                >
+                  <InputNumber
+                    type="number"
+                    defaultValue={0}
+                    value={0}
+                    min={0}
+                    max={totalDiscountPaidDue.total}
+                    onChange={(value) => {
+                      handleDiscount(Math.max(value, 0));
+                      if (value > totalDiscountPaidDue.total) {
+                        setIsDisabled(true);
+                      }
+                    }}
+                    disabled={isDisabled}
+                  />
+                </Form.Item>
+              </div>
+            )}
+
+            {currentRole !== "professionnel" && (
+              <div
+                style={{
+                  padding: "10px 20px",
+                  display: "flex",
+                  justifyContent: "space-between"
+                }}
+              >
+                <strong>Après remise: </strong>
+                <strong>{totalDiscountPaidDue.afterDiscount} cfa</strong>
+              </div>
+            )}
+
+            {currentRole !== "professionnel" && (
+              <div
+                style={{
+                  padding: "10px 20px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center"
+                }}
+              >
+                <strong>Montant payé: </strong>
+                <Form.Item
+                  name="paid_amount"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Veuillez saisir le montant payé!"
+                    }
+                  ]}
+                >
+                  <InputNumber type="number" onChange={handlePaid} min={0} />
+                </Form.Item>
+              </div>
+            )}
+
             <div
               style={{
                 padding: "10px 20px",
@@ -278,7 +288,7 @@ const AddPos = ({
                     }
                   ]}
                 >
-                  {currentRole === 'professionnel' ? (
+                  {currentRole === "professionnel" ? (
                     <Select
                       loading={!allCustomer}
                       showSearch
