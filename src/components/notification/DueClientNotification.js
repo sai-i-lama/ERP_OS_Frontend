@@ -51,7 +51,7 @@ function DueClientNotification({ list }) {
         <BellOutlined style={{ color: "#fadb14" }} />
       </div>
       {showNotifications && (
-        <div className="notification-list-container">
+        <div className="notification-list-container" >
           {filteredList.map((item) => {
             const customer = customerList.find(
               (customer) => customer.id === item?.customer?.id
@@ -86,12 +86,11 @@ function DueClientNotification({ list }) {
                       icon={<MessageOutlined />}
                       onClick={() => sendMessage(customer?.phone)}
                     >
-                      Send Message
+                      Envoyé un Message
                     </Button>
                   </>
                 }
                 type="warning"
-                style={{ marginBottom: "16px" }}
                 closable
               />
             );

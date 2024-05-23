@@ -8,8 +8,21 @@ import { loadAllPurchase } from "../../../redux/actions/purchase/getPurchaseActi
 import { loadAllSale } from "../../../redux/actions/sale/getSaleAction";
 import NewDashboardCard from "../../Card/Dashboard/NewDashboardCard";
 import Loader from "../../loader/loader";
+import NotificationIcon from "../../notification/NotificationIcon";
+import DueClientNotification from "../../notification/DueClientNotification";
 
 const DemoLine = () => {
+  const [list, setList] = useState([]);
+  const [dueClientList, setDueClientList] = useState([]);
+
+  const productsList = useSelector((state) => state.products.list);
+  const Clientlist = useSelector((state) => state.sales.list);
+
+  useEffect(() => {
+    setList(productsList);
+    setDueClientList(Clientlist);
+  }, [productsList, Clientlist]);
+
   //Date fucntinalities
   const [startdate, setStartdate] = useState(moment().startOf("month"));
   const [enddate, setEnddate] = useState(moment().endOf("month"));
@@ -29,7 +42,7 @@ const DemoLine = () => {
         page: 1,
         limit: 10,
         startdate: startdate,
-        enddate: enddate,
+        enddate: enddate
       })
     );
     dispatch(
@@ -38,7 +51,7 @@ const DemoLine = () => {
         limit: 10,
         startdate: startdate,
         enddate: enddate,
-        user: "",
+        user: ""
       })
     );
   }, []);
@@ -53,7 +66,7 @@ const DemoLine = () => {
     dispatch(
       loadDashboardData({
         startdate: newStartdate,
-        enddate: newEnddate,
+        enddate: newEnddate
       })
     );
 
@@ -62,7 +75,7 @@ const DemoLine = () => {
         page: 1,
         limit: 10,
         startdate: newStartdate,
-        enddate: newEnddate,
+        enddate: newEnddate
       })
     );
 
@@ -72,7 +85,7 @@ const DemoLine = () => {
         limit: 10,
         startdate: newStartdate,
         enddate: newEnddate,
-        user: "",
+        user: ""
       })
     );
   };
@@ -84,29 +97,35 @@ const DemoLine = () => {
     seriesField: "type",
     yAxis: {
       label: {
-        formatter: (v) => `${v / 1000} K`,
-      },
+        formatter: (v) => `${v / 1000} K`
+      }
     },
     legend: {
-      position: "top",
+      position: "top"
     },
     smooth: true,
     animation: {
       appear: {
         animation: "path-in",
-        duration: 5000,
-      },
-    },
+        duration: 5000
+      }
+    }
   };
 
   return (
     <Fragment>
-      <div className="mb-3 mt-3 w-full" style={{ maxWidth: "25rem" }}>
-        <RangePicker
-          onCalendarChange={onCalendarChange}
-          defaultValue={[startdate, enddate]}
-          className="range-picker"
-        />
+      <div className="row d-flex" style={{ maxWidth: "100%" }}>
+        <div className="col-md-3">
+          <RangePicker
+            onCalendarChange={onCalendarChange}
+            defaultValue={[startdate, enddate]}
+            className="range-picker"
+          />
+        </div>
+        <div className="col-md-9" style={{display:"flex", justifyContent:"flex-end", gap:"2%"}}>
+          <DueClientNotification list={dueClientList} />
+          <NotificationIcon list={list} />
+        </div>
       </div>
 
       <NewDashboardCard information={cardInformation} />

@@ -18,7 +18,7 @@ import styles from "./AddCust.module.css";
 const AddCust = () => {
   const dispatch = useDispatch();
   const { Title } = Typography;
-  const TypeCustomer = ["SPA", "GROSSISTE", "PARTICULIER"];
+  const TypeCustomer = ["spa", "professionnel", "particulier"];
   const [loading, setLoading] = useState(false);
   const onClick = () => {
     setLoading(true);

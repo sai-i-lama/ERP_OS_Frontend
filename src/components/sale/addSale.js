@@ -282,7 +282,7 @@ const AddSale = ({
 										}>
 										{allCustomer &&
 											allCustomer
-											.filter((cust) => cust.type_customer === "SPA") 
+											.filter((cust) => cust.type_customer === "spa") 
 											.map((cust) => (
 												<Option key={cust.id} value={cust.id}>
 													{cust.phone} - {cust.name}
