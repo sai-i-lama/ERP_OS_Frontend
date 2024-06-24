@@ -45,7 +45,7 @@ const DashboardCard = ({ information, count, isCustomer, title }) => {
               </div>
             </div>
           </div>
-
+          
           {isCustomer ? (
             <div className="col-xl-3 col-sm-6 col-12">
               <div className="card dashboard-card">

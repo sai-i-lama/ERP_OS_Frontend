@@ -49,7 +49,7 @@ export default function ProductsForSale({ handleSelectedProds }) {
   }, []);
 
   useEffect(() => {
-    setProdList(list);
+    console.log(setProdList(list));
   }, [list]);
 
   //TODO :IMPLEMENT TOTAL PROD info

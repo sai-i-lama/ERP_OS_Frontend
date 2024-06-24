@@ -54,7 +54,7 @@ const DetailCust = () => {
 
   return (
     <div>
-      <PageTitle title=" Retour " subtitle={`CLIENT ${customer?.id} `} />
+      <PageTitle title=" Retour " subtitle={`CLIENT ${customer?.name} `} />
 
       <div className="mr-top">
         {customer ? (
