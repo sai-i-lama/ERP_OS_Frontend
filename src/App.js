@@ -59,8 +59,7 @@ import InvoiceSetting from "./components/settings/invoiceSetting";
 import AddTransaction from "./components/transaction/AddTransaction";
 import DetailTransaction from "./components/transaction/detailTransaction";
 import Transaction from "./components/transaction/transaction";
-import GetAllSaleCustomer from "./components/sale/getAllSaleCustomer";
-import CustomerPos from "./components/pos/CustomerPost";
+
 const { Sider } = Layout;
 
 function App() {
@@ -111,7 +110,6 @@ function App() {
 
             <Route path="/sale" exact element={<Sale />} />
             <Route path="/salelist" exact element={<GetAllSale />} />
-            <Route path="/salelistcustomer" exact element ={<GetAllSaleCustomer/>}/>
             <Route path="/sale/:id" element={<DetailSale />} />
             <Route path="/sale/:id/update" element={<UpdateProd />} />
             <Route path="/sale/return/:id" element={<AddReturnSale />} />
@@ -165,7 +163,6 @@ function App() {
             />
 
             <Route path="/pos" exact element={<Pos />} />
-            <Route path="/customerPost" exact element={<CustomerPos/>}/>
 
             <Route path="/invoice-setting" exact element={<InvoiceSetting />} />
           </Routes>

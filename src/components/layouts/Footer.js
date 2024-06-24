@@ -26,7 +26,6 @@ function Footer() {
           <div className={styles.footerMenu}>
             <ul className={styles.footerList}>
               <li className="nav-item">
-            //-----------------------------------------footer-------------------------------------
                 <a href="/Sidenav/help.pdf" className="nav-link text-muted" target="_blank">
                   Documentation
                 </a>

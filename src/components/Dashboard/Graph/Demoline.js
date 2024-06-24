@@ -122,7 +122,7 @@ const DemoLine = () => {
             className="range-picker"
           />
         </div>
-        <div className="col-md-9" style={{display:"flex", justifyContent:"flex-end", gap:"2%"}}>
+        <div className="col-md-9" style={{display:"flex", justifyContent:"flex-end", gap:"3%"}}>
           <DueClientNotification list={dueClientList} />
           <NotificationIcon list={list} />
         </div>

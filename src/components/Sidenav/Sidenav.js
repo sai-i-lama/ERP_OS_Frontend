@@ -39,6 +39,9 @@ const Test = (props) => {
   const userRole = localStorage.getItem('role');
   const isProRole = userRole === 'professionnel';
 
+  const user_id = localStorage.getItem('id');
+  // const isProRole = userRole === 'professionnel';
+
   const permissions = getPermissions();
   const hasPermission = (item) => {
     return permissions?.includes(item ? item : "");
@@ -278,7 +281,7 @@ const Test = (props) => {
     },
     isProRole && hasPermission("viewSaleInvoice")&&{
       label: (
-        <NavLink to="/salelistcustomer">
+        <NavLink to="/salelist">
           <span>Liste des Achats</span>
         </NavLink>
       ),

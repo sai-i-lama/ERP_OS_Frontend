@@ -11,7 +11,7 @@ import {
   Menu,
   Segmented,
   Select,
-  Table,
+  Table
 } from "antd";
 import moment from "moment";
 import { useEffect, useState } from "react";
@@ -33,6 +33,9 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
   const [columnsToShow, setColumnsToShow] = useState([]);
   const dispatch = useDispatch();
 
+  const loggedInUser = localStorage.getItem("user");
+  const role = localStorage.getItem("role");
+
   const columns = [
     {
       title: "N° facture",
@@ -40,7 +43,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       key: "id",
       render: (name, { id }) => <Link to={`/sale/${id}`}>{id}</Link>,
       sorter: (a, b) => a.id - b.id,
-      sortDirections: ["ascend", "descend"],
+      sortDirections: ["ascend", "descend"]
     },
     {
       title: "Date",
@@ -48,7 +51,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       key: "date",
       render: (date) => moment(date).format("DD/MM/YY HH:mm"),
       sorter: (a, b) => moment(a.date).unix() - moment(b.date).unix(),
-      sortDirections: ["ascend", "descend"],
+      sortDirections: ["ascend", "descend"]
     },
     {
       title: "Nom Client",
@@ -56,7 +59,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       key: "customer_id",
       render: (customer) => customer?.name,
       sorter: (a, b) => a.customer.name.localeCompare(b.customer.name),
-      sortDirections: ["ascend", "descend"],
+      sortDirections: ["ascend", "descend"]
     },
     {
       title: "Type Client",
@@ -65,21 +68,21 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       render: (customer) => customer?.type_customer,
       sorter: (a, b) =>
         a.customer.type_customer.localeCompare(b.customer.type_customer),
-      sortDirections: ["ascend", "descend"],
+      sortDirections: ["ascend", "descend"]
     },
     {
       title: "Montant Total",
       dataIndex: "total_amount",
       key: "total_amount",
       sorter: (a, b) => a.total_amount - b.total_amount,
-      sortDirections: ["ascend", "descend"],
+      sortDirections: ["ascend", "descend"]
     },
     {
       title: "Remise",
       dataIndex: "discount",
       key: "discount",
       sorter: (a, b) => a.discount - b.discount,
-      sortDirections: ["ascend", "descend"],
+      sortDirections: ["ascend", "descend"]
     },
     {
       title: "Montant Payé",
@@ -87,7 +90,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       key: "paid_amount",
       responsive: ["md"],
       sorter: (a, b) => a.paid_amount - b.paid_amount,
-      sortDirections: ["ascend", "descend"],
+      sortDirections: ["ascend", "descend"]
     },
     {
       title: "Montant à Payer",
@@ -95,7 +98,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       key: "due_amount",
       responsive: ["md"],
       sorter: (a, b) => a.due_amount - b.due_amount,
-      sortDirections: ["ascend", "descend"],
+      sortDirections: ["ascend", "descend"]
     },
     // {
     //   title: "Nom du fournisseur",
@@ -111,7 +114,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       key: "profit",
       responsive: ["md"],
       sorter: (a, b) => a.profit - b.profit,
-      sortDirections: ["ascend", "descend"],
+      sortDirections: ["ascend", "descend"]
     },
     {
       title: "Vendeur",
@@ -120,7 +123,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       render: (user) => user?.username,
       responsive: ["md"],
       sorter: (a, b) => a.user.username.localeCompare(b.user.username),
-      sortDirections: ["ascend", "descend"],
+      sortDirections: ["ascend", "descend"]
     },
     {
       title: "Action",
@@ -128,18 +131,27 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       key: "payment",
       render: (id, record) => (
         <Link to={`/payment/customer/${id}`}>
-          <button className={`btn btn-sm ${record.due_amount === 0 ? 'btn-success' : 'btn-danger'}`}>
+          <button
+            className={`btn btn-sm ${
+              record.due_amount === 0 ? "btn-success" : "btn-danger"
+            }`}
+          >
             Paiement
           </button>
         </Link>
-      ),
-    },
+      )
+    }
   ];
 
   useEffect(() => {
-    setColumnItems(menuItems);
-    setColumnsToShow(columns);
-  }, []);
+    let filteredColumns = columns;
+    if (role === "professionnel") {
+      filteredColumns = columns.filter(
+        (column) => column.key !== "profit" && column.key !== "payment"
+      );
+    }
+    setColumnsToShow(filteredColumns);
+  }, [role]);
 
   const colVisibilityClickHandler = (col) => {
     const ifColFound = columnsToShow.find((item) => item.key === col.key);
@@ -160,7 +172,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
   const menuItems = columns.map((item) => {
     return {
       key: item.key,
-      label: <span>{item.title}</span>,
+      label: <span>{item.title}</span>
     };
   });
 
@@ -180,24 +192,63 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
           </Dropdown>
         </div>
       )}
-      <Table
-        scroll={{ x: true }}
-        loading={!list}
-        pagination={{
-          pageSize: count || 10,
-          pageSizeOptions: [10, 20, 50, 100, 200],
-          showSizeChanger: true,
-          total: total,
+      {role === "professionnel" && loggedInUser ? (
+        <Table
+          scroll={{ x: true }}
+          loading={!list}
+          pagination={{
+            pageSize: count || 10,
+            pageSizeOptions: [10, 20, 50, 100, 200],
+            showSizeChanger: true,
+            total: total,
 
-          onChange: (page, limit) => {
-            dispatch(
-              loadAllSale({ page, limit, startdate, enddate, user: user || "" })
-            );
-          },
-        }}
-        columns={columnsToShow}
-        dataSource={list ? addKeys(list) : []}
-      />
+            onChange: (page, limit) => {
+              dispatch(
+                loadAllSale({
+                  page,
+                  limit,
+                  startdate,
+                  enddate,
+                  user: loggedInUser
+                })
+              );
+            }
+          }}
+          columns={columnsToShow}
+          dataSource={
+            list
+              ? addKeys(
+                  list.filter((item) => item.customer.name === loggedInUser)
+                )
+              : []
+          }
+        />
+      ) : (
+        <Table
+          scroll={{ x: true }}
+          loading={!list}
+          pagination={{
+            pageSize: count || 10,
+            pageSizeOptions: [10, 20, 50, 100, 200],
+            showSizeChanger: true,
+            total: total,
+
+            onChange: (page, limit) => {
+              dispatch(
+                loadAllSale({
+                  page,
+                  limit,
+                  startdate,
+                  enddate,
+                  user: user || ""
+                })
+              );
+            }
+          }}
+          columns={columnsToShow}
+          dataSource={list ? addKeys(list) : []}
+        />
+      )}
     </>
   );
 }
@@ -236,14 +287,14 @@ const GetAllSale = (props) => {
         limit: 10,
         startdate: moment().startOf("month"),
         enddate: moment().endOf("month"),
-        user: "",
+        user: ""
       })
     );
   }, []);
 
   const CSVlist = list?.map((i) => ({
     ...i,
-    customer: i?.customer?.name,
+    customer: i?.customer?.name
   }));
 
   const onSearchFinish = async (values) => {
@@ -255,7 +306,7 @@ const GetAllSale = (props) => {
         limit: "",
         startdate: startdate,
         enddate: enddate,
-        user: values.user ? values.user : "",
+        user: values.user ? values.user : ""
       })
     );
     if (resp.message === "success") {
@@ -273,7 +324,7 @@ const GetAllSale = (props) => {
         limit: "",
         startdate: startdate,
         enddate: enddate,
-        user: user || "",
+        user: user || ""
       })
     );
   };
@@ -293,7 +344,7 @@ const GetAllSale = (props) => {
 
   return (
     <>
-      <PageTitle title={"Retour"} subtitle={"LISTE DES FACTURES DE VENTE"}/>
+      <PageTitle title={"Retour"} subtitle={"LISTE DES FACTURES DE VENTE"} />
       <div className="card card-custom mt-1">
         <div className="card-body">
           <h5 className="d-inline-flex">Liste des factures de vente</h5>
@@ -324,7 +375,7 @@ const GetAllSale = (props) => {
                     onCalendarChange={onCalendarChange}
                     defaultValue={[
                       moment().startOf("month"),
-                      moment().endOf("month"),
+                      moment().endOf("month")
                     ]}
                     className="range-picker"
                   />
@@ -350,14 +401,14 @@ const GetAllSale = (props) => {
             isCustomer={true}
           />
           <br />
-          <div>
-            <div>
+          <div className="row">
+            <div className="col-md-12">
               <h5>Historique des ventes</h5>
+            </div>
 
-              <DueClientNotification list={list} />
-              
+            <div className="col-md-12 d-flex align-items-center mt-1">
               {list && (
-                <div className="card-title d-flex justify-content-end ">
+                <div className="col-md-6 card-title d-flex justify-content-start align-items-center">
                   <div className="me-2">
                     <CSVLink
                       data={CSVlist}
@@ -379,7 +430,7 @@ const GetAllSale = (props) => {
                               <i className="bi bi-person-lines-fill"></i> toute
                             </span>
                           ),
-                          value: totalCount,
+                          value: totalCount
                         },
                         {
                           label: (
@@ -387,15 +438,14 @@ const GetAllSale = (props) => {
                               <i className="bi bi-person-dash-fill"></i> Paginé
                             </span>
                           ),
-                          value: 10,
-                        },
+                          value: 10
+                        }
                       ]}
                       value={count}
                       defaultChecked={totalCount}
                       onChange={onSwitchChange}
                     />
                   </div>
-
                   <div>
                     <SaleReportPrint
                       data={list}
@@ -406,6 +456,10 @@ const GetAllSale = (props) => {
                   </div>
                 </div>
               )}
+
+              <div className="col-md-6 d-flex justify-content-end">
+                <DueClientNotification list={list} />
+              </div>
             </div>
           </div>
           <CustomTable
