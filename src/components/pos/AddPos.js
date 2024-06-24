@@ -378,9 +378,11 @@ const AddPos = ({
               handleDeleteProd={handleDeleteProd}
             />
           </Col>
+          
           <Col span={24}>
-            <Form.Item style={{ marginTop: "15px" }}>
-              <Button
+              <Form.Item style={{ marginTop: "15px" }}>
+              {currentRole === "professionnel" ? (
+                <Button
                 block
                 type="primary"
                 htmlType="submit"
@@ -390,8 +392,23 @@ const AddPos = ({
                   onFormSubmit();
                 }}
               >
-                Vente Produit
+                Commander
               </Button>
+              ) : (
+                <Button
+                block
+                type="primary"
+                htmlType="submit"
+                loading={loader}
+                onClick={() => {
+                  onClickLoading();
+                  onFormSubmit();
+                }}
+              >
+                Vendre les produits
+              </Button>
+              )
+              }
             </Form.Item>
           </Col>
         </Row>

@@ -11,6 +11,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { loadAllCustomer } from "../../redux/actions/customer/getCustomerAction";
 function DueClientNotification({ list }) {
+  
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadAllCustomer({ status: true }));
