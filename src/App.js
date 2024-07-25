@@ -11,6 +11,9 @@ import Product from "./components/product/product";
 import UpdateProd from "./components/product/updateProd";
 import GetAllProd from "./components/product/getAllProd";
 
+import ProductMat from "./components/produitMatièrePremière/productMat";
+import GetAllProdMat from "./components/produitMatièrePremière/getAllProdMat";
+
 import DetailsPurch from "./components/purchase/detailsPurch";
 import Purchase from "./components/purchase/purchase";
 
@@ -59,6 +62,7 @@ import InvoiceSetting from "./components/settings/invoiceSetting";
 import AddTransaction from "./components/transaction/AddTransaction";
 import DetailTransaction from "./components/transaction/detailTransaction";
 import Transaction from "./components/transaction/transaction";
+import Mat from "./components/produitMatièreSale/Mat";
 
 const { Sider } = Layout;
 
@@ -81,6 +85,10 @@ function App() {
             <Route path="/product/:id" element={<DetailsProd />} />
             <Route path="/product/:id/update" element={<UpdateProd />} />
             <Route path="/productlist" exact element={<GetAllProd />} />
+
+            <Route path="/productMat" exact element={<ProductMat/>}/>
+            <Route path="/productMatlist" exact element={<GetAllProdMat/>}/>
+            {/* <Route path="/salemat" exact element={<Mat />} /> */}
 
             <Route
               path="/product-category"

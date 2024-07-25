@@ -54,7 +54,7 @@ function Main({ children }) {
           <Layout>
             <Sider
               trigger={null}
-              width={220}
+              width={250}
               theme="light"
               className={styles.siderDrawer}
             >
@@ -69,7 +69,7 @@ function Main({ children }) {
           trigger={null}
           collapsible
           collapsed={collapsed}
-          width={220}
+          width={250}
           theme="light"
           className={styles.siderMain}
         >

@@ -79,7 +79,7 @@ const HomeLayout = ({ children }) => (
           textAlign: "center",
         }}
       >
-        SAI I LUMA ©2023 # SLOGAN
+        SAI I LAMA ©2023 # SLOGAN
       </Footer>
     </Layout>
   </Layout>

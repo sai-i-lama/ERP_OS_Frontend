@@ -5,7 +5,7 @@ import { loadProduct } from "../../redux/actions/product/getAllProductAction";
 import { loadPosProduct } from "../../redux/actions/product/getPosProductAction";
 import { loadSingleProductCategory } from "../../redux/actions/productCategory/detailProductCategoryAction";
 import { loadAllProductCategory } from "../../redux/actions/productCategory/getProductCategoryAction";
-import "./pos.css";
+import "../pos/pos.css";
 import {
   Button,
   Card,
@@ -19,7 +19,7 @@ import {
   Tag
 } from "antd";
 
-export default function ProductsForSale({ handleSelectedProds }) {
+export default function MatForSale({ handleSelectedProds }) {
   const dispatch = useDispatch();
   const list = useSelector((state) => state.products.list);
   const category = useSelector((state) => state.productCategories?.list);

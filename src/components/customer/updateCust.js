@@ -64,7 +64,7 @@ function UpdateCust() {
   if (!isLogged) {
     return <Navigate to={"/auth/login"} replace={true} />;
   }
-  const TypeCustomer = ["SPA", "GROSSISTE", "PARTICULIER"];
+  const TypeCustomer = ["spa", "professionnel", "particulier"];
   return (
     <>
       <PageTitle
@@ -156,7 +156,7 @@ function UpdateCust() {
                   <Input />
                 </Form.Item>
 
-                <Form.Item
+                {/* <Form.Item
                   style={{ marginBottom: "10px" }}
                   label="Montant à payer"
                   name="due Amount"
@@ -169,7 +169,7 @@ function UpdateCust() {
                   ]}
                 >
                   <Input type="number" min={0} value={0} />
-                </Form.Item>
+                </Form.Item> */}
                 <Form.Item
                   style={{ marginBottom: "10px" }}
                   name="type_customer"
