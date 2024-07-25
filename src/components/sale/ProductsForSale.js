@@ -8,7 +8,7 @@ import {
   Row,
   Select,
   Spin,
-  Tag,
+  Tag
 } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,7 +30,7 @@ export default function ProductsForSale({ handleSelectedProds }) {
   useEffect(() => {
     const categoryToGetAllProd = {
       id: 0,
-      name: "all products",
+      name: "all products"
     };
     if (category !== null) {
       setFinalCat([categoryToGetAllProd, ...category]);
@@ -80,15 +80,17 @@ export default function ProductsForSale({ handleSelectedProds }) {
           }}
           style={{ width: "100%", height: "100%" }}
           cover={
-            <img
-              alt={`btq ${item.name}`}
-              src={item.imageUrl}
-              style={{
-                width: "100%",
-                height: "100px",
-                objectFit: "cover",
-              }}
-            />
+            <center>
+              <img
+                alt={`btq ${item.name}`}
+                src={item.imageUrl}
+                style={{
+                  width: "50%",
+                  height: "50%",
+                  objectFit: "cover"
+                }}
+              />
+            </center>
           }
           actions={[
             <p>
@@ -100,7 +102,7 @@ export default function ProductsForSale({ handleSelectedProds }) {
             </p>,
             <p>
               stock: <br /> {item.quantity}
-            </p>,
+            </p>
           ]}
           hoverable
         >
@@ -140,10 +142,10 @@ export default function ProductsForSale({ handleSelectedProds }) {
             form={form}
             layout="inline"
             labelCol={{
-              span: 8,
+              span: 8
             }}
             wrapperCol={{
-              span: 16,
+              span: 16
             }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
@@ -156,7 +158,7 @@ export default function ProductsForSale({ handleSelectedProds }) {
             <Form.Item
               wrapperCol={{
                 offset: 0,
-                span: 16,
+                span: 16
               }}
             >
               <Button
@@ -179,7 +181,7 @@ export default function ProductsForSale({ handleSelectedProds }) {
             loading={!category}
             showSearch
             style={{
-              width: 200,
+              width: 200
             }}
             onChange={handleCatChange}
             placeholder="Selectionner une Catégorie"

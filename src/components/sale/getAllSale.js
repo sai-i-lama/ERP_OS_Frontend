@@ -39,9 +39,11 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
   const columns = [
     {
       title: "N° facture",
-      dataIndex: "id",
-      key: "id",
-      render: (name, { id }) => <Link to={`/sale/${id}`}>{id}</Link>,
+      dataIndex: "numCommande",
+      key: "numCommande",
+      render: (numCommande, { id }) => (
+        <Link to={`/sale/${id}`}>{numCommande}</Link>
+      ),
       sorter: (a, b) => a.id - b.id,
       sortDirections: ["ascend", "descend"]
     },
@@ -68,6 +70,39 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       render: (customer) => customer?.type_customer,
       sorter: (a, b) =>
         a.customer.type_customer.localeCompare(b.customer.type_customer),
+      sortDirections: ["ascend", "descend"]
+    },
+    // {
+    //   title: "Livré",
+    //   dataIndex: "delivred",
+    //   key: "delivred",
+    //   render: (delivred) => (delivred ? "Oui" : "Non"),
+    //   sorter: (a, b) => a.delivred - b.delivred,
+    //   sortDirections: ["ascend", "descend"]
+    // },
+    {
+      title: "Retiré",
+      dataIndex: "delivred",
+      key: "delivred",
+      render: (delivred, { id }) =>
+        role !== "professionnel" ? (
+          <Link to={`/sale/${id}`}>
+            <button
+              className={`btn btn-sm ${
+                delivred ? "btn-success" : "btn-danger"
+              }`}
+            >
+              {delivred ? "Oui" : "Non"}
+            </button>
+          </Link>
+        ) : (
+          <button
+            className={`btn btn-sm ${delivred ? "btn-success" : "btn-danger"}`}
+          >
+            {delivred ? "Oui" : "Non"}
+          </button>
+        ),
+      sorter: (a, b) => a.delivred - b.delivred,
       sortDirections: ["ascend", "descend"]
     },
     {
@@ -129,8 +164,18 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       title: "Action",
       dataIndex: "id",
       key: "payment",
-      render: (id, record) => (
-        <Link to={`/payment/customer/${id}`}>
+      render: (id, record) =>
+        role !== "professionnel" ? (
+          <Link to={`/payment/customer/${id}`}>
+            <button
+              className={`btn btn-sm ${
+                record.due_amount === 0 ? "btn-success" : "btn-danger"
+              }`}
+            >
+              Paiement
+            </button>
+          </Link>
+        ) : (
           <button
             className={`btn btn-sm ${
               record.due_amount === 0 ? "btn-success" : "btn-danger"
@@ -138,8 +183,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
           >
             Paiement
           </button>
-        </Link>
-      )
+        )
     }
   ];
 
@@ -147,7 +191,8 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
     let filteredColumns = columns;
     if (role === "professionnel") {
       filteredColumns = columns.filter(
-        (column) => column.key !== "profit" && column.key !== "payment"
+        (column) => column.key !== "profit" && column.key !== "user" 
+        && column.key !== "discount" && column.key !== "customer"
       );
     }
     setColumnsToShow(filteredColumns);
@@ -337,6 +382,12 @@ const GetAllSale = (props) => {
   };
 
   const isLogged = Boolean(localStorage.getItem("isLogged"));
+  const loggedInUser = localStorage.getItem("user");
+  const role = localStorage.getItem("role");
+
+  const filteredList = list?.filter(
+    (item) => item.customer.name === loggedInUser
+  );
 
   if (!isLogged) {
     return <Navigate to={"/auth/login"} replace={true} />;
@@ -458,7 +509,11 @@ const GetAllSale = (props) => {
               )}
 
               <div className="col-md-6 d-flex justify-content-end">
-                <DueClientNotification list={list} />
+                {role === "professionnel" ? (
+                  <DueClientNotification list={filteredList} />
+                ) : (
+                  <DueClientNotification list={list} />
+                )}
               </div>
             </div>
           </div>

@@ -48,3 +48,9 @@
     box-shadow: 0 2px 4px rgb(0 0 0 / 7%);
   }
   
+  .custom-gap {
+    gap: 20px; /* ajustez la valeur selon votre besoin */
+    display: flex;
+    justify-content: space-between; /* ou 'space-around' selon l'effet souhaité */
+  }
+  

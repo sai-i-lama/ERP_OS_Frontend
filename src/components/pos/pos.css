@@ -13,3 +13,7 @@
 	width: 90%;
 	height: 200px;
   }
+  .space{
+	display: flex;
+	gap: 10px;
+  }

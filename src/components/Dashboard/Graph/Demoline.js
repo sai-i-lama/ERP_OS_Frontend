@@ -10,17 +10,18 @@ import NewDashboardCard from "../../Card/Dashboard/NewDashboardCard";
 import Loader from "../../loader/loader";
 import NotificationIcon from "../../notification/NotificationIcon";
 import DueClientNotification from "../../notification/DueClientNotification";
+import NewCommandeNotification from "../../notification/NewCommandeNotification";
 
 const DemoLine = () => {
   const [list, setList] = useState([]);
-  const [dueClientList, setDueClientList] = useState([]);
+  const [NewCommande, setNewCommande] = useState([]);
 
   const productsList = useSelector((state) => state.products.list);
   const Clientlist = useSelector((state) => state.sales.list);
 
   useEffect(() => {
     setList(productsList);
-    setDueClientList(Clientlist);
+    setNewCommande(Clientlist);
   }, [productsList, Clientlist]);
 
   //Date fucntinalities
@@ -114,7 +115,7 @@ const DemoLine = () => {
 
   return (
     <Fragment>
-      <div className="row d-flex" style={{ maxWidth: "100%" }}>
+      <div className="row d-flex" style={{ maxWidth: "100%", marginBottom:"10px" }}>
         <div className="col-md-3">
           <RangePicker
             onCalendarChange={onCalendarChange}
@@ -123,7 +124,7 @@ const DemoLine = () => {
           />
         </div>
         <div className="col-md-9" style={{display:"flex", justifyContent:"flex-end", gap:"3%"}}>
-          <DueClientNotification list={dueClientList} />
+          <NewCommandeNotification list={NewCommande} />
           <NotificationIcon list={list} />
         </div>
       </div>

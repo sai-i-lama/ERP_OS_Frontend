@@ -2,17 +2,13 @@ import PageTitle from "../page-header/PageHeader";
 import { Col, Row } from "antd";
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import AddPos from "./AddPos";
-import ProductsForSale from "./ProductsForSale";
-import ReadyCommandeNotification from "../notification/ReadyCommandeNotification";
+import AddMatSale from "./AddMatSale";
+import MatForSale from "./MatForSale";
 
-const Sale = (props) => {
+const Mat = (props) => {
   const isLogged = Boolean(localStorage.getItem("isLogged"));
   const [selectedProds, setSelectedProds] = useState([]);
-  const [dueClientList, SetdueClientList] = useState([]);
   const role = localStorage.getItem("role");
-  const isProRole = role === "professionnel";
-  const user_id = localStorage.getItem("id");
 
   const handleSelectedProds = (prod) => {
     const foundProd = selectedProds.find((item) => item.id === prod.id);
@@ -52,10 +48,6 @@ const Sale = (props) => {
     setSelectedProds(updatedProd);
   };
 
-  const filteredList = dueClientList?.filter(
-    (item) => item.customer.name === user_id
-  );
-
   if (!isLogged) {
     return <Navigate to={"/auth/login"} replace={true} />;
   }
@@ -64,17 +56,11 @@ const Sale = (props) => {
     <div>
       <PageTitle title="Retour" subtitle="BOUTIQUE" />
       <Row gutter={[20]}>
-        <div
-          className="col-md-12"
-          style={{ display: "flex", justifyContent: "flex-end", marginTop:"1%" }}
-        >
-          {isProRole && <ReadyCommandeNotification list={filteredList} />}
-        </div>
         <Col span={24} lg={13} xl={14}>
-          <ProductsForSale handleSelectedProds={handleSelectedProds} />
+          <MatForSale handleSelectedProds={handleSelectedProds} />
         </Col>
         <Col span={24} lg={11} xl={10}>
-          <AddPos
+          <AddMatSale
             selectedProds={selectedProds}
             handleSelectedProdsQty={handleSelectedProdsQty}
             handleSelectedProdsUnitPrice={handleSelectedProdsUnitPrice}
@@ -86,4 +72,4 @@ const Sale = (props) => {
   );
 };
 
-export default Sale;
+export default Mat;

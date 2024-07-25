@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "gh-pages": "^4.0.0",
     "react-scripts": "^5.0.1",
     "sw-precache": "^4.0.0"
@@ -57,12 +58,12 @@
     "workbox-streams": "^6.5.4"
   },
   "scripts": {
-    "start": "set PORT=3001 && react-scripts start",
-    "build": "react-scripts build",
-    "gh-pages": "gh-pages -d build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+  "start": "cross-env PORT=3001 HOST=127.0.0.1 react-scripts start",
+  "build": "react-scripts build",
+  "gh-pages": "gh-pages -d build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+},
   "eslintConfig": {
     "extends": [
       "react-app",

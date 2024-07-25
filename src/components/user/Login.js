@@ -1,35 +1,38 @@
-import {
-  Button,
-  Card,
-  Col,
-  Form,
-  Input,
-  PageHeader,
-  Row,
-  Typography,
-} from "antd";
-import React, { useState } from "react";
+import { Button, Card, Col, Form, Input, Row, Typography } from "antd";
+import React, { useEffect, useState } from "react";
 import styles from "./Login.module.css";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../redux/actions/user/loginUserAction";
-
 import logo from "../../assets/images/sai-i-lama-logo.png";
-import logbg from "../../assets/images/login-bg.png";
 import { toast } from "react-toastify";
-// import LoginTable from "../Card/LoginTable";
-
-//TODO : redirect to home
 
 const Login = () => {
   const dispatch = useDispatch();
   const [loader, setLoader] = useState(false);
   const { Title } = Typography;
 
+  useEffect(() => {
+    const isLogged = localStorage.getItem("isLogged");
+    const role = localStorage.getItem("role");
+    if (isLogged) {
+      if (role !== "professionnel") {
+        window.location.href = "/dashboard";
+      } else {
+        window.location.href = "/pos";
+      }
+    }
+  }, []);
+
   const onFinish = async (values) => {
     const resp = await dispatch(addUser(values));
-    if (resp === "success") {
+    const role = localStorage.getItem("role");
+
+    if (resp === "success" && role !== "professionnel") {
       setLoader(false);
       window.location.href = "/dashboard";
+    } else if (resp === "success" && role === "professionnel") {
+      setLoader(false);
+      window.location.href = "/pos";
     } else {
       setLoader(false);
     }
@@ -43,11 +46,8 @@ const Login = () => {
 
   return (
     <>
-      <Row className="card-row ">
+      <Row className="card-row">
         <Col span={24}>
-          {/* <Button type="primary" onClick={() => window.history.back()}>
-            Retour
-          </Button> */}
           <Card bordered={false} className={styles.card}>
             <Title level={3} className="m-3 text-center">
               BIENVENUE A SAI I LAMA
@@ -59,17 +59,17 @@ const Login = () => {
                 style={{
                   width: "50%",
                   height: "50%",
-                  objectFit: "cover",
+                  objectFit: "cover"
                 }}
               />
             </div>
             <Form
               name="basic"
               labelCol={{
-                span: 6,
+                span: 6
               }}
               wrapperCol={{
-                span: 16,
+                span: 16
               }}
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
@@ -82,8 +82,8 @@ const Login = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez entrer votre nom d’utilisateur!",
-                  },
+                    message: "Veuillez entrer votre nom d’utilisateur!"
+                  }
                 ]}
               >
                 <Input />
@@ -96,8 +96,8 @@ const Login = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez entrer votre mot de passe!",
-                  },
+                    message: "Veuillez entrer votre mot de passe!"
+                  }
                 ]}
               >
                 <Input.Password />
@@ -112,12 +112,6 @@ const Login = () => {
                 >
                   Envoyer
                 </Button>
-              </Form.Item>
-
-              <Form.Item className={styles.loginTableContainer}>
-                <Row>
-                  <Col span={24}>{/* <LoginTable /> */}</Col>
-                </Row>
               </Form.Item>
             </Form>
           </Card>

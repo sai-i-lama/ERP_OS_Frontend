@@ -1,5 +1,6 @@
 .notification-icon-container {
   position: relative;
+  display: flex;
 }
 
 .notification-icon {
@@ -16,8 +17,7 @@
 
 .notification-count {
   position: relative;
-  top: 0.5rem;
-  left: 0.5rem;
+  left: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,13 +35,26 @@
   top: calc(100% + 1rem);
   right: 0;
   width: auto;
-  height: 300%;
+  height: 360%;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   z-index: 1;
   overflow-y: scroll;
+}
+
+.notification-list-container1 {
+  position: absolute;
+  top: calc(100% + 1rem);
+  right: 0;
+  width: auto;
+  height: auto;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 1;
 }
 
 .notification-list-container .ant-alert {
@@ -73,4 +86,9 @@ body {
 /* Add this to make sure the notification icon is always on top */
 .notification-icon-container {
   z-index: 2;
+}
+
+.custom-gap{
+  display: flex;
+  gap: 1px;
 }
