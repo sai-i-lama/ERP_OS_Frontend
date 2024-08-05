@@ -1,0 +1,56 @@
+.mr-top{
+
+    margin-top: 40px;
+    margin-bottom:40px;
+}
+
+.mr-left{
+    margin-left: 20px;
+}
+
+.example {
+    margin: 20px 0;
+    margin-bottom: 20px;
+    padding: 30px 50px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+  }
+
+  .ant-form-item {
+    margin-bottom: 0;
+  }
+
+  .ant-form-item-label {
+    
+  }
+
+
+  .products-container-wrapper {
+    padding-right: 15px;
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  
+  .products-container {
+  }
+
+  .pos-product-card > .ant-card-body {
+    padding: 1rem !important;
+  }
+  
+  .ant-btn-new {
+    height: 33px;
+    line-height: 27px;
+    padding: 3px 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 7%);
+  }
+  
+  .custom-gap {
+    gap: 20px; /* ajustez la valeur selon votre besoin */
+    display: flex;
+    justify-content: space-between; /* ou 'space-around' selon l'effet souhaité */
+  }
+  

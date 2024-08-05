@@ -10,8 +10,17 @@ const Sale = (props) => {
   const isLogged = Boolean(localStorage.getItem("isLogged"));
   const [selectedProds, setSelectedProds] = useState([]);
   const [dueClientList, SetdueClientList] = useState([]);
-  const role = localStorage.getItem("role");
-  const isProRole = role === "professionnel";
+
+  const userRole = localStorage.getItem("role");
+
+  const isProfessional = userRole === "Professionnel";
+  const isParticulier = userRole === "Particulier";
+
+  const isProRole = isProfessional
+    ? "Professionnel"
+    : isParticulier
+    ? "Particulier"
+    : null;
   const user_id = localStorage.getItem("id");
 
   const handleSelectedProds = (prod) => {
@@ -52,9 +61,9 @@ const Sale = (props) => {
     setSelectedProds(updatedProd);
   };
 
-  const filteredList = dueClientList?.filter(
-    (item) => item.customer.name === user_id
-  );
+  // const filteredList = dueClientList?.filter(
+  //   (item) => item.customer.username === user_id
+  // );
 
   if (!isLogged) {
     return <Navigate to={"/auth/login"} replace={true} />;
@@ -66,9 +75,13 @@ const Sale = (props) => {
       <Row gutter={[20]}>
         <div
           className="col-md-12"
-          style={{ display: "flex", justifyContent: "flex-end", marginTop:"1%" }}
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            marginTop: "1%"
+          }}
         >
-          {isProRole && <ReadyCommandeNotification list={filteredList} />}
+          {isProRole && <ReadyCommandeNotification userId={user_id} />}
         </div>
         <Col span={24} lg={13} xl={14}>
           <ProductsForSale handleSelectedProds={handleSelectedProds} />

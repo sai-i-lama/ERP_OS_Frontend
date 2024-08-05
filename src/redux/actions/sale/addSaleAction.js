@@ -1,6 +1,6 @@
 import { ADD_SALE } from "../../types/SaleType";
 import axios from "axios";
-import { toast } from "react-toastify";
+
 
 const addPurchaseAciton = (data) => {
   return {
@@ -31,7 +31,6 @@ export const addSale = (values) => {
       };
 
       dispatch(addPurchaseAciton(newData));
-      toast.success("Nouveau produit vendu ");
       return {
         createdInvoiceId: data.createdInvoice.id,
         message: "success",

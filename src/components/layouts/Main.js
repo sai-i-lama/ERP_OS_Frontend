@@ -17,13 +17,13 @@ function Main({ children }) {
 
   const [visible, setVisible] = useState(false);
   const [placement, setPlacement] = useState("right");
-  const [sidenavColor, setSidenavColor] = useState("#1890ff");
+  // const [sidenavColor, setSidenavColor] = useState("#1890ff");
   const [sidenavType, setSidenavType] = useState("transparent");
   const [fixed, setFixed] = useState(false);
 
   const openDrawer = () => setVisible(!visible);
   const handleSidenavType = (type) => setSidenavType(type);
-  const handleSidenavColor = (color) => setSidenavColor(color);
+  // const handleSidenavColor = (color) => setSidenavColor(color);
   const handleFixedNavbar = (type) => setFixed(type);
 
   let { pathname } = useLocation();
@@ -55,10 +55,10 @@ function Main({ children }) {
             <Sider
               trigger={null}
               width={250}
-              theme="light"
+              
               className={styles.siderDrawer}
             >
-              <Sidenav color={sidenavColor} />
+              <Sidenav />
             </Sider>
           </Layout>
         </Drawer>
@@ -70,10 +70,10 @@ function Main({ children }) {
           collapsible
           collapsed={collapsed}
           width={250}
-          theme="light"
+         
           className={styles.siderMain}
         >
-          {isLogged && <Sidenav color={sidenavColor} />}
+          {isLogged && <Sidenav />}
         </Sider>
       )}
       <Layout
@@ -92,7 +92,7 @@ function Main({ children }) {
                 onPress={openDrawer}
                 name={pathname}
                 subName={pathname}
-                handleSidenavColor={handleSidenavColor}
+              
                 handleSidenavType={handleSidenavType}
                 handleFixedNavbar={handleFixedNavbar}
                 collapsed={collapsed}
@@ -107,7 +107,7 @@ function Main({ children }) {
               onPress={openDrawer}
               name={pathname}
               subName={pathname}
-              handleSidenavColor={handleSidenavColor}
+            
               handleSidenavType={handleSidenavType}
               handleFixedNavbar={handleFixedNavbar}
               collapsed={collapsed}

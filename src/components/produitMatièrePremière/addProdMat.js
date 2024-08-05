@@ -135,7 +135,8 @@ const AddProdMat = () => {
                 span: 16
               }}
               initialValues={{
-                remember: true
+                remember: true,
+                type_product: TypeProduc,
               }}
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}

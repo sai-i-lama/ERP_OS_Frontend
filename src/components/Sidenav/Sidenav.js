@@ -36,10 +36,17 @@ import moment from "moment";
 // import styles from "./Sidenav.module.css";
 const pdfFile = require("./help.pdf");
 
-const Test = (props) => {
+const Test = (color) => {
   const userRole = localStorage.getItem("role");
-  const isProRole = userRole === "professionnel";
-  const user_id = localStorage.getItem("id");
+
+  const isProfessional = userRole === "Professionnel";
+  const isParticulier = userRole === "Particulier";
+
+  const isProRole = isProfessional
+    ? "Professionnel"
+    : isParticulier
+    ? "Particulier"
+    : null;
 
   const permissions = getPermissions();
   const hasPermission = (item) => {
@@ -115,6 +122,24 @@ const Test = (props) => {
               </NavLink>
             ),
             key: "listproductmatière2",
+            icon: <UnorderedListOutlined />
+          },
+          {
+            label: (
+              <NavLink to="/stockproductMatlist">
+                <span>Sortie de la Matière Première</span>
+              </NavLink>
+            ),
+            key: "stocklistproductmatière2",
+            icon: <UnorderedListOutlined />
+          },
+          {
+            label: (
+              <NavLink to="/saleMatList">
+                <span>Liste Des Matières Sortie</span>
+              </NavLink>
+            ),
+            key: "salelistproductmatière2",
             icon: <UnorderedListOutlined />
           }
         ]
@@ -352,16 +377,17 @@ const Test = (props) => {
             objectFit: "cover"
           }}
         />
-        <h4
+        <h3
           style={{
             width: "100%",
             height: "100%",
             color: "white",
-            marginTop: "7%"
+            marginTop: "7%",
+            objectFit: "cover"
           }}
         >
-          <b>Gestion de Stocks</b>
-        </h4>
+          <b>{isProRole ? "saï i lama shop" : "Gestion de Stocks"}</b>
+        </h3>
 
         <Menu
           theme="dark"
@@ -370,29 +396,6 @@ const Test = (props) => {
           className="sidenav-menu"
           // style={{ backgroundColor: "transparent" }}
         />
-        {/* <Divider
-          style={{
-            borderColor: "#fff",
-            borderWidth: "2px",
-            borderRadius: "10px",
-          }}
-        >
-          <small style={{ color: "#fff" }}>LIMITE STOCK</small>
-        </Divider>
-        <NotificationIcon list={list} /> */}
-
-        {/* {isProRole && (
-          <Divider
-            style={{
-              borderColor: "#fff",
-              borderWidth: "2px",
-              borderRadius: "10px"
-            }}
-          >
-            <small style={{ color: "#fff" }}>MONTANT À PAYER</small>
-          </Divider>
-        )} */}
-        {/* {isProRole && <ReadyCommandeNotification list={filteredList} />} */}
       </center>
     </div>
   );

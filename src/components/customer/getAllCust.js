@@ -26,10 +26,10 @@ function CustomTable({ list, total, status }) {
     },
     {
       title: "Nom",
-      dataIndex: "name",
-      key: "name",
-      render: (name, { id }) => <Link to={`/customer/${id}`}>{name}</Link>,
-      sorter: (a, b) => a.name.localeCompare(b.name),
+      dataIndex: "username",
+      key: "username",
+      render: (username, { id }) => <Link to={`/customer/${id}`}>{username}</Link>,
+      sorter: (a, b) => a.username.localeCompare(b.username),
     },
     {
       title: "téléphone",
@@ -39,9 +39,9 @@ function CustomTable({ list, total, status }) {
     },
     {
       title: "Type de Client",
-      dataIndex: "type_customer",
-      key: "type_customer",
-      sorter: (a, b) => a.type_customer.localeCompare(b.type_customer),
+      dataIndex: "role",
+      key: "role",
+      sorter: (a, b) => a.role.localeCompare(b.role),
     },
     {
       title: "Adresse",

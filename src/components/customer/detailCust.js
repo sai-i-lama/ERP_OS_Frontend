@@ -27,9 +27,8 @@ const DetailCust = () => {
   const onDelete = () => {
     try {
       dispatch(deleteCustomer(id));
-
       setVisible(false);
-      toast.warning(`Client : ${customer.name} est supprimé `);
+      toast.warning(`Client : ${customer.username} est supprimé `);
       return navigate("/customer");
     } catch (error) {
       console.log(error.message);
@@ -54,7 +53,7 @@ const DetailCust = () => {
 
   return (
     <div>
-      <PageTitle title=" Retour " subtitle={`CLIENT ${customer?.name} `} />
+      <PageTitle title=" Retour " subtitle={`CLIENT ${customer?.username} `} />
 
       <div className="mr-top">
         {customer ? (
@@ -64,7 +63,7 @@ const DetailCust = () => {
                 <h5>
                   <i className="bi bi-person-lines-fill"></i>
                   <span className="mr-left">
-                    ID : {customer.id} | {customer.name}
+                    ID : {customer.id} | {customer.username}
                   </span>
                 </h5>
                 <div className="text-end">

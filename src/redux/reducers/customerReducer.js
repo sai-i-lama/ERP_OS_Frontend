@@ -4,18 +4,26 @@ import {
   ADD_CUSTOMER_ERROR,
   CUSTOMER_DETAILS,
   DELETE_CUSTOMER,
+  LOGIN_CUSTOMER
 } from "../types/CustomerType";
 import { message } from "antd";
 
 const initialState = {
   list: null,
-  customer: null,
+  customer: null
 };
 
 const customerReducer = (state = initialState, action) => {
   switch (action.type) {
     case CUSTOMERS:
       return { ...state, list: action.payload };
+    case LOGIN_CUSTOMER:
+      if (!Array.isArray(state.list)) {
+        state.list = [];
+      }
+      const list1 = [...state.list];
+      list1.push(action.payload);
+      return { ...state, list };
     case ADD_CUSTOMER:
       if (!Array.isArray(state.list)) {
         state.list = [];

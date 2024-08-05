@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 
 import "./card.css";
 
-const DashboardCard = ({ information, count, isCustomer, title }) => {
+const DashboardCard = ({ information, count, isCustomer, title }) => {  
   return (
     <Fragment>
       <div>

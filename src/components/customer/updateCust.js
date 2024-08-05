@@ -38,10 +38,11 @@ function UpdateCust() {
 
   const cust = data;
   const [initValues, setInitValues] = useState({
-    name: cust.name,
+    username: cust.username,
     phone: cust.phone,
     address: cust.address,
     due_amount: cust.due_amount,
+    email: cust.email,
   });
 
   const onFinish = (values) => {
@@ -64,12 +65,12 @@ function UpdateCust() {
   if (!isLogged) {
     return <Navigate to={"/auth/login"} replace={true} />;
   }
-  const TypeCustomer = ["spa", "professionnel", "particulier"];
+  const TypeCustomer = ["Centre Thérapeutique", "Professionnel", "Particulier"];
   return (
     <>
       <PageTitle
-        title={`Modifier le Client/ ${id}`}
-        subtitle="Modifier les information du Client"
+        title={"Retour"}
+        subtitle="Modifier les informations du Client"
       />
       <div className="text-center">
         <div className="">
@@ -93,7 +94,7 @@ function UpdateCust() {
                 </div>
               )}
               <Title level={3} className="m-3 text-center">
-                Modifier le formulaire client
+                Modifier les données du client
               </Title>
               <Form
                 initialValues={{
@@ -114,9 +115,8 @@ function UpdateCust() {
               >
                 <Form.Item
                   style={{ marginBottom: "10px" }}
-                  fields={[{ name: "Name" }]}
                   label="Nom"
-                  name="name"
+                  name="username"
                   rules={[
                     {
                       required: true,
@@ -126,6 +126,20 @@ function UpdateCust() {
                 >
                   <Input />
                 </Form.Item>
+
+                <Form.Item
+                style={{ marginBottom: "10px" }}
+                label="Email"
+                name="email"
+                rules={[
+                  {
+                    required: true,
+                    message: "Veuillez saisir l'adresse mail du client!",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
 
                 <Form.Item
                   style={{ marginBottom: "10px" }}
@@ -155,6 +169,20 @@ function UpdateCust() {
                 >
                   <Input />
                 </Form.Item>
+
+              <Form.Item
+                style={{ marginBottom: "10px" }}
+                label="Mot de passe"
+                name="password"
+                rules={[
+                  {
+                    required: true,
+                    message: "Veuillez saisir le mot de passe du client !"
+                  }
+                ]}
+              >
+                <Input />
+              </Form.Item>
 
                 {/* <Form.Item
                   style={{ marginBottom: "10px" }}
@@ -204,6 +232,7 @@ function UpdateCust() {
                       ))}
                   </Select>
                 </Form.Item>
+
                 <Form.Item
                   style={{ marginBottom: "10px" }}
                   wrapperCol={{

@@ -133,21 +133,3 @@ export default function Products({
 	);
 }
 
-// {
-//   "total_amount": 10,
-//   "due_amount": 1,
-//   "paid_amount": 11,
-//   "supplier_id":1,
-//   "purchaseInvoiceProduct": [
-//       {
-//           "product_id": 1,
-//           "product_quantity": 1,
-//           "product_purchase_price": 500
-//       },
-//       {
-//           "product_id": 2,
-//           "product_quantity": 10,
-//           "product_purchase_price": 800
-//       }
-//   ]
-// }
