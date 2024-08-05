@@ -67,7 +67,7 @@ function DueClientNotification({ list }) {
                     <span>
                       Le Client{" "}
                       <Link to={`/customer/${item?.customer?.id}`}>
-                        {item?.customer?.name}
+                        {item?.customer?.username}
                       </Link>{" "}
                       a une dette de {item?.due_amount}. depuis le{" "}
                       {moment(item.updated_at).format("DD/MM/YYYY")} contact:{" "}

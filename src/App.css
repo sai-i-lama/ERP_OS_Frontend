@@ -4,7 +4,7 @@
   --text: #ffffff;
   --text-inverse: #000000;
   --body-bg: #1c1b20;
-  --sidenav-bg: #63496a;
+  --sidenav-bg: #28325c; /* Exemple de couleur spécifique pour les professionnels */
   --table-cell-row-hover: #26252b;
   --form-item-label: rgba(255, 255, 255, 1);
   --table-head: #1c1b20;
@@ -21,7 +21,7 @@
   --text: #000000;
   --text-inverse: #ffffff;
   --body-bg: #f8f8ff;
-  --sidenav-bg: #b029b0;
+  --sidenav-bg: #157954;
   --table-cell-row-hover: #fafafa;
   --form-item-label: rgba(0, 0, 0, 0.85);
   --table-head: rgb(44, 44, 44);
@@ -30,6 +30,10 @@
   --dark-btn-border: #1b2942;
   --ant-picker-next-prev-text: rgba(0, 0, 0, 0.25);
   --date-range-bg: #e6f7ff;
+}
+
+.professional-sidenav-bg {
+  --sidenav-bg: #b029b0;
 }
 
 body {

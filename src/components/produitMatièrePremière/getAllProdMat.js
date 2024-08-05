@@ -22,21 +22,23 @@ function CustomTable({ list, total, status }) {
     {
       title: "Image",
       dataIndex: "imageUrl",
+      align: "center",
       render: (imageUrl) => (
         <img style={{ maxWidth: "40px" }} alt="product" src={imageUrl} />
       )
     },
-    {
-      title: "ID",
-      dataIndex: "id",
-      key: "id",
-      sorter: (a, b) => a.id - b.id,
-      sortDirections: ["ascend", "descend"]
-    },
+    // {
+    //   title: "ID",
+    //   dataIndex: "id",
+    //   key: "id",
+    //   sorter: (a, b) => a.id - b.id,
+    //   sortDirections: ["ascend", "descend"]
+    // },
     {
       title: "SKU",
       dataIndex: "sku",
       key: "sku",
+      align: "center",
       sorter: (a, b) => a.sku.localeCompare(b.sku),
       sortDirections: ["ascend", "descend"]
     },
@@ -44,6 +46,7 @@ function CustomTable({ list, total, status }) {
       title: "Nom",
       dataIndex: "name",
       key: "name",
+      align: "center",
       render: (name, { id }) => <Link to={`/product/${id}`}>{name}</Link>,
       sorter: (a, b) => a.name.localeCompare(b.name),
       sortDirections: ["ascend", "descend"]
@@ -52,6 +55,7 @@ function CustomTable({ list, total, status }) {
       title: "Fournisseur",
       dataIndex: "supplier",
       key: "supplier",
+      align: "center",
       render: (supplier) => supplier?.name,
       sorter: (a, b) => a.supplier?.name.localeCompare(b.supplier?.name),
       sortDirections: ["ascend", "descend"]
@@ -59,6 +63,7 @@ function CustomTable({ list, total, status }) {
     {
       title: "Quantité en Stock",
       dataIndex: "quantity",
+      align: "center",
       key: "quantity",
       sorter: (a, b) => a.quantity - b.quantity,
       sortDirections: ["ascend", "descend"]
@@ -67,22 +72,24 @@ function CustomTable({ list, total, status }) {
       title: "Coût de Production",
       dataIndex: "purchase_price",
       key: "purchase_price",
+      align: "center",
       responsive: ["md"],
       sorter: (a, b) => a.purchase_price - b.purchase_price,
       sortDirections: ["ascend", "descend"]
     },
-    {
-      title: "Prix de vente",
-      dataIndex: "sale_price",
-      key: "sale_price",
-      responsive: ["md"],
-      sorter: (a, b) => a.sale_price - b.sale_price,
-      sortDirections: ["ascend", "descend"]
-    },
+    // {
+    //   title: "Prix de vente",
+    //   dataIndex: "sale_price",
+    //   key: "sale_price",
+    //   responsive: ["md"],
+    //   sorter: (a, b) => a.sale_price - b.sale_price,
+    //   sortDirections: ["ascend", "descend"]
+    // },
     {
       title: "Categorie",
       dataIndex: "product_category",
       key: "product_category",
+      align: "center",
       render: (product_category) => product_category?.name,
       sorter: (a, b) =>
         a.product_category?.name.localeCompare(b.product_category?.name),
@@ -92,6 +99,7 @@ function CustomTable({ list, total, status }) {
       title: "Unité de mésure",
       dataIndex: "unit_measurement",
       key: "unit_measurement",
+      align: "center",
       sorter: (a, b) => a.unit_measurement.localeCompare(b.unit_measurement),
       sortDirections: ["ascend", "descend"]
     },
@@ -99,21 +107,23 @@ function CustomTable({ list, total, status }) {
       title: "Type d'unité",
       dataIndex: "unit_type",
       key: "unit_type",
+      align: "center",
       sorter: (a, b) => a.unit_type.localeCompare(b.unit_type),
       sortDirections: ["ascend", "descend"]
     },
 
-    {
-      title: "Quantité Commandée",
-      dataIndex: "reorder_quantity",
-      key: "reorder_quantity",
-      sorter: (a, b) => a.reorder_quantity - b.reorder_quantity,
-      sortDirections: ["ascend", "descend"]
-    },
+    // {
+    //   title: "Quantité Commandée",
+    //   dataIndex: "reorder_quantity",
+    //   key: "reorder_quantity",
+    //   sorter: (a, b) => a.reorder_quantity - b.reorder_quantity,
+    //   sortDirections: ["ascend", "descend"]
+    // },
     {
       title: "Action",
       dataIndex: "sku",
       key: "sku",
+      align: "center",
       render: (sku, quantity) => <GenerateBarcodePopUp sku={sku ? sku : 0} />
     }
   ];

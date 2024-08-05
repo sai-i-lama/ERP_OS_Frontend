@@ -31,14 +31,24 @@ const AddPos = ({
   handleSelectedProdsUnitPrice
 }) => {
   const currentUserId = parseInt(localStorage.getItem("id"));
+
   const userRole = localStorage.getItem("role");
-  const currentRole = userRole;
+
+  const isProfessional = userRole === "Professionnel";
+  const isParticulier = userRole === "Particulier";
+
+  const currentRole = isProfessional
+    ? "Professionnel"
+    : isParticulier
+    ? "Particulier"
+    : null;
+
 
   const { Option } = Select;
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
 
-  const TypeCustomer = ["spa", "professionnel", "particulier"];
+  const TypeCustomer = ["Centre Thérapeutique", "Professionnel", "Particulier"];
 
   const onClickLoading = () => {
     setLoader(true);
@@ -96,7 +106,7 @@ const AddPos = ({
   const handleGenerateNumCom = () => {
     const generatedNumCom = Math.floor(Math.random() * 9000) + 1000;
     const customerName =
-      allCustomer.find((cust) => cust.id === customer)?.name || "";
+      allCustomer.find((cust) => cust.id === customer)?.username || "";
     if (customerName) {
       return `saï-com-${customerName}-${generatedNumCom}`;
     } else {
@@ -125,6 +135,7 @@ const AddPos = ({
         discount: totalDiscountPaidDue.discount,
         customer_id: customer,
         user_id: currentUserId,
+        type_saleInvoice: "produit_fini",
         numCommande: generatedNumCom1, // Utilisez le numéro de commande généré
         saleInvoiceProduct
       };
@@ -135,13 +146,23 @@ const AddPos = ({
       try {
         const resp = await dispatch(addSale(valueData));
 
-        if (resp.message === "success") {
+        if (resp.message === "success" && currentRole) {
           form.resetFields();
           setFormData({});
           setAfterDiscount(0);
           setLoader(false);
+          toast.success("Votre Commande a étée prise en compte ");
           navigate(`/sale/${resp.createdInvoiceId}`);
-        } else {
+        } 
+        else if (resp.message === "success") {
+          form.resetFields();
+          setFormData({});
+          setAfterDiscount(0);
+          setLoader(false);
+          toast.success("Nouveau produit vendu ");
+          navigate(`/sale/${resp.createdInvoiceId}`);
+        }
+        else {
           setLoader(false);
         }
       } catch (error) {
@@ -156,7 +177,7 @@ const AddPos = ({
     const selectedCustomer = allCustomer.find((cust) => cust.id === customerId);
     if (selectedCustomer) {
       setCustomer(customerId);
-      setSelectedCustomerName(selectedCustomer.name); // Stocker le nom du client
+      setSelectedCustomerName(selectedCustomer.username); // Stocker le nom du client
     }
   };
 
@@ -188,6 +209,15 @@ const AddPos = ({
       }));
     }
   }, [selectedProds, totalDiscountPaidDue.paid, totalDiscountPaidDue.discount]);
+
+  useEffect(() => {
+    if (currentRole  && allCustomer) {
+      const customer = allCustomer.find(
+        (cust) => cust.role === currentRole && cust.id === currentUserId
+      );
+      setCustomer(customer);
+    }
+  }, [currentRole, currentUserId, allCustomer]);
 
   const handleCancel = () => {
     setIsModalVisible(false);
@@ -221,7 +251,7 @@ const AddPos = ({
       >
         <Row gutter={[24, 24]}>
           <Col span={24}>
-            {currentRole !== "professionnel" && (
+            {!currentRole && (
               <div
                 style={{
                   padding: "10px 20px",
@@ -235,7 +265,7 @@ const AddPos = ({
               </div>
             )}
 
-            {currentRole !== "professionnel" && (
+            {!currentRole && (
               <div
                 style={{
                   padding: "10px 20px",
@@ -272,7 +302,7 @@ const AddPos = ({
               </div>
             )}
 
-            {currentRole !== "professionnel" && (
+            {!currentRole && (
               <div
                 style={{
                   padding: "10px 20px",
@@ -285,7 +315,7 @@ const AddPos = ({
               </div>
             )}
 
-            {currentRole !== "professionnel" && (
+            {!currentRole  && (
               <div
                 style={{
                   padding: "10px 20px",
@@ -336,7 +366,7 @@ const AddPos = ({
                     }
                   ]}
                 >
-                  {currentRole === "professionnel" ? (
+                  {currentRole ? (
                     <Select
                       loading={!allCustomer}
                       showSearch
@@ -355,12 +385,12 @@ const AddPos = ({
                         allCustomer
                           .filter(
                             (cust) =>
-                              cust.type_customer === "professionnel" &&
-                              cust.userId === currentUserId
+                              cust.role === currentRole &&
+                              cust.id === currentUserId
                           )
                           .map((cust) => (
                             <Option key={cust.id} value={cust.id}>
-                              {cust.phone} - {cust.name}
+                              {cust.phone} - {cust.username}
                             </Option>
                           ))}
                     </Select>
@@ -383,12 +413,12 @@ const AddPos = ({
                         allCustomer
                           .filter(
                             (cust) =>
-                              cust.type_customer === "professionnel" ||
-                              cust.type_customer === "particulier"
+                              cust.role === "Professionnel" ||
+                              cust.role === "Particulier"
                           )
                           .map((cust) => (
                             <Option key={cust.id} value={cust.id}>
-                              {cust.phone} - {cust.name}
+                              {cust.phone} - {cust.username}
                             </Option>
                           ))}
                     </Select>
@@ -428,7 +458,7 @@ const AddPos = ({
 
           <Col span={24}>
             <Form.Item style={{ marginTop: "15px" }}>
-              {currentRole === "professionnel" ? (
+              {currentRole ? (
                 <Button
                   block
                   type="primary"
@@ -510,6 +540,34 @@ const AddPos = ({
 
           <Form.Item
             style={{ marginBottom: "10px" }}
+            label="Email"
+            name="email"
+            rules={[
+              {
+                required: true,
+                message: "Veuillez saisir l'adresse mail du client!"
+              }
+            ]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            style={{ marginBottom: "10px" }}
+            label="Mot de passe"
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: "Veuillez saisir le mot de passe du client !"
+              }
+            ]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            style={{ marginBottom: "10px" }}
             label="téléphone"
             name="phone"
             rules={[
@@ -538,7 +596,7 @@ const AddPos = ({
 
           <Form.Item
             style={{ marginBottom: "10px" }}
-            name="type_customer"
+            name="role"
             label="Type de Client "
             rules={[
               {
@@ -548,7 +606,7 @@ const AddPos = ({
             ]}
           >
             <Select
-              name="type_customer"
+              name="role"
               //loading={!category}
               showSearch
               placeholder="Sélectionnez le type de client"

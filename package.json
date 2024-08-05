@@ -19,6 +19,7 @@
     "axios": "^0.27.2",
     "bootstrap-icons": "^1.9.1",
     "dotenv": "^16.0.2",
+    "erpos": "file:",
     "html-webpack-plugin": "^5.5.0",
     "html2canvas": "^1.4.1",
     "install": "^0.13.0",
@@ -41,6 +42,7 @@
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
+    "socket.io-client": "^4.7.5",
     "styled-components": "^5.3.5",
     "trim-off-newlines": "^1.0.3",
     "web-vitals": "^3.0.1",
@@ -58,12 +60,12 @@
     "workbox-streams": "^6.5.4"
   },
   "scripts": {
-  "start": "cross-env PORT=3001 HOST=127.0.0.1 react-scripts start",
-  "build": "react-scripts build",
-  "gh-pages": "gh-pages -d build",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject"
-},
+    "start": "cross-env PORT=3001 HOST=127.0.0.1 react-scripts start",
+    "build": "react-scripts build",
+    "gh-pages": "gh-pages -d build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",

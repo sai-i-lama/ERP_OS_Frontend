@@ -1,61 +1,45 @@
-import { useState, useEffect } from "react";
-import { BellOutlined } from "@ant-design/icons";
+import React, { useEffect, useState } from "react";
+import io from "socket.io-client";
 import { Alert } from "antd";
+import { BellOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./NotificationIcon.css";
 
-function ReadyCommandeNotification() {
-  const [notifications, setNotifications] = useState(() => {
-    // Initialiser les notifications depuis le localStorage
-    const savedNotifications = localStorage.getItem("notifications");
-    return savedNotifications ? JSON.parse(savedNotifications) : [];
-  });
+const socket = io("http://localhost:5001");
+
+function ReadyCommandeNotification({ userId }) {
+  // Recevoir l'identifiant de l'utilisateur en tant que prop
+  const [notifications, setNotifications] = useState([]);
   const [showNotifications, setShowNotifications] = useState(false);
-
-  useEffect(() => {
-    const ws = new WebSocket("ws://localhost:8080");
-
-    ws.onopen = () => {
-      console.log("Connecté au serveur WebSocket");
-    };
-
-    ws.onmessage = (event) => {
-      const message = JSON.parse(event.data);
-      console.log("Message reçu du serveur WebSocket:", message);
-
-      if (message.type === "update_order") {
-        setNotifications((prev) => {
-          const updatedNotifications = [...prev, message];
-          // Enregistrer les notifications dans le localStorage
-          localStorage.setItem(
-            "notifications",
-            JSON.stringify(updatedNotifications)
-          );
-          return updatedNotifications;
-        });
-      }
-    };
-
-    ws.onerror = (error) => {
-      console.error("Erreur WebSocket:", error);
-    };
-
-    ws.onclose = (event) => {
-      console.log("Connexion WebSocket fermée :", event.code, event.reason);
-    };
-
-    return () => {
-      ws.close();
-    };
-  }, []);
 
   function handleNotificationClick() {
     setShowNotifications(!showNotifications);
-    // Marquer les notifications comme lues (enlever du localStorage)
-    if (!showNotifications) {
-      localStorage.removeItem("notifications");
-    }
   }
+
+  useEffect(() => {
+    // S'enregistrer avec l'identifiant de l'utilisateur
+    socket.emit("identify", userId);
+
+    // Écouter les notifications depuis le serveur
+    socket.on("user-notification", (notification) => {
+      setNotifications((prevNotifications) => [
+        ...prevNotifications,
+        notification
+      ]);
+      toast(notification.message, {
+        type: notification.type === "update_order" ? "info" : "warning",
+        autoClose: 5000, // Durée d'affichage du toast
+        position: toast.POSITION.TOP_RIGHT // Position du toast
+      });
+    });
+
+    // Nettoyage lors du démontage du composant
+    return () => {
+      socket.off("user-notification");
+    };
+  }, [userId]);
 
   return (
     <div className="notification-icon-container">
@@ -72,37 +56,25 @@ function ReadyCommandeNotification() {
           {notifications.map((item) => (
             <Alert
               key={item.order.id}
-              message="Notification"
+              message="warning"
               showIcon
               description={
                 <div>
-                  La Commande{" "}
+                  votre Commande{" "}
                   <Link to={`/sale/${item.order.id}`}>
                     {item.order.numCommande}
                   </Link>{" "}
                   est prête
                 </div>
               }
-              type="info"
-              style={{ marginBottom: "10px" }}
+              type="warning"
+              style={{ marginBottom: "16px" }}
               closable
-              onClose={() =>
-                setNotifications((prev) => {
-                  const updatedNotifications = prev.filter(
-                    (notification) => notification.order.id !== item.order.id
-                  );
-                  // Mettre à jour le localStorage
-                  localStorage.setItem(
-                    "notifications",
-                    JSON.stringify(updatedNotifications)
-                  );
-                  return updatedNotifications;
-                })
-              }
             />
           ))}
         </div>
       )}
+      <ToastContainer />
     </div>
   );
 }

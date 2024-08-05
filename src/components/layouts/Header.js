@@ -29,6 +29,7 @@ function Header({ onPress, collapsed, handleCollapsed }) {
 
   const isLogged = localStorage.getItem("isLogged");
   const user = localStorage.getItem("user");
+  const role = localStorage.getItem("role"); // Ajouté pour récupérer le rôle de l'utilisateur
 
   const [isDarkMode, setDarkMode] = useState(false);
 
@@ -37,9 +38,12 @@ function Header({ onPress, collapsed, handleCollapsed }) {
   };
 
   useEffect(() => {
-    if (isDarkMode) document.body.className = "dark-theme";
-    if (!isDarkMode) document.body.className = "light-theme";
-  }, [isDarkMode]);
+    let themeClass = isDarkMode ? "dark-theme" : "light-theme";
+    if (role === "Professionnel" || role === "Particulier") {
+      themeClass += " professional-sidenav-bg";
+    }
+    document.body.className = themeClass;
+  }, [isDarkMode, role]);
 
   return (
     <>

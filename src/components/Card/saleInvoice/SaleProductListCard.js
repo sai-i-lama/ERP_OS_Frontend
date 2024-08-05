@@ -3,17 +3,31 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SaleProductListCard = ({ list, updateReturn, returnOnChange }) => {
+
+  const role = localStorage.getItem("role");
+
+  const isProfessional = role === "Professionnel";
+  const isParticulier = role === "Particulier";
+
+  const currentRole = isProfessional
+    ? "Professionnel"
+    : isParticulier
+    ? "Particulier"
+    : null;
+
   const columns = [
     {
       title: "ID",
       dataIndex: "product_id",
       key: "product_id",
+      align: "center",
       sorter: (a, b) => a.product_id - b.product_id,
     },
     {
       title: "Nom",
       dataIndex: "product",
       key: "product.name",
+      align: "center",
       render: (product) => (
         <Link to={`/product/${product.id}`}>{product.name}</Link>
       ),
@@ -23,17 +37,20 @@ const SaleProductListCard = ({ list, updateReturn, returnOnChange }) => {
       title: "Quantité de Produit",
       dataIndex: "product_quantity",
       key: "product_quantity",
+      align: "center",
       sorter: (a, b) => a.product_quantity - b.product_quantity,
     },
     {
       title: "Prix Unitaire",
       dataIndex: "product_sale_price",
       key: "product_sale_price",
+      align: "center",
       sorter: (a, b) => a.product_sale_price - b.product_sale_price,
     },
     {
       title: "Prix Total",
       key: "total_price",
+      align: "center",
       dataIndex: "",
       render: ({
         product_quantity,
@@ -104,7 +121,7 @@ const SaleProductListCard = ({ list, updateReturn, returnOnChange }) => {
           bodyStyle={{ paddingTop: "0" }}
         >
           <h6 className="font-semibold m-0 text-center">
-            Informations sur les produits vendus
+            Informations sur les produits commandés
           </h6>
           <hr />,
           <div className="col-info">

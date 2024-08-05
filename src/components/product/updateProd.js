@@ -68,7 +68,7 @@ function UpdateProd() {
 
   return (
     <>
-      <PageTitle title={`Retour`} />
+      <PageTitle  title={`Retour`} />
       <div className="text-center">
         <div className="">
           <Row className="mr-top">

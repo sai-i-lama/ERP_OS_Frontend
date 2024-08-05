@@ -14,7 +14,7 @@ export const CustomerDetails = ({ customer }) => {
         icon={<UserOutlined />}
       />
       <div>
-        <Tag>{customer.name}</Tag>
+        <Tag>{customer.username}</Tag>
         <Tag>{customer.phone}</Tag>
         <Tag>{customer.address}</Tag>
         <Tag>

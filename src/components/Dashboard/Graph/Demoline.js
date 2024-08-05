@@ -10,7 +10,7 @@ import NewDashboardCard from "../../Card/Dashboard/NewDashboardCard";
 import Loader from "../../loader/loader";
 import NotificationIcon from "../../notification/NotificationIcon";
 import DueClientNotification from "../../notification/DueClientNotification";
-import NewCommandeNotification from "../../notification/NewCommandeNotification";
+import NotificationSystem from "../../notification/NewCommandeNotification";
 
 const DemoLine = () => {
   const [list, setList] = useState([]);
@@ -124,16 +124,16 @@ const DemoLine = () => {
           />
         </div>
         <div className="col-md-9" style={{display:"flex", justifyContent:"flex-end", gap:"3%"}}>
-          <NewCommandeNotification list={NewCommande} />
+          <NotificationSystem list={NewCommande} />
           <NotificationIcon list={list} />
         </div>
       </div>
 
       <NewDashboardCard information={cardInformation} />
 
-      <Card title="Ventes vs bénéfices">
+      {/* <Card title="Ventes vs bénéfices">
         {data ? <Line {...config} /> : <Loader />}
-      </Card>
+      </Card> */}
     </Fragment>
   );
 };

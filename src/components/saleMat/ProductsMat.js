@@ -1,8 +1,8 @@
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button, Col, Form, InputNumber, Row } from "antd";
-import "../pos/products.css";
+import "./sale.css";
 
-export default function MatProduct({
+export default function Products({
 	allProducts,
 	formData,
 	setData,
@@ -17,7 +17,7 @@ export default function MatProduct({
 			<div className='products-container'>
 				<Row gutter={[16]}>
 					<Col span={2}>
-						<div className='font-weight-bold border-b'>No</div>
+						<div className='font-weight-bold border-b'>SL</div>
 					</Col>
 					<Col span={5}>
 						<div className='font-weight-bold border-b'>Produit</div>
@@ -49,7 +49,7 @@ export default function MatProduct({
 									{
 										id,
 										name,
-										sale_price,
+										purchase_price,
 										selectedQty,
 										unit_type,
 										unit_measurement,
@@ -91,14 +91,14 @@ export default function MatProduct({
 										<Col span={4}>
 											<Form.Item
 												{...restField}
-												name={[name, "product_sale_price"]}>
+												name={[name, "product_purchase_price"]}>
 												<InputNumber
 													style={{ width: "100%" }}
 													placeholder='Prix unitaire du produit'
 													onChange={(price) =>
 														handleSelectedProdsUnitPrice(id, price)
 													}
-													defaultValue={sale_price}
+													defaultValue={purchase_price}
 													min={0}
 													disabled
 												/>
@@ -107,7 +107,7 @@ export default function MatProduct({
 										<Col span={3}>
 											<Form.Item>
 												<div className='font-weight-bold'>
-													{selectedQty * sale_price}
+													{selectedQty * purchase_price}
 												</div>
 											</Form.Item>
 										</Col>
@@ -133,21 +133,3 @@ export default function MatProduct({
 	);
 }
 
-// {
-//   "total_amount": 10,
-//   "due_amount": 1,
-//   "paid_amount": 11,
-//   "supplier_id":1,
-//   "purchaseInvoiceProduct": [
-//       {
-//           "product_id": 1,
-//           "product_quantity": 1,
-//           "product_purchase_price": 500
-//       },
-//       {
-//           "product_id": 2,
-//           "product_quantity": 10,
-//           "product_purchase_price": 800
-//       }
-//   ]
-// }
