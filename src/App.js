@@ -11,6 +11,9 @@ import Product from "./components/product/product";
 import UpdateProd from "./components/product/updateProd";
 import GetAllProd from "./components/product/getAllProd";
 
+import ProductMat from "./components/produitMatièrePremière/productMat";
+import GetAllProdMat from "./components/produitMatièrePremière/getAllProdMat";
+
 import DetailsPurch from "./components/purchase/detailsPurch";
 import Purchase from "./components/purchase/purchase";
 
@@ -59,6 +62,10 @@ import InvoiceSetting from "./components/settings/invoiceSetting";
 import AddTransaction from "./components/transaction/AddTransaction";
 import DetailTransaction from "./components/transaction/detailTransaction";
 import Transaction from "./components/transaction/transaction";
+import Register from "./components/customer/Register";
+import SaleMat from "./components/saleMat/saleMat";
+import GetAllSaleMat from "./components/saleMat/getAllSaleMat";
+import DetailSaleMat from "./components/saleMat/detailSaleMat";
 
 const { Sider } = Layout;
 
@@ -81,6 +88,10 @@ function App() {
             <Route path="/product/:id" element={<DetailsProd />} />
             <Route path="/product/:id/update" element={<UpdateProd />} />
             <Route path="/productlist" exact element={<GetAllProd />} />
+
+            <Route path="/productMat" exact element={<ProductMat/>}/>
+            <Route path="/productMatlist" exact element={<GetAllProdMat/>}/>
+            {/* <Route path="/salemat" exact element={<Mat />} /> */}
 
             <Route
               path="/product-category"
@@ -111,6 +122,11 @@ function App() {
             <Route path="/sale" exact element={<Sale />} />
             <Route path="/salelist" exact element={<GetAllSale />} />
             <Route path="/sale/:id" element={<DetailSale />} />
+
+            <Route path="/stockproductMatlist" exact element={<SaleMat/>}/>
+            <Route path="/saleMatList" exact element= {<GetAllSaleMat/>}/>
+            <Route path="/saleMat/:id" exact element= {<DetailSaleMat/>}/>
+
             <Route path="/sale/:id/update" element={<UpdateProd />} />
             <Route path="/sale/return/:id" element={<AddReturnSale />} />
             <Route
@@ -134,6 +150,7 @@ function App() {
             <Route path="/auth/login" exact element={<Login />} />
             <Route path="/auth/logout" exact element={<Logout />} />
             {/*         <Route path='/auth/register' exact element={<Register />} /> */}
+            <Route path="/register" exact element={<Register/>}/>
             <Route path="/hr/staffs" exact element={<UserList />} />
             <Route path="/hr/staffs/:id" exact element={<DetailStaff />} />
             <Route path="/hr/staffs/:id/update" element={<UpdateStaff />} />

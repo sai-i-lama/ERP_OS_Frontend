@@ -173,11 +173,10 @@ const AddCustPaymentByInvoice = () => {
                       "S’il vous plaît entrer le montant de la Réduction!",
                   },
                 ]}
+                initialValue={0}
               >
                 <InputNumber
                  type='number'
-                 defaultValue={0}
-                 value={0}
                  min={0}
                  max={dueAmount}
                   placeholder="Entre le montant de la remise"

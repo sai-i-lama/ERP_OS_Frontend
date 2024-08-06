@@ -1,11 +1,3 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import getTotalProduct from "../../api/getAllApis/getTotalProduct";
-import { loadProduct } from "../../redux/actions/product/getAllProductAction";
-import { loadPosProduct } from "../../redux/actions/product/getPosProductAction";
-import { loadSingleProductCategory } from "../../redux/actions/productCategory/detailProductCategoryAction";
-import { loadAllProductCategory } from "../../redux/actions/productCategory/getProductCategoryAction";
-import "./pos.css";
 import {
   Button,
   Card,
@@ -18,14 +10,22 @@ import {
   Spin,
   Tag
 } from "antd";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import getTotalProduct from "../../api/getAllApis/getTotalProduct";
+import { loadProduct } from "../../redux/actions/product/getAllProductAction";
+import { loadPosProduct } from "../../redux/actions/product/getPosProductAction";
+import { loadSingleProductCategory } from "../../redux/actions/productCategory/detailProductCategoryAction";
+import { loadAllProductCategory } from "../../redux/actions/productCategory/getProductCategoryAction";
+import "./sale.css";
 
 export default function ProductsForSale({ handleSelectedProds }) {
   const dispatch = useDispatch();
   const list = useSelector((state) => state.products.list);
   const category = useSelector((state) => state.productCategories?.list);
   const [loading, setLoading] = useState(false);
+
   const [finalCat, setFinalCat] = useState([]);
-  const role = localStorage.getItem("role");
 
   useEffect(() => {
     const categoryToGetAllProd = {
@@ -52,7 +52,7 @@ export default function ProductsForSale({ handleSelectedProds }) {
     if (list !== null) {
       let filteredList = list;
       filteredList = list.filter(
-        (item) => item.type_product === "Produit fini"
+        (item) => item.type_product === "matière première"
       );
       setProdList(filteredList);
     }
@@ -65,8 +65,9 @@ export default function ProductsForSale({ handleSelectedProds }) {
 
   // Filtrer la liste des produits pour ne garder que ceux avec type_product === "Produit fini"
   const filteredList = list?.filter(
-    (product) => product.type_product === "Produit fini"
+    (product) => product.type_product === "matière première"
   );
+
   const handleCatChange = (catId) => {
     if (catId === 0) {
       dispatch(loadAllProductCategory({ page: 1, limit: 100 }));
@@ -77,7 +78,7 @@ export default function ProductsForSale({ handleSelectedProds }) {
       const categoryProducts = list.filter(
         (product) =>
           product.product_category_id === catId &&
-          product.type_product === "Produit fini"
+          product.type_product === "matière première"
       );
       setProdList(categoryProducts);
     }
@@ -88,17 +89,12 @@ export default function ProductsForSale({ handleSelectedProds }) {
   const onShowSizeChange = (current, pageSize) => {};
 
   const Products = ({ item, index }) => {
-    const [isSelected, setIsSelected] = useState(false);
-
-    const handleOnClick = () => {
-      handleSelectedProds(item);
-      setIsSelected(!isSelected);
-    };
-
     return (
       <Col span={24} sm={12} xl={8} key={index}>
         <Card
-          onClick={handleOnClick}
+          onClick={() => {
+            handleSelectedProds(item);
+          }}
           style={{ width: "100%", height: "100%" }}
           cover={
             <center>
@@ -117,9 +113,6 @@ export default function ProductsForSale({ handleSelectedProds }) {
             <p>
               nom: <br />
               {item.name}
-            </p>,
-            <p>
-              prix de vente: <br /> {item.sale_price}
             </p>,
             <p>
               stock: <br /> {item.quantity}
@@ -157,7 +150,7 @@ export default function ProductsForSale({ handleSelectedProds }) {
 
   return (
     <>
-      <div class="d-flex justify-content-around">
+      <div className="d-flex justify-content-around">
         <div className="mt-2">
           <Form
             form={form}

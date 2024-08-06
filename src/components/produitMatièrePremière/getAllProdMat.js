@@ -1,7 +1,7 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./product.css";
+import "../product/product.css";
 
 import { Button, Dropdown, Menu, Segmented, Table } from "antd";
 import { useEffect } from "react";
@@ -10,7 +10,7 @@ import { CSVLink } from "react-csv";
 import { useDispatch, useSelector } from "react-redux";
 import getTotalProduct from "../../api/getAllApis/getTotalProduct";
 import { loadProduct } from "../../redux/actions/product/getAllProductAction";
-import GenerateBarcodePopUp from "./generateBarcodePopUp";
+import GenerateBarcodePopUp from "../product/generateBarcodePopUp";
 import NotificationIcon from "../notification/NotificationIcon";
 
 function CustomTable({ list, total, status }) {
@@ -63,8 +63,8 @@ function CustomTable({ list, total, status }) {
     {
       title: "Quantité en Stock",
       dataIndex: "quantity",
-      key: "quantity",
       align: "center",
+      key: "quantity",
       sorter: (a, b) => a.quantity - b.quantity,
       sortDirections: ["ascend", "descend"]
     },
@@ -77,15 +77,14 @@ function CustomTable({ list, total, status }) {
       sorter: (a, b) => a.purchase_price - b.purchase_price,
       sortDirections: ["ascend", "descend"]
     },
-    {
-      title: "Prix de vente",
-      dataIndex: "sale_price",
-      key: "sale_price",
-      align: "center",
-      responsive: ["md"],
-      sorter: (a, b) => a.sale_price - b.sale_price,
-      sortDirections: ["ascend", "descend"]
-    },
+    // {
+    //   title: "Prix de vente",
+    //   dataIndex: "sale_price",
+    //   key: "sale_price",
+    //   responsive: ["md"],
+    //   sorter: (a, b) => a.sale_price - b.sale_price,
+    //   sortDirections: ["ascend", "descend"]
+    // },
     {
       title: "Categorie",
       dataIndex: "product_category",
@@ -200,7 +199,7 @@ function CustomTable({ list, total, status }) {
   );
 }
 
-const GetAllProd = (props) => {
+const GetAllProdMat = (props) => {
   const dispatch = useDispatch();
   const list = useSelector((state) => state.products.list);
   // console.log("list", list);
@@ -221,8 +220,8 @@ const GetAllProd = (props) => {
     dispatch(loadProduct({ status: value, page: 1, limit: 10 }));
   };
 
-  // Filtrer la liste des produits pour ne garder que ceux avec type_product === "Produit fini"
-  const filteredList = list?.filter((product) => product.type_product === "Produit fini");
+  // Filtrer la liste des produits pour ne garder que ceux avec type_product === "matière première"
+  const filteredList = list?.filter((product) => product.type_product === "matière première");
 
   const CSVlist = filteredList?.map((i) => ({
     ...i,
@@ -233,7 +232,7 @@ const GetAllProd = (props) => {
     <div className="card column-design">
       <div className="card-body">
         <div className="d-flex">
-          <div className="col-md-6"><h5>Liste des produits</h5></div>
+          <div className="col-md-6"><h5>Liste des matières premières</h5></div>
           <div className="col-md-6 d-flex justify-content-end">
             <NotificationIcon list={filteredList} />
           </div>
@@ -285,4 +284,4 @@ const GetAllProd = (props) => {
   );
 };
 
-export default GetAllProd;
+export default GetAllProdMat;

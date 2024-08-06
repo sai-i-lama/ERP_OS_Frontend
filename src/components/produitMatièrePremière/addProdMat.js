@@ -18,13 +18,14 @@ import { addProduct } from "../../redux/actions/product/addProductAction";
 import { loadAllProductCategory } from "../../redux/actions/productCategory/getProductCategoryAction";
 import { loadSuppliers } from "../../redux/actions/supplier/getSuppliersAction";
 import UploadMany from "../Card/UploadMany";
-import styles from "./AddProd.module.css";
+import styles from "../product/AddProd.module.css";
 
-const AddProd = () => {
+const AddProdMat = () => {
   const unitType = ["kg", "ltr", "g"];
   const category = useSelector((state) => state.productCategories?.list);
   const allSuppliers = useSelector((state) => state.suppliers.list);
   const dispatch = useDispatch();
+
   //useEffect for loading category list from redux
   useEffect(() => {
     dispatch(loadAllProductCategory({ page: 1, limit: 100 }));
@@ -41,12 +42,13 @@ const AddProd = () => {
 
   const [form] = Form.useForm();
 
-  const TypeProduc = "Produit fini";
+  const TypeProduc = "matière première";
   useEffect(() => {
+    // Définir la valeur par défaut pour le champ type_product
     form.setFieldsValue({
       type_product: TypeProduc
     });
-  }, [form]);
+  }, [form, TypeProduc]);
 
   const onFinish = async (values) => {
     try {
@@ -120,7 +122,7 @@ const AddProd = () => {
         >
           <Card bordered={false}>
             <Title level={4} className="m-2 text-center">
-              Ajouter Produit
+              Ajouter la matière première
             </Title>
             <Form
               form={form}
@@ -311,7 +313,7 @@ const AddProd = () => {
 
               <Form.Item
                 style={{ marginBottom: "15px" }}
-                label="coût de production"
+                label="coût d'acquisition"
                 name="purchase_price"
                 rules={[
                   {
@@ -323,7 +325,7 @@ const AddProd = () => {
                 <Input type="number" min={0} value={0} />
               </Form.Item>
 
-              <Form.Item
+              {/* <Form.Item
                 style={{ marginBottom: "15px" }}
                 label="Prix de vente"
                 name="sale_price"
@@ -335,7 +337,7 @@ const AddProd = () => {
                 ]}
               >
                 <Input type="number" min={0} />
-              </Form.Item>
+              </Form.Item> */}
 
               <Form.Item
                 label="Envoyer image"
@@ -431,4 +433,4 @@ const AddProd = () => {
   );
 };
 
-export default AddProd;
+export default AddProdMat;

@@ -10,12 +10,13 @@ const getSaleAction = (data) => {
 	};
 };
 
-export const loadAllSale = ({ page, limit, startdate, enddate, user }) => {
+export const loadAllSale = ({ page, limit, startdate, enddate, user, count }) => {
 	//dispatching with an call back function and returning that
 	return async (dispatch) => {
 		try {
+			const queryString = new URLSearchParams({ page, limit, startdate, enddate, user, count }).toString();
 			const { data } = await axios.get(
-				`sale-invoice?&page=${page}&count=${limit}&startdate=${startdate}&enddate=${enddate}&user=${user}`
+				`sale-invoice?${queryString}`
 			);
 
 			//dispatching data

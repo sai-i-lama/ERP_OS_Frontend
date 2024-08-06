@@ -1,14 +1,14 @@
 import {
-	Button,
-	Card,
-	Col,
-	DatePicker,
-	Form,
-	Input,
-	InputNumber,
-	Row,
-	Select,
-	Typography
+  Button,
+  Card,
+  Col,
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  Row,
+  Select,
+  Typography
 } from "antd";
 
 import { Fragment, useEffect, useState } from "react";
@@ -77,19 +77,19 @@ const AddUser = () => {
         >
           <Card bordered={false}>
             <Title level={4} className="m-2 text-center">
-            Ajouter personnel
+              Ajouter personnel
             </Title>
             <Form
               form={form}
               name="basic"
               labelCol={{
-                span: 6,
+                span: 6
               }}
               wrapperCol={{
-                span: 18,
+                span: 18
               }}
               initialValues={{
-                remember: true,
+                remember: true
               }}
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
@@ -102,8 +102,8 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez saisir le nom d’utilisateur!",
-                  },
+                    message: "Veuillez saisir le nom d’utilisateur!"
+                  }
                 ]}
               >
                 <Input />
@@ -116,8 +116,8 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez saisir votre mot de passe !",
-                  },
+                    message: "Veuillez saisir votre mot de passe !"
+                  }
                 ]}
               >
                 <Input />
@@ -130,8 +130,8 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez saisir l'email!",
-                  },
+                    message: "Veuillez saisir l'email!"
+                  }
                 ]}
               >
                 <Input />
@@ -144,8 +144,8 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez saisir la Date d’adhésion!",
-                  },
+                    message: "Veuillez saisir la Date d’adhésion!"
+                  }
                 ]}
               >
                 <DatePicker className="date-picker" />
@@ -158,8 +158,8 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez saisir la date de fin de fonction!",
-                  },
+                    message: "Veuillez saisir la date de fin de fonction!"
+                  }
                 ]}
               >
                 <DatePicker className="date-picker" />
@@ -169,8 +169,8 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez sélectionner le type!",
-                  },
+                    message: "Veuillez sélectionner le type!"
+                  }
                 ]}
                 label="Role"
                 name={"role"}
@@ -186,7 +186,7 @@ const AddUser = () => {
                   mode="single"
                   allowClear
                   style={{
-                    width: "100%",
+                    width: "100%"
                   }}
                   placeholder="Veuillez sélectionner"
                 >
@@ -204,8 +204,8 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez saisir id ",
-                  },
+                    message: "Veuillez saisir id "
+                  }
                 ]}
               >
                 <Input placeholder="OE-012" />
@@ -218,8 +218,8 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez saisir le numéro de téléphone",
-                  },
+                    message: "Veuillez saisir le numéro de téléphone"
+                  }
                 ]}
               >
                 <Input maxLength={14} pattern="[0-9]{1,14}" />
@@ -231,8 +231,8 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez saisir l'adresse",
-                  },
+                    message: "Veuillez saisir l'adresse"
+                  }
                 ]}
               >
                 <Input />
@@ -245,8 +245,8 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez saisir le montant du salaire",
-                  },
+                    message: "Veuillez saisir le montant du salaire"
+                  }
                 ]}
               >
                 <InputNumber min={0} />
@@ -259,19 +259,19 @@ const AddUser = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez  le Groupe sanguin ",
-                  },
+                    message: "Veuillez  le Groupe sanguin "
+                  }
                 ]}
               >
-                <Input max={3}/>
+                <Input max={3} />
               </Form.Item>
 
               <Form.Item
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez sélectionner la Fonction!",
-                  },
+                    message: "Veuillez sélectionner la Fonction!"
+                  }
                 ]}
                 label="Fonction"
                 name={"designation_id"}
@@ -287,7 +287,7 @@ const AddUser = () => {
                   mode="single"
                   allowClear
                   style={{
-                    width: "100%",
+                    width: "100%"
                   }}
                   placeholder="Veuillez sélectionner"
                 >
@@ -302,7 +302,7 @@ const AddUser = () => {
                 style={{ marginBottom: "10px" }}
                 wrapperCol={{
                   offset: 4,
-                  span: 16,
+                  span: 16
                 }}
               >
                 <Button

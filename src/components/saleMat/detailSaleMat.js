@@ -21,7 +21,7 @@ import moment from "moment";
 import "./sale.css";
 //PopUp
 
-const DetailSale = () => {
+const DetailSaleMat = () => {
   const { id } = useParams();
   let navigate = useNavigate();
 
@@ -79,17 +79,8 @@ const DetailSale = () => {
   }, [id]);
 
   const isLogged = Boolean(localStorage.getItem("isLogged"));
-
   const role = localStorage.getItem("role");
-
-  const isProfessional = role === "Professionnel";
-  const isParticulier = role === "Particulier";
-
-  const isProRole = isProfessional
-    ? "Professionnel"
-    : isParticulier
-    ? "Particulier"
-    : null;
+  const isProRole = role === "Professionnel";
 
   if (!isLogged) {
     return <Navigate to={"/auth/login"} replace={true} />;
@@ -97,10 +88,7 @@ const DetailSale = () => {
 
   return (
     <div>
-      <PageTitle
-        title="Retour"
-        subtitle={`${singleSaleInvoice?.numCommande}`}
-      />
+      <PageTitle title="Retour" />
 
       <div className="mr-top">
         {singleSaleInvoice ? (
@@ -108,9 +96,7 @@ const DetailSale = () => {
             <Card bordered={false} className="card-custom">
               <h5 className="m-2">
                 <i className="bi bi-person-lines-fill"></i>
-                <span className="mr-left">
-                  Commande N° : <b>{singleSaleInvoice.numCommande}</b> |
-                </span>
+                <span className="mr-left">Identifiant : <b>{singleSaleInvoice.numCommande}</b> |</span>
               </h5>
               <div className="card-header d-flex justify-content-end custom-gap">
                 {!isProRole && (
@@ -162,89 +148,115 @@ const DetailSale = () => {
                 </div>
               </div>
               <div className="card-body">
-                <Row justify="start">
+                <Row justify="space-around">
+                  <Col span={11}>
+                    <CardComponent title="Informations sur la facture initiale ">
+                      <div className="d-flex justify-content-between">
+                        <div>
+                          <p>
+                            <Typography.Text strong>
+                              Date de vente :
+                            </Typography.Text>{" "}
+                            <strong>
+                              {moment(singleSaleInvoice.date).format(
+                                "DD/MM/YY HH:mm"
+                              )}
+                            </strong>
+                          </p>
+                          <p>
+                            <Typography.Text strong>Client : </Typography.Text>{" "}
+                            <Link
+                              to={`/customer/${singleSaleInvoice.customer.id}`}
+                            >
+                              <strong>{singleSaleInvoice.customer.name}</strong>
+                            </Link>
+                          </p>
+
+                          <p>
+                            <Typography.Text strong>
+                              Type de client :{" "}
+                            </Typography.Text>{" "}
+                            <strong>
+                              {singleSaleInvoice.customer.type_customer}
+                            </strong>
+                          </p>
+
+                          <p>
+                            <Typography.Text strong>
+                              Montant total :
+                            </Typography.Text>{" "}
+                            <strong>{singleSaleInvoice.total_amount}</strong>
+                          </p>
+                          <p>
+                            <Typography.Text strong>Remise :</Typography.Text>{" "}
+                            <strong>{singleSaleInvoice.discount}</strong>
+                          </p>
+                          <p>
+                            <Typography.Text strong>
+                              Montant payé :
+                            </Typography.Text>{" "}
+                            <strong>{singleSaleInvoice.paid_amount}</strong>
+                          </p>
+                          <p>
+                            <Typography.Text strong>
+                              Montant à payer :
+                            </Typography.Text>{" "}
+                            <strong style={{ color: "red" }}>
+                              {" "}
+                              {singleSaleInvoice.due_amount}
+                            </strong>
+                          </p>
+                          <p>
+                            <Typography.Text strong>Bénéfice :</Typography.Text>{" "}
+                            <strong>{singleSaleInvoice.profit}</strong>
+                          </p>
+                        </div>
+
+                        <div className="me-2"></div>
+                      </div>
+                    </CardComponent>
+                  </Col>
                   <Col span={12}>
                     <Badge.Ribbon
                       text={status}
                       color={status === "PAYÉ" ? "green" : "red"}
                     >
-                      <CardComponent title="Informations sur la commande ">
-                        <div className="d-flex justify-content-between">
-                          <div>
-                            <p>
-                              <Typography.Text strong>
-                                Date de vente :
-                              </Typography.Text>{" "}
-                              <strong>
-                                {moment(singleSaleInvoice.date).format(
-                                  "DD/MM/YY HH:mm"
-                                )}
-                              </strong>
-                            </p>
-                            <p>
-                              <Typography.Text strong>
-                                Client :{" "}
-                              </Typography.Text>{" "}
-                              <Link
-                                to={`/customer/${singleSaleInvoice.customer.id}`}
-                              >
-                                <strong>
-                                  {singleSaleInvoice.customer.username}
-                                </strong>
-                              </Link>
-                            </p>
+                      <CardComponent title="Mise à jour des informations sur la facture ">
+                        <div>
+                          <p>
+                            <Typography.Text strong>
+                              Montant total payé :
+                            </Typography.Text>{" "}
+                            <strong>{totalPaidAmount}</strong>
+                          </p>
 
-                            <p>
-                              <Typography.Text strong>
-                                Type de client :{" "}
-                              </Typography.Text>{" "}
-                              <strong>{singleSaleInvoice.customer.role}</strong>
-                            </p>
+                          <p>
+                            <Typography.Text strong>
+                              Montant total du retour:
+                            </Typography.Text>{" "}
+                            <strong>{totalReturnAmount}</strong>
+                          </p>
 
-                            <p>
-                              <Typography.Text strong>
-                                Montant total :
-                              </Typography.Text>{" "}
-                              <strong>{singleSaleInvoice.total_amount}</strong>
-                            </p>
-                            <p>
-                              <Typography.Text strong>
-                                Montant payé :
-                              </Typography.Text>{" "}
-                              <strong>{singleSaleInvoice.paid_amount}</strong>
-                            </p>
-                            <p>
-                              <Typography.Text strong>
-                                Montant à payer :
-                              </Typography.Text>{" "}
-                              <strong style={{ color: "red" }}>
-                                {" "}
-                                {singleSaleInvoice.due_amount}
-                              </strong>
-                            </p>
-                          </div>
-                          {!isProRole && (
-                            <div>
-                              <p>
-                                <Typography.Text strong>
-                                  Remise :
-                                </Typography.Text>{" "}
-                                <strong>{singleSaleInvoice.discount}</strong>
-                              </p>
-                              <p>
-                                <Typography.Text strong>
-                                  Bénéfice :
-                                </Typography.Text>{" "}
-                                <strong>{singleSaleInvoice.profit}</strong>
-                              </p>
-                            </div>
-                          )}
-                          <div className="me-2"></div>
+                          <p>
+                            <Typography.Text strong>
+                              Montant à payer :
+                            </Typography.Text>{" "}
+                            <strong style={{ color: "red" }}>
+                              {dueAmount}
+                            </strong>
+                          </p>
+                          {/* <p>
+														<Typography.Text strong>
+															Total Unit Messurement :
+														</Typography.Text>{" "}
+														<strong>{totalUnitMeasurement}</strong>
+													</p> */}
                         </div>
                       </CardComponent>
                     </Badge.Ribbon>
                   </Col>
                 </Row>
+
                 <br />
               </div>
             </Card>
@@ -262,4 +274,4 @@ const DetailSale = () => {
   );
 };
 
-export default DetailSale;
+export default DetailSaleMat;

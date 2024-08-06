@@ -18,7 +18,7 @@ import styles from "./AddCust.module.css";
 const AddCust = () => {
   const dispatch = useDispatch();
   const { Title } = Typography;
-  const TypeCustomer = ["spa", "professionnel", "particulier"];
+  const TypeCustomer = ["Centre Thérapeutique", "Professionnel", "Particulier"];
   const [loading, setLoading] = useState(false);
   const onClick = () => {
     setLoading(true);
@@ -80,12 +80,40 @@ const AddCust = () => {
               <Form.Item
                 style={{ marginBottom: "10px" }}
                 label="Nom"
-                name="name"
+                name="username"
                 rules={[
                   {
                     required: true,
                     message: "Veuillez saisir le nom du client!",
                   },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+
+              <Form.Item
+                style={{ marginBottom: "10px" }}
+                label="Email"
+                name="email"
+                rules={[
+                  {
+                    required: true,
+                    message: "Veuillez saisir l'adresse mail du client!",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+
+              <Form.Item
+                style={{ marginBottom: "10px" }}
+                label="Mot de passe"
+                name="password"
+                rules={[
+                  {
+                    required: true,
+                    message: "Veuillez saisir le mot de passe du client !"
+                  }
                 ]}
               >
                 <Input />
@@ -122,7 +150,7 @@ const AddCust = () => {
 
               <Form.Item
                 style={{ marginBottom: "10px" }}
-                name="type_customer"
+                name="role"
                 label="Type de Client "
                 rules={[
                   {
@@ -132,7 +160,7 @@ const AddCust = () => {
                 ]}
               >
                 <Select
-                  name="type_customer"
+                  name="role"
                   //loading={!category}
                   showSearch
                   placeholder="Sélectionnez le type de client"

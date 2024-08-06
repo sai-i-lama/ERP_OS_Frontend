@@ -1,54 +1,70 @@
-import {
-  Button,
-  Card,
-  Col,
-  Form,
-  Input,
-  PageHeader,
-  Row,
-  Typography,
-} from "antd";
-import React, { useState } from "react";
+import { Button, Card, Col, Form, Input, Row, Typography } from "antd";
+import React, { useEffect, useState } from "react";
 import styles from "./Login.module.css";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../redux/actions/user/loginUserAction";
-
 import logo from "../../assets/images/sai-i-lama-logo.png";
-import logbg from "../../assets/images/login-bg.png";
 import { toast } from "react-toastify";
-// import LoginTable from "../Card/LoginTable";
-
-//TODO : redirect to home
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
   const [loader, setLoader] = useState(false);
   const { Title } = Typography;
 
-  const onFinish = async (values) => {
-    const resp = await dispatch(addUser(values));
-    if (resp === "success") {
-      setLoader(false);
-      window.location.href = "/dashboard";
-    } else {
-      setLoader(false);
+  useEffect(() => {
+    const isLogged = localStorage.getItem("isLogged");
+    const userRole = localStorage.getItem("role");
+
+    if (isLogged) {
+      // Redirection basée sur le rôle de l'utilisateur
+      if (userRole === "Professionnel" || userRole === "Particulier") {
+        window.location.href = "/pos";
+      } else {
+        window.location.href = "/dashboard";
+      }
     }
+  }, []);
+
+  const onFinish = async (values) => {
+    setLoader(true);
+
+    // Préparer les valeurs de connexion
+    const loginValues = {
+      email: values.email,
+      password: values.password
+    };
+
+    console.log("Login Values:", loginValues); // Ajoutez ce log pour vérifier les valeurs envoyées
+
+    const resp = await dispatch(addUser(loginValues));
+
+    if (resp === "success") {
+      const userRole = localStorage.getItem("role");
+
+      // Redirection basée sur le rôle de l'utilisateur
+      if (userRole === "Professionnel" || userRole === "Particulier") {
+        window.location.href = "/pos";
+      } else {
+        window.location.href = "/dashboard";
+      }
+    } else {
+      toast.error("Email ou mot de passe incorrect !");
+    }
+    setLoader(false);
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
     setLoader(false);
-    toast.error("Erreur de connexion Veuillez réessayer");
+    toast.error("Erreur de connexion, veuillez réessayer");
   };
 
   return (
     <>
-      <Row className="card-row ">
+      <Row className="card-row">
         <Col span={24}>
-          {/* <Button type="primary" onClick={() => window.history.back()}>
-            Retour
-          </Button> */}
-          <Card bordered={false} className={styles.card}>
+          <Card bordered={true} className={styles.card}>
             <Title level={3} className="m-3 text-center">
               BIENVENUE A SAI I LAMA
             </Title>
@@ -59,31 +75,27 @@ const Login = () => {
                 style={{
                   width: "50%",
                   height: "50%",
-                  objectFit: "cover",
+                  objectFit: "cover"
                 }}
               />
             </div>
             <Form
               name="basic"
-              labelCol={{
-                span: 6,
-              }}
-              wrapperCol={{
-                span: 16,
-              }}
+              labelCol={{ span: 6 }}
+              wrapperCol={{ span: 16 }}
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
               autoComplete="off"
             >
               <Form.Item
                 className="mb-1"
-                label="Utilisateur"
-                name="username"
+                label="Email"
+                name="email"
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez entrer votre nom d’utilisateur!",
-                  },
+                    message: "Veuillez entrer votre email !"
+                  }
                 ]}
               >
                 <Input />
@@ -96,8 +108,8 @@ const Login = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez entrer votre mot de passe!",
-                  },
+                    message: "Veuillez entrer votre mot de passe !"
+                  }
                 ]}
               >
                 <Input.Password />
@@ -110,15 +122,13 @@ const Login = () => {
                   loading={loader}
                   onClick={() => setLoader(true)}
                 >
-                  Envoyer
+                  Se Connecter
                 </Button>
               </Form.Item>
-
-              <Form.Item className={styles.loginTableContainer}>
-                <Row>
-                  <Col span={24}>{/* <LoginTable /> */}</Col>
-                </Row>
-              </Form.Item>
+              <h6 className="text-center mt-2">
+                Vous avez déjà un compte ?{" "}
+                <Link to={"/register"}>Inscrivez-vous ici</Link>
+              </h6>
             </Form>
           </Card>
         </Col>

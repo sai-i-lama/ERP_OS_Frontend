@@ -1,7 +1,7 @@
 .headerControl {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .logoutLink {
@@ -12,6 +12,7 @@
 
 .sidebarTogglerPC {
   display: block;
+  margin-left: 25px;
 }
 
 .sidebarTogglerMobile {

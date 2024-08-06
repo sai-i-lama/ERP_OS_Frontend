@@ -36,20 +36,12 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
   const loggedInUser = localStorage.getItem("user");
   const role = localStorage.getItem("role");
 
-  const isProfessional = role === "Professionnel";
-  const isParticulier = role === "Particulier";
-
-  const currentRole = isProfessional
-    ? "Professionnel"
-    : isParticulier
-    ? "Particulier"
-    : null;
-
   const columns = [
     {
       title: "N° facture",
       dataIndex: "numCommande",
       key: "numCommande",
+      align: "center",
       render: (numCommande, { id }) => (
         <Link to={`/sale/${id}`}>{numCommande}</Link>
       ),
@@ -60,6 +52,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       title: "Date",
       dataIndex: "date",
       key: "date",
+      align: "center",
       render: (date) => moment(date).format("DD/MM/YY HH:mm"),
       sorter: (a, b) => moment(a.date).unix() - moment(b.date).unix(),
       sortDirections: ["ascend", "descend"]
@@ -68,6 +61,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       title: "Nom Client",
       dataIndex: `customer`,
       key: "customer_id",
+      align: "center",
       render: (customer) => customer?.username,
       sorter: (a, b) => a.customer.username.localeCompare(b.customer.username),
       sortDirections: ["ascend", "descend"]
@@ -76,65 +70,75 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       title: "Type Client",
       dataIndex: `customer`,
       key: "customer",
+      align: "center",
       render: (customer) => customer?.role,
       sorter: (a, b) => a.customer.role.localeCompare(b.customer.role),
       sortDirections: ["ascend", "descend"]
     },
-    {
-      title: "Retiré",
-      dataIndex: "delivred",
-      key: "delivred",
-      render: (delivred, { id }) =>
-        currentRole ? (
-          <Link to={`/sale/${id}`}>
-            <button
-              className={`btn btn-sm ${
-                delivred ? "btn-success" : "btn-danger"
-              }`}
-            >
-              {delivred ? "Oui" : "Non"}
-            </button>
-          </Link>
-        ) : (
-          <button
-            className={`btn btn-sm ${delivred ? "btn-success" : "btn-danger"}`}
-          >
-            {delivred ? "Oui" : "Non"}
-          </button>
-        ),
-      sorter: (a, b) => a.delivred - b.delivred,
-      sortDirections: ["ascend", "descend"]
-    },
+    // {
+    //   title: "Livré",
+    //   dataIndex: "delivred",
+    //   key: "delivred",
+    //   render: (delivred) => (delivred ? "Oui" : "Non"),
+    //   sorter: (a, b) => a.delivred - b.delivred,
+    //   sortDirections: ["ascend", "descend"]
+    // },
+    // {
+    //   title: "Retiré",
+    //   dataIndex: "delivred",
+    //   key: "delivred",
+    //   render: (delivred, { id }) =>
+    //     role !== "Professionnel" ? (
+    //       <Link to={`/sale/${id}`}>
+    //         <button
+    //           className={`btn btn-sm ${
+    //             delivred ? "btn-success" : "btn-danger"
+    //           }`}
+    //         >
+    //           {delivred ? "Oui" : "Non"}
+    //         </button>
+    //       </Link>
+    //     ) : (
+    //       <button
+    //         className={`btn btn-sm ${delivred ? "btn-success" : "btn-danger"}`}
+    //       >
+    //         {delivred ? "Oui" : "Non"}
+    //       </button>
+    //     ),
+    //   sorter: (a, b) => a.delivred - b.delivred,
+    //   sortDirections: ["ascend", "descend"]
+    // },
     {
       title: "Montant Total",
       dataIndex: "total_amount",
       key: "total_amount",
+      align: "center",
       sorter: (a, b) => a.total_amount - b.total_amount,
       sortDirections: ["ascend", "descend"]
     },
-    {
-      title: "Remise",
-      dataIndex: "discount",
-      key: "discount",
-      sorter: (a, b) => a.discount - b.discount,
-      sortDirections: ["ascend", "descend"]
-    },
-    {
-      title: "Montant Payé",
-      dataIndex: "paid_amount",
-      key: "paid_amount",
-      responsive: ["md"],
-      sorter: (a, b) => a.paid_amount - b.paid_amount,
-      sortDirections: ["ascend", "descend"]
-    },
-    {
-      title: "Montant à Payer",
-      dataIndex: "due_amount",
-      key: "due_amount",
-      responsive: ["md"],
-      sorter: (a, b) => a.due_amount - b.due_amount,
-      sortDirections: ["ascend", "descend"]
-    },
+    // {
+    //   title: "Remise",
+    //   dataIndex: "discount",
+    //   key: "discount",
+    //   sorter: (a, b) => a.discount - b.discount,
+    //   sortDirections: ["ascend", "descend"]
+    // },
+    // {
+    //   title: "Montant Payé",
+    //   dataIndex: "paid_amount",
+    //   key: "paid_amount",
+    //   responsive: ["md"],
+    //   sorter: (a, b) => a.paid_amount - b.paid_amount,
+    //   sortDirections: ["ascend", "descend"]
+    // },
+    // {
+    //   title: "Montant à Payer",
+    //   dataIndex: "due_amount",
+    //   key: "due_amount",
+    //   responsive: ["md"],
+    //   sorter: (a, b) => a.due_amount - b.due_amount,
+    //   sortDirections: ["ascend", "descend"]
+    // },
     // {
     //   title: "Nom du fournisseur",
     //   dataIndex: `supplier`,
@@ -143,53 +147,54 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
     //   sorter: (a, b) => a.supplier.name.localeCompare(b.supplier.name),
     //   sortDirections: ["ascend", "descend"],
     // },
-    {
-      title: "Bénéfice",
-      dataIndex: "profit",
-      key: "profit",
-      responsive: ["md"],
-      sorter: (a, b) => a.profit - b.profit,
-      sortDirections: ["ascend", "descend"]
-    },
+    // {
+    //   title: "Bénéfice",
+    //   dataIndex: "profit",
+    //   key: "profit",
+    //   responsive: ["md"],
+    //   sorter: (a, b) => a.profit - b.profit,
+    //   sortDirections: ["ascend", "descend"]
+    // },
     {
       title: "Vendeur",
       dataIndex: "user",
       key: "user",
+
       render: (user) => user?.username,
       responsive: ["md"],
       sorter: (a, b) => a.user.username.localeCompare(b.user.username),
       sortDirections: ["ascend", "descend"]
-    },
-    {
-      title: "Action",
-      dataIndex: "id",
-      key: "payment",
-      render: (id, record) =>
-        currentRole ? (
-          <Link to={`/payment/customer/${id}`}>
-            <button
-              className={`btn btn-sm ${
-                record.due_amount === 0 ? "btn-success" : "btn-danger"
-              }`}
-            >
-              Paiement
-            </button>
-          </Link>
-        ) : (
-          <button
-            className={`btn btn-sm ${
-              record.due_amount === 0 ? "btn-success" : "btn-danger"
-            }`}
-          >
-            Paiement
-          </button>
-        )
     }
+    // {
+    //   title: "Action",
+    //   dataIndex: "id",
+    //   key: "payment",
+    //   render: (id, record) =>
+    //     role !== "Professionnel" ? (
+    //       <Link to={`/payment/customer/${id}`}>
+    //         <button
+    //           className={`btn btn-sm ${
+    //             record.due_amount === 0 ? "btn-success" : "btn-danger"
+    //           }`}
+    //         >
+    //           Paiement
+    //         </button>
+    //       </Link>
+    //     ) : (
+    //       <button
+    //         className={`btn btn-sm ${
+    //           record.due_amount === 0 ? "btn-success" : "btn-danger"
+    //         }`}
+    //       >
+    //         Paiement
+    //       </button>
+    //     )
+    // }
   ];
 
   useEffect(() => {
     let filteredColumns = columns;
-    if (currentRole) {
+    if (role === "Professionnel") {
       filteredColumns = columns.filter(
         (column) =>
           column.key !== "profit" &&
@@ -199,7 +204,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       );
     }
     setColumnsToShow(filteredColumns);
-  }, [currentRole]);
+  }, [role]);
 
   const colVisibilityClickHandler = (col) => {
     const ifColFound = columnsToShow.find((item) => item.key === col.key);
@@ -255,7 +260,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
                 limit,
                 startdate,
                 enddate,
-                user: currentRole ? loggedInUser : user || ""
+                user: role === "Professionnel" ? loggedInUser : user || ""
               })
             );
           }
@@ -264,7 +269,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
         dataSource={
           list
             ? addKeys(
-                currentRole
+                role === "Professionnel"
                   ? list.filter(
                       (item) => item.customer.username === loggedInUser
                     )
@@ -277,7 +282,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
   );
 }
 
-const GetAllSale = (props) => {
+const GetAllSaleMat = (props) => {
   const dispatch = useDispatch();
   const list = useSelector((state) => state.sales.list);
   const total = useSelector((state) => state.sales.total);
@@ -339,6 +344,7 @@ const GetAllSale = (props) => {
       setLoading(false);
     }
   };
+
   const [form] = Form.useForm();
   const onSwitchChange = (value) => {
     setCount(value);
@@ -353,6 +359,21 @@ const GetAllSale = (props) => {
     );
   };
 
+  // Filtrer la liste des produits pour ne garder que ceux avec type_product === "Produit fini"
+  const filteredListMat = list?.filter(
+    (sale) => sale.type_saleInvoice === "matière_première"
+  );
+  // Calculer le total des éléments filtrés
+  const totalFilteredListMat = filteredListMat.reduce(
+    (acc, item) => acc + item.total_amount,
+    0
+  );
+
+  // Filtrer la liste des produits pour ne garder que ceux avec type_product === "Produit fini"
+  const CVSfilteredListMat = CSVlist?.filter(
+    (sale) => sale.type_saleInvoice === "matière_première"
+  );
+
   const onCalendarChange = (dates) => {
     const newStartdate = dates[0].format("YYYY-MM-DD HH:mm");
     const newEnddate = dates[1].format("YYYY-MM-DD HH:mm");
@@ -362,17 +383,7 @@ const GetAllSale = (props) => {
 
   const isLogged = Boolean(localStorage.getItem("isLogged"));
   const loggedInUser = localStorage.getItem("user");
-
   const role = localStorage.getItem("role");
-
-  const isProfessional = role === "Professionnel";
-  const isParticulier = role === "Particulier";
-
-  const currentRole = isProfessional
-    ? "Professionnel"
-    : isParticulier
-    ? "Particulier"
-    : null;
 
   const filteredList = list?.filter(
     (item) => item.customer.username === loggedInUser
@@ -384,14 +395,12 @@ const GetAllSale = (props) => {
 
   return (
     <>
-      {currentRole ? (
-        <PageTitle title={"Retour"} subtitle={"LISTE DES ACHATS"} />
-      ) : (
-        <PageTitle title={"Retour"} subtitle={"LISTE DES FACTURES DE VENTE"} />
-      )}
+      <PageTitle title={"Retour"} subtitle={"LISTE DES MATIÈRES PREMIÈRES"} />
       <div className="card card-custom mt-1">
         <div className="card-body">
-          <h5 className="d-inline-flex">Liste des factures de vente</h5>
+          <h5 className="d-inline-flex">
+            Listes des Matières Premières Sorties en Stock
+          </h5>
           <div className="card-title d-flex flex-column flex-md-row align-items-center justify-content-md-center mt-1 py-2">
             <div>
               <Form
@@ -400,7 +409,7 @@ const GetAllSale = (props) => {
                 layout={"inline"}
                 onFinishFailed={() => setLoading(false)}
               >
-                <Form.Item name="user">
+                {/* <Form.Item name="user">
                   <Select
                     loading={!userList}
                     placeholder="Vendeur"
@@ -413,7 +422,7 @@ const GetAllSale = (props) => {
                         <Select.Option value={i.id}>{i.username}</Select.Option>
                       ))}
                   </Select>
-                </Form.Item>
+                </Form.Item> */}
                 <div className=" me-2">
                   <RangePicker
                     onCalendarChange={onCalendarChange}
@@ -439,23 +448,19 @@ const GetAllSale = (props) => {
               </Form>
             </div>
           </div>
-          <DashboardCard
+          {/* <DashboardCard
             information={total?._sum}
             count={total?._count}
             isCustomer={true}
-          />
+          /> */}
           <br />
           <div className="row">
-            <div className="col-md-12">
-              <hr></hr>
-            </div>
-
             <div className="col-md-12 d-flex align-items-center mt-1">
               {list && (
                 <div className="col-md-6 card-title d-flex justify-content-start align-items-center">
                   <div className="me-2">
                     <CSVLink
-                      data={CSVlist}
+                      data={CVSfilteredListMat}
                       className="btn btn-dark btn-sm mb-1"
                       filename="sales"
                       style={{ margin: "5px" }}
@@ -492,7 +497,7 @@ const GetAllSale = (props) => {
                   </div>
                   <div>
                     <SaleReportPrint
-                      data={list}
+                      data={filteredListMat}
                       date={{ startdate, enddate }}
                       user={user}
                       total={total?._sum}
@@ -500,18 +505,10 @@ const GetAllSale = (props) => {
                   </div>
                 </div>
               )}
-
-              <div className="col-md-6 d-flex justify-content-end">
-                {currentRole ? (
-                  <DueClientNotification list={filteredList} />
-                ) : (
-                  <DueClientNotification list={list} />
-                )}
-              </div>
             </div>
           </div>
           <CustomTable
-            list={list}
+            list={filteredListMat}
             total={total?._count?.id}
             startdate={startdate}
             enddate={enddate}
@@ -524,4 +521,4 @@ const GetAllSale = (props) => {
   );
 };
 
-export default GetAllSale;
+export default GetAllSaleMat;

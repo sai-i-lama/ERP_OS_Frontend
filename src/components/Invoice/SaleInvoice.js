@@ -53,7 +53,7 @@ const PrintToPdf = forwardRef(({ data, invoiceData }, ref) => {
             </tr>
             <tr>
               <th>Nom Client </th>
-              <td>{data?.customer.name}</td>
+              <td>{data?.customer.username}</td>
             </tr>
             <tr>
               <th>Adresse</th>

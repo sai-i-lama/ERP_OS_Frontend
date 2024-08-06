@@ -5,7 +5,13 @@
   margin-left: auto;
   margin-right: auto;
 }
-
+.card1 {
+  width: 100%;
+  max-width: 50rem;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .submitBtnContainer {
   display: flex;
   justify-content: center;
