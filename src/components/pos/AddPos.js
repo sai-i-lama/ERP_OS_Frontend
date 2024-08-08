@@ -434,6 +434,7 @@ const AddPos = ({
                     style={{ marginBottom: "10px" }}
                     label="date"
                     name="date"
+                    disabled
                     rules={[
                       {
                         required: true,

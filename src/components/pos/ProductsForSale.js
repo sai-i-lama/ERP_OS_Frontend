@@ -119,9 +119,6 @@ export default function ProductsForSale({ handleSelectedProds }) {
               {item.name}
             </p>,
             <p>
-              prix de vente: <br /> {item.sale_price}
-            </p>,
-            <p>
               stock: <br /> {item.quantity}
             </p>
           ]}

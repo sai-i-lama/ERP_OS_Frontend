@@ -2,7 +2,8 @@ import React, { Fragment } from "react";
 
 import "./card.css";
 
-const DashboardCard = ({ information, count, isCustomer, title }) => {  
+const DashboardCard = ({ information, count, isCustomer, title }) => {
+  console.log(information);
   return (
     <Fragment>
       <div>
@@ -13,12 +14,23 @@ const DashboardCard = ({ information, count, isCustomer, title }) => {
                 <div className="card-body">
                   <div className="media d-flex">
                     <div className="media-body text-left">
+                      <h3 className="">
+                        {information?.discount ? information?.discount : 0}
+                      </h3>
+                      <span className="">Remise</span>
+                    </div>
+                    <div className="media-body text-right">
                       <h3 className="">{count?.id ? count?.id : 0}</h3>
-                      <span className="">Facture</span>
+                      <span
+                        className="strong"
+                        style={{ fontSize: "14px", fontWeight: "" }}
+                      >
+                        Nombre de Facture{" "}
+                      </span>
                     </div>
-                    <div className="align-self-center">
+                    {/* <div className="align-self-center">
                       <i className="icon-cloud-download font-large-2 float-right"></i>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -45,7 +57,7 @@ const DashboardCard = ({ information, count, isCustomer, title }) => {
               </div>
             </div>
           </div>
-          
+
           {isCustomer ? (
             <div className="col-xl-3 col-sm-6 col-12">
               <div className="card dashboard-card">
@@ -103,7 +115,8 @@ const DashboardCard = ({ information, count, isCustomer, title }) => {
                         </h3>
                         <span
                           className="strong "
-                          style={{ fontSize: "14px", fontWeight: "" }}>
+                          style={{ fontSize: "14px", fontWeight: "" }}
+                        >
                           Montant payé{" "}
                         </span>
                       </div>
@@ -115,7 +128,8 @@ const DashboardCard = ({ information, count, isCustomer, title }) => {
                         </h3>
                         <span
                           className="strong"
-                          style={{ fontSize: "14px", fontWeight: "" }}>
+                          style={{ fontSize: "14px", fontWeight: "" }}
+                        >
                           Montant à payer{" "}
                         </span>
                       </div>

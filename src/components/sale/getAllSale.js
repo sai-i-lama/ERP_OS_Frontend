@@ -14,7 +14,7 @@ import {
   Table
 } from "antd";
 import moment from "moment";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { CSVLink } from "react-csv";
 import { useDispatch, useSelector } from "react-redux";
 import { loadAllSale } from "../../redux/actions/sale/getSaleAction";
@@ -23,6 +23,9 @@ import DashboardCard from "../Card/DashboardCard";
 import SaleReportPrint from "../Invoice/SaleReport";
 import PageTitle from "../page-header/PageHeader";
 import DueClientNotification from "../notification/DueClientNotification";
+import CustomerInvoiceList from "../Card/CustomerInvoiceList";
+import { loadSingleCustomer } from "../../redux/actions/customer/detailCustomerAction";
+import DashboardCardByCus from "../Card/DashboardCardByCus";
 
 // //Date fucntinalities
 // let startdate = moment(new Date()).format("YYYY-MM-DD HH:mm");
@@ -85,7 +88,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       dataIndex: "delivred",
       key: "delivred",
       render: (delivred, { id }) =>
-        currentRole ? (
+        !currentRole ? (
           <Link to={`/sale/${id}`}>
             <button
               className={`btn btn-sm ${
@@ -165,7 +168,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       dataIndex: "id",
       key: "payment",
       render: (id, record) =>
-        currentRole ? (
+        !currentRole ? (
           <Link to={`/payment/customer/${id}`}>
             <button
               className={`btn btn-sm ${
@@ -281,10 +284,12 @@ const GetAllSale = (props) => {
   const dispatch = useDispatch();
   const list = useSelector((state) => state.sales.list);
   const total = useSelector((state) => state.sales.total);
+  const customer = useSelector((state) => state.customers.customer);
   const userList = useSelector((state) => state.users.list);
   const [user, setUser] = useState("");
   const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const id = localStorage.getItem("id");
 
   const [startdate, setStartdate] = useState(
     moment().startOf("month").format("DD/MM/YY HH:mm")
@@ -296,6 +301,10 @@ const GetAllSale = (props) => {
   useEffect(() => {
     dispatch(loadAllStaff({ status: true }));
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(loadSingleCustomer(id));
+  }, [id]);
 
   const { RangePicker } = DatePicker;
   const totalCount = total?._count?.id;
@@ -318,7 +327,7 @@ const GetAllSale = (props) => {
 
   const CSVlist = list?.map((i) => ({
     ...i,
-    customer: i?.customer?.name
+    customer: i?.customer?.username
   }));
 
   const onSearchFinish = async (values) => {
@@ -339,6 +348,7 @@ const GetAllSale = (props) => {
       setLoading(false);
     }
   };
+
   const [form] = Form.useForm();
   const onSwitchChange = (value) => {
     setCount(value);
@@ -373,151 +383,176 @@ const GetAllSale = (props) => {
     : isParticulier
     ? "Particulier"
     : null;
-
-  const filteredList = list?.filter(
-    (item) => item.customer.username === loggedInUser
-  );
-
   if (!isLogged) {
     return <Navigate to={"/auth/login"} replace={true} />;
   }
 
   return (
     <>
-      {currentRole ? (
-        <PageTitle title={"Retour"} subtitle={"LISTE DES ACHATS"} />
-      ) : (
-        <PageTitle title={"Retour"} subtitle={"LISTE DES FACTURES DE VENTE"} />
-      )}
       <div className="card card-custom mt-1">
         <div className="card-body">
-          <h5 className="d-inline-flex">Liste des factures de vente</h5>
-          <div className="card-title d-flex flex-column flex-md-row align-items-center justify-content-md-center mt-1 py-2">
-            <div>
-              <Form
-                onFinish={onSearchFinish}
-                form={form}
-                layout={"inline"}
-                onFinishFailed={() => setLoading(false)}
-              >
-                <Form.Item name="user">
-                  <Select
-                    loading={!userList}
-                    placeholder="Vendeur"
-                    style={{ width: 200 }}
-                    allowClear
-                  >
-                    <Select.Option value="">Toute</Select.Option>
-                    {userList &&
-                      userList.map((i) => (
-                        <Select.Option value={i.id}>{i.username}</Select.Option>
-                      ))}
-                  </Select>
-                </Form.Item>
-                <div className=" me-2">
-                  <RangePicker
-                    onCalendarChange={onCalendarChange}
-                    defaultValue={[
-                      moment().startOf("month"),
-                      moment().endOf("month")
-                    ]}
-                    className="range-picker"
-                  />
-                </div>
-
-                <Form.Item>
-                  <Button
-                    onClick={() => setLoading(true)}
-                    loading={loading}
-                    type="primary"
-                    htmlType="submit"
-                    size="small"
-                  >
-                    <SearchOutlined />
-                  </Button>
-                </Form.Item>
-              </Form>
-            </div>
-          </div>
-          <DashboardCard
-            information={total?._sum}
-            count={total?._count}
-            isCustomer={true}
-          />
-          <br />
-          <div className="row">
-            <div className="col-md-12">
+          {currentRole && (
+            <Fragment>
+              <PageTitle title={"Retour"} subtitle={"LISTE DES ACHATS"} />
               <hr></hr>
-            </div>
+              <div className="d-flex">
+                <div className="col-md-6 d-flex justify-content-start">
+                  <h5 className="d-inline-flex">Liste de mes commandes </h5>
+                </div>
+                {/* <div className="col-md-6 d-flex justify-content-end">
+                  <DueClientNotification list={filteredList} />
+                </div> */}
+              </div>
+              <hr></hr>
+              <br></br>
+              <br></br>
+              <div>
+                <DashboardCardByCus information={customer} />
+              </div>
+              <div>
+                <CustomerInvoiceList
+                  list={customer?.saleInvoice}
+                  key={customer?.saleInvoice?.id}
+                  linkTo="/sale"
+                />
+              </div>
+            </Fragment>
+          )}
 
-            <div className="col-md-12 d-flex align-items-center mt-1">
-              {list && (
-                <div className="col-md-6 card-title d-flex justify-content-start align-items-center">
-                  <div className="me-2">
-                    <CSVLink
-                      data={CSVlist}
-                      className="btn btn-dark btn-sm mb-1"
-                      filename="sales"
-                      style={{ margin: "5px" }}
-                    >
-                      Télécharger .CSV
-                    </CSVLink>
-                  </div>
-                  <div className="me-2" style={{ marginTop: "-4px" }}>
-                    <Segmented
-                      className="text-center rounded danger"
-                      size="middle"
-                      options={[
-                        {
-                          label: (
-                            <span>
-                              <i className="bi bi-person-lines-fill"></i> toute
-                            </span>
-                          ),
-                          value: totalCount
-                        },
-                        {
-                          label: (
-                            <span>
-                              <i className="bi bi-person-dash-fill"></i> Paginé
-                            </span>
-                          ),
-                          value: 10
-                        }
-                      ]}
-                      value={count}
-                      defaultChecked={totalCount}
-                      onChange={onSwitchChange}
-                    />
-                  </div>
-                  <div>
-                    <SaleReportPrint
-                      data={list}
-                      date={{ startdate, enddate }}
-                      user={user}
-                      total={total?._sum}
-                    />
+          {!currentRole && (
+            <Fragment>
+              <PageTitle
+                title={"Retour"}
+                subtitle={"LISTE DES FACTURES DE VENTE"}
+              />
+              <hr></hr>
+              <h5 className="d-inline-flex">Liste des factures de vente</h5>
+              <div className="card-title d-flex flex-column flex-md-row align-items-center justify-content-md-center mt-1 py-2">
+                <div>
+                  <Form
+                    onFinish={onSearchFinish}
+                    form={form}
+                    layout={"inline"}
+                    onFinishFailed={() => setLoading(false)}
+                  >
+                    <Form.Item name="user">
+                      <Select
+                        loading={!userList}
+                        placeholder="Vendeur"
+                        style={{ width: 200 }}
+                        allowClear
+                      >
+                        <Select.Option value="">Toute</Select.Option>
+                        {userList &&
+                          userList.map((i) => (
+                            <Select.Option value={i.id}>
+                              {i.username}
+                            </Select.Option>
+                          ))}
+                      </Select>
+                    </Form.Item>
+                    <div className=" me-2">
+                      <RangePicker
+                        onCalendarChange={onCalendarChange}
+                        defaultValue={[
+                          moment().startOf("month"),
+                          moment().endOf("month")
+                        ]}
+                        className="range-picker"
+                      />
+                    </div>
+
+                    <Form.Item>
+                      <Button
+                        onClick={() => setLoading(true)}
+                        loading={loading}
+                        type="primary"
+                        htmlType="submit"
+                        size="small"
+                      >
+                        <SearchOutlined />
+                      </Button>
+                    </Form.Item>
+                  </Form>
+                </div>
+              </div>
+              <DashboardCard
+                information={total?._sum}
+                count={total?._count}
+                isCustomer={true}
+              />
+              <div className="row">
+                <div className="col-md-12 d-flex align-items-center mt-1">
+                  {list && (
+                    <div className="col-md-6 card-title d-flex justify-content-start align-items-center">
+                      <div className="me-2">
+                        <CSVLink
+                          data={list}
+                          date={{ startdate, enddate }}
+                          user={user}
+                          className="btn btn-dark btn-sm mb-1"
+                          filename="sales"
+                          style={{ margin: "5px" }}
+                        >
+                          Télécharger .CSV
+                        </CSVLink>
+                      </div>
+                      <div className="me-2" style={{ marginTop: "-4px" }}>
+                        <Segmented
+                          className="text-center rounded danger"
+                          size="middle"
+                          options={[
+                            {
+                              label: (
+                                <span>
+                                  <i className="bi bi-person-lines-fill"></i>{" "}
+                                  toute
+                                </span>
+                              ),
+                              value: totalCount
+                            },
+                            {
+                              label: (
+                                <span>
+                                  <i className="bi bi-person-dash-fill"></i>{" "}
+                                  Paginé
+                                </span>
+                              ),
+                              value: 10
+                            }
+                          ]}
+                          value={count}
+                          defaultChecked={totalCount}
+                          onChange={onSwitchChange}
+                        />
+                      </div>
+                      <div>
+                        <SaleReportPrint
+                          data={list}
+                          date={{ startdate, enddate }}
+                          user={user}
+                          total={total?._sum}
+                        />
+                      </div>
+                    </div>
+                  )}
+                  <div className="col-md-6 d-flex justify-content-end">
+                    <DueClientNotification list={list} />
                   </div>
                 </div>
-              )}
-
-              <div className="col-md-6 d-flex justify-content-end">
-                {currentRole ? (
-                  <DueClientNotification list={filteredList} />
-                ) : (
-                  <DueClientNotification list={list} />
-                )}
               </div>
-            </div>
-          </div>
-          <CustomTable
-            list={list}
-            total={total?._count?.id}
-            startdate={startdate}
-            enddate={enddate}
-            count={count}
-            user={user}
-          />
+              <div>
+                <CustomTable
+                  list={list}
+                  total={total?._count?.id}
+                  startdate={startdate}
+                  enddate={enddate}
+                  count={count}
+                  user={user}
+                />
+              </div>
+            </Fragment>
+          )}
         </div>
       </div>
     </>
