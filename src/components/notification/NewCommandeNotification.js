@@ -61,7 +61,7 @@ const NotificationSystem = () => {
                   <Link to={`/sale/${item.order.id}`}>
                     {item.order.numCommande}
                   </Link>{" "}
-                  a été initié
+                  a été initiée
                 </div>
               }
               type="warning"

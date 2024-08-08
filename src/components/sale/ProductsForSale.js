@@ -49,7 +49,13 @@ export default function ProductsForSale({ handleSelectedProds }) {
   }, []);
 
   useEffect(() => {
-    setProdList(list);
+    if (list !== null) {
+      let filteredList = list;
+      filteredList = list.filter(
+        (item) => item.type_product === "Produit fini"
+      );
+      setProdList(filteredList);
+    }
   }, [list]);
 
   //TODO :IMPLEMENT TOTAL PROD info
@@ -57,13 +63,23 @@ export default function ProductsForSale({ handleSelectedProds }) {
     getTotalProduct().then((res) => setTotalProd(res));
   }, [list]);
 
+  // Filtrer la liste des produits pour ne garder que ceux avec type_product === "Produit fini"
+  const filteredList = list?.filter(
+    (product) => product.type_product === "Produit fini"
+  );
   const handleCatChange = (catId) => {
     if (catId === 0) {
       dispatch(loadAllProductCategory({ page: 1, limit: 100 }));
-      setProdList(list);
+      setProdList(filteredList);
     } else {
       dispatch(loadSingleProductCategory(catId));
-      setProdList(null);
+      // Filtrer les produits de la catégorie sélectionnée pour "Produit fini"
+      const categoryProducts = list.filter(
+        (product) =>
+          product.product_category_id === catId &&
+          product.type_product === "Produit fini"
+      );
+      setProdList(categoryProducts);
     }
   };
 
@@ -96,9 +112,6 @@ export default function ProductsForSale({ handleSelectedProds }) {
             <p>
               nom: <br />
               {item.name}
-            </p>,
-            <p>
-              prix de vente: <br /> {item.sale_price}
             </p>,
             <p>
               stock: <br /> {item.quantity}

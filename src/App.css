@@ -4,7 +4,8 @@
   --text: #ffffff;
   --text-inverse: #000000;
   --body-bg: #1c1b20;
-  --sidenav-bg: #28325c; /* Exemple de couleur spécifique pour les professionnels */
+  --sidenav-bg: #28325c;
+  /* Exemple de couleur spécifique pour les professionnels */
   --table-cell-row-hover: #26252b;
   --form-item-label: rgba(255, 255, 255, 1);
   --table-head: #1c1b20;
@@ -36,6 +37,10 @@
   --sidenav-bg: #b029b0;
 }
 
+.particular-sidenav-bg {
+  --sidenav-bg: #1d1561;
+}
+
 body {
   background-color: var(--body-bg);
 }
@@ -51,10 +56,10 @@ body {
 
 .ant-layout {
   background-color: var(--bg);
-   /* background-image: url('./assets/images/login-bg.png'); */
+  /* background-image: url('./assets/images/login-bg.png'); */
   background-size: cover;
   background-position: center;
-;
+  ;
 }
 
 .ant-page-header-heading-title {
@@ -88,7 +93,7 @@ body {
   color: var(--text) !important;
 }
 
-.ant-form-item-label > label {
+.ant-form-item-label>label {
   color: var(--form-item-label);
 }
 
@@ -108,7 +113,7 @@ body {
   background-color: var(--table-head);
 }
 
-.ant-table-thead > tr > th {
+.ant-table-thead>tr>th {
   background-color: var(--table-head) !important;
 }
 
@@ -116,11 +121,11 @@ body {
   background-color: var(--bg);
 }
 
-.card-header > div > h5 {
+.card-header>div>h5 {
   color: var(--text);
 }
 
-.table-responsive > h5 {
+.table-responsive>h5 {
   color: var(--text);
 }
 
@@ -185,7 +190,7 @@ body {
   background-color: var(--bg-secondary);
 }
 
-.ant-picker-input > input {
+.ant-picker-input>input {
   color: var(--text);
 }
 
@@ -204,6 +209,7 @@ body {
   color: var(--text);
   background-color: var(--bg);
 }
+
 .ant-btn-dashed:hover {
   background-color: var(--bg-secondary);
 }
@@ -285,6 +291,7 @@ body {
   color: var(--text);
   border: var(--input-border) !important;
 }
+
 .ant-page-header span {
   color: var(--text);
 }
@@ -309,6 +316,7 @@ body {
 .ant-upload.ant-upload-select-picture-card div {
   color: var(--text);
 }
+
 .ant-upload.ant-upload-select-picture-card .anticon-plus {
   color: var(--text);
 }
@@ -437,12 +445,8 @@ body {
 .ant-picker-cell-in-view.ant-picker-cell-range-end.ant-picker-cell-range-hover::before,
 .ant-picker-cell-in-view.ant-picker-cell-range-start:not(.ant-picker-cell-range-start-single).ant-picker-cell-range-hover-start::before,
 .ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-range-end-single).ant-picker-cell-range-hover-end::before,
-.ant-picker-panel
-  > :not(.ant-picker-date-panel)
-  .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-start::before,
-.ant-picker-panel
-  > :not(.ant-picker-date-panel)
-  .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-end::before {
+.ant-picker-panel> :not(.ant-picker-date-panel) .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-start::before,
+.ant-picker-panel> :not(.ant-picker-date-panel) .ant-picker-cell-in-view.ant-picker-cell-in-range.ant-picker-cell-range-hover-end::before {
   background-color: var(--date-range-bg);
 }
 

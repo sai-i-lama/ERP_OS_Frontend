@@ -39,8 +39,11 @@ function Header({ onPress, collapsed, handleCollapsed }) {
 
   useEffect(() => {
     let themeClass = isDarkMode ? "dark-theme" : "light-theme";
-    if (role === "Professionnel" || role === "Particulier") {
+    if (role === "Professionnel") {
       themeClass += " professional-sidenav-bg";
+    }
+    if (role === "Particulier") {
+      themeClass += " particular-sidenav-bg";
     }
     document.body.className = themeClass;
   }, [isDarkMode, role]);
