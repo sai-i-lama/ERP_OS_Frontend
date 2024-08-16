@@ -66,6 +66,7 @@ import Register from "./components/customer/Register";
 import SaleMat from "./components/saleMat/saleMat";
 import GetAllSaleMat from "./components/saleMat/getAllSaleMat";
 import DetailSaleMat from "./components/saleMat/detailSaleMat";
+import GetAllAudiLogs from "./components/AuditLog/getAllAuditLogs";
 
 const { Sider } = Layout;
 
@@ -182,6 +183,7 @@ function App() {
             <Route path="/pos" exact element={<Pos />} />
 
             <Route path="/invoice-setting" exact element={<InvoiceSetting />} />
+            <Route path="/allAuditLogs" exact element={<GetAllAudiLogs/>}/>
           </Routes>
         </Main>
       </BrowserRouter>

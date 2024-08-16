@@ -315,6 +315,15 @@ const Test = (color) => {
           },
           {
             label: (
+              <NavLink to="/allAuditLogs">
+                <span>All Logs</span>
+              </NavLink>
+            ),
+            key: "logs",
+            icon: <FolderAddOutlined />
+          },
+          {
+            label: (
               <NavLink to="/product-category">
                 <span>Catégorie de Produits</span>
               </NavLink>

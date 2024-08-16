@@ -13,6 +13,8 @@ import dashboardReducer from "./reducers/dashboardReducer";
 import transactionReducer from "./reducers/transactionReducer";
 import productCategoryReducer from "./reducers/productCategoryReducer";
 import designationReducer from "./reducers/designationReducer";
+import logsReducer from "./reducers/auditLogsReducer";
+
 
 const store = createStore(
 	combineReducers({
@@ -28,6 +30,7 @@ const store = createStore(
 		transactions: transactionReducer,
 		productCategories: productCategoryReducer,
 		designations: designationReducer,
+		logs: logsReducer
 	}),
 
 	composeWithDevTools(applyMiddleware(thunk))

@@ -32,9 +32,12 @@ const DetailsProd = () => {
   const { id } = useParams();
   let navigate = useNavigate();
   const [form] = Form.useForm();
-  const [Modalvisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
-  //dispatch
+  // State to handle total quantity
+  const [totalQuantity, setTotalQuantity] = useState(0);
+
+  // dispatch
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products.product);
 
@@ -48,16 +51,17 @@ const DetailsProd = () => {
         name: product.name || "",
         quantity: product.quantity || 0,
         purchase_price: product.purchase_price || 0,
-        sale_price: product.sale_price || 0
+        sale_price: product.sale_price || 0,
+        added_quantity: 0
       });
+      setTotalQuantity(product.quantity || 0); // Set initial total quantity
     }
   }, [product, form]);
-
-  const [success, setSuccess] = useState(false);
 
   const handleCancel = () => {
     setModalVisible(false);
   };
+
   const updateProduct = async (id, values) => {
     try {
       await axios({
@@ -68,20 +72,20 @@ const DetailsProd = () => {
         },
         url: `product/${id}`,
         data: {
-          ...values
+          ...values,
+          quantity: totalQuantity // Send the total quantity to the API
         }
       });
       return "success";
-      // return data;
     } catch (error) {
       console.log(error.message);
     }
   };
+
   const onFinish = (values) => {
     try {
       updateProduct(id, values);
-      setSuccess(true);
-      setModalVisible(false)
+      setModalVisible(false);
       toast.success("Les détails du produit sont mis à jour");
     } catch (error) {
       console.log(error.message);
@@ -92,19 +96,24 @@ const DetailsProd = () => {
     console.log("Failed:", errorInfo);
   };
 
-  //Delete Supplier
+  // Function to handle quantity changes
+  const handleQuantityChange = (value) => {
+    setTotalQuantity(product.quantity + parseInt(value || 0)); // Update total quantity
+  };
+
+  //Delete Product
   const onDelete = () => {
     try {
       dispatch(deleteProduct(id));
-
       setVisible(false);
-      toast.warning(`le Produit : ${product.name} est supprimé `);
+      toast.warning(`Le Produit : ${product.name} est supprimé`);
       return navigate("/product");
     } catch (error) {
       console.log(error.message);
     }
   };
-  // Delete Supplier PopUp
+
+  // Delete Product PopUp
   const [visible, setVisible] = useState(false);
 
   const handleVisibleChange = (newVisible) => {
@@ -116,9 +125,10 @@ const DetailsProd = () => {
   if (!isLogged) {
     return <Navigate to={"/auth/login"} replace={true} />;
   }
+
   return (
     <div>
-      <PageTitle title=" Retour" subtitle={`${product?.name}`} />
+      <PageTitle title="Retour" subtitle={`${product?.name}`} />
 
       <div className="mr-top">
         {product ? (
@@ -184,7 +194,7 @@ const DetailsProd = () => {
                   <table>
                     <thead>
                       <b>
-                        <h3> Informations sur le produit :</h3>
+                        <h3>Informations sur le produit :</h3>
                       </b>
                     </thead>
                     <tbody>
@@ -193,15 +203,14 @@ const DetailsProd = () => {
                           <td>
                             <p>
                               <Typography.Text strong>
-                                Quantité :
+                                Quantité actuelle :
                               </Typography.Text>{" "}
                             </p>
                           </td>
                           <td>
-                            <p> {product.quantity}</p>
+                            <p>{product.quantity}</p>
                           </td>
                         </tr>
-
                         <tr>
                           <td>
                             <p>
@@ -214,7 +223,6 @@ const DetailsProd = () => {
                             <p>{product.purchase_price}</p>
                           </td>
                         </tr>
-
                         <tr>
                           <td>
                             <p>
@@ -243,7 +251,6 @@ const DetailsProd = () => {
                     </tbody>
                   </table>
                 </Col>
-
                 <Col xs={24} xl={8}>
                   <div className="card-body ms-3">
                     <Image
@@ -261,8 +268,8 @@ const DetailsProd = () => {
         )}
       </div>
       <Modal
-        title="Ajouter un Client"
-        visible={Modalvisible}
+        title="Ajouter la quantité du produit"
+        visible={modalVisible}
         onCancel={handleCancel}
         footer={[
           <Button key="cancel" onClick={handleCancel}>
@@ -280,12 +287,6 @@ const DetailsProd = () => {
         ]}
       >
         <Form
-          initialValues={{
-            name: product?.name || "",
-            quantity: product?.quantity || 0,
-            purchase_price: product?.purchase_price || 0,
-            sale_price: product?.sale_price || 0
-          }}
           form={form}
           layout="vertical"
           onFinish={onFinish}
@@ -299,40 +300,56 @@ const DetailsProd = () => {
               {
                 required: true,
                 message: "Veuillez saisir le nom du produit!"
-                
               }
             ]}
-            
           >
-            <Input disabled/>
+            <Input disabled />
           </Form.Item>
 
           <Form.Item
             style={{ marginBottom: "10px" }}
-            label="Quantité"
+            label="Quantité actuelle"
             name="quantity"
             rules={[
               {
                 required: true,
-                message: "Veuillez saisir la Quantité du produit!"
+                message: "Veuillez saisir la quantité du produit!"
               }
             ]}
           >
-            <Input type="number" min={0} />
+            <Input disabled type="number" value={totalQuantity} />
           </Form.Item>
 
           <Form.Item
             style={{ marginBottom: "10px" }}
-            label="Prix d’achat"
+            label="Quantité à ajouter"
+            name="added_quantity"
+            rules={[
+              {
+                required: true,
+                message: "Veuillez saisir la quantité à ajouter!"
+              }
+            ]}
+          >
+            <Input
+              type="number"
+              min={0}
+              onChange={(e) => handleQuantityChange(e.target.value)}
+            />
+          </Form.Item>
+
+          <Form.Item
+            style={{ marginBottom: "10px" }}
+            label="Prix d'achat"
             name="purchase_price"
             rules={[
               {
                 required: true,
-                message: " Veuillez saisir Prix d’achat !"
+                message: "Veuillez saisir le prix d'achat!"
               }
             ]}
           >
-            <Input type="number" min={0} disabled/>
+            <Input type="number" min={0} disabled />
           </Form.Item>
 
           <Form.Item
@@ -342,11 +359,11 @@ const DetailsProd = () => {
             rules={[
               {
                 required: true,
-                message: "Veuillez saisir le Prix de vente!"
+                message: "Veuillez saisir le prix de vente!"
               }
             ]}
           >
-            <Input type="number" min={0} disabled/>
+            <Input type="number" min={0} disabled />
           </Form.Item>
         </Form>
       </Modal>
