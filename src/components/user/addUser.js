@@ -95,6 +95,7 @@ const AddUser = () => {
               onFinishFailed={onFinishFailed}
               autoComplete="off"
             >
+
               <Form.Item
                 style={{ marginBottom: "10px" }}
                 label="Nom d’utilisateur"
@@ -224,6 +225,7 @@ const AddUser = () => {
               >
                 <Input maxLength={14} pattern="[0-9]{1,14}" />
               </Form.Item>
+
               <Form.Item
                 style={{ marginBottom: "10px" }}
                 label="Adresse"
@@ -316,6 +318,7 @@ const AddUser = () => {
                   Ajouter personnel
                 </Button>
               </Form.Item>
+              
             </Form>
           </Card>
         </Col>

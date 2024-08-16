@@ -155,13 +155,26 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       sortDirections: ["ascend", "descend"]
     },
     {
-      title: "Vendeur",
-      dataIndex: "user",
-      key: "user",
-      render: (user) => user?.username,
-      responsive: ["md"],
-      sorter: (a, b) => a.user.username.localeCompare(b.user.username),
-      sortDirections: ["ascend", "descend"]
+      title: "Utilisateur",
+      key: "user_or_customer",
+      align: "center",
+      render: (text, record) => {
+        if (
+          record.creatorType === "user" &&
+          record.user &&
+          record.user.username
+        ) {
+          return record.user.username; // Affiche le nom de l'utilisateur
+        } else if (
+          record.creatorType === "customer" &&
+          record.customer &&
+          record.customer.username
+        ) {
+          return record.customer.username; // Affiche le nom du client
+        } else {
+          return "N/A"; // Valeur par défaut si aucune des conditions n'est remplie
+        }
+      }
     },
     {
       title: "Action",
@@ -196,7 +209,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       filteredColumns = columns.filter(
         (column) =>
           column.key !== "profit" &&
-          column.key !== "user" &&
+          column.key !== "user_or_customer" &&
           column.key !== "discount" &&
           column.key !== "customer"
       );
@@ -258,7 +271,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
                 limit,
                 startdate,
                 enddate,
-                user: currentRole ? loggedInUser : user || ""
+                user: ""
               })
             );
           }
@@ -287,16 +300,16 @@ const GetAllSale = (props) => {
   const customer = useSelector((state) => state.customers.customer);
   const userList = useSelector((state) => state.users.list);
   const [user, setUser] = useState("");
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(10); // Valeur par défaut pour la pagination
   const [loading, setLoading] = useState(false);
   const id = localStorage.getItem("id");
-
   const [startdate, setStartdate] = useState(
-    moment().startOf("month").format("DD/MM/YY HH:mm")
+    moment().startOf("month").format("YYYY-MM-DD")
   );
   const [enddate, setEnddate] = useState(
-    moment().endOf("month").format("DD/MM/YY HH:mm")
+    moment().endOf("month").format("YYYY-MM-DD")
   );
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     dispatch(loadAllStaff({ status: true }));
@@ -306,73 +319,51 @@ const GetAllSale = (props) => {
     dispatch(loadSingleCustomer(id));
   }, [id]);
 
-  const { RangePicker } = DatePicker;
-  const totalCount = total?._count?.id;
-
-  useEffect(() => {
-    setCount(totalCount);
-  }, [totalCount]);
-
   useEffect(() => {
     dispatch(
       loadAllSale({
-        page: 1,
-        limit: 10,
-        startdate: moment().startOf("month"),
-        enddate: moment().endOf("month"),
-        user: ""
+        page: currentPage,
+        limit: count,
+        startdate,
+        enddate,
+        user
       })
     );
-  }, []);
+  }, [currentPage, count, startdate, enddate, user, dispatch]);
 
-  const CSVlist = list?.map((i) => ({
-    ...i,
-    customer: i?.customer?.username
-  }));
-
-  const onSearchFinish = async (values) => {
-    setCount(total?._count?.id);
-    setUser(values?.user);
-    const resp = await dispatch(
-      loadAllSale({
-        page: 1,
-        limit: "",
-        startdate: startdate,
-        enddate: enddate,
-        user: values.user ? values.user : ""
-      })
-    );
-    if (resp.message === "success") {
-      setLoading(false);
-    } else {
-      setLoading(false);
-    }
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
-  const [form] = Form.useForm();
-  const onSwitchChange = (value) => {
-    setCount(value);
-    dispatch(
+  const onSearchFinish = async (values) => {
+    setUser(values?.user || "");
+    setLoading(true);
+    await dispatch(
       loadAllSale({
-        page: 1,
-        limit: "",
-        startdate: startdate,
-        enddate: enddate,
-        user: user || ""
+        page: 1, // Reset to first page on new search
+        limit: count,
+        startdate,
+        enddate,
+        user: values?.user || ""
       })
     );
+    setLoading(false);
+  };
+
+  const onSwitchChange = (value) => {
+    setCount(value);
+    setCurrentPage(1); // Reset to first page when changing count
   };
 
   const onCalendarChange = (dates) => {
-    const newStartdate = dates[0].format("YYYY-MM-DD HH:mm");
-    const newEnddate = dates[1].format("YYYY-MM-DD HH:mm");
-    setStartdate(newStartdate ? newStartdate : startdate);
-    setEnddate(newEnddate ? newEnddate : enddate);
+    setStartdate(dates[0].format("YYYY-MM-DD"));
+    setEnddate(dates[1].format("YYYY-MM-DD"));
   };
+
+  const { RangePicker } = DatePicker;
 
   const isLogged = Boolean(localStorage.getItem("isLogged"));
   const loggedInUser = localStorage.getItem("user");
-
   const role = localStorage.getItem("role");
 
   const isProfessional = role === "Professionnel";
@@ -383,6 +374,7 @@ const GetAllSale = (props) => {
     : isParticulier
     ? "Particulier"
     : null;
+
   if (!isLogged) {
     return <Navigate to={"/auth/login"} replace={true} />;
   }
@@ -429,13 +421,8 @@ const GetAllSale = (props) => {
               <h5 className="d-inline-flex">Liste des factures de vente</h5>
               <div className="card-title d-flex flex-column flex-md-row align-items-center justify-content-md-center mt-1 py-2">
                 <div>
-                  <Form
-                    onFinish={onSearchFinish}
-                    form={form}
-                    layout={"inline"}
-                    onFinishFailed={() => setLoading(false)}
-                  >
-                    <Form.Item name="user">
+                  <Form onFinish={onSearchFinish} layout={"inline"}>
+                    {/* <Form.Item name="user">
                       <Select
                         loading={!userList}
                         placeholder="Vendeur"
@@ -445,12 +432,12 @@ const GetAllSale = (props) => {
                         <Select.Option value="">Toute</Select.Option>
                         {userList &&
                           userList.map((i) => (
-                            <Select.Option value={i.id}>
+                            <Select.Option key={i.id} value={i.id}>
                               {i.username}
                             </Select.Option>
                           ))}
                       </Select>
-                    </Form.Item>
+                    </Form.Item> */}
                     <div className=" me-2">
                       <RangePicker
                         onCalendarChange={onCalendarChange}
@@ -461,7 +448,6 @@ const GetAllSale = (props) => {
                         className="range-picker"
                       />
                     </div>
-
                     <Form.Item>
                       <Button
                         onClick={() => setLoading(true)}
@@ -509,7 +495,7 @@ const GetAllSale = (props) => {
                                   toute
                                 </span>
                               ),
-                              value: totalCount
+                              value: total?._count?.id || 0
                             },
                             {
                               label: (
@@ -522,7 +508,7 @@ const GetAllSale = (props) => {
                             }
                           ]}
                           value={count}
-                          defaultChecked={totalCount}
+                          defaultChecked={total?._count?.id || 0}
                           onChange={onSwitchChange}
                         />
                       </div>
@@ -536,21 +522,18 @@ const GetAllSale = (props) => {
                       </div>
                     </div>
                   )}
-                  <div className="col-md-6 d-flex justify-content-end">
-                    <DueClientNotification list={list} />
-                  </div>
                 </div>
               </div>
-              <div>
-                <CustomTable
-                  list={list}
-                  total={total?._count?.id}
-                  startdate={startdate}
-                  enddate={enddate}
-                  count={count}
-                  user={user}
-                />
-              </div>
+              <CustomTable
+                list={list}
+                total={total?._count?.id}
+                startdate={startdate}
+                enddate={enddate}
+                count={count}
+                user={user}
+                onPageChange={handlePageChange}
+                currentPage={currentPage}
+              />
             </Fragment>
           )}
         </div>

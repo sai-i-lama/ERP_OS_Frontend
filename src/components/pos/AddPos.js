@@ -333,6 +333,7 @@ const AddPos = ({
                       message: "Veuillez saisir le montant payé!"
                     }
                   ]}
+                  initialValue={0}
                 >
                   <InputNumber type="number" onChange={handlePaid} min={0} />
                 </Form.Item>
