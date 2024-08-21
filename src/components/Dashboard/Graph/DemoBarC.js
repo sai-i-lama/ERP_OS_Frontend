@@ -20,7 +20,7 @@ const DemoPieChart = () => {
     label: {
       type: "inner",
       offset: "-30%",
-      content: ({ percent }) => `${(percent * 100).toFixed(0)}%`,
+      content: ({ percent }) => `${(percent * 100).toFixed(2)}%`,
       style: {
         fontSize: 14,
         textAlign: "center"
@@ -30,7 +30,14 @@ const DemoPieChart = () => {
       {
         type: "element-active"
       }
-    ]
+    ],
+    tooltip: {
+      fields: ["name", "quantitySold"],
+      formatter: (datum) => ({
+        name: datum.name,
+        value: `${datum.quantitySold} FCFA`
+      })
+    }
   };
 
   return <Pie {...config} />;

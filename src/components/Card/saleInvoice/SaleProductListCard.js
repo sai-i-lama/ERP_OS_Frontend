@@ -3,7 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SaleProductListCard = ({ list, updateReturn, returnOnChange }) => {
-
   const role = localStorage.getItem("role");
 
   const isProfessional = role === "Professionnel";
@@ -21,31 +20,34 @@ const SaleProductListCard = ({ list, updateReturn, returnOnChange }) => {
       dataIndex: "product_id",
       key: "product_id",
       align: "center",
-      sorter: (a, b) => a.product_id - b.product_id,
+      sorter: (a, b) => a.product_id - b.product_id
     },
     {
       title: "Nom",
       dataIndex: "product",
       key: "product.name",
       align: "center",
-      render: (product) => (
-        <Link to={`/product/${product.id}`}>{product.name}</Link>
-      ),
-      sorter: (a, b) => a.product.name.localeCompare(b.product.name),
+      render: (product) =>
+        currentRole ? (
+          <span>{product.name}</span>
+        ) : (
+          <Link to={`/product/${product.id}`}>{product.name}</Link>
+        ),
+      sorter: (a, b) => a.product.name.localeCompare(b.product.name)
     },
     {
       title: "Quantité de Produit",
       dataIndex: "product_quantity",
       key: "product_quantity",
       align: "center",
-      sorter: (a, b) => a.product_quantity - b.product_quantity,
+      sorter: (a, b) => a.product_quantity - b.product_quantity
     },
     {
       title: "Prix Unitaire",
       dataIndex: "product_sale_price",
       key: "product_sale_price",
       align: "center",
-      sorter: (a, b) => a.product_sale_price - b.product_sale_price,
+      sorter: (a, b) => a.product_sale_price - b.product_sale_price
     },
     {
       title: "Prix Total",
@@ -56,7 +58,7 @@ const SaleProductListCard = ({ list, updateReturn, returnOnChange }) => {
         product_quantity,
         product_sale_price,
         remain_quantity,
-        return_quantity,
+        return_quantity
       }) => {
         if (return_quantity) {
           return remain_quantity * product_sale_price;
@@ -72,8 +74,8 @@ const SaleProductListCard = ({ list, updateReturn, returnOnChange }) => {
           ? b.remain_quantity * b.product_sale_price
           : b.product_sale_price * b.product_quantity;
         return aPrice - bPrice;
-      },
-    },
+      }
+    }
   ];
 
   if (updateReturn) {
@@ -106,7 +108,7 @@ const SaleProductListCard = ({ list, updateReturn, returnOnChange }) => {
             />
           </div>
         );
-      },
+      }
     });
   }
 

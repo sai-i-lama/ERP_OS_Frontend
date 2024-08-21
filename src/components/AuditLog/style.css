@@ -1,0 +1,31 @@
+/* style.css */
+.wrapper {
+    padding: 20px;
+  }
+  
+  .table1, .table2 {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table1 th, .table1 td, .table2 th, .table2 td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .hr1 {
+    margin: 20px 0;
+  }
+  
+  .center {
+    text-align: center;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .box2, .box4, .box5, .box6, .box7, .box9, .box10, .box11, .box12, .box13 {
+    margin: 20px 0;
+  }

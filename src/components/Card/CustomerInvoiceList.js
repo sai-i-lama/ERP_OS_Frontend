@@ -1,76 +1,145 @@
 import { Link } from "react-router-dom";
 import { Table, Card } from "antd";
 import moment from "moment";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function CustomerInvoiceList({ list, linkTo }) {
+  const [columnsToShow, setColumnsToShow] = useState([]);
+  const role = localStorage.getItem("role");
+
+  const isProfessional = role === "Professionnel";
+  const isParticulier = role === "Particulier";
+
+  const currentRole = isProfessional
+    ? "Professionnel"
+    : isParticulier
+    ? "Particulier"
+    : null;
+
   const columns = [
     {
-      title: "Facture",
-      dataIndex: "id",
-      key: "id",
-      sorter: (a, b) => a.id - b.id,
-      render: (id) => <Link to={`${linkTo}/${id}`}>{id}</Link>,
+      title: "N° facture",
+      dataIndex: "numCommande",
+      key: "numCommande",
+      align: "center",
+      render: (numCommande, { id }) => (
+        <Link to={`${linkTo}/${id}`}>{numCommande}</Link>
+      ),
+      sorter: (a, b) => a.id - b.id
     },
     {
       title: "Date",
       dataIndex: "date",
+      align: "center",
       key: "date",
       sorter: (a, b) => moment(a.date).unix() - moment(b.date).unix(),
-      render: (date) => moment(date).format("DD MM YY HH:mm"),
+      render: (date) => moment(date).format("DD MM YY HH:mm")
+    },
+    {
+      title: "Retiré",
+      dataIndex: "delivred",
+      key: "delivred",
+      align: "center",
+      render: (delivred, { id }) =>
+        !currentRole ? (
+          <Link to={`/sale/${id}`}>
+            <button
+              className={`btn btn-sm ${
+                delivred ? "btn-success" : "btn-danger"
+              }`}
+            >
+              {delivred ? "Oui" : "Non"}
+            </button>
+          </Link>
+        ) : (
+          <button
+            className={`btn btn-sm ${delivred ? "btn-success" : "btn-danger"}`}
+          >
+            {delivred ? "Oui" : "Non"}
+          </button>
+        ),
+      sorter: (a, b) => a.delivred - b.delivred,
+      sortDirections: ["ascend", "descend"]
     },
     {
       title: "Montant Total",
       dataIndex: "total_amount",
+      align: "center",
       key: "total_amount",
-      sorter: (a, b) => a.total_amount - b.total_amount,
+      sorter: (a, b) => a.total_amount - b.total_amount
     },
     {
       title: "Remise",
       dataIndex: "discount",
       key: "discount",
+      align: "center",
       responsive: ["md"],
-      sorter: (a, b) => a.discount - b.discount,
-    },
-    {
-      title: "Montant à payer",
-      dataIndex: "due_amount",
-      key: "due_amount",
-      responsive: ["md"],
-      sorter: (a, b) => a.due_amount - b.due_amount,
+      sorter: (a, b) => a.discount - b.discount
     },
     {
       title: "Montant payé",
       dataIndex: "paid_amount",
       key: "paid_amount",
+      align: "center",
       responsive: ["md"],
-      sorter: (a, b) => a.paid_amount - b.paid_amount,
+      sorter: (a, b) => a.paid_amount - b.paid_amount
+    },
+    {
+      title: "Montant à payer",
+      dataIndex: "due_amount",
+      align: "center",
+      key: "due_amount",
+      responsive: ["md"],
+      sorter: (a, b) => a.due_amount - b.due_amount
     },
     {
       title: "Bénéfice",
       dataIndex: "profit",
       key: "profit",
+      align: "center",
       responsive: ["md"],
-      sorter: (a, b) => a.profit - b.profit,
+      sorter: (a, b) => a.profit - b.profit
     },
     {
       title: "Action",
       dataIndex: "id",
+      align: "center",
       key: "payment",
-      render: (id, record) => (
-        <React.Fragment>
+      render: (id, record) =>
+        !currentRole ? (
           <Link to={`/payment/customer/${id}`}>
-            <button className={`btn btn-sm ${record.due_amount === 0 ? 'btn-success' : 'btn-danger'}`}>
+            <button
+              className={`btn btn-sm ${
+                record.due_amount === 0 ? "btn-success" : "btn-danger"
+              }`}
+            >
               Paiement
             </button>
           </Link>
-        </React.Fragment>
-      ),
-      fixed: "right",
-    },
+        ) : (
+          <button
+            className={`btn btn-sm ${
+              record.due_amount === 0 ? "btn-success" : "btn-danger"
+            }`}
+          >
+            Paiement
+          </button>
+        )
+    }
   ];
 
   const addKeys = (arr) => arr.map((i) => ({ ...i, key: i.id }));
+
+  useEffect(() => {
+    let filteredColumns = columns;
+    if (currentRole) {
+      filteredColumns = columns.filter(
+        (column) => column.key !== "profit" && column.key !== "discount"
+      );
+    }
+    console.log("Filtered Columns:", filteredColumns); // Debugging line
+    setColumnsToShow(filteredColumns);
+  }, [currentRole]);
 
   return (
     <div className="mt-1">
@@ -79,25 +148,15 @@ function CustomerInvoiceList({ list, linkTo }) {
         bordered={false}
         title={[
           <h5 className="font-semibold m-0 text-center">
-            Informations sur la facture client
-          </h5>,
+            Liste de vos commandes
+          </h5>
         ]}
         bodyStyle={{ paddingTop: "0" }}
       >
         <Table
           scroll={{ x: true }}
           loading={!list}
-          // pagination={{
-          //   defaultPageSize: 10,
-          //   pageSizeOptions: [10, 20, 50, 100, 200],
-          //   showSizeChanger: true,
-          //   total: total,
-
-          //   // onChange: (page, limit) => {
-          //   //   dispatch(loadSuppliers({ page, limit }));
-          //   // },
-          // }}
-          columns={columns}
+          columns={columnsToShow} // Use columnsToShow here
           dataSource={list ? addKeys(list) : []}
         />
       </Card>

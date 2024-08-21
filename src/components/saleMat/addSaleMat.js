@@ -130,24 +130,13 @@ const AddSaleMat = ({
 
       try {
         const resp = await dispatch(addSale(valueData));
-
-        if (
-          (resp.message === "success" && currentRole === "Professionnel") ||
-          "Particulier"
-        ) {
+        if (resp.message === "success") {
           form.resetFields();
           setFormData({});
           setAfterDiscount(0);
           setLoader(false);
-          toast.success("Votre Commande a étée prise en compte ");
-          navigate(`/sale/${resp.createdInvoiceId}`);
-        } else if (resp.message === "success") {
-          form.resetFields();
-          setFormData({});
-          setAfterDiscount(0);
-          setLoader(false);
-          toast.success("Nouveau produit vendu ");
-          navigate(`/sale/${resp.createdInvoiceId}`);
+          toast.success("Matière Première déstockée ");
+          // navigate(`/sale/${resp.createdInvoiceId}`);
         } else {
           setLoader(false);
         }
@@ -222,7 +211,7 @@ const AddSaleMat = ({
               <strong>{totalDiscountPaidDue.total} cfa</strong>
             </div>
 
-            <div
+            {/* <div
               style={{
                 padding: "10px 20px",
                 display: "flex",
@@ -299,7 +288,7 @@ const AddSaleMat = ({
             >
               <strong>Montant à payer: </strong>
               <strong>{totalDiscountPaidDue.due} cfa</strong>
-            </div>
+            </div> */}
           </Col>
 
           <Col span={24}>
@@ -384,7 +373,7 @@ const AddSaleMat = ({
                   onFormSubmit();
                 }}
               >
-                Vente Produit
+                Déstocker matière Première
               </Button>
             </Form.Item>
           </Col>

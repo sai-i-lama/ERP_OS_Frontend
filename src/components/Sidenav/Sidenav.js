@@ -133,15 +133,15 @@ const Test = (color) => {
             key: "stocklistproductmatière2",
             icon: <UnorderedListOutlined />
           },
-          {
-            label: (
-              <NavLink to="/saleMatList">
-                <span>Liste Des Matières Sortie</span>
-              </NavLink>
-            ),
-            key: "salelistproductmatière2",
-            icon: <UnorderedListOutlined />
-          }
+          // {
+          //   label: (
+          //     <NavLink to="/saleMatList">
+          //       <span>Liste Des Matières Sortie</span>
+          //     </NavLink>
+          //   ),
+          //   key: "salelistproductmatière2",
+          //   icon: <UnorderedListOutlined />
+          // }
         ]
       },
     !isProRole &&
@@ -226,7 +226,7 @@ const Test = (color) => {
           {
             label: (
               <NavLink to="/sale">
-                <span>SPA</span>
+                <span>Centre Thérapeutique</span>
               </NavLink>
             ),
             key: "newSale",
@@ -312,6 +312,15 @@ const Test = (color) => {
             ),
             key: "suppliers",
             icon: <UserOutlined />
+          },
+          {
+            label: (
+              <NavLink to="/allAuditLogs">
+                <span>All Logs</span>
+              </NavLink>
+            ),
+            key: "logs",
+            icon: <FolderAddOutlined />
           },
           {
             label: (

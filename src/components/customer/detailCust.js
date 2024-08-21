@@ -10,8 +10,6 @@ import Loader from "../loader/loader";
 import PageTitle from "../page-header/PageHeader";
 
 import CustomerInvoiceList from "../Card/CustomerInvoiceList";
-import CustomerReturnInvoiceList from "./ListCard/CustomerReturnInvoiceList";
-import CustomerTransactionList from "./ListCard/CustomerTransactionList";
 
 //PopUp
 
