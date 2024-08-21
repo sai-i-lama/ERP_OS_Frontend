@@ -6,24 +6,24 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./NotificationIcon.css";
 
+// Connect to Socket.io server
 const socket = io("http://localhost:5001");
 
-function ReadyCommandeNotification({ userId }) {
+function ReadyCommandeNotification({ customerId }) {
   const [notifications, setNotifications] = useState([]);
   const [showNotifications, setShowNotifications] = useState(false);
 
   useEffect(() => {
     // Identify the user when they connect
-    if (userId) {
-      console.log(`User ${userId} is identifying`);
-      socket.emit("identify", userId);
+    if (customerId) {
+      console.log(`Customer ${customerId} is identifying`);
+      socket.emit("identify", { customerId });
     }
 
-    // Listen for user notifications
-    const handleUserNotification = (notification) => {
+    // Handle incoming notifications
+    const handleCustomerNotification = (notification) => {
       console.log("Received notification:", notification);
 
-      // Ensure notification has necessary properties
       if (notification && notification.id && notification.type) {
         setNotifications((prevNotifications) => [
           ...prevNotifications,
@@ -35,7 +35,7 @@ function ReadyCommandeNotification({ userId }) {
           case "update_order":
             toastType = "info";
             break;
-          case "by_commande":
+          case "order":
           case "new_by_commande":
             toastType = "success";
             break;
@@ -56,18 +56,17 @@ function ReadyCommandeNotification({ userId }) {
       }
     };
 
-    socket.on("user-notification", handleUserNotification);
+    // Listen for customer notifications
+    socket.on("customer-notification", handleCustomerNotification);
 
     // Clean up event listener on component unmount
     return () => {
-      socket.off("user-notification", handleUserNotification);
+      socket.off("customer-notification", handleCustomerNotification);
     };
-  }, [userId]);
+  }, [customerId]);
 
   const handleNotificationClick = async () => {
     setShowNotifications(!showNotifications);
-
-    // Mark notifications as read when clicking on the bell
     if (!showNotifications) {
       try {
         await fetch(
@@ -77,11 +76,11 @@ function ReadyCommandeNotification({ userId }) {
             headers: {
               "Content-Type": "application/json"
             },
-            body: JSON.stringify({ userId })
+            body: JSON.stringify({ customerId })
           }
         );
 
-        // Update the local state to mark notifications as read
+        // Update local state to mark notifications as read
         setNotifications((prevNotifications) =>
           prevNotifications.map((notif) => ({ ...notif, isRead: true }))
         );
@@ -96,6 +95,7 @@ function ReadyCommandeNotification({ userId }) {
 
   return (
     <div className="notification-icon-container">
+      {/* Afficher le nombre de notifications non lues */}
       <div>
         {unreadNotifications.length > 0 && (
           <span className="notification-count">
@@ -103,21 +103,22 @@ function ReadyCommandeNotification({ userId }) {
           </span>
         )}
       </div>
+      {/* Icône de cloche */}
       <div className="notification-icon" onClick={handleNotificationClick}>
         <BellOutlined style={{ color: "#fadb14" }} />
       </div>
+      {/* Liste des notifications lorsqu'on clique sur la cloche */}
       {showNotifications && (
         <div className="notification-list-container1">
           {notifications.map((item) => (
             <Alert
-              key={item.id} // Use notification id
+              key={item.id}
               message={item.message}
               showIcon
               type={
                 item.type === "update_order"
                   ? "info"
-                  : item.type === "by_commande" ||
-                    item.type === "new_by_commande"
+                  : item.type === "order" || item.type === "new_by_commande"
                   ? "success"
                   : "default"
               }
@@ -127,7 +128,7 @@ function ReadyCommandeNotification({ userId }) {
           ))}
         </div>
       )}
-      <ToastContainer />
+      <ToastContainer /> {/* Affiche les toasts */}
     </div>
   );
 }

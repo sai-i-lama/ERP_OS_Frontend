@@ -81,7 +81,7 @@ const Sale = (props) => {
             marginTop: "1%"
           }}
         >
-          {isProRole && <ReadyCommandeNotification userId={user_id} />}
+          {isProRole && <ReadyCommandeNotification customerId={user_id} />}
         </div>
         <Col span={24} lg={13} xl={14}>
           <ProductsForSale handleSelectedProds={handleSelectedProds} />
