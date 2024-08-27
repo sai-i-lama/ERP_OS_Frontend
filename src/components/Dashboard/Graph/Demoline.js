@@ -1,4 +1,4 @@
-import { Line } from "@ant-design/plots";
+// import { Line } from "@ant-design/plots";
 import { Card, DatePicker } from "antd";
 import moment from "moment";
 import React, { Fragment, useEffect, useState } from "react";
@@ -7,9 +7,7 @@ import { loadDashboardData } from "../../../redux/actions/dashboard/getDashboard
 import { loadAllPurchase } from "../../../redux/actions/purchase/getPurchaseAction";
 import { loadAllSale } from "../../../redux/actions/sale/getSaleAction";
 import NewDashboardCard from "../../Card/Dashboard/NewDashboardCard";
-import Loader from "../../loader/loader";
 import NotificationIcon from "../../notification/NotificationIcon";
-import DueClientNotification from "../../notification/DueClientNotification";
 import NotificationSystem from "../../notification/NewCommandeNotification";
 
 const DemoLine = () => {
@@ -113,6 +111,8 @@ const DemoLine = () => {
     }
   };
 
+  const user_id = localStorage.getItem("id");
+
   return (
     <Fragment>
       <div className="row d-flex" style={{ maxWidth: "100%", marginBottom:"10px" }}>
@@ -124,7 +124,7 @@ const DemoLine = () => {
           />
         </div>
         <div className="col-md-9" style={{display:"flex", justifyContent:"flex-end", gap:"3%"}}>
-          <NotificationSystem list={NewCommande} />
+          <NotificationSystem userId={user_id} />
           <NotificationIcon list={list} />
         </div>
       </div>
