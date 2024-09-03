@@ -76,15 +76,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       sortDirections: ["ascend", "descend"]
     },
     {
-      title: "Type Client",
-      dataIndex: `customer`,
-      key: "customer",
-      render: (customer) => customer?.role,
-      sorter: (a, b) => a.customer.role.localeCompare(b.customer.role),
-      sortDirections: ["ascend", "descend"]
-    },
-    {
-      title: "Retiré",
+      title: "Livré",
       dataIndex: "delivred",
       key: "delivred",
       render: (delivred, { id }) =>
@@ -109,27 +101,50 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       sortDirections: ["ascend", "descend"]
     },
     {
+      title: "Type Client",
+      dataIndex: `customer`,
+      key: "customer",
+      render: (customer) => customer?.role,
+      sorter: (a, b) => a.customer.role.localeCompare(b.customer.role),
+      sortDirections: ["ascend", "descend"]
+    },
+
+    {
       title: "Montant Total",
       dataIndex: "total_amount",
       key: "total_amount",
       sorter: (a, b) => a.total_amount - b.total_amount,
       sortDirections: ["ascend", "descend"]
     },
+    // {
+    //   title: "Remise",
+    //   dataIndex: "discount",
+    //   key: "discount",
+    //   sorter: (a, b) => a.discount - b.discount,
+    //   sortDirections: ["ascend", "descend"]
+    // },
     {
-      title: "Remise",
-      dataIndex: "discount",
-      key: "discount",
-      sorter: (a, b) => a.discount - b.discount,
+      title: "Prête",
+      dataIndex: "ready",
+      key: "ready",
+      render: (ready) => (
+        <button
+          className={`btn btn-sm ${ready ? "btn-success" : "btn-danger"}`}
+        >
+          {ready ? "Oui" : "Non"}
+        </button>
+      ),
+      sorter: (a, b) => a.ready - b.ready,
       sortDirections: ["ascend", "descend"]
     },
-    {
-      title: "Montant Payé",
-      dataIndex: "paid_amount",
-      key: "paid_amount",
-      responsive: ["md"],
-      sorter: (a, b) => a.paid_amount - b.paid_amount,
-      sortDirections: ["ascend", "descend"]
-    },
+    // {
+    //   title: "Montant Payé",
+    //   dataIndex: "paid_amount",
+    //   key: "paid_amount",
+    //   responsive: ["md"],
+    //   sorter: (a, b) => a.paid_amount - b.paid_amount,
+    //   sortDirections: ["ascend", "descend"]
+    // },
     {
       title: "Montant à Payer",
       dataIndex: "due_amount",
@@ -146,14 +161,14 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
     //   sorter: (a, b) => a.supplier.name.localeCompare(b.supplier.name),
     //   sortDirections: ["ascend", "descend"],
     // },
-    {
-      title: "Bénéfice",
-      dataIndex: "profit",
-      key: "profit",
-      responsive: ["md"],
-      sorter: (a, b) => a.profit - b.profit,
-      sortDirections: ["ascend", "descend"]
-    },
+    // {
+    //   title: "Bénéfice",
+    //   dataIndex: "profit",
+    //   key: "profit",
+    //   responsive: ["md"],
+    //   sorter: (a, b) => a.profit - b.profit,
+    //   sortDirections: ["ascend", "descend"]
+    // },
     {
       title: "Utilisateur",
       key: "user_or_customer",
@@ -161,16 +176,16 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       render: (text, record) => {
         if (
           record.creatorType === "user" &&
-          record.user &&
-          record.user.username
+          record.userCreator &&
+          record.userCreator.username
         ) {
-          return record.user.username; // Affiche le nom de l'utilisateur
+          return record.userCreator.username; // Affiche le nom de l'utilisateur
         } else if (
           record.creatorType === "customer" &&
-          record.customer &&
-          record.customer.username
+          record.customerCreator &&
+          record.customerCreator.username
         ) {
-          return record.customer.username; // Affiche le nom du client
+          return record.customerCreator.username; // Affiche le nom du client
         } else {
           return "N/A"; // Valeur par défaut si aucune des conditions n'est remplie
         }

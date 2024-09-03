@@ -43,12 +43,12 @@ const AddPos = ({
     ? "Particulier"
     : null;
 
-
   const { Option } = Select;
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
 
   const TypeCustomer = ["Centre Thérapeutique", "Professionnel", "Particulier"];
+  const Gender = ["Homme", "Femme"];
 
   const onClickLoading = () => {
     setLoader(true);
@@ -117,12 +117,26 @@ const AddPos = ({
     }
   };
 
+  useEffect(() => {
+    console.log("currentRole:", currentRole);
+    console.log("currentUserId:", currentUserId);
+    console.log("allCustomer:", allCustomer);
+    if (currentRole && allCustomer) {
+      const customer = allCustomer.find(
+        (cust) => cust.role === currentRole && cust.id === currentUserId
+      );
+      if (customer) {
+        console.log("Found customer:", customer);
+        setCustomer(currentUserId);
+        setSelectedCustomerName(customer.username);
+      }
+    }
+  }, [currentRole, currentUserId, allCustomer]);
+
   const onFormSubmit = async (values) => {
-    // Générez le numéro de commande
     const generatedNumCom1 = handleGenerateNumCom();
 
     if (generatedNumCom1) {
-      // Créez les données de la facture de vente
       const saleInvoiceProduct = selectedProds.map((prod) => ({
         product_id: prod.id,
         product_quantity: prod.selectedQty,
@@ -130,43 +144,33 @@ const AddPos = ({
       }));
 
       const valueData = {
-        date: date.toISOString(), // Utilisez la date sélectionnée
+        date: date.toISOString(),
         paid_amount: totalDiscountPaidDue.paid,
         discount: totalDiscountPaidDue.discount,
-        customer_id: customer,
-        user_id: currentUserId,
+        customer_id: customer, // Assurez-vous que customer est défini
+        creatorId: currentUserId,
         type_saleInvoice: "produit_fini",
-        numCommande: generatedNumCom1, // Utilisez le numéro de commande généré
+        numCommande: generatedNumCom1,
         saleInvoiceProduct
       };
 
-      // Log des données envoyées pour débogage
       console.log("Données envoyées au backend:", valueData);
 
       try {
         const resp = await dispatch(addSale(valueData));
 
-        if (resp.message === "success" && currentRole) {
+        if (resp.message === "success") {
           form.resetFields();
           setFormData({});
           setAfterDiscount(0);
           setLoader(false);
-          toast.success("Votre Commande a étée prise en compte ");
+          toast.success("Votre Commande a été prise en compte");
           navigate(`/sale/${resp.createdInvoiceId}`);
-        } 
-        else if (resp.message === "success") {
-          form.resetFields();
-          setFormData({});
-          setAfterDiscount(0);
-          setLoader(false);
-          toast.success("Nouveau produit vendu ");
-          navigate(`/sale/${resp.createdInvoiceId}`);
-        }
-        else {
+        } else {
           setLoader(false);
         }
       } catch (error) {
-        console.log(error.message);
+        console.log("Erreur lors de la vente:", error.message);
         setLoader(false);
         toast.error("Erreur lors de la vente");
       }
@@ -177,7 +181,8 @@ const AddPos = ({
     const selectedCustomer = allCustomer.find((cust) => cust.id === customerId);
     if (selectedCustomer) {
       setCustomer(customerId);
-      setSelectedCustomerName(selectedCustomer.username); // Stocker le nom du client
+      setSelectedCustomerName(selectedCustomer.username);
+      console.log("Selected customer in handleCustomerData:", selectedCustomer);
     }
   };
 
@@ -210,15 +215,6 @@ const AddPos = ({
     }
   }, [selectedProds, totalDiscountPaidDue.paid, totalDiscountPaidDue.discount]);
 
-  useEffect(() => {
-    if (currentRole  && allCustomer) {
-      const customer = allCustomer.find(
-        (cust) => cust.role === currentRole && cust.id === currentUserId
-      );
-      setCustomer(customer);
-    }
-  }, [currentRole, currentUserId, allCustomer]);
-
   const handleCancel = () => {
     setIsModalVisible(false);
   };
@@ -237,7 +233,7 @@ const AddPos = ({
       console.log(error.message);
     }
   };
-
+  console.log("cust", customer);
   return (
     <Card className="mt-3">
       <Form
@@ -249,9 +245,9 @@ const AddPos = ({
         autoComplete="off"
         onFinish={onFormSubmit} // Utilisez onFinish pour soumettre le formulaire
       >
-        <Row gutter={[24, 24]}>
-          <Col span={24}>
-            {!currentRole && (
+        {!currentRole ? (
+          <Row gutter={[24, 24]}>
+            <Col span={24}>
               <div
                 style={{
                   padding: "10px 20px",
@@ -263,9 +259,7 @@ const AddPos = ({
                 <strong>Total: </strong>
                 <strong>{totalDiscountPaidDue.total} cfa</strong>
               </div>
-            )}
 
-            {!currentRole && (
               <div
                 style={{
                   padding: "10px 20px",
@@ -300,9 +294,7 @@ const AddPos = ({
                   />
                 </Form.Item>
               </div>
-            )}
 
-            {!currentRole && (
               <div
                 style={{
                   padding: "10px 20px",
@@ -313,9 +305,7 @@ const AddPos = ({
                 <strong>Après remise: </strong>
                 <strong>{totalDiscountPaidDue.afterDiscount} cfa</strong>
               </div>
-            )}
 
-            {!currentRole  && (
               <div
                 style={{
                   padding: "10px 20px",
@@ -338,64 +328,34 @@ const AddPos = ({
                   <InputNumber type="number" onChange={handlePaid} min={0} />
                 </Form.Item>
               </div>
-            )}
 
-            <div
-              style={{
-                padding: "10px 20px",
-                display: "flex",
-                justifyContent: "space-between",
-                border: "1px solid #ccc"
-              }}
-            >
-              <strong>Montant à payer: </strong>
-              <strong>{totalDiscountPaidDue.due} cfa</strong>
-            </div>
-          </Col>
+              <div
+                style={{
+                  padding: "10px 20px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  border: "1px solid #ccc"
+                }}
+              >
+                <strong>Montant à payer: </strong>
+                <strong>{totalDiscountPaidDue.due} cfa</strong>
+              </div>
+            </Col>
 
-          <Col span={24}>
-            <div className="d-flex justify-content-between mb-1">
-              <div className="w-50">
-                <Form.Item
-                  label="Client"
-                  name="customer_id"
-                  style={{ maxWidth: "250px" }}
-                  rules={[
-                    {
-                      required: true,
-                      message: "Veuillez sélectionner un client!"
-                    }
-                  ]}
-                >
-                  {currentRole ? (
-                    <Select
-                      loading={!allCustomer}
-                      showSearch
-                      placeholder="Sélectionner un client"
-                      optionFilterProp="children"
-                      onChange={handleCustomerData}
-                      onSearch={onSearch}
-                      filterOption={(input, option) =>
-                        option.children
-                          .toString()
-                          .toLowerCase()
-                          .includes(input.toLowerCase())
+            <Col span={24}>
+              <div className="d-flex justify-content-between mb-1">
+                <div className="w-50">
+                  <Form.Item
+                    label="Client"
+                    name="customer_id"
+                    style={{ maxWidth: "250px" }}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Veuillez sélectionner un client!"
                       }
-                    >
-                      {allCustomer &&
-                        allCustomer
-                          .filter(
-                            (cust) =>
-                              cust.role === currentRole &&
-                              cust.id === currentUserId
-                          )
-                          .map((cust) => (
-                            <Option key={cust.id} value={cust.id}>
-                              {cust.phone} - {cust.username}
-                            </Option>
-                          ))}
-                    </Select>
-                  ) : (
+                    ]}
+                  >
                     <Select
                       loading={!allCustomer}
                       showSearch
@@ -423,56 +383,42 @@ const AddPos = ({
                             </Option>
                           ))}
                     </Select>
-                  )}
-                </Form.Item>
+                  </Form.Item>
+                </div>
+
+                <div className="w-50">
+                  <Form.Item label="Date" required>
+                    <DatePicker
+                      onChange={(value) => setDate(value._d)}
+                      defaultValue={moment()}
+                      style={{ marginBottom: "10px" }}
+                      label="date"
+                      name="date"
+                      disabled
+                      rules={[
+                        {
+                          required: true,
+                          message: "Veuillez saisir la date!"
+                        }
+                      ]}
+                    />
+                  </Form.Item>
+                </div>
               </div>
 
-              <div className="w-50">
-                <Form.Item label="Date" required>
-                  <DatePicker
-                    onChange={(value) => setDate(value._d)}
-                    defaultValue={moment()}
-                    style={{ marginBottom: "10px" }}
-                    label="date"
-                    name="date"
-                    disabled
-                    rules={[
-                      {
-                        required: true,
-                        message: "Veuillez saisir la date!"
-                      }
-                    ]}
-                  />
-                </Form.Item>
-              </div>
-            </div>
+              <Products
+                formData={formData}
+                setData={setFormData}
+                allProducts={allProducts}
+                selectedProds={selectedProds}
+                handleSelectedProdsQty={handleSelectedProdsQty}
+                handleSelectedProdsUnitPrice={handleSelectedProdsUnitPrice}
+                handleDeleteProd={handleDeleteProd}
+              />
+            </Col>
 
-            <Products
-              formData={formData}
-              setData={setFormData}
-              allProducts={allProducts}
-              selectedProds={selectedProds}
-              handleSelectedProdsQty={handleSelectedProdsQty}
-              handleSelectedProdsUnitPrice={handleSelectedProdsUnitPrice}
-              handleDeleteProd={handleDeleteProd}
-            />
-          </Col>
-
-          <Col span={24}>
-            <Form.Item style={{ marginTop: "15px" }}>
-              {currentRole ? (
-                <Button
-                  block
-                  type="primary"
-                  htmlType="submit"
-                  loading={loader}
-                  onClick={() => {
-                    onClickLoading();
-                  }}
-                >
-                  Commander
-                </Button>
-              ) : (
+            <Col span={24}>
+              <Form.Item style={{ marginTop: "15px" }}>
                 <div className="space">
                   <Button
                     block
@@ -496,10 +442,92 @@ const AddPos = ({
                     Ajouter un Client
                   </Button>
                 </div>
-              )}
-            </Form.Item>
-          </Col>
-        </Row>
+              </Form.Item>
+            </Col>
+          </Row>
+        ) : (
+          <Row gutter={[24, 24]}>
+            <Col span={24}>
+              <div
+                style={{
+                  padding: "10px 20px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  border: "1px solid #ccc"
+                }}
+              >
+                <strong>Montant à payer: </strong>
+                <strong>{totalDiscountPaidDue.due} cfa</strong>
+              </div>
+            </Col>
+            <Col span={24}>
+              <div className="d-flex justify-content-between mb-1">
+                <div className="w-50">
+                  <Form.Item
+                    label="Client"
+                    style={{ maxWidth: "250px" }}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Veuillez sélectionner un client!"
+                      }
+                    ]}
+                  >
+                    <Input
+                      value={selectedCustomerName || "Chargement..."}
+                      readOnly
+                      style={{ maxWidth: "250px" }}
+                    />
+                  </Form.Item>
+                </div>
+
+                <div className="w-50">
+                  <Form.Item label="Date" required>
+                    <DatePicker
+                      onChange={(value) => setDate(value._d)}
+                      defaultValue={moment()}
+                      style={{ marginBottom: "10px" }}
+                      label="date"
+                      name="date"
+                      disabled
+                      rules={[
+                        {
+                          required: true,
+                          message: "Veuillez saisir la date!"
+                        }
+                      ]}
+                    />
+                  </Form.Item>
+                </div>
+              </div>
+
+              <Products
+                formData={formData}
+                setData={setFormData}
+                allProducts={allProducts}
+                selectedProds={selectedProds}
+                handleSelectedProdsQty={handleSelectedProdsQty}
+                handleSelectedProdsUnitPrice={handleSelectedProdsUnitPrice}
+                handleDeleteProd={handleDeleteProd}
+              />
+            </Col>
+            <Col span={24}>
+              <Form.Item style={{ marginTop: "15px" }}>
+                <Button
+                  block
+                  type="primary"
+                  htmlType="submit"
+                  loading={loader}
+                  onClick={() => {
+                    onClickLoading();
+                  }}
+                >
+                  Commander
+                </Button>
+              </Form.Item>
+            </Col>
+          </Row>
+        )}
       </Form>
 
       <Modal
@@ -594,6 +622,39 @@ const AddPos = ({
             ]}
           >
             <Input />
+          </Form.Item>
+
+          <Form.Item
+            style={{ marginBottom: "10px" }}
+            name="gender"
+            label="Genre "
+            rules={[
+              {
+                required: true,
+                message: "Veuillez sélectionner votre genre!"
+              }
+            ]}
+          >
+            <Select
+              name="gender"
+              //loading={!category}
+              showSearch
+              placeholder="Sélectionnez votre genre"
+              optionFilterProp="children"
+              filterOption={(input, option) => option.children.includes(input)}
+              filterSort={(optionA, optionB) =>
+                optionA.children
+                  .toLowerCase()
+                  .localeCompare(optionB.children.toLowerCase())
+              }
+            >
+              {Gender &&
+                Gender.map((custom) => (
+                  <Select.Option key={custom} value={custom}>
+                    {custom}
+                  </Select.Option>
+                ))}
+            </Select>
           </Form.Item>
 
           <Form.Item
