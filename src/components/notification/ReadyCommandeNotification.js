@@ -8,6 +8,7 @@ import "./NotificationIcon.css";
 
 // Connect to Socket.io server
 const socket = io("http://localhost:5001");
+// const socket = io("http://192.168.1.176/:5001");
 
 function ReadyCommandeNotification({ customerId }) {
   const [notifications, setNotifications] = useState([]);
@@ -71,6 +72,7 @@ function ReadyCommandeNotification({ customerId }) {
       try {
         await fetch(
           "http://localhost:5001/v1/customer/markNotificationsAsRead",
+          //"http://192.168.1.176/:5001/v1/customer/markNotificationsAsRead",
           {
             method: "POST",
             headers: {

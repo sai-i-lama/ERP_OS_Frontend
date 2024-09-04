@@ -84,7 +84,7 @@ const PrintToPdf = forwardRef(
                       <td>
                         <p>{i.id}</p>
                       </td>
-                      <td>{i.user.username}</td>
+                      <td>{i.userCreator ? i.userCreator.username : "N/A"}</td>
                       <td>{i.customer.username}</td>
                       <td>
                         {i.saleInvoiceProduct.map((s) => (

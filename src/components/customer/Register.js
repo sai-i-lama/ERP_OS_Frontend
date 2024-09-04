@@ -1,4 +1,14 @@
-import { Button, Form, Input, Typography, Row, Col, Card, Radio } from "antd";
+import {
+  Button,
+  Form,
+  Select,
+  Input,
+  Typography,
+  Row,
+  Col,
+  Card,
+  Radio
+} from "antd";
 
 import { addCustomer } from "../../redux/actions/customer/addCustomerAciton";
 import { useDispatch } from "react-redux";
@@ -13,7 +23,7 @@ const Register = () => {
   const dispatch = useDispatch();
   const { Title } = Typography;
   const navigate = useNavigate();
-
+  const Gender = ["Homme", "Femme"];
   const [form] = Form.useForm();
 
   //   const onFinish = async (values) => {
@@ -174,17 +184,37 @@ const Register = () => {
               <div className="form-group col-md-6">
                 <Form.Item
                   style={{ marginBottom: "10px" }}
-                  name="role"
-                  label="Type de Client "
+                  name="gender"
+                  label="Genre "
                   rules={[
                     {
                       required: true,
-                      message: "Veuillez sélectionner le type de client!"
+                      message: "Veuillez sélectionner votre genre!"
                     }
                   ]}
-                  initialValue={"Particulier"}
                 >
-                  <Input disabled />
+                  <Select
+                    name="gender"
+                    //loading={!category}
+                    showSearch
+                    placeholder="Sélectionnez votre genre"
+                    optionFilterProp="children"
+                    filterOption={(input, option) =>
+                      option.children.includes(input)
+                    }
+                    filterSort={(optionA, optionB) =>
+                      optionA.children
+                        .toLowerCase()
+                        .localeCompare(optionB.children.toLowerCase())
+                    }
+                  >
+                    {Gender &&
+                      Gender.map((custom) => (
+                        <Select.Option key={custom} value={custom}>
+                          {custom}
+                        </Select.Option>
+                      ))}
+                  </Select>
                 </Form.Item>
               </div>
             </div>

@@ -1,13 +1,4 @@
-import {
-  Button,
-  Card,
-  Col,
-  Select,
-  Form,
-  Input,
-  Row,
-  Typography,
-} from "antd";
+import { Button, Card, Col, Select, Form, Input, Row, Typography } from "antd";
 
 import { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -19,6 +10,7 @@ const AddCust = () => {
   const dispatch = useDispatch();
   const { Title } = Typography;
   const TypeCustomer = ["Centre Thérapeutique", "Professionnel", "Particulier"];
+  const Gender = ["Homme", "Femme"];
   const [loading, setLoading] = useState(false);
   const onClick = () => {
     setLoading(true);
@@ -65,13 +57,13 @@ const AddCust = () => {
               form={form}
               name="basic"
               labelCol={{
-                span: 7,
+                span: 7
               }}
               wrapperCol={{
-                span: 16,
+                span: 16
               }}
               initialValues={{
-                remember: true,
+                remember: true
               }}
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
@@ -84,8 +76,8 @@ const AddCust = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez saisir le nom du client!",
-                  },
+                    message: "Veuillez saisir le nom du client!"
+                  }
                 ]}
               >
                 <Input />
@@ -98,8 +90,8 @@ const AddCust = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez saisir l'adresse mail du client!",
-                  },
+                    message: "Veuillez saisir l'adresse mail du client!"
+                  }
                 ]}
               >
                 <Input />
@@ -126,9 +118,8 @@ const AddCust = () => {
                 rules={[
                   {
                     required: true,
-                    message:
-                      "Veuillez saisir le numéro de téléphone du client!",
-                  },
+                    message: "Veuillez saisir le numéro de téléphone du client!"
+                  }
                 ]}
               >
                 <Input maxLength={14} pattern="[0-9]{1,14}" />
@@ -141,11 +132,46 @@ const AddCust = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez saisir l'adresse du client!",
-                  },
+                    message: "Veuillez saisir l'adresse du client!"
+                  }
                 ]}
               >
                 <Input />
+              </Form.Item>
+
+              <Form.Item
+                style={{ marginBottom: "10px" }}
+                name="gender"
+                label="Genre "
+                rules={[
+                  {
+                    required: true,
+                    message: "Veuillez sélectionner votre genre!"
+                  }
+                ]}
+              >
+                <Select
+                  name="gender"
+                  //loading={!category}
+                  showSearch
+                  placeholder="Sélectionnez votre genre"
+                  optionFilterProp="children"
+                  filterOption={(input, option) =>
+                    option.children.includes(input)
+                  }
+                  filterSort={(optionA, optionB) =>
+                    optionA.children
+                      .toLowerCase()
+                      .localeCompare(optionB.children.toLowerCase())
+                  }
+                >
+                  {Gender &&
+                    Gender.map((custom) => (
+                      <Select.Option key={custom} value={custom}>
+                        {custom}
+                      </Select.Option>
+                    ))}
+                </Select>
               </Form.Item>
 
               <Form.Item
@@ -155,8 +181,8 @@ const AddCust = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez sélectionner le type de client!",
-                  },
+                    message: "Veuillez sélectionner le type de client!"
+                  }
                 ]}
               >
                 <Select
