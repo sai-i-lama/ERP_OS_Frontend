@@ -129,6 +129,10 @@ const Login = () => {
                 Vous avez déjà un compte ?{" "}
                 <Link to={"/register"}>Inscrivez-vous ici</Link>
               </h6>
+              <h6 className="text-center mt-2">
+                Mot de passe oublié ?{" "}
+                <Link to={"/forgot-password"}>cliquez ici</Link>
+              </h6>
             </Form>
           </Card>
         </Col>

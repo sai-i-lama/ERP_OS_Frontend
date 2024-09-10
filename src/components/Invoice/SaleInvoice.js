@@ -20,7 +20,7 @@ const PrintToPdf = forwardRef(({ data, invoiceData }, ref) => {
             style={{
               width: "35%",
               height: "40%",
-              objectFit: "cover",
+              objectFit: "cover"
             }}
           />
         </div>
@@ -152,12 +152,22 @@ const PrintToPdf = forwardRef(({ data, invoiceData }, ref) => {
 const SaleInvoice = ({ data }) => {
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
+    content: () => componentRef.current
   });
 
   const [invoiceData, setInvoiceData] = useState(null);
   useEffect(() => {
-    getSetting().then((data) => setInvoiceData(data.result));
+    getSetting()
+      .then((response) => {
+        if (response?.result) {
+          setInvoiceData(response.result);
+        } else {
+          throw new Error("Les données de configuration sont manquantes");
+        }
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la récupération des paramètres:", error);
+      })
   }, []);
 
   return (

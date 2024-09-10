@@ -253,7 +253,7 @@ const Test = (color) => {
         ]
       },
     !isProRole &&
-      (hasPermission("createUser") ||
+      (
         hasPermission("viewUser") ||
         hasPermission("updateUser") ||
         hasPermission("deleteUser") ||

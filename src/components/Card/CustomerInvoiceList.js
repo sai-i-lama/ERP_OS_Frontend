@@ -36,22 +36,12 @@ function CustomerInvoiceList({ list, linkTo }) {
       render: (date) => moment(date).format("DD MM YY HH:mm")
     },
     {
-      title: "Retiré",
+      title: "Retirée",
       dataIndex: "delivred",
       key: "delivred",
       align: "center",
-      render: (delivred, { id }) =>
-        !currentRole ? (
-          <Link to={`/sale/${id}`}>
-            <button
-              className={`btn btn-sm ${
-                delivred ? "btn-success" : "btn-danger"
-              }`}
-            >
-              {delivred ? "Oui" : "Non"}
-            </button>
-          </Link>
-        ) : (
+      render: (delivred,) =>
+         (
           <button
             className={`btn btn-sm ${delivred ? "btn-success" : "btn-danger"}`}
           >
@@ -99,6 +89,22 @@ function CustomerInvoiceList({ list, linkTo }) {
       align: "center",
       responsive: ["md"],
       sorter: (a, b) => a.profit - b.profit
+    },
+    {
+      title: "Prête",
+      dataIndex: "ready",
+      key: "ready",
+      align: "center",
+      render: (ready,) =>
+         (
+          <button
+            className={`btn btn-sm ${ready ? "btn-success" : "btn-danger"}`}
+          >
+            {ready ? "Oui" : "Non"}
+          </button>
+        ),
+      sorter: (a, b) => a.ready - b.ready,
+      sortDirections: ["ascend", "descend"]
     },
     {
       title: "Action",
