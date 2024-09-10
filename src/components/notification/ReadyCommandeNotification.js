@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
+import { Link } from "react-router-dom";
 import { Alert } from "antd";
 import { BellOutlined } from "@ant-design/icons";
 import { ToastContainer, toast } from "react-toastify";
@@ -115,7 +116,7 @@ function ReadyCommandeNotification({ customerId }) {
           {notifications.map((item) => (
             <Alert
               key={item.id}
-              message={item.message}
+              message={<Link to={`/sale/${item.saleId}`}>{item.message}</Link>}
               showIcon
               type={
                 item.type === "update_order"

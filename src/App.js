@@ -67,6 +67,8 @@ import SaleMat from "./components/saleMat/saleMat";
 import GetAllSaleMat from "./components/saleMat/getAllSaleMat";
 import DetailSaleMat from "./components/saleMat/detailSaleMat";
 import GetAllAudiLogs from "./components/AuditLog/getAllAuditLogs";
+import ResetPassword from "./components/customer/ResetPassword";
+import ForgotPassword from "./components/customer/ForgotPassword";
 
 const { Sider } = Layout;
 
@@ -90,8 +92,8 @@ function App() {
             <Route path="/product/:id/update" element={<UpdateProd />} />
             <Route path="/productlist" exact element={<GetAllProd />} />
 
-            <Route path="/productMat" exact element={<ProductMat/>}/>
-            <Route path="/productMatlist" exact element={<GetAllProdMat/>}/>
+            <Route path="/productMat" exact element={<ProductMat />} />
+            <Route path="/productMatlist" exact element={<GetAllProdMat />} />
             {/* <Route path="/salemat" exact element={<Mat />} /> */}
 
             <Route
@@ -124,9 +126,9 @@ function App() {
             <Route path="/salelist" exact element={<GetAllSale />} />
             <Route path="/sale/:id" element={<DetailSale />} />
 
-            <Route path="/stockproductMatlist" exact element={<SaleMat/>}/>
-            <Route path="/saleMatList" exact element= {<GetAllSaleMat/>}/>
-            <Route path="/saleMat/:id" exact element= {<DetailSaleMat/>}/>
+            <Route path="/stockproductMatlist" exact element={<SaleMat />} />
+            <Route path="/saleMatList" exact element={<GetAllSaleMat />} />
+            <Route path="/saleMat/:id" exact element={<DetailSaleMat />} />
 
             <Route path="/sale/:id/update" element={<UpdateProd />} />
             <Route path="/sale/return/:id" element={<AddReturnSale />} />
@@ -151,7 +153,7 @@ function App() {
             <Route path="/auth/login" exact element={<Login />} />
             <Route path="/auth/logout" exact element={<Logout />} />
             {/*         <Route path='/auth/register' exact element={<Register />} /> */}
-            <Route path="/register" exact element={<Register/>}/>
+            <Route path="/register" exact element={<Register />} />
             <Route path="/hr/staffs" exact element={<UserList />} />
             <Route path="/hr/staffs/:id" exact element={<DetailStaff />} />
             <Route path="/hr/staffs/:id/update" element={<UpdateStaff />} />
@@ -183,7 +185,10 @@ function App() {
             <Route path="/pos" exact element={<Pos />} />
 
             <Route path="/invoice-setting" exact element={<InvoiceSetting />} />
-            <Route path="/allAuditLogs" exact element={<GetAllAudiLogs/>}/>
+            <Route path="/allAuditLogs" exact element={<GetAllAudiLogs />} />
+
+            <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
           </Routes>
         </Main>
       </BrowserRouter>

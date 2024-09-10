@@ -223,27 +223,60 @@ const DetailSale = () => {
                               </strong>
                             </p>
                           </div>
-                          {!isProRole && (
-                            <div>
-                              <p>
-                                <Typography.Text strong>
-                                  Remise :
-                                </Typography.Text>{" "}
-                                <strong>{singleSaleInvoice.discount}</strong>
-                              </p>
-                              <p>
-                                <Typography.Text strong>
-                                  Bénéfice :
-                                </Typography.Text>{" "}
-                                <strong>{singleSaleInvoice.profit}</strong>
-                              </p>
-                            </div>
-                          )}
+                          <div>
+                            {!isProRole && (
+                              <div>
+                                <p>
+                                  <Typography.Text strong>
+                                    Remise :
+                                  </Typography.Text>{" "}
+                                  <strong>{singleSaleInvoice.discount}</strong>
+                                </p>
+                                <p>
+                                  <Typography.Text strong>
+                                    Bénéfice :
+                                  </Typography.Text>{" "}
+                                  <strong>{singleSaleInvoice.profit}</strong>
+                                </p>
+                              </div>
+                            )}
+                            <p>
+                              <Typography.Text strong>Prête :</Typography.Text>{" "}
+                              <strong
+                                style={{
+                                  backgroundColor: singleSaleInvoice.ready
+                                    ? "green"
+                                    : "red",
+                                  color: "white", // Assurez-vous que le texte est lisible
+                                  padding: "2px 4px", // Ajouter un peu de padding pour l'esthétique
+                                  borderRadius: "4px" // Optionnel : ajouter des coins arrondis
+                                }}
+                              >
+                                {singleSaleInvoice.ready ? "Oui" : "Non"}
+                              </strong>
+                            </p>
+                            <p>
+                              <Typography.Text strong>Livrée :</Typography.Text>{" "}
+                              <strong
+                                style={{
+                                  backgroundColor: singleSaleInvoice.delivred
+                                    ? "green"
+                                    : "red",
+                                  color: "white", // Assurez-vous que le texte est lisible
+                                  padding: "2px 4px", // Ajouter un peu de padding pour l'esthétique
+                                  borderRadius: "4px" // Optionnel : ajouter des coins arrondis
+                                }}
+                              >
+                                {singleSaleInvoice.delivred ? "Oui" : "Non"}
+                              </strong>
+                            </p>
+                          </div>
                           <div className="me-2"></div>
                         </div>
                       </CardComponent>
                     </Badge.Ribbon>
                   </Col>
+                  <Col span={6}></Col>
                 </Row>
                 <br />
               </div>
