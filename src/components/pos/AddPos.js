@@ -73,29 +73,39 @@ const AddPos = ({
     total: 0,
     discount: 0,
     afterDiscount: 0,
+    given: 0,
     paid: 0,
+    refunded: 0,
     due: 0
   });
 
   const handleDiscount = (discountAmount) => {
     const afterDiscount = totalDiscountPaidDue.total - discountAmount;
-    let dueAmount = totalDiscountPaidDue.total - discountAmount;
-    if (totalDiscountPaidDue.paid > 0) {
-      dueAmount = dueAmount - totalDiscountPaidDue.paid;
-    }
+    let dueAmount = afterDiscount - totalDiscountPaidDue.paid;
     setTotalDiscountPaidDue((prev) => ({
       ...prev,
       discount: discountAmount,
-      due: dueAmount,
+      due: Math.max(dueAmount, 0), // Empêche les valeurs négatives pour due_amount
       afterDiscount
     }));
   };
 
-  const handlePaid = (paidAmount) => {
-    const dueAmount = totalDiscountPaidDue.afterDiscount - paidAmount;
+  const handleGivenAmount = (givenAmount) => {
+    let paidAmount = Math.min(givenAmount, totalDiscountPaidDue.afterDiscount); // Ne peut pas payer plus que le total après remise
+    let amountRefunded = Math.max(
+      givenAmount - totalDiscountPaidDue.afterDiscount,
+      0
+    ); // Calcul du montant à rembourser s'il y a un excédent
+    let dueAmount = Math.max(
+      totalDiscountPaidDue.afterDiscount - givenAmount,
+      0
+    ); // Si le montant donné est inférieur, il reste un due_amount
+
     setTotalDiscountPaidDue((prev) => ({
       ...prev,
+      given: givenAmount,
       paid: paidAmount,
+      refunded: amountRefunded,
       due: dueAmount
     }));
   };
@@ -145,7 +155,8 @@ const AddPos = ({
 
       const valueData = {
         date: date.toISOString(),
-        paid_amount: totalDiscountPaidDue.paid,
+        given_amount: totalDiscountPaidDue.given,
+        paid_amount:totalDiscountPaidDue.paid,
         discount: totalDiscountPaidDue.discount,
         customer_id: customer, // Assurez-vous que customer est défini
         creatorId: currentUserId,
@@ -191,26 +202,18 @@ const AddPos = ({
   useEffect(() => {
     if (selectedProds.length > 0) {
       let total = 0;
-      let afterDiscount = 0;
-      let due = 0;
-
       selectedProds.forEach((prod) => {
         total += prod.sale_price * prod.selectedQty;
       });
 
-      if (totalDiscountPaidDue.discount > 0) {
-        afterDiscount = total - totalDiscountPaidDue.discount;
-      } else afterDiscount = total;
-
-      if (totalDiscountPaidDue.paid > 0) {
-        due = afterDiscount - totalDiscountPaidDue.paid;
-      } else due = afterDiscount;
+      let afterDiscount = total - totalDiscountPaidDue.discount;
+      let due = afterDiscount - totalDiscountPaidDue.paid;
 
       setTotalDiscountPaidDue((prev) => ({
         ...prev,
         total,
         afterDiscount,
-        due
+        due: Math.max(due, 0)
       }));
     }
   }, [selectedProds, totalDiscountPaidDue.paid, totalDiscountPaidDue.discount]);
@@ -306,7 +309,7 @@ const AddPos = ({
                 <strong>{totalDiscountPaidDue.afterDiscount} cfa</strong>
               </div>
 
-              <div
+              {/* <div
                 style={{
                   padding: "10px 20px",
                   display: "flex",
@@ -325,8 +328,47 @@ const AddPos = ({
                   ]}
                   initialValue={0}
                 >
-                  <InputNumber type="number" onChange={handlePaid} min={0} />
+                  <InputNumber type="number" onChange={handleGivenAmount} min={0} />
                 </Form.Item>
+              </div> */}
+
+              <div
+                style={{
+                  padding: "10px 20px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center"
+                }}
+              >
+                <strong>Montant donné: </strong>
+                <Form.Item
+                  name="given_amount"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Veuillez saisir le montant donné!"
+                    }
+                  ]}
+                  initialValue={0}
+                >
+                  <InputNumber
+                    type="number"
+                    onChange={handleGivenAmount}
+                    min={0}
+                  />
+                </Form.Item>
+              </div>
+
+              <div
+                style={{
+                  padding: "10px 20px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center"
+                }}
+              >
+                <strong>Montant à rembourser: </strong>
+                <strong>{totalDiscountPaidDue.refunded} cfa</strong>
               </div>
 
               <div
@@ -337,7 +379,7 @@ const AddPos = ({
                   border: "1px solid #ccc"
                 }}
               >
-                <strong>Montant à payer: </strong>
+                <strong>Reste à payer: </strong>
                 <strong>{totalDiscountPaidDue.due} cfa</strong>
               </div>
             </Col>

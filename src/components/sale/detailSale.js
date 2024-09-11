@@ -270,6 +270,18 @@ const DetailSale = () => {
                                 {singleSaleInvoice.delivred ? "Oui" : "Non"}
                               </strong>
                             </p>
+                            <p>
+                              <Typography.Text strong>
+                                Montant donné :
+                              </Typography.Text>{" "}
+                              <strong>{singleSaleInvoice.given_amount}</strong>
+                            </p>
+                            <p>
+                              <Typography.Text strong>
+                                Montant remboursé :
+                              </Typography.Text>{" "}
+                              <strong>{singleSaleInvoice.amount_refunded}</strong>
+                            </p>
                           </div>
                           <div className="me-2"></div>
                         </div>
