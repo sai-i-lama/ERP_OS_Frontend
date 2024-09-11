@@ -120,11 +120,19 @@ const PrintToPdf = forwardRef(({ data, invoiceData }, ref) => {
               <td>{data.total_amount - data.discount}</td>
             </tr>
             <tr>
+              <th>Montant Donné</th>
+              <td>{data.given_amount}</td>
+            </tr>
+            <tr>
               <th>Montant Payé</th>
               <td>{data.paid_amount}</td>
             </tr>
             <tr>
-              <th>Montant Du</th>
+              <th>Montant Remboursé</th>
+              <td>{data.amount_refunded}</td>
+            </tr>
+            <tr>
+              <th>Reste à Payer</th>
               <td>{data.due_amount}</td>
             </tr>
           </table>
@@ -167,7 +175,7 @@ const SaleInvoice = ({ data }) => {
       })
       .catch((error) => {
         console.error("Erreur lors de la récupération des paramètres:", error);
-      })
+      });
   }, []);
 
   return (
