@@ -19,6 +19,7 @@ import PosPrint from "../Invoice/PosPrint";
 import SaleInvoice from "../Invoice/SaleInvoice";
 import moment from "moment";
 import "./sale.css";
+import { cancelSale } from "../../redux/actions/sale/cancelSaleAction";
 //PopUp
 
 const DetailSale = () => {
@@ -43,6 +44,19 @@ const DetailSale = () => {
   // 		console.log(error.message);
   // 	}
   // };
+
+  const handleCancel = () => {
+    try {
+      dispatch(cancelSale(id));
+      toast.success(`Votre commande a été annulée`);
+      return navigate("/salelist");
+    } catch (error) {
+      toast.error(`Erreur lors de la mise à jour de la commande`);
+    } finally {
+      setLoading(false);
+      setVisible(false);
+    }
+  };
 
   const handleUpdate = async (field, value) => {
     setLoading(true);
@@ -114,7 +128,7 @@ const DetailSale = () => {
               </h5>
               <div className="card-header d-flex justify-content-end custom-gap">
                 {!isProRole && (
-                  <div className="d-flex gap-3">
+                  <div className="d-flex gap-5">
                     <Popover
                       content={
                         <a
@@ -129,9 +143,9 @@ const DetailSale = () => {
                       open={visiblePopover === "delivred"}
                       onOpenChange={handleVisibleChange("delivred")}
                     >
-                      <button className="btn bg-success">
+                      <Button shape="round" className={"bg-success text-dark"}>
                         Confirmer la livraison
-                      </button>
+                      </Button>
                     </Popover>
 
                     <Popover
@@ -148,18 +162,33 @@ const DetailSale = () => {
                       open={visiblePopover === "ready"}
                       onOpenChange={handleVisibleChange("ready")}
                     >
-                      <button className="btn bg-warning">
+                      <Button shape="round" className={"bg-success text-dark"}>
                         Marquer comme prête
-                      </button>
+                      </Button>
                     </Popover>
                   </div>
                 )}
+                <Popover
+                  content={
+                    <a onClick={() => handleCancel()} disabled={loading}>
+                      <Button type="primary">Oui</Button>
+                    </a>
+                  }
+                  title="Voulez-vous vraiment Annuler cette commande ?"
+                  trigger="click"
+                  open={visiblePopover === "cancel"}
+                  onOpenChange={handleVisibleChange("cancel")}
+                >
+                  <Button shape="round" className={"bg-danger text-dark"}>
+                    Annuler la commande
+                  </Button>
+                </Popover>
                 <div className={""}>
                   <SaleInvoice data={singleSaleInvoice} />
                 </div>
-                <div className={""}>
+                {/* <div className={""}>
                   <PackingSlip data={singleSaleInvoice} />
-                </div>
+                </div> */}
               </div>
               <div className="card-body">
                 <Row justify="start">
@@ -280,7 +309,9 @@ const DetailSale = () => {
                               <Typography.Text strong>
                                 Montant remboursé :
                               </Typography.Text>{" "}
-                              <strong>{singleSaleInvoice.amount_refunded}</strong>
+                              <strong>
+                                {singleSaleInvoice.amount_refunded}
+                              </strong>
                             </p>
                           </div>
                           <div className="me-2"></div>
