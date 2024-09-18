@@ -4,6 +4,7 @@ import {
   ADD_SALE_ERROR,
   SALE_DETAILS,
   DELETE_SALE,
+  CANCEL_SALE,
 } from "../types/SaleType";
 import { message } from "antd";
 
@@ -43,7 +44,11 @@ const saleReducer = (state = initialState, action) => {
     //     ...state.list.filter((sup) => sup.id !== parseInt(action.payload)),
     //   ],
     // };
-
+    case CANCEL_SALE:
+      const cancelfilterSale = state.list.filter(
+        (sale) => sale.id !== parseInt(action.payload) && sale
+      );
+      return { ...state, list: cancelfilterSale };
     case ADD_SALE_ERROR:
       message.error(action.payload);
       return state;

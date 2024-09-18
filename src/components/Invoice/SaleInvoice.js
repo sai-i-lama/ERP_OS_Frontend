@@ -185,7 +185,7 @@ const SaleInvoice = ({ data }) => {
       </div>
       {invoiceData && (
         <Button type="primary" shape="round" onClick={handlePrint}>
-          Imprimer PDF
+          Imprimer
         </Button>
       )}
     </div>
