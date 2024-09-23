@@ -56,29 +56,39 @@ const AddSale = ({
     total: 0,
     discount: 0,
     afterDiscount: 0,
+    given: 0,
     paid: 0,
+    refunded: 0,
     due: 0
   });
 
   const handleDiscount = (discountAmount) => {
     const afterDiscount = totalDiscountPaidDue.total - discountAmount;
-    let dueAmount = totalDiscountPaidDue.total - discountAmount;
-    if (totalDiscountPaidDue.paid > 0) {
-      dueAmount = dueAmount - totalDiscountPaidDue.paid;
-    }
+    let dueAmount = afterDiscount - totalDiscountPaidDue.paid;
     setTotalDiscountPaidDue((prev) => ({
       ...prev,
       discount: discountAmount,
-      due: dueAmount,
+      due: Math.max(dueAmount, 0), // Empêche les valeurs négatives pour due_amount
       afterDiscount
     }));
   };
 
-  const handlePaid = (paidAmount) => {
-    const dueAmount = totalDiscountPaidDue.afterDiscount - paidAmount;
+  const handleGivenAmount = (givenAmount) => {
+    let paidAmount = Math.min(givenAmount, totalDiscountPaidDue.afterDiscount); // Ne peut pas payer plus que le total après remise
+    let amountRefunded = Math.max(
+      givenAmount - totalDiscountPaidDue.afterDiscount,
+      0
+    ); // Calcul du montant à rembourser s'il y a un excédent
+    let dueAmount = Math.max(
+      totalDiscountPaidDue.afterDiscount - givenAmount,
+      0
+    ); // Si le montant donné est inférieur, il reste un due_amount
+
     setTotalDiscountPaidDue((prev) => ({
       ...prev,
+      given: givenAmount,
       paid: paidAmount,
+      refunded: amountRefunded,
       due: dueAmount
     }));
   };
@@ -102,11 +112,9 @@ const AddSale = ({
   };
 
   const onFormSubmit = async (values) => {
-    // Générez le numéro de commande
     const generatedNumCom1 = handleGenerateNumCom();
 
     if (generatedNumCom1) {
-      // Créez les données de la facture de vente
       const saleInvoiceProduct = selectedProds.map((prod) => ({
         product_id: prod.id,
         product_quantity: prod.selectedQty,
@@ -114,33 +122,34 @@ const AddSale = ({
       }));
 
       const valueData = {
-        date: date.toISOString(), // Utilisez la date sélectionnée
+        date: date.toISOString(),
+        given_amount: totalDiscountPaidDue.given,
         paid_amount: totalDiscountPaidDue.paid,
         discount: totalDiscountPaidDue.discount,
-        customer_id: customer,
-        user_id: currentUserId,
+        customer_id: customer, // Assurez-vous que customer est défini
+        creatorId: currentUserId,
         type_saleInvoice: "produit_fini",
-        numCommande: generatedNumCom1, // Utilisez le numéro de commande généré
+        numCommande: generatedNumCom1,
         saleInvoiceProduct
       };
 
-      // Log des données envoyées pour débogage
       console.log("Données envoyées au backend:", valueData);
 
       try {
         const resp = await dispatch(addSale(valueData));
+
         if (resp.message === "success") {
           form.resetFields();
           setFormData({});
           setAfterDiscount(0);
           setLoader(false);
-          toast.success("Nouveau produit vendu ");
+          toast.success("Votre Commande a été prise en compte");
           navigate(`/sale/${resp.createdInvoiceId}`);
         } else {
           setLoader(false);
         }
       } catch (error) {
-        console.log(error.message);
+        console.log("Erreur lors de la vente:", error.message);
         setLoader(false);
         toast.error("Erreur lors de la vente");
       }
@@ -264,20 +273,37 @@ const AddSale = ({
                 alignItems: "center"
               }}
             >
-              <strong>Montant payé: </strong>
+              <strong>Montant donné: </strong>
               <Form.Item
-                name="paid_amount"
-                initialValue={0}
+                name="given_amount"
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez saisir le montant payé!"
+                    message: "Veuillez saisir le montant donné!"
                   }
                 ]}
+                initialValue={0}
               >
-                <InputNumber type="number" onChange={handlePaid} min={0} />
+                <InputNumber
+                  type="number"
+                  onChange={handleGivenAmount}
+                  min={0}
+                />
               </Form.Item>
             </div>
+
+            <div
+              style={{
+                padding: "10px 20px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center"
+              }}
+            >
+              <strong>Montant à rembourser: </strong>
+              <strong>{totalDiscountPaidDue.refunded} cfa</strong>
+            </div>
+
             <div
               style={{
                 padding: "10px 20px",
@@ -286,7 +312,7 @@ const AddSale = ({
                 border: "1px solid #ccc"
               }}
             >
-              <strong>Montant à payer: </strong>
+              <strong>Reste à payer: </strong>
               <strong>{totalDiscountPaidDue.due} cfa</strong>
             </div>
           </Col>
