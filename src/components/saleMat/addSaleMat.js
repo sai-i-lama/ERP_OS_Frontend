@@ -58,32 +58,34 @@ const AddSaleMat = ({
     total: 0,
     discount: 0,
     afterDiscount: 0,
+    given: 0,
     paid: 0,
+    refunded: 0,
     due: 0
   });
 
-  const handleDiscount = (discountAmount) => {
-    const afterDiscount = totalDiscountPaidDue.total - discountAmount;
-    let dueAmount = totalDiscountPaidDue.total - discountAmount;
-    if (totalDiscountPaidDue.paid > 0) {
-      dueAmount = dueAmount - totalDiscountPaidDue.paid;
-    }
-    setTotalDiscountPaidDue((prev) => ({
-      ...prev,
-      discount: discountAmount,
-      due: dueAmount,
-      afterDiscount
-    }));
-  };
+  // const handleDiscount = (discountAmount) => {
+  //   const afterDiscount = totalDiscountPaidDue.total - discountAmount;
+  //   let dueAmount = totalDiscountPaidDue.total - discountAmount;
+  //   if (totalDiscountPaidDue.paid > 0) {
+  //     dueAmount = dueAmount - totalDiscountPaidDue.paid;
+  //   }
+  //   setTotalDiscountPaidDue((prev) => ({
+  //     ...prev,
+  //     discount: discountAmount,
+  //     due: dueAmount,
+  //     afterDiscount
+  //   }));
+  // };
 
-  const handlePaid = (paidAmount) => {
-    const dueAmount = totalDiscountPaidDue.afterDiscount - paidAmount;
-    setTotalDiscountPaidDue((prev) => ({
-      ...prev,
-      paid: paidAmount,
-      due: dueAmount
-    }));
-  };
+  // const handlePaid = (paidAmount) => {
+  //   const dueAmount = totalDiscountPaidDue.afterDiscount - paidAmount;
+  //   setTotalDiscountPaidDue((prev) => ({
+  //     ...prev,
+  //     paid: paidAmount,
+  //     due: dueAmount
+  //   }));
+  // };
 
   // Form Function
   const [form] = Form.useForm();
@@ -115,16 +117,16 @@ const AddSaleMat = ({
       }));
 
       const valueData = {
-        date: date.toISOString(), // Utilisez la date sélectionnée
-        paid_amount: totalDiscountPaidDue.paid,
+        date: date.toISOString(),
+        given_amount: totalDiscountPaidDue.total,
+        paid_amount:totalDiscountPaidDue.total,
         discount: totalDiscountPaidDue.discount,
-        customer_id: customer,
-        user_id: currentUserId,
-        numCommande: generatedNumCom1, // Utilisez le numéro de commande généré
+        customer_id: customer, // Assurez-vous que customer est défini
+        creatorId: currentUserId,
         type_saleInvoice: "matière_première",
+        numCommande: generatedNumCom1,
         saleInvoiceProduct
       };
-
       // Log des données envoyées pour débogage
       console.log("Données envoyées au backend:", valueData);
 
