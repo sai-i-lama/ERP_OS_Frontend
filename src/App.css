@@ -22,7 +22,7 @@
   --text: #000000;
   --text-inverse: #ffffff;
   --body-bg: #f8f8ff;
-  --sidenav-bg: #157954;
+  --sidenav-bg: #b029b0;
   --table-cell-row-hover: #fafafa;
   --form-item-label: rgba(0, 0, 0, 0.85);
   --table-head: rgb(44, 44, 44);
@@ -38,7 +38,7 @@
 }
 
 .particular-sidenav-bg {
-  --sidenav-bg: #1d1561;
+  --sidenav-bg: #b029b0;
 }
 
 body {
