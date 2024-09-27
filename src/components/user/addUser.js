@@ -23,6 +23,7 @@ const AddUser = () => {
   const { Title } = Typography;
   const { Option } = Select;
   const [list, setList] = useState(null);
+  const Gender = ["Homme", "Femme"];
 
   // const [j_date, setJ_date] = useState(moment());
   // const [l_date, setL_date] = useState(moment());
@@ -95,7 +96,6 @@ const AddUser = () => {
               onFinishFailed={onFinishFailed}
               autoComplete="off"
             >
-
               <Form.Item
                 style={{ marginBottom: "10px" }}
                 label="Nom d’utilisateur"
@@ -302,6 +302,41 @@ const AddUser = () => {
 
               <Form.Item
                 style={{ marginBottom: "10px" }}
+                name="gender"
+                label="Genre "
+                rules={[
+                  {
+                    required: true,
+                    message: "Veuillez sélectionner votre genre!"
+                  }
+                ]}
+              >
+                <Select
+                  name="gender"
+                  //loading={!category}
+                  showSearch
+                  placeholder="Sélectionnez votre genre"
+                  optionFilterProp="children"
+                  filterOption={(input, option) =>
+                    option.children.includes(input)
+                  }
+                  filterSort={(optionA, optionB) =>
+                    optionA.children
+                      .toLowerCase()
+                      .localeCompare(optionB.children.toLowerCase())
+                  }
+                >
+                  {Gender &&
+                    Gender.map((custom) => (
+                      <Select.Option key={custom} value={custom}>
+                        {custom}
+                      </Select.Option>
+                    ))}
+                </Select>
+              </Form.Item>
+
+              <Form.Item
+                style={{ marginBottom: "10px" }}
                 wrapperCol={{
                   offset: 4,
                   span: 16
@@ -318,7 +353,6 @@ const AddUser = () => {
                   Ajouter personnel
                 </Button>
               </Form.Item>
-              
             </Form>
           </Card>
         </Col>
