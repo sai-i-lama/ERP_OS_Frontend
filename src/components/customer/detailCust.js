@@ -74,7 +74,7 @@ const DetailCust = () => {
                       type="primary"
                       shape="round"
                       icon={<EditOutlined />}
-                    >Renommer</Button>
+                    >Modifier</Button>
                   </Link>
                   <Popover
                     content={

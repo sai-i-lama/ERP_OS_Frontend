@@ -8,8 +8,9 @@ import "react-toastify/dist/ReactToastify.css";
 import "./NotificationIcon.css";
 
 // Connect to Socket.io server
-const socket = io("http://localhost:5001");
-// const socket = io("http://192.168.1.176/:5001");
+// const socket = io("http://localhost:5001");
+// const socket = io("http://192.168.1.176:5001");
+const socket = io("http://192.168.1.11:5001");
 
 function NotificationSystem({ userId }) {
   const [notifications, setNotifications] = useState([]);
@@ -59,8 +60,9 @@ function NotificationSystem({ userId }) {
     if (!showNotifications) {
       try {
         await fetch(
-          "http://localhost:5001/v1/customer/markNotificationsAsRead",
+          // "http://localhost:5001/v1/customer/markNotificationsAsRead",
           //"http://192.168.1.176/:5001/v1/customer/markNotificationsAsRead",
+          "http://192.168.1.11:5001/v1/customer/markNotificationsAsRead",
           {
             method: "POST",
             headers: {

@@ -1,14 +1,16 @@
-// import { Line } from "@ant-design/plots";
-import { Card, DatePicker } from "antd";
+import { Line } from "@ant-design/plots";
+import { Card, DatePicker, Col, Row } from "antd";
 import moment from "moment";
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadDashboardData } from "../../../redux/actions/dashboard/getDashboardDataAction";
 import { loadAllPurchase } from "../../../redux/actions/purchase/getPurchaseAction";
 import { loadAllSale } from "../../../redux/actions/sale/getSaleAction";
+import Loader from "../../loader/loader";
 import NewDashboardCard from "../../Card/Dashboard/NewDashboardCard";
 import NotificationIcon from "../../notification/NotificationIcon";
 import NotificationSystem from "../../notification/NewCommandeNotification";
+import DemoBarC from "./DemoBarC";
 
 const DemoLine = () => {
   const [list, setList] = useState([]);
@@ -115,7 +117,10 @@ const DemoLine = () => {
 
   return (
     <Fragment>
-      <div className="row d-flex" style={{ maxWidth: "100%", marginBottom:"10px" }}>
+      <div
+        className="row d-flex"
+        style={{ maxWidth: "100%", marginBottom: "10px" }}
+      >
         <div className="col-md-3">
           <RangePicker
             onCalendarChange={onCalendarChange}
@@ -123,7 +128,10 @@ const DemoLine = () => {
             className="range-picker"
           />
         </div>
-        <div className="col-md-9" style={{display:"flex", justifyContent:"flex-end", gap:"3%"}}>
+        <div
+          className="col-md-9"
+          style={{ display: "flex", justifyContent: "flex-end", gap: "3%" }}
+        >
           <NotificationSystem userId={user_id} />
           <NotificationIcon list={list} />
         </div>
@@ -131,9 +139,21 @@ const DemoLine = () => {
 
       <NewDashboardCard information={cardInformation} />
 
-      {/* <Card title="Ventes vs bénéfices">
-        {data ? <Line {...config} /> : <Loader />}
-      </Card> */}
+      <div className="mb-3">
+        <Row gutter={[30, 30]}>
+          <Col sm={24} md={24} lg={16} span={24}>
+            <Card title="Ventes vs bénéfices">
+              {data ? <Line {...config} /> : <Loader />}
+            </Card>
+          </Col>
+
+          <Col sm={24} md={24} lg={8} span={24}>
+            <Card title="Produits les plus vendus ">
+              <DemoBarC />
+            </Card>
+          </Col>
+        </Row>
+      </div>
     </Fragment>
   );
 };

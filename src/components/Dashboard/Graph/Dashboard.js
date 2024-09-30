@@ -6,7 +6,7 @@ import checkTokenExp from "../../../utils/checkTokenExp";
 import DemoBar from "./DemoBar";
 import DemoLine from "./Demoline";
 import DemoPie from "./DemoPie";
-import DemoBarC from "./DemoBarC";
+
 
 const Dashboard = () => {
   const isLogged = Boolean(localStorage.getItem("isLogged"));
@@ -46,11 +46,6 @@ const Dashboard = () => {
           </div>
           <div>
             <Row gutter={[30, 30]}>
-              <Col sm={24} md={24} lg={12} span={24}>
-                <Card title="Produits les plus vendus ">
-                  <DemoBarC />
-                </Card>
-              </Col>
               {/* <Col sm={24} md={24} lg={12} span={24}>
                 <Card title="Client le plus acheteur">
                   <DemoBar />
