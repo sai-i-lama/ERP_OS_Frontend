@@ -9,7 +9,7 @@ import {
   Card,
   Radio
 } from "antd";
-
+import { toast } from "react-toastify";
 import { addCustomer } from "../../redux/actions/customer/addCustomerAciton";
 import { useDispatch } from "react-redux";
 import Main from "../layouts/Main";
@@ -24,6 +24,7 @@ const Register = () => {
   const { Title } = Typography;
   const navigate = useNavigate();
   const Gender = ["Homme", "Femme"];
+  const [sku, setSku] = useState("");
   const [form] = Form.useForm();
 
   //   const onFinish = async (values) => {
@@ -43,8 +44,32 @@ const Register = () => {
   //       setLoader(false);
   //     }
   //   };
+
+  const handleGenerateSku = () => {
+    const generatedSku = Math.floor(Math.random() * 900000000) + 100000000;
+    const customerName = form.getFieldValue("username");
+    if (customerName) {
+      const customerNameAbbrev = customerName.slice(0, 3).toUpperCase();
+      return `CLI-${customerNameAbbrev}-${generatedSku.toString()}`;
+    } else {
+      console.log("Veuillez saisir un nom avant de générer le SKU !");
+      return null; // On retourne null si le nom du client n'est pas encore renseigné.
+    }
+  };
+
   const onFinish = async (values) => {
     try {
+      // Générer le SKU
+      const generatedSku = handleGenerateSku();
+
+      if (!generatedSku) {
+        // Si le SKU n'a pas pu être généré, arrêter l'exécution
+        return;
+      }
+
+      // Ajouter le SKU aux valeurs envoyées
+      values.sku = generatedSku;
+
       const resp = await dispatch(addCustomer(values));
       if (resp.message === "success") {
         setLoading(false);

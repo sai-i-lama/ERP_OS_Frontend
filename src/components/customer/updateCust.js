@@ -43,6 +43,7 @@ function UpdateCust() {
     address: cust.address,
     due_amount: cust.due_amount,
     email: cust.email,
+    type_customer: cust.type_customer,
   });
 
   const onFinish = (values) => {

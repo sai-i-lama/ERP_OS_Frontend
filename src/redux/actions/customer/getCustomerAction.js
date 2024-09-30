@@ -22,3 +22,19 @@ export const loadAllCustomer = ({ page, limit, status }) => {
 		}
 	};
 };
+
+export const loadCusSearch = (id) => {
+	//dispatching with an call back function and returning that
+	return async (dispatch) => {
+		try {
+			const { data } = await axios.get(`customer?query=search&cus=${id}`);
+
+			//dispatching data
+			dispatch(getCustomer(data));
+
+			return { status: "success", data: data };
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
+};

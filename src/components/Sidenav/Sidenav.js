@@ -84,15 +84,54 @@ const Test = (color) => {
   }, [productsList, Clientlist]);
 
   const menu = [
-    hasPermission("viewDashboard") && {
-      label: (
-        <NavLink to="/dashboard">
-          <span>TABLEAU DE BORD</span>
-        </NavLink>
-      ),
-      key: "dashboard",
-      icon: <HomeOutlined />
-    },
+    !isProRole &&
+      hasPermission("viewDashboard") && {
+        label: (
+          <NavLink to="/dashboard">
+            <span>TABLEAU DE BORD</span>
+          </NavLink>
+        ),
+        key: "dashboard",
+        icon: <HomeOutlined />
+      },
+    !isProRole &&
+      (hasPermission("createSaleInvoice") ||
+        hasPermission("viewSaleInvoice") ||
+        hasPermission("updateSaleInvoice") ||
+        hasPermission("deleteSaleInvoice")) && {
+        label: "VENTE",
+        key: "saleSection",
+        icon: <MinusSquareOutlined />,
+        children: [
+          {
+            label: (
+              <NavLink to="/sale">
+                <span>Centre Thérapeutique</span>
+              </NavLink>
+            ),
+            key: "newSale",
+            icon: <CheckOutlined />
+          },
+          hasPermission("createSaleInvoice") && {
+            label: (
+              <NavLink to="/pos">
+                <span>Boutique</span>
+              </NavLink>
+            ),
+            key: "pos",
+            icon: <ShoppingCartOutlined />
+          },
+          hasPermission("viewSaleInvoice") && {
+            label: (
+              <NavLink to="/salelist">
+                <span>Liste de vente</span>
+              </NavLink>
+            ),
+            key: "saleList",
+            icon: <UnorderedListOutlined />
+          }
+        ]
+      },
     !isProRole &&
       (hasPermission("createProduct") ||
         hasPermission("viewProduct") ||
@@ -132,7 +171,7 @@ const Test = (color) => {
             ),
             key: "stocklistproductmatière2",
             icon: <UnorderedListOutlined />
-          },
+          }
           // {
           //   label: (
           //     <NavLink to="/saleMatList">
@@ -215,46 +254,7 @@ const Test = (color) => {
     //     ]
     //   },
     !isProRole &&
-      (hasPermission("createSaleInvoice") ||
-        hasPermission("viewSaleInvoice") ||
-        hasPermission("updateSaleInvoice") ||
-        hasPermission("deleteSaleInvoice")) && {
-        label: "VENTE",
-        key: "saleSection",
-        icon: <MinusSquareOutlined />,
-        children: [
-          {
-            label: (
-              <NavLink to="/sale">
-                <span>Centre Thérapeutique</span>
-              </NavLink>
-            ),
-            key: "newSale",
-            icon: <CheckOutlined />
-          },
-          hasPermission("createSaleInvoice") && {
-            label: (
-              <NavLink to="/pos">
-                <span>Boutique</span>
-              </NavLink>
-            ),
-            key: "pos",
-            icon: <ShoppingCartOutlined />
-          },
-          hasPermission("viewSaleInvoice") && {
-            label: (
-              <NavLink to="/salelist">
-                <span>Liste de vente</span>
-              </NavLink>
-            ),
-            key: "saleList",
-            icon: <UnorderedListOutlined />
-          }
-        ]
-      },
-    !isProRole &&
-      (
-        hasPermission("viewUser") ||
+      (hasPermission("viewUser") ||
         hasPermission("updateUser") ||
         hasPermission("deleteUser") ||
         hasPermission("createRolePermission") ||

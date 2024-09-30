@@ -19,6 +19,7 @@ const ForgotPassword = () => {
       const response = await axios.post(
         "http://localhost:5001/v1/customer/sendTokenResetPassword",
         // "http://192.168.1.176:5001/v1/customer/sendTokenResetPassword",
+        // "http://192.168.1.108:5001/v1/customer/sendTokenResetPassword",
         { email: values.email } // envoyer l'e-mail au backend
       );
 
