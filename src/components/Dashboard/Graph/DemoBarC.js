@@ -35,7 +35,7 @@ const DemoPieChart = () => {
       fields: ["name", "quantitySold"],
       formatter: (datum) => ({
         name: datum.name,
-        value: `${datum.quantitySold} FCFA`
+        value: `Montant géneré : ${datum.quantitySold} FCFA`
       })
     }
   };

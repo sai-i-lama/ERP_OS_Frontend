@@ -147,6 +147,8 @@ export default function ProductsForSale({ handleSelectedProds }) {
       setLoading(false);
     }
   };
+
+  
   const onFinishFailed = (errorInfo) => {
     setLoading(false);
     console.log("Failed:", errorInfo);

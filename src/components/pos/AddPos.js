@@ -59,7 +59,7 @@ const AddPos = ({
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadAllCustomer({ page: 1, limit: 10 }));
+    dispatch(loadAllCustomer({ page: 1, limit: 1000000 }));
   }, [dispatch]);
 
   const allCustomer = useSelector((state) => state.customers.list);
@@ -69,6 +69,7 @@ const AddPos = ({
   const [isDisabled, setIsDisabled] = useState(false);
   const [formData, setFormData] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [totalDiscountPaidDue, setTotalDiscountPaidDue] = useState({
     total: 0,
     discount: 0,
@@ -222,20 +223,45 @@ const AddPos = ({
     setIsModalVisible(false);
   };
 
+  const handleGenerateSku = () => {
+    const generatedSku = Math.floor(Math.random() * 900000000) + 100000000;
+    const customerName = clientForm.getFieldValue("username");
+    if (customerName) {
+      const customerNameAbbrev = customerName.slice(0, 3).toUpperCase();
+      return `CLI-${customerNameAbbrev}-${generatedSku.toString()}`;
+    } else {
+      console.log("Veuillez saisir un nom avant de générer le SKU !");
+      return null; // On retourne null si le nom du client n'est pas encore renseigné.
+    }
+  };
+
   const handleClientFormSubmit = async (values) => {
     try {
+      // Générer le SKU
+      const generatedSku = handleGenerateSku();
+
+      if (!generatedSku) {
+        // Si le SKU n'a pas pu être généré, arrêter l'exécution
+        return;
+      }
+
+      // Ajouter le SKU aux valeurs envoyées
+      values.sku = generatedSku;
+
       const resp = await dispatch(addCustomer(values));
       if (resp.message === "success") {
-        setLoader(false);
-        setIsModalVisible(false);
+        setLoading(false);
+        clientForm.resetFields();
       } else {
-        setLoader(false);
+        setLoading(false);
       }
     } catch (error) {
-      setLoader(false);
+      setLoading(false);
       console.log(error.message);
     }
   };
+
+
   console.log("cust", customer);
   return (
     <Card className="mt-3">
@@ -599,7 +625,7 @@ const AddPos = ({
           <Form.Item
             style={{ marginBottom: "10px" }}
             label="Nom"
-            name="name"
+            name="username"
             rules={[
               {
                 required: true,
