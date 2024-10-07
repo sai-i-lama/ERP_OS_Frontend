@@ -80,23 +80,32 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       dataIndex: "delivred",
       key: "delivred",
       render: (delivred, { id }) =>
-        !currentRole ? (
-          <Link to={`/sale/${id}`}>
-            <button
-              className={`btn btn-sm ${
-                delivred ? "btn-success" : "btn-danger"
-              }`}
-            >
-              {delivred ? "Oui" : "Non"}
-            </button>
-          </Link>
-        ) : (
-          <button
-            className={`btn btn-sm ${delivred ? "btn-success" : "btn-danger"}`}
+        // !currentRole ? (
+        //   <Link to={`/sale/${id}`}>
+        //     <button
+        //       className={` ${
+        //         delivred ? "bg-success" : "bg-danger"
+        //       }`}
+        //     >
+        //       {delivred ? "Oui" : "Non"}
+        //     </button>
+        //   </Link>
+        // ) : (
+          <span
+            className={`${delivred ? "bg-success" : "bg-danger"}`}
+            style={{
+              display: "inline-block", 
+              width: "50px",
+              height: "25px", 
+              textAlign: "center",
+              lineHeight: "25px" 
+            }}
+          
           >
             {delivred ? "Oui" : "Non"}
-          </button>
-        ),
+          </span>,
+        // ),
+
       sorter: (a, b) => a.delivred - b.delivred,
       sortDirections: ["ascend", "descend"]
     },
@@ -128,11 +137,18 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
       dataIndex: "ready",
       key: "ready",
       render: (ready) => (
-        <button
-          className={`btn btn-sm ${ready ? "btn-success" : "btn-danger"}`}
+        <span
+          className={`${ready ? "bg-success" : "bg-danger"}`}
+          style={{
+            display: "inline-block", 
+            width: "50px",
+            height: "25px", 
+            textAlign: "center",
+            lineHeight: "25px" 
+          }}
         >
           {ready ? "Oui" : "Non"}
-        </button>
+        </span>
       ),
       sorter: (a, b) => a.ready - b.ready,
       sortDirections: ["ascend", "descend"]
@@ -259,7 +275,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
 
   return (
     <>
-      {list && (
+      {/* {list && (
         <div style={{ marginBottom: "30px" }}>
           <Dropdown
             menu={
@@ -270,7 +286,7 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
             <Button className="column-visibility">Column Visibility</Button>
           </Dropdown>
         </div>
-      )}
+      )} */}
       <Table
         scroll={{ x: true }}
         loading={!list}

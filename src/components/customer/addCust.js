@@ -258,6 +258,7 @@ const AddCust = () => {
           md={24}
           lg={11}
           xl={11}
+          style={{ height: "250px" }}
           className="column-design rounded"
         >
           <Card bordered={false} className={styles.importCsvCard}>

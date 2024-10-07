@@ -8,7 +8,8 @@ import {
   Row,
   Select,
   Typography,
-  Upload
+  Upload,
+  DatePicker
 } from "antd";
 import { toast } from "react-toastify";
 
@@ -48,8 +49,31 @@ const AddProd = () => {
     });
   }, [form]);
 
+  // Fonction pour générer le SKU
+  const handleGenerateSku = () => {
+    const generatedSku = Math.floor(Math.random() * 900000000) + 100000000;
+    const productName = form.getFieldValue("name");
+    if (productName) {
+      const productNameAbbrev = productName.slice(0, 3).toUpperCase();
+      const fullSku = `SAI-${productNameAbbrev}${generatedSku.toString()}`;
+      setSku(fullSku); // Mettre à jour l'état du SKU
+      return fullSku; // Retourner le SKU généré
+    } else {
+      toast.warn("Veuillez sélectionner un nom avant de générer le SKU!");
+      return null; // Retourner null si le nom n'est pas disponible
+    }
+  };
+
   const onFinish = async (values) => {
     try {
+      // Générer le SKU
+      const generatedSku = handleGenerateSku();
+
+      if (!generatedSku) {
+        // Si le SKU n'a pas pu être généré, arrêter l'exécution
+        return;
+      }
+
       let formData = new FormData();
       formData.append("image", fileList[0].originFileObj);
       formData.append("name", values.name);
@@ -59,11 +83,13 @@ const AddProd = () => {
       formData.append("sale_price", values.sale_price);
       formData.append("product_category_id", values.product_category_id);
       formData.append("idSupplier", values.idSupplier);
-      formData.append("sku", sku || values.sku); // use generated sku if available
+      formData.append("sku", generatedSku); // Utiliser le SKU généré
       formData.append("unit_type", values.unit_type);
       formData.append("type_product", values.type_product);
       formData.append("reorder_quantity", values.reorder_quantity);
       formData.append("unit_measurement", values.unit_measurement);
+      formData.append("expirationDate", values.expirationDate);
+      formData.append("productionDate", values.productionDate);
 
       const resp = await dispatch(addProduct(formData));
 
@@ -96,16 +122,6 @@ const AddProd = () => {
     setLoader(true);
   };
 
-  const handleGenerateSku = () => {
-    const generatedSku = Math.floor(Math.random() * 900000000) + 100000000;
-    const productName = form.getFieldValue("name");
-    if (productName) {
-      const productNameAbbrev = productName.slice(0, 3).toUpperCase();
-      setSku(`SAI-${productNameAbbrev}${generatedSku.toString()}`);
-    } else {
-      toast.warn("Veuillez sélectionner un nom avant de générer le SKU!");
-    }
-  };
   // console.log("supplier list[ " + allSuppliers + " ]");
   return (
     <Fragment>
@@ -134,7 +150,7 @@ const AddProd = () => {
               }}
               initialValues={{
                 remember: true,
-                type_product: TypeProduc,
+                type_product: TypeProduc
               }}
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
@@ -165,7 +181,7 @@ const AddProd = () => {
                   }
                 ]}
               >
-                <Input readOnly disabled/>
+                <Input readOnly disabled />
               </Form.Item>
 
               <Form.Item
@@ -281,20 +297,6 @@ const AddProd = () => {
                 <Input type="number" min={0} />
               </Form.Item>
 
-              {/* <Form.Item
-                style={{ marginBottom: "15px" }}
-                label="Quantité commandée"
-                name="reorder_quantity"
-                rules={[
-                  {
-                    required: true,
-                    message: "Veuillez saisir la Quantité commandée !"
-                  }
-                ]}
-              >
-                <Input type="number" min={0} />
-              </Form.Item> */}
-
               <Form.Item
                 style={{ marginBottom: "15px" }}
                 label="Quantité commandée"
@@ -369,36 +371,31 @@ const AddProd = () => {
               </Form.Item>
 
               <Form.Item
-                style={{ marginBottom: "15px" }}
-                label="SKU"
-                name="sku"
-              >
-                <Input
-                  value={sku}
-                  readOnly
-                  addonBefore={sku && sku}
-                  maxLength={9}
-                  suffix={
-                    <Button
-                      type="primary"
-                      size="small"
-                      style={{
-                        backgroundColor: "#1890ff",
-                        borderColor: "#1890ff",
-                        borderRadius: "4px",
-                        marginRight: "5px"
-                      }}
-                      icon={<PlusOutlined style={{ color: "white" }} />}
-                      onClick={handleGenerateSku}
-                    />
+                style={{ marginBottom: "10px" }}
+                label="Date de Production"
+                name="productionDate"
+                rules={[
+                  {
+                    required: true,
+                    message: "Veuillez saisir la Date de Production!"
                   }
-                  onChange={(e) => setSku(e.target.value)}
-                  onBlur={() => {
-                    if (!sku) {
-                      handleGenerateSku();
-                    }
-                  }}
-                />
+                ]}
+              >
+                <DatePicker className="date-picker" />
+              </Form.Item>
+
+              <Form.Item
+                style={{ marginBottom: "10px" }}
+                label="Date d'expiration"
+                name="expirationDate"
+                rules={[
+                  {
+                    required: true,
+                    message: "Veuillez saisir la Date d'expiration!"
+                  }
+                ]}
+              >
+                <DatePicker className="date-picker" />
               </Form.Item>
 
               <Form.Item
