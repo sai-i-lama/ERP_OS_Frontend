@@ -18,7 +18,7 @@ const PrintToPdf = forwardRef(({ data, invoiceData }, ref) => {
             src={logo}
             alt="logo"
             style={{
-              width: "35%",
+              width: "40%",
               height: "40%",
               objectFit: "cover"
             }}
@@ -137,7 +137,7 @@ const PrintToPdf = forwardRef(({ data, invoiceData }, ref) => {
             </tr>
           </table>
         </div>
-
+        
         <div className="box10">
           <hr />
           <p>Signature Client</p>

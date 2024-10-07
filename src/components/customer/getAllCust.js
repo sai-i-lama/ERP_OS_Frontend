@@ -86,22 +86,6 @@ function CustomTable({ list, total, status }) {
     setColumnsToShow(columns);
   }, []);
 
-  const colVisibilityClickHandler = (col) => {
-    const ifColFound = columnsToShow.find((item) => item.key === col.key);
-    if (ifColFound) {
-      const filteredColumnsToShow = columnsToShow.filter(
-        (item) => item.key !== col.key
-      );
-      setColumnsToShow(filteredColumnsToShow);
-    } else {
-      const foundIndex = columns.findIndex((item) => item.key === col.key);
-      const foundCol = columns.find((item) => item.key === col.key);
-      let updatedColumnsToShow = [...columnsToShow];
-      updatedColumnsToShow.splice(foundIndex, 0, foundCol);
-      setColumnsToShow(updatedColumnsToShow);
-    }
-  };
-
   const menuItems = columns.map((item) => {
     return {
       key: item.key,

@@ -13,7 +13,7 @@ export const loadSingleProduct = (id) => {
   //dispatching with an call back function and returning that
   return async (dispatch) => {
     try {
-      const data = await axios.get(`product/${id}`);
+      const data = await axios.get(`product/${id}?include=Lots`);
       //dispatching data
       dispatch(detailProductAction(data));
       return data;

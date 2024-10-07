@@ -3,6 +3,7 @@ import { Pie } from "@ant-design/plots";
 import { useSelector } from "react-redux";
 
 const DemoPieChart = () => {
+  // Récupérer les données des produits depuis le Redux store
   const data = useSelector((state) => state.dashboard.list?.top4Products);
 
   // Vérification de la disponibilité des données
@@ -10,17 +11,17 @@ const DemoPieChart = () => {
     return <div>Loading...</div>;
   }
 
-  // Assurez-vous que `data` a les champs corrects
+  // Configuration du graphique à secteurs (Pie Chart)
   const config = {
     appendPadding: 10,
     data: data,
-    angleField: "percentageSold", // Utilisez le champ qui contient les pourcentages
-    colorField: "name", // Utilisez un champ approprié pour la couleur, comme le nom du produit
+    angleField: "percentageSold", // Utilisation du pourcentage vendu pour l'angle
+    colorField: "name", // Utilisation du nom du produit pour la couleur
     radius: 1,
     label: {
       type: "inner",
       offset: "-30%",
-      content: ({ percent }) => `${(percent * 100).toFixed(2)}%`,
+      content: ({ percent }) => `${(percent * 100).toFixed(2)}%`, // Affichage du pourcentage
       style: {
         fontSize: 14,
         textAlign: "center"
@@ -32,10 +33,12 @@ const DemoPieChart = () => {
       }
     ],
     tooltip: {
-      fields: ["name", "quantitySold"],
+      // Champs utilisés pour le tooltip
+      fields: ["name", "totalSaleValue"],
+      // Format du tooltip pour afficher le montant généré par produit
       formatter: (datum) => ({
         name: datum.name,
-        value: `Montant géneré : ${datum.quantitySold} FCFA`
+        value: `Montant généré : ${datum.totalSaleValue} FCFA`
       })
     }
   };
