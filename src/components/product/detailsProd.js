@@ -10,7 +10,8 @@ import {
   Input,
   Modal,
   Table,
-  Typography
+  Typography,
+  DatePicker
 } from "antd";
 import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
@@ -44,6 +45,34 @@ const DetailsProd = () => {
   useEffect(() => {
     dispatch(loadSingleProduct(id));
   }, [dispatch, id]);
+
+  const columns = [
+    {
+      title: "Code du lot",
+      dataIndex: "sku",
+      key: "sku"
+    },
+    {
+      title: "Quantité Initiale",
+      dataIndex: "initialQuantity",
+      key: "initialQuantity"
+    },
+    {
+      title: "Quantité en Stock",
+      dataIndex: "quantityInStock",
+      key: "quantityInStock"
+    },
+    {
+      title: "Date de production",
+      dataIndex: "productionDate",
+      key: "productionDate"
+    },
+    {
+      title: "Date d'expiration",
+      dataIndex: "expirationDate",
+      key: "expirationDate"
+    }
+  ];
 
   useEffect(() => {
     if (product) {
@@ -261,6 +290,24 @@ const DetailsProd = () => {
                   </div>
                 </Col>
               </Row>
+              
+              {/* Tableau des lots */}
+              <Card
+                className="header-solid h-full"
+                bordered={false}
+                title={[
+                  <h5 className="font-semibold m-0 text-center">
+                    Lots associés au produit
+                  </h5>
+                ]}
+                bodyStyle={{ paddingTop: "0" }}
+              >
+                <Table
+                  dataSource={product.Lots} // Utiliser les lots du produit
+                  columns={columns} // Colonnes définies plus haut
+                  rowKey="id" // Utiliser l'id du lot comme clé unique
+                />
+              </Card>
             </Card>
           </Fragment>
         ) : (
@@ -350,6 +397,34 @@ const DetailsProd = () => {
             ]}
           >
             <Input type="number" min={0} disabled />
+          </Form.Item>
+
+          <Form.Item
+            style={{ marginBottom: "10px" }}
+            label="Date de Production"
+            name="productionDate"
+            rules={[
+              {
+                required: true,
+                message: "Veuillez saisir la Date de Production!"
+              }
+            ]}
+          >
+            <DatePicker className="date-picker" />
+          </Form.Item>
+
+          <Form.Item
+            style={{ marginBottom: "10px" }}
+            label="Date d'expiration"
+            name="expirationDate"
+            rules={[
+              {
+                required: true,
+                message: "Veuillez saisir la Date d'expiration!"
+              }
+            ]}
+          >
+            <DatePicker className="date-picker" />
           </Form.Item>
 
           <Form.Item

@@ -63,6 +63,7 @@ const DetailSale = () => {
     try {
       await dispatch(deleteSale(id, { [field]: value }));
       toast.success(`L'opération a réussi avec succès`);
+      navigate("/salelist");
     } catch (error) {
       toast.error(`Erreur lors de la mise à jour de la commande`);
     } finally {
@@ -166,6 +167,10 @@ const DetailSale = () => {
                         Marquer comme prête
                       </Button>
                     </Popover>
+
+                    <Button type="primary" shape="round">
+                      <Link to={`/payment/customer/${id}`}>Paiement</Link>
+                    </Button>
                   </div>
                 )}
                 <Popover
@@ -246,7 +251,7 @@ const DetailSale = () => {
                               <Typography.Text strong>
                                 Montant à payer :
                               </Typography.Text>{" "}
-                              <strong style={{ color: "red" }}>
+                              <strong className={"text-danger"}>
                                 {" "}
                                 {singleSaleInvoice.due_amount}
                               </strong>
@@ -272,13 +277,17 @@ const DetailSale = () => {
                             <p>
                               <Typography.Text strong>Prête :</Typography.Text>{" "}
                               <strong
+                                className={`${
+                                  singleSaleInvoice.ready
+                                    ? "bg-success"
+                                    : "bg-danger"
+                                }`}
                                 style={{
-                                  backgroundColor: singleSaleInvoice.ready
-                                    ? "green"
-                                    : "red",
-                                  color: "white", // Assurez-vous que le texte est lisible
-                                  padding: "2px 4px", // Ajouter un peu de padding pour l'esthétique
-                                  borderRadius: "4px" // Optionnel : ajouter des coins arrondis
+                                  display: "inline-block",
+                                  width: "50px",
+                                  height: "25px",
+                                  textAlign: "center",
+                                  lineHeight: "25px"
                                 }}
                               >
                                 {singleSaleInvoice.ready ? "Oui" : "Non"}
@@ -287,13 +296,17 @@ const DetailSale = () => {
                             <p>
                               <Typography.Text strong>Livrée :</Typography.Text>{" "}
                               <strong
+                                className={`${
+                                  singleSaleInvoice.delivred
+                                    ? "bg-success"
+                                    : "bg-danger"
+                                }`}
                                 style={{
-                                  backgroundColor: singleSaleInvoice.delivred
-                                    ? "green"
-                                    : "red",
-                                  color: "white", // Assurez-vous que le texte est lisible
-                                  padding: "2px 4px", // Ajouter un peu de padding pour l'esthétique
-                                  borderRadius: "4px" // Optionnel : ajouter des coins arrondis
+                                  display: "inline-block",
+                                  width: "50px",
+                                  height: "25px",
+                                  textAlign: "center",
+                                  lineHeight: "25px"
                                 }}
                               >
                                 {singleSaleInvoice.delivred ? "Oui" : "Non"}

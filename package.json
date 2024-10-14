@@ -60,7 +60,7 @@
     "workbox-streams": "^6.5.4"
   },
   "scripts": {
-    "start": "cross-env PORT=3001 HOST=192.168.1.11 react-scripts start",
+    "start": "cross-env PORT=3001 HOST=192.168.1.100 react-scripts start",
     "build": "react-scripts build",
     "gh-pages": "gh-pages -d build",
     "test": "react-scripts test",

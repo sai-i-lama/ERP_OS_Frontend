@@ -42,11 +42,18 @@ function CustomerInvoiceList({ list, linkTo }) {
       align: "center",
       render: (delivred,) =>
          (
-          <button
-            className={`btn btn-sm ${delivred ? "btn-success" : "btn-danger"}`}
+          <span
+            className={`${delivred ? "bg-success" : "bg-danger"}`}
+            style={{
+              display: "inline-block", 
+              width: "50px",
+              height: "25px", 
+              textAlign: "center",
+              lineHeight: "25px" 
+            }}
           >
             {delivred ? "Oui" : "Non"}
-          </button>
+          </span>
         ),
       sorter: (a, b) => a.delivred - b.delivred,
       sortDirections: ["ascend", "descend"]
@@ -97,11 +104,18 @@ function CustomerInvoiceList({ list, linkTo }) {
       align: "center",
       render: (ready,) =>
          (
-          <button
-            className={`btn btn-sm ${ready ? "btn-success" : "btn-danger"}`}
+          <span
+            className={`${ready ? "bg-success" : "bg-danger"}`}
+            style={{
+              display: "inline-block", 
+              width: "50px",
+              height: "25px", 
+              textAlign: "center",
+              lineHeight: "25px" 
+            }}
           >
             {ready ? "Oui" : "Non"}
-          </button>
+          </span>
         ),
       sorter: (a, b) => a.ready - b.ready,
       sortDirections: ["ascend", "descend"]
@@ -123,13 +137,20 @@ function CustomerInvoiceList({ list, linkTo }) {
             </button>
           </Link>
         ) : (
-          <button
-            className={`btn btn-sm ${
-              record.due_amount === 0 ? "btn-success" : "btn-danger"
+          <span
+            className={`${
+              record.due_amount === 0 ? "bg-success" : "bg-danger"
             }`}
+            style={{
+              display: "inline-block", 
+              width: "100px",
+              height: "25px", 
+              textAlign: "center",
+              lineHeight: "25px" 
+            }}
           >
             Paiement
-          </button>
+          </span>
         )
     }
   ];
