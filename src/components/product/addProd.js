@@ -136,7 +136,7 @@ const AddProd = () => {
         >
           <Card bordered={false}>
             <Title level={4} className="m-2 text-center">
-              Ajouter Produit
+              Ajouter un Produit
             </Title>
             <Form
               form={form}
@@ -313,7 +313,7 @@ const AddProd = () => {
 
               <Form.Item
                 style={{ marginBottom: "15px" }}
-                label="coût de production"
+                label="coût de production par unité"
                 name="purchase_price"
                 rules={[
                   {
