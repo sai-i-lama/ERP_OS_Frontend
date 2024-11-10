@@ -69,7 +69,7 @@ function CustomTable({ list, total, status }) {
       sortDirections: ["ascend", "descend"]
     },
     {
-      title: "Coût de Production",
+      title: "Coût de Production par unité",
       dataIndex: "purchase_price",
       key: "purchase_price",
       align: "center",

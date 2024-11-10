@@ -69,7 +69,7 @@ function CustomTable({ list, total, status }) {
       sortDirections: ["ascend", "descend"]
     },
     {
-      title: "Coût d'acquisition",
+      title: "Coût d'acquisition par unité",
       dataIndex: "purchase_price",
       key: "purchase_price",
       align: "center",

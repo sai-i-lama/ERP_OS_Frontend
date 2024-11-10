@@ -313,7 +313,7 @@ const AddProdMat = () => {
 
               <Form.Item
                 style={{ marginBottom: "15px" }}
-                label="coût d'acquisition"
+                label="coût d'acquisition par unité"
                 name="purchase_price"
                 rules={[
                   {
@@ -414,7 +414,7 @@ const AddProdMat = () => {
                   loading={loader}
                   onClick={onClickLoading}
                 >
-                  Ajouter un produit
+                  Ajouter 
                 </Button>
               </Form.Item>
             </Form>

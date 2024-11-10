@@ -103,6 +103,16 @@ const Test = (color) => {
         key: "saleSection",
         icon: <MinusSquareOutlined />,
         children: [
+          
+          hasPermission("viewSaleInvoice") && {
+            label: (
+              <NavLink to="/salelist">
+                <span>Liste de vente</span>
+              </NavLink>
+            ),
+            key: "saleList",
+            icon: <UnorderedListOutlined />
+          },
           {
             label: (
               <NavLink to="/sale">
@@ -120,16 +130,8 @@ const Test = (color) => {
             ),
             key: "pos",
             icon: <ShoppingCartOutlined />
-          },
-          hasPermission("viewSaleInvoice") && {
-            label: (
-              <NavLink to="/salelist">
-                <span>Liste de vente</span>
-              </NavLink>
-            ),
-            key: "saleList",
-            icon: <UnorderedListOutlined />
           }
+          
         ]
       },
     !isProRole &&

@@ -94,7 +94,7 @@ export default function Products({
                   >
                     <InputNumber
                       style={{ width: "100%" }}
-                      placeholder="coût de production"
+                      placeholder="coût de production par unité"
                       onChange={(purchasePrice) =>
                         handleSelectedProdsPurchasePrice(key, purchasePrice)
                       }
