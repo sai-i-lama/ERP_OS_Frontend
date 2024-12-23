@@ -63,11 +63,29 @@ registerRoute(
 );
 
 // This allows the web app to trigger skipWaiting via
- registration.waiting.postMessage({type: 'SKIP_WAITING'})
+// registration.waiting.postMessage({type: 'SKIP_WAITING'})
+// self.addEventListener("message", (event) => {
+//   if (event.data && event.data.type === "SKIP_WAITING") {
+//     self.skipWaiting();
+//   }
+// });
 self.addEventListener("message", (event) => {
   if (event.data && event.data.type === "SKIP_WAITING") {
     self.skipWaiting();
   }
 });
+
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    self.skipWaiting() // Forcer l'activation immédiate après l'installation
+  );
+});
+
+// self.addEventListener("activate", (event) => {
+//   event.waitUntil(
+//     clients.claim() // Prendre le contrôle des clients immédiatement
+//   );
+// });
+
 
 // Any other custom service worker logic can go here.

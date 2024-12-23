@@ -19,7 +19,7 @@
     "axios": "^0.27.2",
     "bootstrap-icons": "^1.9.1",
     "dotenv": "^16.0.2",
-    "erpos": "file:",
+    "erpos": "file:.",
     "html-webpack-plugin": "^5.5.0",
     "html2canvas": "^1.4.1",
     "install": "^0.13.0",
@@ -60,7 +60,7 @@
     "workbox-streams": "^6.5.4"
   },
   "scripts": {
-    "start": "cross-env PORT=3001 HOST=127.0.0.1 react-scripts start",
+    "start": "cross-env PORT=3001 HOST=3.78.5.153 react-scripts start",
     "build": "react-scripts build",
     "gh-pages": "gh-pages -d build",
     "test": "react-scripts test",
