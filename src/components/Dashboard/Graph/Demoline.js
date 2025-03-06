@@ -1,4 +1,4 @@
-import { Line } from "@ant-design/plots";
+import { Column } from "@ant-design/plots";
 import { Card, DatePicker, Col, Row } from "antd";
 import moment from "moment";
 import React, { Fragment, useEffect, useState } from "react";
@@ -96,6 +96,8 @@ const DemoLine = () => {
     xField: "date",
     yField: "amount",
     seriesField: "type",
+    isGroup: true, // Affiche les barres côte à côte (groupées)
+    columnWidthRatio: 0.2, // Largeur des barres
     yAxis: {
       label: {
         formatter: (v) => `${v / 1000} K`
@@ -104,13 +106,14 @@ const DemoLine = () => {
     legend: {
       position: "top"
     },
-    smooth: true,
+
     animation: {
       appear: {
-        animation: "path-in",
-        duration: 5000
+        animation: "scale-in-y",
+        duration: 1000
       }
     }
+   
   };
 
   const user_id = localStorage.getItem("id");
@@ -143,7 +146,7 @@ const DemoLine = () => {
         <Row gutter={[30, 30]}>
           <Col sm={24} md={24} lg={16} span={24}>
             <Card title="Ventes vs bénéfices">
-              {data ? <Line {...config} /> : <Loader />}
+              {data ? <Column {...config} /> : <Loader />}
             </Card>
           </Col>
 

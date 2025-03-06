@@ -25,10 +25,10 @@ export default function Products({
 					<Col span={3}>
 						<div className='font-weight-bold border-b'>U.M</div>
 					</Col>
-					<Col span={4}>
+					<Col xs={6} sm={6} md={6} lg={4} xl={4}>
 						<div className='font-weight-bold'>Quantité </div>
 					</Col>
-					<Col span={4}>
+					<Col xs={8} sm={8} md={8} lg={5} xl={5}>
 						<div className='font-weight-bold'>Prix unitaire</div>
 					</Col>
 					<Col span={3}>
@@ -75,7 +75,7 @@ export default function Products({
 												</div>
 											</Form.Item>
 										</Col>
-										<Col span={4}>
+										<Col xs={6} sm={6} md={6} lg={4} xl={4}>
 											<Form.Item
 												{...restField}
 												name={[name, "product_quantity"]}>
@@ -88,7 +88,7 @@ export default function Products({
 												/>
 											</Form.Item>
 										</Col>
-										<Col span={4}>
+										<Col xs={8} sm={8} md={8} lg={5} xl={5}>
 											<Form.Item
 												{...restField}
 												name={[name, "product_sale_price"]}>

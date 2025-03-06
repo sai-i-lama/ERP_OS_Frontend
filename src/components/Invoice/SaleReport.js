@@ -80,7 +80,7 @@ const PrintToPdf = forwardRef(
                 {data &&
                   data?.map((i) => (
                     <tr>
-                      <td>{moment(i.date).format("DD/MM/YY HH:mm")}</td>
+                      <td>{moment(i.created_at).format("DD/MM/YY HH:mm")}</td>
                       <td>
                         <p>{i.id}</p>
                       </td>

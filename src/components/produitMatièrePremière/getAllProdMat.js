@@ -47,7 +47,7 @@ function CustomTable({ list, total, status }) {
       dataIndex: "name",
       key: "name",
       align: "center",
-      render: (name, { id }) => <Link to={`/product/${id}`}>{name}</Link>,
+      render: (name, { id }) => <Link to={`/productMat/${id}`}>{name}</Link>,
       sorter: (a, b) => a.name.localeCompare(b.name),
       sortDirections: ["ascend", "descend"]
     },
@@ -96,7 +96,7 @@ function CustomTable({ list, total, status }) {
       sortDirections: ["ascend", "descend"]
     },
     {
-      title: "Unité de mésure",
+      title: "Unité de mesure",
       dataIndex: "unit_measurement",
       key: "unit_measurement",
       align: "center",

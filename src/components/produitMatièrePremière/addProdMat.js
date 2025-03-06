@@ -5,6 +5,7 @@ import {
   Col,
   Form,
   Input,
+  InputNumber,
   Row,
   Select,
   Typography,
@@ -21,7 +22,7 @@ import UploadMany from "../Card/UploadMany";
 import styles from "../product/AddProd.module.css";
 
 const AddProdMat = () => {
-  const unitType = ["kg", "ltr", "g"];
+  const unitType = ["kg", "ltr", "g", "sac", "cageot"];
   const category = useSelector((state) => state.productCategories?.list);
   const allSuppliers = useSelector((state) => state.suppliers.list);
   const dispatch = useDispatch();
@@ -280,7 +281,13 @@ const AddProdMat = () => {
                   }
                 ]}
               >
-                <Input type="number" min={0} />
+                <InputNumber
+                   style={{ width: "100%" }}
+                    min={0}
+                    step={0.01} // Permet d'entrer des valeurs décimales
+                    stringMode // Permet de stocker des nombres précis en tant que chaînes
+                    
+                 />
               </Form.Item>
 
               {/* <Form.Item

@@ -37,6 +37,17 @@
   font-size: 1.2rem;
 }
 
+.footButton{
+  margin-top: 20px;
+  width: 100%;
+  margin-left: 50px;
+}
+
+.footButton1{
+  margin-top: 20px;
+  width: 100%;
+  margin-right: 30px;
+}
 @media (max-width: 575.98px) {
 }
 

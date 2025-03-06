@@ -13,8 +13,8 @@ const NewDashboardCard = ({ information }) => {
                   <div className="media d-flex">
                     <div className="media-body text-left">
                       <h3 className="">
-                        {information?.purchase_total
-                          ? information?.purchase_total
+                        {information?.sale_totalMP
+                          ? information?.sale_totalMP
                           : 0}
                       </h3>
                       <span className="">Total Achat</span>
@@ -75,8 +75,8 @@ const NewDashboardCard = ({ information }) => {
                   <div className="media d-flex">
                     <div className="media-body text-left">
                       <h3 className="dark">
-                        {information?.purchase_count
-                          ? information?.purchase_count
+                        {information?.sale_countMP
+                          ? information?.sale_countMP
                           : 0}
                       </h3>
                       <span

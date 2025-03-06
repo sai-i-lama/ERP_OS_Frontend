@@ -110,11 +110,11 @@ export default function ProductsForSale({ handleSelectedProds }) {
           }
           actions={[
             <p>
-              nom: <br />
+              Nom: <br />
               {item.name}
             </p>,
             <p>
-              stock: <br /> {item.quantity}
+              Stock: <br /> {item.quantity}
             </p>
           ]}
           hoverable

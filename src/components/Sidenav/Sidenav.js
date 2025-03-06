@@ -56,6 +56,12 @@ const Test = (color) => {
   const dispatch = useDispatch();
   const [list, setList] = useState([]);
   const [dueClientList, setDueClientList] = useState([]);
+  // const redirectToHome = () => {
+	// 	window.location.href = "http://192.168.1.176";
+	// };
+  // const redirectToHR = () => {
+	// 	window.location.href = "http://192.168.1.176";
+	// };
 
   useEffect(() => {
     dispatch(loadProduct({ status: "true", page: 1, limit: 10 }));
@@ -231,6 +237,7 @@ const Test = (color) => {
         key: "customers",
         icon: <UserOutlined />
       },
+     
     // !isProRole &&
     //   (hasPermission("createSupplier") ||
     //     hasPermission("viewSupplier") ||
