@@ -33,7 +33,6 @@ const ResetPassword = () => {
       const response = await axios.post(
          "http://localhost:5001/v1/customer/createResetPassword",
         // "http://192.168.1.176:5001/v1/customer/createResetPassword",
-        //"http://192.168.1.100:5001/v1/customer/createResetPassword",
         {
           token, // Vous devrez vous assurer que ce token est bien disponible
           newPassword
