@@ -13,6 +13,7 @@ import GetAllProd from "./components/product/getAllProd";
 
 import ProductMat from "./components/produitMatièrePremière/productMat";
 import GetAllProdMat from "./components/produitMatièrePremière/getAllProdMat";
+import DetailsProdMat from "./components/produitMatièrePremière/detailsProdMat";
 
 import DetailsPurch from "./components/purchase/detailsPurch";
 import Purchase from "./components/purchase/purchase";
@@ -69,6 +70,7 @@ import DetailSaleMat from "./components/saleMat/detailSaleMat";
 import GetAllAudiLogs from "./components/AuditLog/getAllAuditLogs";
 import ResetPassword from "./components/customer/ResetPassword";
 import ForgotPassword from "./components/customer/ForgotPassword";
+//import { PaymentProvider } from "./context/PaymentContext";
 
 
 const { Sider } = Layout;
@@ -95,6 +97,7 @@ function App() {
 
             <Route path="/productMat" exact element={<ProductMat />} />
             <Route path="/productMatlist" exact element={<GetAllProdMat />} />
+            <Route path="/productMat/:id" element={<DetailsProdMat />} />
             {/* <Route path="/salemat" exact element={<Mat />} /> */}
 
             <Route

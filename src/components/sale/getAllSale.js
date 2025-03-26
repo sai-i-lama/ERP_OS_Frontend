@@ -42,6 +42,8 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
   const isProfessional = role === "Professionnel";
   const isParticulier = role === "Particulier";
 
+
+
   const currentRole = isProfessional
     ? "Professionnel"
     : isParticulier
@@ -61,9 +63,9 @@ function CustomTable({ list, total, startdate, enddate, count, user }) {
     },
     {
       title: "Date",
-      dataIndex: "date",
+      dataIndex: "created_at",
       key: "date",
-      render: (date) => moment(date).format("DD/MM/YY HH:mm"),
+      render: (date) => moment(date).format("DD-MM-YYYY, HH:mm"),
       sorter: (a, b) => moment(a.date).unix() - moment(b.date).unix(),
       sortDirections: ["ascend", "descend"]
     },
@@ -405,6 +407,7 @@ const GetAllSale = (props) => {
     : isParticulier
     ? "Particulier"
     : null;
+  
 
   if (!isLogged) {
     return <Navigate to={"/auth/login"} replace={true} />;

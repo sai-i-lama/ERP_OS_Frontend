@@ -459,7 +459,7 @@ const AddPos = ({
                     <DatePicker
                       onChange={(value) => setDate(value._d)}
                       defaultValue={moment()}
-                      style={{ marginBottom: "10px" }}
+                      style={{ maxWidth: "250px" }}
                       label="date"
                       name="date"
                       disabled

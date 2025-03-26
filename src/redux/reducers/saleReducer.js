@@ -32,6 +32,7 @@ const saleReducer = (state = initialState, action) => {
 
     case SALE_DETAILS:
       return { ...state, sale: action.payload.data };
+      
 
     case DELETE_SALE:
       const filterSale = state.list.filter(

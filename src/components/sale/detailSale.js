@@ -33,6 +33,8 @@ const DetailSale = () => {
   const dispatch = useDispatch();
   const sale = useSelector((state) => state.sales.sale);
 
+  console.log(sale);
+
   //Delete Customer
   // const onDelete = () => {
   // 	try {
@@ -44,6 +46,9 @@ const DetailSale = () => {
   // 		console.log(error.message);
   // 	}
   // };
+
+  // const { rellvalue, amount } = useSelector((state) => state.sales);
+
 
   const handleCancel = () => {
     try {
@@ -76,6 +81,11 @@ const DetailSale = () => {
     setVisiblePopover(newVisible ? popover : null);
   };
 
+  // const rellvalue = localStorage.getItem("rellvalue");
+  // const amount = localStorage.getItem("amount");
+  const { discount } = useSelector((state) => state.sales);
+
+
   const {
     status,
     totalPaidAmount,
@@ -84,10 +94,16 @@ const DetailSale = () => {
     singleSaleInvoice,
     returnSaleInvoice,
     transactions,
-    totalUnitMeasurement
+    totalUnitMeasurement,
+    amount,
+   
   } = sale ? sale : {};
+
+
   // Delete Customer PopUp
   const [visible, setVisible] = useState(false);
+  //const rellvalue = singleSaleInvoice.due_amount - singleSaleInvoice.discount;
+  //  const refund = amount - rellvalue;
 
   useEffect(() => {
     dispatch(loadSingleSale(id));
@@ -105,6 +121,11 @@ const DetailSale = () => {
     : isParticulier
     ? "Particulier"
     : null;
+
+    if (status === "PAYÉ") {
+      singleSaleInvoice.paid_amount = singleSaleInvoice.due_amount - singleSaleInvoice.discount;;
+      singleSaleInvoice.due_amount = 0
+    }
 
   if (!isLogged) {
     return <Navigate to={"/auth/login"} replace={true} />;
@@ -241,12 +262,16 @@ const DetailSale = () => {
                               </Typography.Text>{" "}
                               <strong>{singleSaleInvoice.total_amount}</strong>
                             </p>
+                           
                             <p>
                               <Typography.Text strong>
                                 Montant payé :
                               </Typography.Text>{" "}
-                              <strong>{singleSaleInvoice.paid_amount}</strong>
+                               
+                             <strong>{singleSaleInvoice.paid_amount}</strong>
+                             
                             </p>
+                            
                             <p>
                               <Typography.Text strong>
                                 Montant à payer :
@@ -316,14 +341,14 @@ const DetailSale = () => {
                               <Typography.Text strong>
                                 Montant donné :
                               </Typography.Text>{" "}
-                              <strong>{singleSaleInvoice.given_amount}</strong>
+                              <strong>{singleSaleInvoice.given_amount || amount}</strong>
                             </p>
                             <p>
                               <Typography.Text strong>
                                 Montant remboursé :
                               </Typography.Text>{" "}
                               <strong>
-                                {singleSaleInvoice.amount_refunded}
+                                {singleSaleInvoice.amount_refunded || dueAmount}
                               </strong>
                             </p>
                           </div>

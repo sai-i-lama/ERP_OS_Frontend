@@ -30,6 +30,13 @@ function Header({ onPress, collapsed, handleCollapsed }) {
   const isLogged = localStorage.getItem("isLogged");
   const user = localStorage.getItem("user");
   const role = localStorage.getItem("role"); // Ajouté pour récupérer le rôle de l'utilisateur
+  const redirectToHome = () => {
+		window.location.href = "http://127.0.0.1:8000";
+	};
+  const redirectToHR = () => {
+		window.location.href = "http://127.0.0.1:3000";
+	};
+
 
   const [isDarkMode, setDarkMode] = useState(false);
 
@@ -74,6 +81,32 @@ function Header({ onPress, collapsed, handleCollapsed }) {
             <Typography.Title level={5} style={{ margin: 0 }} className="me-3">
               <UserOutlined style={{ fontSize: "16px" }} /> {user}
             </Typography.Title>
+          )}
+          {isLogged && (
+              <div>
+                         {/* ... */}
+                            <Button
+                               type="primary"
+                               className={styles.footButton} // Ajoutez la classe CSS appropriée pour le style du bouton
+                               onClick={redirectToHome}
+                            >
+                              Module Gestion des soins
+                            </Button>
+                        {/* ... */}
+                        </div>
+          )}
+          {isLogged && (
+              <div>
+                         {/* ... */}
+                            <Button
+                               type="primary"
+                               className={styles.footButton1} // Ajoutez la classe CSS appropriée pour le style du bouton
+                               onClick={redirectToHR}
+                            >
+                              Module Gestion des RH
+                            </Button>
+                        {/* ... */}
+                        </div>
           )}
           {isLogged ? (
             <Link to="/auth/logout" className={styles.logoutLink}>

@@ -29,7 +29,7 @@ import { loadSingleProduct } from "../../redux/actions/product/detailProductActi
 import Loader from "../loader/loader";
 import PageTitle from "../page-header/PageHeader";
 
-const DetailsProd = () => {
+const DetailsProdMat = () => {
   const { id } = useParams();
   let navigate = useNavigate();
   const [form] = Form.useForm();
@@ -46,33 +46,33 @@ const DetailsProd = () => {
     dispatch(loadSingleProduct(id));
   }, [dispatch, id]);
 
-  const columns = [
-    {
-      title: "Code du lot",
-      dataIndex: "sku",
-      key: "sku"
-    },
-    {
-      title: "Quantité Initiale",
-      dataIndex: "initialQuantity",
-      key: "initialQuantity"
-    },
-    {
-      title: "Quantité en Stock",
-      dataIndex: "quantityInStock",
-      key: "quantityInStock"
-    },
-    {
-      title: "Date de production",
-      dataIndex: "productionDate",
-      key: "productionDate"
-    },
-    {
-      title: "Date d'expiration",
-      dataIndex: "expirationDate",
-      key: "expirationDate"
-    }
-  ];
+//   const columns = [
+//     {
+//       title: "Code du lot",
+//       dataIndex: "sku",
+//       key: "sku"
+//     },
+//     {
+//       title: "Quantité Initiale",
+//       dataIndex: "initialQuantity",
+//       key: "initialQuantity"
+//     },
+//     {
+//       title: "Quantité en Stock",
+//       dataIndex: "quantityInStock",
+//       key: "quantityInStock"
+//     },
+//     {
+//       title: "Date de production",
+//       dataIndex: "productionDate",
+//       key: "productionDate"
+//     },
+//     {
+//       title: "Date d'expiration",
+//       dataIndex: "expirationDate",
+//       key: "expirationDate"
+//     }
+//   ];
 
   useEffect(() => {
     if (product) {
@@ -121,14 +121,14 @@ const DetailsProd = () => {
     }
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+//   const onFinishFailed = (errorInfo) => {
+//     console.log("Failed:", errorInfo);
+//   };
 
   // Function to handle quantity changes
-  const handleQuantityChange = (value) => {
-    setTotalQuantity(product.quantity + parseInt(value || 0)); // Update total quantity
-  };
+//   const handleQuantityChange = (value) => {
+//     setTotalQuantity(product.quantity + parseInt(value || 0)); // Update total quantity
+//   };
 
   //Delete Product
   const onDelete = () => {
@@ -206,7 +206,7 @@ const DetailsProd = () => {
                       Supprimer
                     </Button>
                   </Popover>
-                  <Button
+                  {/* <Button
                     className=""
                     block
                     type="primary"
@@ -215,7 +215,7 @@ const DetailsProd = () => {
                     }}
                   >
                     Ajouter la quantité du produit
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
               <Row className="d-flex justify-content-between">
@@ -244,7 +244,7 @@ const DetailsProd = () => {
                           <td>
                             <p>
                               <Typography.Text strong>
-                                Prix d’achat :
+                                Prix d’achat par unité :
                               </Typography.Text>{" "}
                             </p>
                           </td>
@@ -256,12 +256,12 @@ const DetailsProd = () => {
                           <td>
                             <p>
                               <Typography.Text strong>
-                                Prix de vente :
+                                Format :
                               </Typography.Text>{" "}
                             </p>
                           </td>
                           <td>
-                            <p>{product.sale_price}</p>
+                            <p>{product.unit_measurement}</p>
                           </td>
                         </tr>
                         <tr>
@@ -292,7 +292,7 @@ const DetailsProd = () => {
               </Row>
               
               {/* Tableau des lots */}
-              <Card
+              {/* <Card
                 className="header-solid h-full"
                 bordered={false}
                 title={[
@@ -303,18 +303,18 @@ const DetailsProd = () => {
                 bodyStyle={{ paddingTop: "0" }}
               >
                 <Table
-                  dataSource={product.Lots} // Utiliser les lots du produit
-                  columns={columns} // Colonnes définies plus haut
-                  rowKey="id" // Utiliser l'id du lot comme clé unique
+                  dataSource={product.Lots} 
+                  columns={columns} 
+                  rowKey="id" 
                 />
-              </Card>
+              </Card> */}
             </Card>
           </Fragment>
         ) : (
           <Loader />
         )}
       </div>
-      <Modal
+      {/* <Modal
         title="Ajouter la quantité du produit"
         visible={modalVisible}
         onCancel={handleCancel}
@@ -441,9 +441,9 @@ const DetailsProd = () => {
             <Input type="number" min={0} disabled />
           </Form.Item>
         </Form>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };
 
-export default DetailsProd;
+export default DetailsProdMat;

@@ -22,6 +22,7 @@ import { addCustomerPayment } from "../../redux/actions/customerPayment/addCusto
 import PageTitle from "../page-header/PageHeader";
 import { toast } from "react-toastify";
 
+
 const AddCustPaymentByInvoice = () => {
   const navigate = useNavigate();
 
@@ -32,6 +33,28 @@ const AddCustPaymentByInvoice = () => {
   const { sale } = useSelector((state) => state?.sales);
   const { Title } = Typography;
 
+  const [discount, setDiscount] = useState(0);
+  const [amount, setAmount] = useState(0);
+
+  const [rellvalue, setRellvalue] = useState(0);
+  //const [refundAmount, setRefundAmount] = useState(0);
+  console.log(sale)
+
+// Fonction pour mettre à jour la remise
+const handleDiscountChange = (value) => {
+  const newDiscount = value || 0;
+  setDiscount(newDiscount);
+  setRellvalue(dueAmount - newDiscount);
+};
+
+// Fonction pour mettre à jour le montant donné
+// const handleAmountChange = (value) => {
+//   const newAmount = value || 0;
+//   setAmount(newAmount);
+//   setRefundAmount(newAmount - rellvalue);
+// };
+
+  
   const [form] = Form.useForm();
   useEffect(() => {
     dispatch(loadSingleSale(pid));
@@ -43,6 +66,17 @@ const AddCustPaymentByInvoice = () => {
       form.setFieldsValue({ due_amount: sale.dueAmount });
     }
   }, [sale, form]);
+
+  // useEffect(() => {
+  //   if (sale) {
+  //     setDiscount(sale.discount);
+  //     form.setFieldsValue({ discount: sale.discount });
+  //   }
+  // }, [sale, form]);
+
+  // useEffect(() => {
+  //   setRefundAmount(amount - rellvalue);
+  // }, [amount, rellvalue]);  
 
   let [date, setDate] = useState(moment());
   const [loader, setLoader] = useState(false);
@@ -73,6 +107,7 @@ const AddCustPaymentByInvoice = () => {
     console.log("Failed:", errorInfo);
     setLoader(false);
   };
+
 
   const isLogged = Boolean(localStorage.getItem("isLogged"));
 
@@ -179,8 +214,16 @@ const AddCustPaymentByInvoice = () => {
                  type='number'
                  min={0}
                  max={dueAmount}
-                  placeholder="Entre le montant de la remise"
+                 placeholder="Entre le montant de la remise"
+                 onChange={handleDiscountChange}
                 />
+              </Form.Item>
+
+              <Form.Item
+                 label="Montant Après Remise"
+                 style={{ marginBottom: "10px" }}
+              >
+                <InputNumber value={rellvalue || 0} disabled />
               </Form.Item>
 
               <Form.Item
@@ -198,10 +241,19 @@ const AddCustPaymentByInvoice = () => {
                   type="number"
                   value={0}
                   min={0}
-                  placeholder="Entre le montant "
+                  // value={amount}
+                  //onChange={(e) => handleAmountChange(Number(e.target.value))}
                   max={dueAmount}
                 />
+                
               </Form.Item>
+
+              {/* <Form.Item
+                 label="Remboursé"
+                 style={{ marginBottom: "10px" }}
+              >
+                <InputNumber value={refundAmount || 0} disabled />
+              </Form.Item> */}
 
               {/* <Form.Item
 								style={{ marginBottom: "10px" }}
